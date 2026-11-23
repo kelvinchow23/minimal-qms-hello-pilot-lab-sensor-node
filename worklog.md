@@ -50,7 +50,13 @@ Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not ap
   finding Q12). kc commented: "i plan to run through this in a week for the first
   iteration. want to get through a second iteration before christmas break". Target dates
   for G1 to G4 moved to 2026-11-24, 11-26, 11-28 and 11-30 (agent's proposed spread).
-- **Time:** agent 1 h (0.5 h planning, 0.5 h review); human hands-on: asked, not yet given.
+- **Then:** kc reviewed the doc; decisions recorded in DR-001 minutes (commit 4a40a32).
+  kc on dates: "target dates seem ok but may not be feasible". kc wants to place a parts
+  purchase this week and will write purchasing work instructions meanwhile, outside this
+  repo. Note: under AGENTS.md rule 9, ordering waits until parts are released at G2
+  (target 2026-11-26); ordering earlier needs a deviation.
+- **Time:** agent 1.25 h (0.5 h planning, 0.75 h review); human hands-on 0.5 h on planning
+  and review (kc: "it was like half an hour"; not split by activity).
 
 ## YYYY-MM-DD: <who> (human / agent)
 - **Changed:** <what, by whom>
