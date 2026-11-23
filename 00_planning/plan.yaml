@@ -17,7 +17,7 @@ scope:
     - "What is explicitly out of scope: kc to decide at the G0 review"
 make_buy:
   - {item: electronics, decision: buy, note: "off-the-shelf boards; parts chosen in the design stage"}
-  - {item: integration, decision: make, note: "in-house"}
+  - {item: assembly, decision: make, note: "in-house: wiring the bought boards together and fitting them in the enclosure"}
   - {item: software, decision: make, note: "in-house"}
   - {item: enclosure, decision: make, note: "in-house, if one is needed"}
 roles: roles.yaml

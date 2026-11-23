@@ -40,7 +40,7 @@ production volumes, certification) or leave it empty.
 | Item | Decision |
 |---|---|
 | Electronics | buy (off-the-shelf boards; parts chosen in the design stage) |
-| Integration | make |
+| Assembly (wiring the boards together, fitting them in the enclosure) | make |
 | Software | make |
 | Enclosure, if needed | make |
 
