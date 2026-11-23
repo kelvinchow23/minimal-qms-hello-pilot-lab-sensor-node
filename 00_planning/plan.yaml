@@ -23,8 +23,10 @@ make_buy:
 roles: roles.yaml
 gates:
   - {gate: G0, target: 2026-11-23, actual: null, approval: null}
-  - {gate: G1, target: 2026-11-27, actual: null, approval: null}   # kc plans G1 back to back with G0
-  - {gate: G2, target: 2026-12-04, actual: null, approval: null}
-  - {gate: G3, target: 2026-12-11, actual: null, approval: null}
-  - {gate: G4, target: 2026-12-18, actual: null, approval: null}
+  - {gate: G1, target: 2026-11-24, actual: null, approval: null}   # kc plans G1 back to back with G0
+  - {gate: G2, target: 2026-11-26, actual: null, approval: null}
+  - {gate: G3, target: 2026-11-28, actual: null, approval: null}
+  - {gate: G4, target: 2026-11-30, actual: null, approval: null}
+# Targets changed 2026-11-23 (before G0): kc plans to run iteration 1 in about a week and
+# finish iteration 2 before the Christmas break (iteration 2 gets its own entry when it starts).
 skipped_gates: []

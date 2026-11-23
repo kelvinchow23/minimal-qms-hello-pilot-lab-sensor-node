@@ -46,6 +46,10 @@ Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not ap
   - Power supply and cables: buy.
   - Self-driving labs as the deployment target is new in kc's restated scope; what that
     means for the unit (mounting, interfaces, environment) is a G1 question.
+- **Then:** G0 review moved to a commentable doc (https://claude.ai/artifact/WwepEcjmhVSdb5uHai2ykD;
+  finding Q12). kc commented: "i plan to run through this in a week for the first
+  iteration. want to get through a second iteration before christmas break". Target dates
+  for G1 to G4 moved to 2026-11-24, 11-26, 11-28 and 11-30 (agent's proposed spread).
 - **Time:** agent 1 h (0.5 h planning, 0.5 h review); human hands-on: asked, not yet given.
 
 ## YYYY-MM-DD: <who> (human / agent)

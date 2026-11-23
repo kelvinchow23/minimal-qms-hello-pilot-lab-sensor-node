@@ -47,8 +47,9 @@ production volumes, certification) or leave it empty.
 **Roles.** kc approves everything, is quality lead, and builds. The internal auditor is not
 named yet (to be named before QMS-rev A). AI agents write and review, never approve.
 
-**Target dates.** G0 2026-11-23, G1 2026-11-27 (planned back to back with G0),
-G2 2026-12-04, G3 2026-12-11, G4 2026-12-18.
+**Target dates.** G0 2026-11-23, G1 2026-11-24 (straight after G0), G2 2026-11-26,
+G3 2026-11-28, G4 2026-11-30: iteration 1 in about a week. Iteration 2 to finish before
+the Christmas break; its dates are set when it starts.
 
 **Not decided at G0 on purpose.** What it senses, how often, how it reports, power, unit
 count, enclosure and parts. These came up in the session and are kept as notes for G1 in
