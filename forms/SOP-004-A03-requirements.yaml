@@ -1,0 +1,7 @@
+# SOP-004-A03 Requirements (appendix to SOP-004; revised with it)
+# verification: test / inspection / analysis / review
+- id: REQ-001
+  statement: "<what the product must do or be, measurably>"
+  source: "<customer / standard / internal>"
+  verification: test
+  verified_by: TP-001     # test procedure, review or analysis reference

@@ -1,0 +1,13 @@
+# SOP-007-A04 Release record (appendix to SOP-007; revised with it)
+build: B002
+units:
+  - sn: PRX-A-0001-261202A
+    config_ok: true            # matches build.yaml config
+    tests: all-pass            # or list NC refs with use-as-is dispositions
+    trace_complete: true
+    deviations: []
+decision: pending              # released / not-released, set from the approval
+approval:                      # SOP-001 §7, filled in from the approval evidence
+  by: null
+  when: null
+  evidence: null               # PR link or transcript location

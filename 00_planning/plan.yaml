@@ -1,0 +1,17 @@
+# Development plan (SOP-004 section 4). Change through a PR; old values stay in git history.
+product: null              # top assembly part number, allocated in the design stage
+iteration: 1
+qms_rev: "f4d60f4"   # the minimalQMS revision this project runs under
+goal: ""                   # written at G0
+scope:
+  in: []
+  out: []
+make_buy: []               # e.g. {item: enclosure, decision: make, note: "printed in-house"}
+roles: roles.yaml
+gates:
+  - {gate: G0, target: null, actual: null, approval: null}
+  - {gate: G1, target: null, actual: null, approval: null}
+  - {gate: G2, target: null, actual: null, approval: null}
+  - {gate: G3, target: null, actual: null, approval: null}
+  - {gate: G4, target: null, actual: null, approval: null}
+skipped_gates: []
