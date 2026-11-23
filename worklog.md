@@ -17,7 +17,12 @@ Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not ap
   TimescaleDB) is a possible reporting destination; `../sen55-enviro-sensor` is prior work
   on the same board.
 - **For the next review:** findings F1–F16, Q1–Q9 in DR-001.
-- **Time:** agent 0.5 h on planning; human hands-on: asked, not yet given.
+- **Later the same session:** kc decided F1–F6, F9, F11 and asked the agent to fill in the
+  rest ("fill in a lot of these unimportant ones for me and let me figure it out later");
+  those are marked *proposed* in DR-001. plan.yaml revised to match (scope states needs, not
+  parts; power supply and cabling bought; product goal first). kc wants the formal G0 review
+  held later with the package in front of them.
+- **Time:** agent 0.75 h (0.5 h planning, 0.25 h review); human hands-on: asked, not yet given.
 
 ## YYYY-MM-DD: <who> (human / agent)
 - **Changed:** <what, by whom>
