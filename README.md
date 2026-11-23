@@ -9,7 +9,7 @@ Pilot lab sensor node, used to run minimalQMS end to end before QMS-rev A.
 <!-- The problem it solves and where it is used. Written at G0. -->
 A minimal hardware unit that can be deployed in self-driving labs. It is also a hardware
 pilot: it is iterated through minimalQMS to test and fix the QMS before QMS-rev A.
-(Draft at G0; see `00_planning/plan.yaml`.)
+(Approved at G0, 2026-11-23; see `00_planning/plan.yaml`.)
 
 ## Key specs
 <!-- Filled from 01_requirements/requirements.yaml after G1. -->
@@ -18,7 +18,7 @@ pilot: it is iterated through minimalQMS to test and fix the QMS before QMS-rev 
 
 | | |
 |---|---|
-| Current stage | Scope (G0) |
+| Current stage | Requirements (G1); G0 approved 2026-11-23 |
 | Released revision | none yet |
 | Units built | 0 |
 

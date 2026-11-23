@@ -20,7 +20,7 @@ make_buy:
   - {item: enclosure, decision: make, note: "in-house, if one is needed"}
 roles: roles.yaml
 gates:
-  - {gate: G0, target: 2026-11-23, actual: null, approval: null}
+  - {gate: G0, target: 2026-11-23, actual: 2026-11-23, approval: "02_design/reviews/DR-001/minutes.md (kc, 2026-11-23 01:40 EST)"}
   - {gate: G1, target: 2026-11-24, actual: null, approval: null}   # kc plans G1 back to back with G0
   - {gate: G2, target: 2026-11-26, actual: null, approval: null}
   - {gate: G3, target: 2026-11-28, actual: null, approval: null}

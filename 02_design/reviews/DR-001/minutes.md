@@ -5,7 +5,7 @@ participants:
   humans: [kc]
   agents: ["design-agent (Claude Code, Claude Opus 5.5)", "review-agent (Claude Code subagent, Claude Opus 5.5)"]
 transcript: null          # G0 transcript location not defined by the SOPs (package Q8)
-decision: pending
+decision: approved        # quoted below
 ---
 
 # DR-001 minutes (G0)
@@ -17,7 +17,7 @@ kc reviewed the review copy on 2026-11-23, left two comments in it (dates, and t
 two comments everything elese seems fine is it wiating on me for anything". The agent took
 "everything else seems fine" as accepting every remaining decision, including the findings
 first marked *proposed*, and as leaving the out-of-scope list empty. These dispositions are
-not the approval; the approval is recorded below only when kc answers the approval question.
+not the approval; the approval is recorded below.
 
 ## Change groups
 | # | Group | Disposition | Reason or action |
@@ -54,7 +54,12 @@ not the approval; the approval is recorded below only when kc answers the approv
 | A-003 | Raise F12–F16 and Q1–Q12 in the minimal-qms repo | design-agent | after G0 | open |
 
 ## Approval (SOP-001 §7)
-- **Question asked:** pending
-- **Answer:** pending
-- **By / when:** pending
-- **Location in transcript:** pending
+- **Question asked:** "Approve G0 for LSN: the goal, scope, coarse make/buy, roles and target
+  dates in `00_planning/plan.yaml` and `roles.yaml` as committed on branch `docs/g0-scope` at
+  commit 4a40a32, with the findings dispositioned as in DR-001?"
+- **Answer:** "yes  i approve g0  for lsn"
+- **By / when:** kc, 2026-11-23 01:40 EST (06:40 UTC)
+- **Location in transcript:** Claude Code desktop session of 2026-11-23 (design-agent), kc's
+  message replying to the agent message that asked the question above. The transcript is not
+  archived in the repo: SOP-003 §6 archives transcripts only for formal reviews, and the raw
+  session transcript holds personal data that AGENTS.md rule 7 keeps out of the repo (finding Q8).

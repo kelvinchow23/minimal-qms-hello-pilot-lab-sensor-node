@@ -55,6 +55,10 @@ Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not ap
   purchase this week and will write purchasing work instructions meanwhile, outside this
   repo. Note: under AGENTS.md rule 9, ordering waits until parts are released at G2
   (target 2026-11-26); ordering earlier needs a deviation.
+- **G0 approved:** kc answered the approval question "yes  i approve g0  for lsn" at
+  2026-11-23 01:40 EST; recorded in DR-001 minutes and plan.yaml. Branch not merged (a human
+  merges; there is no remote yet). LSN not registered in the OTS library: waiting for kc to ask.
+- **Next:** G1 requirements and risks from the G1 notes above.
 - **Time:** agent 1.25 h (0.5 h planning, 0.75 h review); human hands-on 0.5 h on planning
   and review (kc: "it was like half an hour"; not split by activity).
 
