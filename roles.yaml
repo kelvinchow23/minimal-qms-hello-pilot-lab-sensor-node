@@ -12,11 +12,12 @@ roles:
     documents: [kc]
     release: [kc]
     nonconformance: [kc]
-  internal_auditor: []     # must not audit their own work; name an outside person
+  internal_auditor: []     # must not audit their own work; name an outside person. Open: kc chose to leave it unnamed at G0 (2026-11-23).
+  builder: [kc]            # assembles and tests the units (G0 answer, 2026-11-23). Not a role in the SOP-001-A04 template; see finding Q3 in 02_design/reviews/DR-001/package.md.
 
 # Agents are authors and reviewers, never approvers.
 agents:
   - id: design-agent
-    tool: "<e.g. Claude Code / Codex>"
+    tool: "Claude Code (Claude Opus 5.5)"
   - id: review-agent
-    tool: "<independent session, ideally a different model>"
+    tool: "Claude Code, fresh subagent session with no memory of the work (Claude Opus 5.5). Open: a different model is preferred."

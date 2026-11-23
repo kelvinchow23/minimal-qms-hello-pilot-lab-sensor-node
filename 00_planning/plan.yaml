@@ -1,17 +1,42 @@
 # Development plan (SOP-004 section 4). Change through a PR; old values stay in git history.
+# G0 answers given by kc in the agent session of 2026-11-23; "open" marks what is not yet answered.
 product: null              # top assembly part number, allocated in the design stage
 iteration: 1
 qms_rev: "f4d60f4"   # the minimalQMS revision this project runs under
-goal: ""                   # written at G0
+goal: >-
+  A wall-powered lab node that reads temperature, humidity and barometric pressure every
+  5 to 10 seconds and reports the readings over Wi-Fi, for lab staff who monitor room
+  conditions. It is built quickly from off-the-shelf boards, and it is also the pilot
+  product used to run minimalQMS end to end before QMS-rev A.
 scope:
-  in: []
-  out: []
-make_buy: []               # e.g. {item: enclosure, decision: make, note: "printed in-house"}
+  in:
+    - "Sensing: air temperature, relative humidity and barometric pressure"
+    - "Reading every 5 to 10 seconds"
+    - "Off-the-shelf Qwiic sensor boards connected to an off-the-shelf single-board computer"
+    - "Software, including reporting the readings over Wi-Fi"
+    - "Power from a wall supply through the controller's micro-USB port"
+    - "A very simple 3D-printed enclosure that keeps the parts together"
+    - "Build and test 2 to 3 units"
+  out:
+    - "Ambient light, CO2, particulate, VOC and NOx sensing (not selected at G0)"
+    - "Custom PCB (off-the-shelf Qwiic boards are used instead)"
+    - "Battery power"
+    - "USB-C power input (micro-USB accepted)"
+  open:
+    - "Where the readings are reported to (e.g. the LabSense stack) and over which protocol"
+make_buy:
+  - {item: controller, decision: buy, note: "off-the-shelf single-board computer; kc's stated intent is a Raspberry Pi Zero 2 W (easy Wi-Fi). Part selection and part number after G1."}
+  - {item: sensors, decision: buy, note: "off-the-shelf Qwiic breakout boards for temperature, humidity and pressure. Part selection after G1."}
+  - {item: enclosure, decision: make, note: "very simple, designed in Fusion, 3D-printed in-house"}
+  - {item: software, decision: make, note: "written in-house, including Wi-Fi reporting"}
+  - {item: assembly and test, decision: make, note: "done in-house by kc"}
+  - {item: power supply, decision: open, note: "wall supply into micro-USB; make/buy not asked yet"}
+  - {item: cabling, decision: open, note: "Qwiic cables and fasteners; not asked yet"}
 roles: roles.yaml
 gates:
-  - {gate: G0, target: null, actual: null, approval: null}
-  - {gate: G1, target: null, actual: null, approval: null}
-  - {gate: G2, target: null, actual: null, approval: null}
-  - {gate: G3, target: null, actual: null, approval: null}
-  - {gate: G4, target: null, actual: null, approval: null}
+  - {gate: G0, target: 2026-11-23, actual: null, approval: null}
+  - {gate: G1, target: 2026-11-27, actual: null, approval: null}
+  - {gate: G2, target: 2026-12-04, actual: null, approval: null}
+  - {gate: G3, target: 2026-12-11, actual: null, approval: null}
+  - {gate: G4, target: 2026-12-18, actual: null, approval: null}
 skipped_gates: []
