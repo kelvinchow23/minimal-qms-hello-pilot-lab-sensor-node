@@ -19,10 +19,12 @@ prepared_on: 2026-11-23
 The minutes (`minutes.md`) record your decisions. Nothing is approved until you answer.
 
 ## What you are approving
-**Goal.** Product: a wall-powered lab node that reads temperature, humidity and barometric
-pressure at a fixed interval and reports them over Wi-Fi, for lab staff who monitor room
-conditions. Pilot: run minimalQMS end to end before QMS-rev A, built quickly from
-off-the-shelf boards. When they conflict, the product goal comes first.
+**Goal: two purposes.** Product: a wall-powered lab node that reads temperature, humidity
+and barometric pressure at a fixed interval and reports them over Wi-Fi, for lab staff who
+monitor room conditions. QMS pilot: the node is deliberately kept simple, from off-the-shelf
+boards, so it can be iterated quickly to test and fix minimalQMS before QMS-rev A. Each
+iteration should produce a working node and a list of QMS fixes. When they conflict, the
+product goal comes first.
 
 **In scope**
 - Temperature, humidity and pressure, read every 5 to 10 s (G1 fixes the interval)
@@ -104,6 +106,7 @@ repo after G0 (not done yet).
 | Q7 | Procedures don't say whether a human-stated platform at G0 is allowed (see F1) | accept (*proposed*) |
 | Q8 | No defined place to archive the G0 approval transcript | accept (*proposed*) |
 | Q9 | Unclear whether independent review is needed when the agent authors and kc approves | accept (*proposed*) |
+| Q10 | Scope (G0) and requirements (G1) are split too finely for a small product: specs such as the reading interval and unit count get pushed to G1 when it is natural to decide them with the scope. Consider letting simple products pass G0 and G1 together in one review. For this project, kc plans to pass G0 and G1 back to back in one sitting, as SOP-004 §6 allows. | accept (*kc*, 2026-11-23) |
 
 ## Open items
 - Reporting destination and protocol (carried to G1).

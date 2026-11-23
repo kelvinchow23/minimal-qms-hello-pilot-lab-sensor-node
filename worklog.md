@@ -22,6 +22,9 @@ Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not ap
   those are marked *proposed* in DR-001. plan.yaml revised to match (scope states needs, not
   parts; power supply and cabling bought; product goal first). kc wants the formal G0 review
   held later with the package in front of them.
+- **Then:** at kc's request, the goal now states both purposes (product, and a simple unit
+  iterated to fix minimalQMS); finding Q10 added (G0/G1 split too fine for a small product).
+  kc plans to pass G0 and G1 back to back in one sitting.
 - **Time:** agent 0.75 h (0.5 h planning, 0.25 h review); human hands-on: asked, not yet given.
 
 ## YYYY-MM-DD: <who> (human / agent)

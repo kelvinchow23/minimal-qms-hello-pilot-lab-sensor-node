@@ -8,9 +8,9 @@ Pilot lab sensor node, used to run minimalQMS end to end before QMS-rev A.
 ## Why it exists
 <!-- The problem it solves and where it is used. Written at G0. -->
 Lab staff who monitor room conditions get temperature, humidity and barometric pressure
-readings every 5 to 10 seconds, reported over Wi-Fi. The node is built quickly from
-off-the-shelf boards in a simple printed enclosure, and it is the pilot product used to run
-minimalQMS end to end before QMS-rev A.
+readings every 5 to 10 seconds, reported over Wi-Fi. It is also deliberately kept simple,
+built from off-the-shelf boards in a printed enclosure, so it can be iterated quickly to
+test and fix minimalQMS before QMS-rev A.
 (Draft at G0; see `00_planning/plan.yaml`.)
 
 ## Key specs

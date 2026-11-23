@@ -5,10 +5,12 @@ product: null              # top assembly part number, allocated in the design s
 iteration: 1
 qms_rev: "f4d60f4"   # the minimalQMS revision this project runs under
 goal: >-
-  Product goal: a wall-powered lab node that reads temperature, humidity and barometric
-  pressure at a fixed interval and reports the readings over Wi-Fi, for lab staff who monitor
-  room conditions. Pilot goal: run minimalQMS end to end before QMS-rev A, building the node
-  quickly from off-the-shelf boards. When the two conflict, the product goal comes first.
+  The project has two purposes. Product: a wall-powered lab node that reads temperature,
+  humidity and barometric pressure at a fixed interval and reports the readings over Wi-Fi,
+  for lab staff who monitor room conditions. QMS pilot: the node is deliberately kept simple,
+  and built from off-the-shelf boards, so it can be iterated quickly to test and fix
+  minimalQMS before QMS-rev A. Each iteration should produce a working node and a list of
+  QMS fixes. When the two conflict, the product goal comes first.
 scope:
   in:
     - "Sensing: air temperature, relative humidity and barometric pressure"

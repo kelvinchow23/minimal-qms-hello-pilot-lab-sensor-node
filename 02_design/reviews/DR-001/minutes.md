@@ -37,13 +37,14 @@ kc's request, kc to confirm at the review.
 | F10 | ECR question unanswered | accept (*proposed*) | N/A, iteration 1 |
 | F11 | No GitHub username | accept (*kc*) | Value `kelvinchow23` *proposed* |
 | F12–F16, Q1–Q9 | minimalQMS template and SOP issues | accept (*proposed*) | Raise in minimal-qms after G0 |
+| Q10 | G0/G1 split too fine for a small product | accept (*kc*) | Raise in minimal-qms; pass G0 and G1 back to back here |
 
 ## Actions
 | ID | Action | Owner | Due | Status |
 |---|---|---|---|---|
 | A-001 | Decide reporting destination and protocol | kc | G1 (2026-11-27) | open |
 | A-002 | Name an outside internal auditor | kc | before QMS-rev A | open |
-| A-003 | Raise F12–F16 and Q1–Q9 in the minimal-qms repo | design-agent | after G0 | open |
+| A-003 | Raise F12–F16 and Q1–Q10 in the minimal-qms repo | design-agent | after G0 | open |
 
 ## Approval (SOP-001 §7)
 - **Question asked:** pending
