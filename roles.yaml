@@ -4,7 +4,7 @@
 people:
   - id: kc
     name: Kelvin Chow
-    github: kelvinchow23    # proposed by the agent from the minimal-qms repo owner; kc to confirm
+    github: kelvinchow23    # proposed by the agent; accepted by kc at the G0 review, 2026-11-23
 
 roles:
   quality_lead: [kc]

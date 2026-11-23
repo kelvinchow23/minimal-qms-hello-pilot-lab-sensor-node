@@ -33,8 +33,7 @@ working unit and a list of QMS fixes. When the two conflict, the product comes f
 - Design, build and test a minimal sensing hardware unit deployable in a self-driving lab
 - Iterate it through minimalQMS (G0 to G4, then further iterations)
 
-**Out of scope:** not yet stated. Decide at the review whether to list anything (e.g.
-production volumes, certification) or leave it empty.
+**Out of scope:** none listed for iteration 1.
 
 **Make or buy (coarse)**
 | Item | Decision |
@@ -59,7 +58,7 @@ count, enclosure and parts. These came up in the session and are kept as notes f
 | Question | Answer | Evidence |
 |---|---|---|
 | What problem does the product solve, and for whom? | A minimal unit deployable in self-driving labs; also the hardware pilot for minimalQMS; product first | `plan.yaml` goal |
-| What is in scope, and what is explicitly out? | In: above. Out: to decide at the review | `plan.yaml` scope |
+| What is in scope, and what is explicitly out? | In: above. Out: none listed for iteration 1 | `plan.yaml` scope |
 | What is made in-house, and what is bought? | Above | `plan.yaml` make_buy |
 | Who approves, and who builds? | kc approves; kc builds | `roles.yaml` |
 | For a new iteration: which ECRs and lessons learned? | N/A, iteration 1 | `plan.yaml` iteration |
@@ -109,9 +108,7 @@ repo after G0 (not done yet).
 | Q12 | kc prefers reviewing in a commentable document (Claude Docs) over this markdown file. SOP-003 §4 and §6 expect `package.md` in the repo and say nothing about an external review copy, where comments live, or how they become part of the record. | accept (*proposed*) |
 
 ## Open items
-- Out of scope: decide at the review.
 - Internal auditor (before QMS-rev A).
-- Confirm GitHub username `kelvinchow23`.
 - kc's hands-on time for 2026-11-23 (for `worklog.md`).
 
 ## Approval question
