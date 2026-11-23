@@ -8,7 +8,9 @@ transcript: null          # G0 transcript location not defined by the SOPs (pack
 decision: pending
 ---
 
-# DR-001 minutes (G0): draft, review not yet held
+# DR-001 minutes (G0): draft, review in progress
+
+Review copy: https://claude.ai/artifact/WwepEcjmhVSdb5uHai2ykD (Claude Docs, commentable).
 
 Dispositions below come from the working session of 2026-11-23. They are working decisions
 (SOP-003 §3), not the approval. *kc* = kc chose it; *proposed* = the agent filled it in at
@@ -39,13 +41,14 @@ kc's request, kc to confirm at the review.
 | F12–F16, Q1–Q9 | minimalQMS template and SOP issues | accept (*proposed*) | Raise in minimal-qms after G0 |
 | Q10 | G0/G1 split too fine for a small product | accept (*kc*) | Raise in minimal-qms; pass G0 and G1 back to back here |
 | Q11 | Agent pulled design detail into G0 | accept (*proposed*) | Raise in minimal-qms |
+| Q12 | Review in a commentable doc not covered by SOP-003 | accept (*proposed*) | Raise in minimal-qms |
 
 ## Actions
 | ID | Action | Owner | Due | Status |
 |---|---|---|---|---|
 | A-001 | Turn the G1 notes in worklog.md (incl. reporting destination) into requirements | design-agent, kc | G1 | open |
 | A-002 | Name an outside internal auditor | kc | before QMS-rev A | open |
-| A-003 | Raise F12–F16 and Q1–Q11 in the minimal-qms repo | design-agent | after G0 | open |
+| A-003 | Raise F12–F16 and Q1–Q12 in the minimal-qms repo | design-agent | after G0 | open |
 
 ## Approval (SOP-001 §7)
 - **Question asked:** pending
