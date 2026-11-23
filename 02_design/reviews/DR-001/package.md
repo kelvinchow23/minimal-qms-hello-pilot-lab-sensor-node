@@ -106,6 +106,7 @@ repo after G0 (not done yet).
 | Q10 | Scope (G0) and requirements (G1) are split too finely for a small product: specs such as the reading interval and unit count get pushed to G1 when it is natural to decide them with the scope. Consider letting simple products pass G0 and G1 together in one review. For this project, kc plans to pass G0 and G1 back to back in one sitting, as SOP-004 §6 allows. | accept (*kc*, 2026-11-23) |
 | Q11 | The agent pulled design detail (sensors, power, unit count, a specific board) into G0 by asking requirements questions. The G0 checklist questions don't say how deep G0 should go. The SOP or checklist should say G0 stays at purpose, users, boundaries, coarse make/buy and roles. | accept (*proposed*) |
 | Q12 | kc prefers reviewing in a commentable document (Claude Docs) over this markdown file. SOP-003 §4 and §6 expect `package.md` in the repo and say nothing about an external review copy, where comments live, or how they become part of the record. | accept (*proposed*) |
+| Q13 | The PR template (SOP-001-A02) only fits part changes (ECR, ECO, items and revisions). For gate records and plans it reads as nonsense ("ECR #none"). Suggest a second, plain template: what the PR does, which gate or document it belongs to, who approved it and where that is recorded. Raised after the G0 approval, from kc's comment on PR #1. | accept (*kc*, 2026-11-23) |
 
 ## Open items
 - Internal auditor (before QMS-rev A).

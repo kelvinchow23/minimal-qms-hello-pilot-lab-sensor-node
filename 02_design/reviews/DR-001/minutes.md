@@ -45,13 +45,14 @@ not the approval; the approval is recorded below.
 | Q10 | G0/G1 split too fine for a small product | accept (*kc*) | Raise in minimal-qms; pass G0 and G1 back to back here |
 | Q11 | Agent pulled design detail into G0 | accept (*proposed*, confirmed by kc) | Raise in minimal-qms |
 | Q12 | Review in a commentable doc not covered by SOP-003 | accept (*proposed*, confirmed by kc) | Raise in minimal-qms |
+| Q13 | PR template only fits part changes (added after the approval) | accept (*kc*) | Raise in minimal-qms |
 
 ## Actions
 | ID | Action | Owner | Due | Status |
 |---|---|---|---|---|
 | A-001 | Turn the G1 notes in worklog.md (incl. reporting destination) into requirements | design-agent, kc | G1 | open |
 | A-002 | Name an outside internal auditor | kc | before QMS-rev A | open |
-| A-003 | Raise F12–F16 and Q1–Q12 in the minimal-qms repo | design-agent | after G0 | open |
+| A-003 | Raise F12–F16 and Q1–Q13 in the minimal-qms repo | design-agent | after G0 | open |
 
 ## Approval (SOP-001 §7)
 - **Question asked:** "Approve G0 for LSN: the goal, scope, coarse make/buy, roles and target
