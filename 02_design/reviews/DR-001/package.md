@@ -19,49 +19,40 @@ prepared_on: 2026-11-23
 The minutes (`minutes.md`) record your decisions. Nothing is approved until you answer.
 
 ## What you are approving
-**Goal: two purposes.** Product: a wall-powered lab node that reads temperature, humidity
-and barometric pressure at a fixed interval and reports them over Wi-Fi, for lab staff who
-monitor room conditions. QMS pilot: the node is deliberately kept simple, from off-the-shelf
-boards, so it can be iterated quickly to test and fix minimalQMS before QMS-rev A. Each
-iteration should produce a working node and a list of QMS fixes. When they conflict, the
-product goal comes first.
+**Goal.** A minimal hardware unit that can be deployed in self-driving labs, used as a
+hardware pilot to run design iterations through minimalQMS. Each iteration should produce a
+working unit and a list of QMS fixes. When the two conflict, the product comes first.
 
 **In scope**
-- Temperature, humidity and pressure, read every 5 to 10 s (G1 fixes the interval)
-- Off-the-shelf sensor boards on an off-the-shelf single-board computer with Wi-Fi
-- Software, including Wi-Fi reporting
-- USB wall power
-- A very simple 3D-printed enclosure
-- 2 to 3 units built and tested (G1 fixes the number)
+- Design, build and test a minimal sensing hardware unit deployable in a self-driving lab
+- Iterate it through minimalQMS (G0 to G4, then further iterations)
 
-**Out for iteration 1:** light, CO2, particulate/VOC/NOx sensing; custom PCB; battery power.
+**Out of scope:** not yet stated. Decide at the review whether to list anything (e.g.
+production volumes, certification) or leave it empty.
 
-**Carried to G1:** where the readings are reported to, and over which protocol.
-
-**Make or buy**
+**Make or buy (coarse)**
 | Item | Decision |
 |---|---|
-| Controller (single-board computer) | buy |
-| Sensor boards | buy |
-| Power supply, cables | buy |
-| Enclosure | make (printed in-house) |
+| Electronics | buy (off-the-shelf boards; parts chosen in the design stage) |
+| Integration | make |
 | Software | make |
-| Assembly and test | make (kc) |
+| Enclosure, if needed | make |
 
 **Roles.** kc approves everything, is quality lead, and builds. The internal auditor is not
 named yet (to be named before QMS-rev A). AI agents write and review, never approve.
 
-**Target dates.** G0 2026-11-23, G1 2026-11-27, G2 2026-12-04, G3 2026-12-11,
-G4 2026-12-18.
+**Target dates.** G0 2026-11-23, G1 2026-11-27 (planned back to back with G0),
+G2 2026-12-04, G3 2026-12-11, G4 2026-12-18.
 
-**Not decided at G0 on purpose:** specific parts. kc's preference (a Raspberry Pi Zero 2 W
-with Qwiic sensor boards) is kept in `worklog.md` for the design stage.
+**Not decided at G0 on purpose.** What it senses, how often, how it reports, power, unit
+count, enclosure and parts. These came up in the session and are kept as notes for G1 in
+`worklog.md`; they become requirements right after G0.
 
 ## Gate checklist (SOP-004-A06, G0)
 | Question | Answer | Evidence |
 |---|---|---|
-| What problem does the product solve, and for whom? | Room-condition monitoring for lab staff; also the minimalQMS pilot; product first | `plan.yaml` goal |
-| What is in scope, and what is explicitly out? | Above; reporting destination carried to G1 | `plan.yaml` scope |
+| What problem does the product solve, and for whom? | A minimal unit deployable in self-driving labs; also the hardware pilot for minimalQMS; product first | `plan.yaml` goal |
+| What is in scope, and what is explicitly out? | In: above. Out: to decide at the review | `plan.yaml` scope |
 | What is made in-house, and what is bought? | Above | `plan.yaml` make_buy |
 | Who approves, and who builds? | kc approves; kc builds | `roles.yaml` |
 | For a new iteration: which ECRs and lessons learned? | N/A, iteration 1 | `plan.yaml` iteration |
@@ -77,12 +68,12 @@ it out later"); kc to confirm or change at the review.
 ### About this product
 | # | Finding | Disposition | Result |
 |---|---|---|---|
-| F1 | Naming the Pi Zero 2 W, Qwiic and micro-USB picks parts before G1 | accept (*kc*) | Scope states needs; preference moved to `worklog.md` |
-| F2 | Reporting destination open, but the goal depends on it | accept (*kc*) | Carried to G1, named in the approval question |
-| F3 | Ranged values ("5 to 10 s", "2 to 3 units") aren't measurable | accept (*kc*) | Noted that G1 fixes them |
-| F4 | "Not selected at G0" reads as deferred | accept (*kc*) | Now "out for iteration 1" |
-| F5 | Product and pilot goals mixed, no priority | accept (*kc*) | Product goal first |
-| F6 | Power supply and cabling make/buy open | accept (*kc*) | Both buy |
+| F1 | Naming the Pi Zero 2 W, Qwiic and micro-USB picks parts before G1 | accept (*kc*) | Preference moved to `worklog.md` G1 notes; later scope rewrite removed all part detail |
+| F2 | Reporting destination open, but the goal depends on it | accept (*kc*) | Superseded: reporting is now a G1 note, not G0 scope |
+| F3 | Ranged values ("5 to 10 s", "2 to 3 units") aren't measurable | accept (*kc*) | Superseded: the ranges are now G1 notes |
+| F4 | "Not selected at G0" reads as deferred | accept (*kc*) | Superseded: the out-of-scope list is now empty, kc to decide |
+| F5 | Product and pilot goals mixed, no priority | accept (*kc*) | Product first; goal rewritten to kc's restated scope |
+| F6 | Power supply and cabling make/buy open | accept (*kc*) | Superseded: "buy" kept as a G1 note; G0 make/buy is coarse |
 | F7 | README problem statement was agent-written | accept (*proposed*) | Invented phrase removed |
 | F8 | Broken reference in `roles.yaml`; blank worklog | accept (*proposed*) | Both fixed |
 | F9 | No internal auditor; same model for design and review | accept (*kc*) | Same-model review accepted for the pilot; auditor before QMS-rev A |
@@ -107,14 +98,15 @@ repo after G0 (not done yet).
 | Q8 | No defined place to archive the G0 approval transcript | accept (*proposed*) |
 | Q9 | Unclear whether independent review is needed when the agent authors and kc approves | accept (*proposed*) |
 | Q10 | Scope (G0) and requirements (G1) are split too finely for a small product: specs such as the reading interval and unit count get pushed to G1 when it is natural to decide them with the scope. Consider letting simple products pass G0 and G1 together in one review. For this project, kc plans to pass G0 and G1 back to back in one sitting, as SOP-004 §6 allows. | accept (*kc*, 2026-11-23) |
+| Q11 | The agent pulled design detail (sensors, power, unit count, a specific board) into G0 by asking requirements questions. The G0 checklist questions don't say how deep G0 should go. The SOP or checklist should say G0 stays at purpose, users, boundaries, coarse make/buy and roles. | accept (*proposed*) |
 
 ## Open items
-- Reporting destination and protocol (carried to G1).
+- Out of scope: decide at the review.
 - Internal auditor (before QMS-rev A).
 - Confirm GitHub username `kelvinchow23`.
 - kc's hands-on time for 2026-11-23 (for `worklog.md`).
 
 ## Approval question
-> "Approve G0 for LSN: `00_planning/plan.yaml` and `roles.yaml` as committed on branch
-> `docs/g0-scope` (commit named in the minutes), with the findings dispositioned as in
-> DR-001 and the reporting destination carried to G1?"
+> "Approve G0 for LSN: the goal, scope, coarse make/buy, roles and target dates in
+> `00_planning/plan.yaml` and `roles.yaml` as committed on branch `docs/g0-scope` (commit
+> named in the minutes), with the findings dispositioned as in DR-001?"

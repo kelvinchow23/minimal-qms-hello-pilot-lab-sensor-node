@@ -1,43 +1,29 @@
 # Development plan (SOP-004 section 4). Change through a PR; old values stay in git history.
-# G0 answers given by kc in the agent session of 2026-11-23, revised the same day with kc's
-# decisions on the independent findings (DR-001). "open" marks what is not yet answered.
+# G0 scope as restated by kc on 2026-11-23 (earlier, more detailed drafts are in git history;
+# that detail is kept in worklog.md as input for G1). "open" marks what is not yet answered.
 product: null              # top assembly part number, allocated in the design stage
 iteration: 1
 qms_rev: "f4d60f4"   # the minimalQMS revision this project runs under
 goal: >-
-  The project has two purposes. Product: a wall-powered lab node that reads temperature,
-  humidity and barometric pressure at a fixed interval and reports the readings over Wi-Fi,
-  for lab staff who monitor room conditions. QMS pilot: the node is deliberately kept simple,
-  and built from off-the-shelf boards, so it can be iterated quickly to test and fix
-  minimalQMS before QMS-rev A. Each iteration should produce a working node and a list of
-  QMS fixes. When the two conflict, the product goal comes first.
+  A minimal hardware unit that can be deployed in self-driving labs, used as a hardware
+  pilot to run design iterations through minimalQMS. Each iteration should produce a
+  working unit and a list of QMS fixes. When the two conflict, the product comes first.
 scope:
   in:
-    - "Sensing: air temperature, relative humidity and barometric pressure"
-    - "A reading every 5 to 10 seconds (G1 sets the exact interval)"
-    - "Off-the-shelf sensor boards on an off-the-shelf single-board computer with Wi-Fi"
-    - "Software, including reporting the readings over Wi-Fi"
-    - "Power from a USB wall supply"
-    - "A very simple 3D-printed enclosure that keeps the parts together"
-    - "Build and test 2 to 3 units (G1 sets the exact number)"
-  out:
-    - "Ambient light, CO2, particulate, VOC and NOx sensing: out for iteration 1"
-    - "Custom PCB: out for iteration 1 (off-the-shelf boards are used instead)"
-    - "Battery power: out for iteration 1"
+    - "Design, build and test a minimal sensing hardware unit deployable in a self-driving lab"
+    - "Iterate the unit through minimalQMS (G0 to G4, then further iterations)"
+  out: []
   open:
-    - "Where the readings are reported to and over which protocol: carried to G1"
+    - "What is explicitly out of scope: kc to decide at the G0 review"
 make_buy:
-  - {item: controller, decision: buy, note: "off-the-shelf single-board computer with Wi-Fi. Part selection and part number after G1."}
-  - {item: sensors, decision: buy, note: "off-the-shelf sensor boards for temperature, humidity and pressure. Part selection after G1."}
-  - {item: enclosure, decision: make, note: "very simple, designed in Fusion, 3D-printed in-house"}
-  - {item: software, decision: make, note: "written in-house, including Wi-Fi reporting"}
-  - {item: assembly and test, decision: make, note: "done in-house by kc"}
-  - {item: power supply, decision: buy, note: "off-the-shelf USB wall supply"}
-  - {item: cabling, decision: buy, note: "off-the-shelf cables"}
+  - {item: electronics, decision: buy, note: "off-the-shelf boards; parts chosen in the design stage"}
+  - {item: integration, decision: make, note: "in-house"}
+  - {item: software, decision: make, note: "in-house"}
+  - {item: enclosure, decision: make, note: "in-house, if one is needed"}
 roles: roles.yaml
 gates:
   - {gate: G0, target: 2026-11-23, actual: null, approval: null}
-  - {gate: G1, target: 2026-11-27, actual: null, approval: null}
+  - {gate: G1, target: 2026-11-27, actual: null, approval: null}   # kc plans G1 back to back with G0
   - {gate: G2, target: 2026-12-04, actual: null, approval: null}
   - {gate: G3, target: 2026-12-11, actual: null, approval: null}
   - {gate: G4, target: 2026-12-18, actual: null, approval: null}

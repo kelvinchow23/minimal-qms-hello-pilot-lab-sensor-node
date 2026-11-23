@@ -26,11 +26,11 @@ kc's request, kc to confirm at the review.
 | # | Finding | Disposition | Reason |
 |---|---|---|---|
 | F1 | Parts named before G1 | accept (*kc*) | State needs; preference to worklog |
-| F2 | Reporting destination open | accept (*kc*) | Carry to G1 |
-| F3 | Ranged values | accept (*kc*) | G1 fixes them |
-| F4 | "Not selected" wording | accept (*kc*) | "Out for iteration 1" |
+| F2 | Reporting destination open | accept (*kc*) | Superseded: now a G1 note |
+| F3 | Ranged values | accept (*kc*) | Superseded: now G1 notes |
+| F4 | "Not selected" wording | accept (*kc*) | Superseded: out list empty, kc to decide |
 | F5 | Goals mixed | accept (*kc*) | Product goal first |
-| F6 | Power supply, cabling open | accept (*kc*) | Both buy |
+| F6 | Power supply, cabling open | accept (*kc*) | Superseded: "buy" kept as a G1 note |
 | F7 | Agent-written README phrase | accept (*proposed*) | Removed |
 | F8 | Broken reference, blank worklog | accept (*proposed*) | Fixed |
 | F9 | No auditor; same model | accept (*kc*) | Same model OK for pilot; auditor before QMS-rev A |
@@ -38,13 +38,14 @@ kc's request, kc to confirm at the review.
 | F11 | No GitHub username | accept (*kc*) | Value `kelvinchow23` *proposed* |
 | F12–F16, Q1–Q9 | minimalQMS template and SOP issues | accept (*proposed*) | Raise in minimal-qms after G0 |
 | Q10 | G0/G1 split too fine for a small product | accept (*kc*) | Raise in minimal-qms; pass G0 and G1 back to back here |
+| Q11 | Agent pulled design detail into G0 | accept (*proposed*) | Raise in minimal-qms |
 
 ## Actions
 | ID | Action | Owner | Due | Status |
 |---|---|---|---|---|
-| A-001 | Decide reporting destination and protocol | kc | G1 (2026-11-27) | open |
+| A-001 | Turn the G1 notes in worklog.md (incl. reporting destination) into requirements | design-agent, kc | G1 | open |
 | A-002 | Name an outside internal auditor | kc | before QMS-rev A | open |
-| A-003 | Raise F12–F16 and Q1–Q10 in the minimal-qms repo | design-agent | after G0 | open |
+| A-003 | Raise F12–F16 and Q1–Q11 in the minimal-qms repo | design-agent | after G0 | open |
 
 ## Approval (SOP-001 §7)
 - **Question asked:** pending

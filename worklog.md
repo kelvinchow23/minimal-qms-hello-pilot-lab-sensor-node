@@ -25,7 +25,28 @@ Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not ap
 - **Then:** at kc's request, the goal now states both purposes (product, and a simple unit
   iterated to fix minimalQMS); finding Q10 added (G0/G1 split too fine for a small product).
   kc plans to pass G0 and G1 back to back in one sitting.
-- **Time:** agent 0.75 h (0.5 h planning, 0.25 h review); human hands-on: asked, not yet given.
+- **Then:** kc restated the scope: "the scope is just a minimal hardware unit that is
+  deployable to self driving labs and can be used as a hardware pilot project to do design
+  iterations through this qms". The agent had pulled design detail into G0 by asking
+  requirements questions (finding Q11). plan.yaml rewritten to that minimal scope with
+  coarse make/buy, as in the draft kc accepted ("Yes, back to back"). The detail moves to
+  the G1 notes below; nothing in it is decided.
+- **Notes for G1 (from kc's answers on 2026-11-23, not yet requirements):**
+  - Senses air temperature, relative humidity and barometric pressure. Light, CO2,
+    particulates, VOC and NOx were not selected.
+  - Reads every 5 to 10 seconds; firmware detail mattered less to kc than the hardware
+    being able to do this.
+  - Reports readings over Wi-Fi; destination and protocol undecided (LabSense over MQTT is
+    one option).
+  - Wall-powered over USB; battery not wanted.
+  - Very simple 3D-printed enclosure to keep everything together.
+  - 2 to 3 units.
+  - No custom PCB: off-the-shelf boards.
+  - Part preference for the design stage: Raspberry Pi Zero 2 W with Qwiic sensor boards.
+  - Power supply and cables: buy.
+  - Self-driving labs as the deployment target is new in kc's restated scope; what that
+    means for the unit (mounting, interfaces, environment) is a G1 question.
+- **Time:** agent 1 h (0.5 h planning, 0.5 h review); human hands-on: asked, not yet given.
 
 ## YYYY-MM-DD: <who> (human / agent)
 - **Changed:** <what, by whom>
