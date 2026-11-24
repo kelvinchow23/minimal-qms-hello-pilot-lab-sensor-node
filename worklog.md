@@ -2,6 +2,28 @@
 
 Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not approvals.
 
+## 2026-11-24: design-agent (agent, Claude Code / Claude Opus 5.5), with kc
+- **Changed:** G1 started on branch `docs/g1-requirements`. kc answered: "Every 10 s,
+  2 units", "Any, design decides" (reporting), "Typical breakout" accuracy, "Sits on a bench".
+  Drafted `requirements.yaml` (REQ-001 to REQ-010; REQ-009 and REQ-010 agent-proposed) and
+  `risks.csv` (RISK-001 to RISK-008, agent-proposed); plan.yaml scope adds 2 units. Independent
+  review: G1-F1 to G1-F12. Review package DR-002 and commentable review doc
+  (https://claude.ai/artifact/MpbBYcgDyLTVhmGL3apR5x).
+- **Then:** kc asked for an open conversation at gate start (saved as a preference; finding
+  Q14), then a read-back of what is known. Requirements redrafted from that talk (see DR-002
+  package). kc: "please drop labsense, it is unrelated" (the earlier G0 note naming it is
+  superseded).
+- **Next:** kc decides six items and the twelve findings in the doc; agent updates the records;
+  G1 approval question.
+- **Blocked / unsure:** nothing; waiting on kc's review.
+- **Then:** kc filled in the review doc; agent applied the decisions (d4f73b1) and recorded
+  DR-002 minutes. kc asked whether the Pi Zero 2 W radio is certified (agent: believed FCC
+  2ABCB-RPIZ2W and ISED 20953-RPIZ2W, from memory; confirm in design; 2.4 GHz only).
+- **G1 approved:** kc, 2026-11-24 10:01 EST: "i have reviewed and made my comments, which have
+  been updated. approve and continue". Recorded in DR-002 minutes and plan.yaml.
+- **Next:** design stage (G2 target 2026-11-26). A-004: kc confirms device onboarding with lab IT.
+- **Time:** agent 1.5 h on requirements and review; human hands-on: not asked yet.
+
 ## 2026-11-23: design-agent (agent, Claude Code / Claude Opus 5.5), with kc
 - **Changed:** G0 scope records drafted from kc's answers: `00_planning/plan.yaml` (goal,
   scope, make/buy, gate target dates), `roles.yaml` (builder, agent tools), `README.md`

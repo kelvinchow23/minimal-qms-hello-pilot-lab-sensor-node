@@ -1,0 +1,19 @@
+id,raised,source,finding,status
+F12/Q3,2026-11-23,DR-001,"Roles template (SOP-001-A04) has no builder or assembler role, though G0 asks who builds and G2 cites the chosen assembler",to raise in minimal-qms
+F13/Q4,2026-11-23,DR-001,"Plan template (SOP-004-A01) has no field for open items, problem and users, or iteration ECRs",to raise in minimal-qms
+F14/Q5,2026-11-23,DR-001,"SOP-004 and gates.yaml say CI blocks gates, but the template ships no CI; a file-exists check would pass a blank template",to raise in minimal-qms
+F15,2026-11-23,DR-001,"SOP-004 appendix table says A06 is not copied, but forms/SOP-004-A06-gate-checklists.md is in product repos",to raise in minimal-qms
+F16,2026-11-23,DR-001,"Pilot runs under draft procedures at a commit, not a release tag",to raise in minimal-qms
+Q1,2026-11-23,DR-001,"No defined place for a G0 record: G0 is approval-only but AGENTS.md asks for a review package; A01/A02 gate field lists only G1 to G4",to raise in minimal-qms
+Q2,2026-11-23,DR-001,"Commit prefix conventions conflict: [PN]/[DOC] in AGENTS.md, [LSN] used by the session, [QMS] in the template's first commit",to raise in minimal-qms
+Q6,2026-11-23,DR-001,"SOP-001 §8 says approve after a break, ideally next day; same-day gates pull the other way",to raise in minimal-qms
+Q7,2026-11-23,DR-001,"Procedures don't say whether a human-named platform at G0 is allowed or belongs in G1",to raise in minimal-qms
+Q8,2026-11-23,DR-001,"No defined place to archive the G0 approval transcript; raw transcripts hold personal data that AGENTS.md rule 7 keeps out of repos",to raise in minimal-qms
+Q9,2026-11-23,DR-001,"Unclear whether independent review is required when the agent authors and the human approves",to raise in minimal-qms
+Q10,2026-11-23,DR-001,"G0 and G1 are split too finely for a small product; consider one combined review for simple products",to raise in minimal-qms
+Q11,2026-11-23,DR-001,"Agent pulled design detail into G0; the G0 checklist doesn't limit how deep G0 goes",to raise in minimal-qms
+Q12,2026-11-23,DR-001,"Reviews in a commentable document are not covered by SOP-003, which expects package.md in the repo",to raise in minimal-qms
+Q13,2026-11-23,DR-001,"PR template (SOP-001-A02) only fits part changes; gate records and plans need a plain template",to raise in minimal-qms
+Q14,2026-11-24,DR-002,"AGENTS.md says ask the gate's questions; agent opened with preset questions. Start each gate with a read-back and open conversation, as a per-user preference",to raise in minimal-qms
+Q15,2026-11-24,DR-002,"Review burden too high for a small product: G0 and G1 each took more than one session. Agent should pre-fill recommendations, show at most five material findings, and keep QMS findings out of product reviews",to raise in minimal-qms
+G1-F12,2026-11-24,DR-002,"A03 has no field for standards or accepted/proposed status, and no ID scheme for inspection or review verification; A04 doesn't define a serious risk or residual rating",to raise in minimal-qms
