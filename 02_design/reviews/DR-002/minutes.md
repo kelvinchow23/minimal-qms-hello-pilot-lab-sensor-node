@@ -5,7 +5,7 @@ participants:
   humans: [kc]
   agents: ["design-agent (Claude Code, Claude Opus 5.5)", "review-agent (Claude Code subagent, Claude Opus 5.5)"]
 transcript: null          # see DR-001 finding Q8
-decision: pending
+decision: approved        # quoted below
 ---
 
 # DR-002 minutes (G1)
@@ -50,7 +50,12 @@ as the doc stated. kc's words are quoted where given.
 | A-004 | Confirm device onboarding (enterprise Wi-Fi or Tailscale) with lab IT | kc | before G2 | open |
 
 ## Approval (SOP-001 §7)
-- **Question asked:** pending
-- **Answer:** pending
-- **By / when:** pending
-- **Location in transcript:** pending
+- **Question asked:** "Approve DR-002, G1 for LSN: `01_requirements/requirements.yaml` and
+  `01_requirements/risks.csv`, and the scope changes (2 units in; recovering lost readings
+  out), as committed on branch `docs/g1-requirements` at commit d4f73b1, with findings
+  dispositioned as in DR-002?"
+- **Answer:** "i have reviewed and made my comments, which have been updated. approve and continue"
+- **By / when:** kc, 2026-11-24 10:01 EST (15:01 UTC)
+- **Location in transcript:** Claude Code desktop session (design-agent), kc's message
+  replying to the agent message that restated the question above after kc returned. The
+  transcript is not archived in the repo (see `docs/qms-findings.csv`, Q8).

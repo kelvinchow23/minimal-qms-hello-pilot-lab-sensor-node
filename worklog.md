@@ -16,7 +16,13 @@ Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not ap
 - **Next:** kc decides six items and the twelve findings in the doc; agent updates the records;
   G1 approval question.
 - **Blocked / unsure:** nothing; waiting on kc's review.
-- **Time:** agent 0.5 h on requirements; human hands-on: not asked yet.
+- **Then:** kc filled in the review doc; agent applied the decisions (d4f73b1) and recorded
+  DR-002 minutes. kc asked whether the Pi Zero 2 W radio is certified (agent: believed FCC
+  2ABCB-RPIZ2W and ISED 20953-RPIZ2W, from memory; confirm in design; 2.4 GHz only).
+- **G1 approved:** kc, 2026-11-24 10:01 EST: "i have reviewed and made my comments, which have
+  been updated. approve and continue". Recorded in DR-002 minutes and plan.yaml.
+- **Next:** design stage (G2 target 2026-11-26). A-004: kc confirms device onboarding with lab IT.
+- **Time:** agent 1.5 h on requirements and review; human hands-on: not asked yet.
 
 ## 2026-11-23: design-agent (agent, Claude Code / Claude Opus 5.5), with kc
 - **Changed:** G0 scope records drafted from kc's answers: `00_planning/plan.yaml` (goal,

@@ -18,7 +18,7 @@ pilot: it is iterated through minimalQMS to test and fix the QMS before QMS-rev 
 
 | | |
 |---|---|
-| Current stage | Requirements (G1); G0 approved 2026-11-23 |
+| Current stage | Design (G2); G1 approved 2026-11-24 |
 | Released revision | none yet |
 | Units built | 0 |
 
