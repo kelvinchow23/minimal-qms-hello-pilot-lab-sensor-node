@@ -39,6 +39,8 @@ Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not ap
   SHIM cable); vents spread. Found and fixed an agent error: the base Outline sketch had no
   centring constraint (an earlier fix had rolled back unnoticed), so the first 95 mm edit grew
   the box to one side. Now fully constrained and symmetric.
+- **Then:** kc: the cutout "can move all the way to the end ... can be minimized". Cable notch
+  now flush against the -x end wall, 6 mm wide x 8 mm deep (cable clears the 4 mm lid lip).
 - **Next:** software, test procedures TP-001..004, assembly instructions, inspection checks,
   then the G2 review (DR-003).
 - **Time:** agent about 2.5 h on design and part selection; human hands-on: not asked yet.
