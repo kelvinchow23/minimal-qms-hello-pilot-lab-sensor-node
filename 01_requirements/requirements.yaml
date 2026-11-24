@@ -24,8 +24,8 @@
   verification: test
   verified_by: TP-001
 - id: REQ-005
-  statement: "The unit runs from a USB wall power supply and has no battery."
-  source: "internal (kc, 2026-11-23)"
+  statement: "The unit runs from wall (mains) power through a plug-in supply and has no battery. The type of supply and connector is chosen in design."
+  source: "internal (kc, 2026-11-23; \"USB\" removed 2026-11-24: kc, \"it should just specify wall power\")"
   verification: inspection
   verified_by: inspection check (G2)
 - id: REQ-006

@@ -6,6 +6,6 @@ RISK-004,A chosen part is out of stock or slow to ship,Order this week slips; it
 RISK-005,Wiring mistake during assembly (wrong connector or reversed power),A board is damaged or a sensor does not respond,2,2,Keyed connectors where possible; assembly instructions; inspection check before power-up,G2 assembly instructions and inspection checks,open
 RISK-006,Wi-Fi password committed to the public repo,Lab network credentials exposed,3,2,Credentials entered on each unit; never stored in the repo,REQ-010 / G2 design review,open
 RISK-007,No reference instrument is available to check accuracy,REQ-003 cannot be verified at G3,2,3,Name a reference instrument in equipment/equipment.csv before G3,equipment.csv entry before G3,open
-RISK-008,USB wall supply overheats or fails,Unit stops; minor burn or fire risk,3,1,Buy a certified supply (CSA or UL listed) from a known supplier,REQ-005 inspection check,open
+RISK-008,Wall power supply overheats or fails,Unit stops; minor burn or fire risk,3,1,Buy a certified supply (CSA or UL listed) from a known supplier,REQ-005 inspection check,open
 RISK-009,Server is unreachable for a while,Readings from that period are lost,2,3,Design decides whether the unit holds readings briefly during short outages; outage test,REQ-012 / TP-003,open
 RISK-010,Unit cannot get network time,Timestamps are wrong and readings cannot be linked to other experiments,3,2,Unit syncs time from the network and flags readings taken before a sync,REQ-011 / TP-001,open
