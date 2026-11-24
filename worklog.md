@@ -2,6 +2,27 @@
 
 Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not approvals.
 
+## 2026-11-24 (design): design-agent (agent, Claude Code / Claude Opus 5.5), with kc
+- **Changed:** ECR-001 (light) and ECR-002 (VOC, replaces light) raised, approved by kc and
+  merged. Parts chosen on Mouser and from kc's inventory; ECM-0001..0004, ECW-0001, ECP-0001,
+  ECX-0001 allocated (ots-library PR #10); LSN-A-0001, LSN-0002 Base, LSN-0003 Lid allocated.
+  Housing first built with direct modelling (no history), then rebuilt to the playbook
+  fusion-cad rev B after kc asked whether the agent followed kc's Fusion practices. Fusion:
+  Tech/General/minimal-qms/LSN- Lab Sensor Node (assembly + parts), OTS parts subfolder holds
+  ECM-0002 (Adafruit STEP, MIT), ECM-0004 (modelled from the Raspberry Pi mechanical drawing),
+  ECM-0001 (outline and 3 holes from SparkFun Eagle file). SD opening moved to the +x wall to
+  match the Pi drawing. Interference check: none.
+- **Confirmed from supplier data:** SGP40 holes 2.5 mm at 20.32 x 12.7 mm; BME280 holes 3.302 mm,
+  only 3 (H1, H2, H4) at 20.32 mm; Pi holes 58 x 23 mm, power port 54 mm from the left edge.
+- **Unconfirmed:** Pi connector heights and sizes; SD slot y; BME280 connector sizes; SHIM not
+  modelled (no mounting; sits on the header).
+- **Open:** SGP40 2.5 mm holes are tight for M2.5 screws; one BME280 boss unused; lid is
+  friction fit (no screws); lid copies base parameters; fillets not done; STEP model library
+  approach (kc's question) proposed but not started.
+- **Next:** software, test procedures TP-001..004, assembly instructions, inspection checks,
+  then the G2 review (DR-003).
+- **Time:** agent about 2.5 h on design and part selection; human hands-on: not asked yet.
+
 ## 2026-11-24: design-agent (agent, Claude Code / Claude Opus 5.5), with kc
 - **Changed:** G1 started on branch `docs/g1-requirements`. kc answered: "Every 10 s,
   2 units", "Any, design decides" (reporting), "Typical breakout" accuracy, "Sits on a bench".
