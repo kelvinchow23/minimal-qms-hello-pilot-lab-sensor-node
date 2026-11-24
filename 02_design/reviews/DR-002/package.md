@@ -58,5 +58,12 @@ Fresh Claude Code subagent session (Claude Opus 5.5), 2026-11-24. Input only.
 - **G1-F12** minimalQMS templates: A03 has no field for standards or accepted/proposed status,
   no ID scheme for inspections/reviews; A04 doesn't define "serious" or residual risk.
 
+## QMS findings from the design-agent
+- **Q14** `AGENTS.md` step 2 says "ask the gate's questions"; the agent opened G0 and G1
+  with preset multiple-choice questions. kc: "giving me just preset questions to answer right
+  out of the gate is restrictive". Suggest: at each gate start, open with a free-form
+  conversation (G0: what are we trying to do; G1: rough requirements in the user's words),
+  then specific questions; make this a per-user preference so users who want to skip it can.
+
 ## Open items
 - kc's decisions on the four items and twelve findings.
