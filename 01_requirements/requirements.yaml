@@ -6,8 +6,8 @@
 # design stage; DR-003 is the G2 design review (G1-F10).
 # Every requirement applies to each of the 2 units built in iteration 1 (G1-F11).
 - id: REQ-001
-  statement: "The unit measures air temperature, relative humidity and barometric pressure."
-  source: "internal (kc, 2026-11-23)"
+  statement: "The unit measures air temperature, relative humidity, barometric pressure and ambient light level (lux)."
+  source: "internal (kc, 2026-11-23; light added by ECR #3, kc 2026-11-24)"
   verification: test
   verified_by: TP-001
 - id: REQ-002
@@ -16,7 +16,7 @@
   verification: test
   verified_by: TP-001
 - id: REQ-003
-  statement: "Readings respond to real changes: cupping the sensor in a hand raises temperature by at least 1 °C within 60 s; breathing on it raises relative humidity by at least 5 %RH within 60 s; pressure is within ±5 hPa of a nearby public weather station, compared at the same altitude (station or sea-level pressure)."
+  statement: "Readings respond to real changes: cupping the sensor in a hand raises temperature by at least 1 °C within 60 s; breathing on it raises relative humidity by at least 5 %RH within 60 s; pressure is within ±5 hPa of a nearby public weather station, compared at the same altitude (station or sea-level pressure); covering the light sensor lowers the light reading by at least 50 % within 10 s."
   source: "internal (kc, 2026-11-24: used \"for reference not absolute values\"; no calibration to lab equipment; \"i like the weather station\")"
   verification: test
   verified_by: TP-002
@@ -66,8 +66,8 @@
   verification: test
   verified_by: TP-004
 - id: REQ-013
-  statement: "The 2 units, side by side in the same room, agree within ±1 °C, ±5 %RH and ±2 hPa."
-  source: "internal (kc, 2026-11-24)"
+  statement: "The 2 units, side by side in the same room, agree within ±1 °C, ±5 %RH, ±2 hPa and ±20 % in light level."
+  source: "internal (kc, 2026-11-24; light added by ECR #3)"
   verification: test
   verified_by: TP-002
 - id: REQ-014
