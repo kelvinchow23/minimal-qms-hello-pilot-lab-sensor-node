@@ -15,9 +15,9 @@ decisions made in the doc are copied into `minutes.md`.
 ## Scope
 | Item | From | To |
 |---|---|---|
-| `01_requirements/requirements.yaml` | empty | REQ-001 to REQ-012 |
-| `01_requirements/risks.csv` | empty | RISK-001 to RISK-010 |
-| `00_planning/plan.yaml` scope | G0 | adds "Build and test 2 units in iteration 1" |
+| `01_requirements/requirements.yaml` | empty | REQ-001 to REQ-014 |
+| `01_requirements/risks.csv` | empty | RISK-001 to RISK-012 |
+| `00_planning/plan.yaml` scope | G0 | adds 2 units (in) and recovering lost readings (out) |
 
 ## Redraft after open conversation (2026-11-24)
 After the first draft, kc asked for an open conversation (finding Q14). kc said: the unit
