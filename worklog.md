@@ -27,6 +27,12 @@ Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not ap
   SparkFun's Eagle file, on GPIO pins 1-6. Colours: Pi green (GrabCAD), SparkFun boards red,
   Adafruit SGP40 from its STEP. Interference check: no contact with the housing; the SHIM's
   staggered holes grip the pins by design.
+- **Then:** at kc's request the front wall now exposes the mini-HDMI and both micro-USB ports
+  (one shared opening for the two USB ports; separate ones would leave a 0.4 mm web). kc asked
+  about Pi ventilation: agent estimated about 1 W and a 10-20 C internal rise (not measured), so
+  no overheating risk, but heat pooling near the sensors (RISK-001). kc approved ("Yes, add
+  both"): 5 lid vents over the Pi bay (chimney with the low port openings), and TP-004 (72 h run)
+  will log the Pi CPU temperature (vcgencmd measure_temp) with the readings.
 - **Next:** software, test procedures TP-001..004, assembly instructions, inspection checks,
   then the G2 review (DR-003).
 - **Time:** agent about 2.5 h on design and part selection; human hands-on: not asked yet.
