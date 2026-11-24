@@ -14,8 +14,8 @@
   verification: test
   verified_by: TP-001
 - id: REQ-003
-  statement: "Each reading is within ±1 °C, ±5 %RH and ±2 hPa of a reference instrument, at room conditions."
-  source: "internal (kc, 2026-11-24)"
+  statement: "Readings respond to real changes: cupping the sensor in a hand raises temperature by at least 1 °C within 60 s; breathing on it raises relative humidity by at least 5 %RH within 60 s; pressure is within ±5 hPa of a nearby public weather station, compared at the same altitude (station or sea-level pressure)."
+  source: "internal (kc, 2026-11-24: used \"for reference not absolute values\"; no calibration to lab equipment; \"i like the weather station\")"
   verification: test
   verified_by: TP-002
 - id: REQ-004
@@ -63,3 +63,8 @@
   source: "internal (kc, 2026-11-24: \"aim for continuous indefinite monitoring\"; \"lets go 3 days\")"
   verification: test
   verified_by: TP-004
+- id: REQ-013
+  statement: "The 2 units, side by side in the same room, agree within ±1 °C, ±5 %RH and ±2 hPa."
+  source: "internal (kc, 2026-11-24)"
+  verification: test
+  verified_by: TP-002
