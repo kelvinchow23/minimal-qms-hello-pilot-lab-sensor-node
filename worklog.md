@@ -2,6 +2,18 @@
 
 Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not approvals.
 
+## 2026-11-24: design-agent (agent, Claude Code / Claude Opus 5.5), with kc
+- **Changed:** G1 started on branch `docs/g1-requirements`. kc answered: "Every 10 s,
+  2 units", "Any, design decides" (reporting), "Typical breakout" accuracy, "Sits on a bench".
+  Drafted `requirements.yaml` (REQ-001 to REQ-010; REQ-009 and REQ-010 agent-proposed) and
+  `risks.csv` (RISK-001 to RISK-008, agent-proposed); plan.yaml scope adds 2 units. Independent
+  review: G1-F1 to G1-F12. Review package DR-002 and commentable review doc
+  (https://claude.ai/artifact/MpbBYcgDyLTVhmGL3apR5x).
+- **Next:** kc decides the four items and twelve findings in the doc; agent updates the records;
+  G1 approval question.
+- **Blocked / unsure:** nothing; waiting on kc's review.
+- **Time:** agent 0.5 h on requirements; human hands-on: not asked yet.
+
 ## 2026-11-23: design-agent (agent, Claude Code / Claude Opus 5.5), with kc
 - **Changed:** G0 scope records drafted from kc's answers: `00_planning/plan.yaml` (goal,
   scope, make/buy, gate target dates), `roles.yaml` (builder, agent tools), `README.md`

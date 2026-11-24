@@ -12,6 +12,7 @@ scope:
   in:
     - "Design, build and test a minimal sensing hardware unit deployable in a self-driving lab"
     - "Iterate the unit through minimalQMS (G0 to G4, then further iterations)"
+    - "Build and test 2 units in iteration 1"   # added 2026-11-24 at G1 (kc chose "Every 10 s, 2 units")
   out: []                  # none listed for iteration 1 (kc, G0 review, 2026-11-23)
 make_buy:
   - {item: electronics, decision: buy, note: "off-the-shelf boards; parts chosen in the design stage"}

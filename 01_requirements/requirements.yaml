@@ -1,3 +1,55 @@
 # Requirements (SOP-004 section 5). Written in the requirements stage, reviewed at G1.
 # See forms/SOP-004-A03-requirements.yaml for the format.
-[]
+# Drafted 2026-11-24 by design-agent from kc's answers (2026-11-23 G1 notes in worklog.md and
+# 2026-11-24 answers). "agent-proposed" in source = added by the agent; kc accepts or rejects at G1.
+# verified_by: TP-nnn test procedures and AN-nnn analyses are written in the design stage (G2).
+- id: REQ-001
+  statement: "The unit measures air temperature, relative humidity and barometric pressure."
+  source: "internal (kc, 2026-11-23)"
+  verification: test
+  verified_by: TP-001
+- id: REQ-002
+  statement: "The unit takes a reading of each quantity in REQ-001 at least every 10 s, with no gap longer than 10 s over a 1 h continuous run."
+  source: "internal (kc, 2026-11-24)"
+  verification: test
+  verified_by: TP-001
+- id: REQ-003
+  statement: "Each reading is within ±1 °C, ±5 %RH and ±2 hPa of a reference instrument, at room conditions."
+  source: "internal (kc, 2026-11-24)"
+  verification: test
+  verified_by: TP-002
+- id: REQ-004
+  statement: "Another computer on the lab Wi-Fi network can retrieve every reading, each with its quantity, unit and timestamp. The method (e.g. MQTT, HTTP) is chosen in design."
+  source: "internal (kc, 2026-11-23 and 2026-11-24)"
+  verification: test
+  verified_by: TP-001
+- id: REQ-005
+  statement: "The unit runs from a USB wall power supply and has no battery."
+  source: "internal (kc, 2026-11-23)"
+  verification: inspection
+  verified_by: inspection check (G2)
+- id: REQ-006
+  statement: "The unit works indoors at 15 to 35 °C, free-standing on a bench or shelf, without fixing."
+  source: "internal (kc, 2026-11-24)"
+  verification: analysis
+  verified_by: AN-001 (component ratings)
+- id: REQ-007
+  statement: "An enclosure holds all boards and cables so the unit can be picked up and moved as one piece, with the sensors open to room air."
+  source: "internal (kc, 2026-11-23)"
+  verification: inspection
+  verified_by: inspection check (G2)
+- id: REQ-008
+  statement: "The electronics are off-the-shelf boards; there is no custom PCB."
+  source: "internal (kc, 2026-11-23)"
+  verification: review
+  verified_by: G2 design review
+- id: REQ-009
+  statement: "After power is applied, or restored after a cut, the unit resumes REQ-002 and REQ-004 within 2 min without anyone touching it."
+  source: "internal (agent-proposed; controls RISK-002, RISK-003)"
+  verification: test
+  verified_by: TP-003
+- id: REQ-010
+  statement: "No Wi-Fi password or other credential is stored in the product repo or the build package; it is entered on each unit."
+  source: "internal (agent-proposed; AGENTS.md hard rule 7; controls RISK-006)"
+  verification: review
+  verified_by: G2 design review
