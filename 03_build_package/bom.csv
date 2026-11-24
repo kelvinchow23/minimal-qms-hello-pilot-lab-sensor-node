@@ -3,3 +3,6 @@ LSN-A-0001,A,ECM-0001,1,ea,,manual,BME280 sensor board (temperature / humidity /
 LSN-A-0001,A,ECM-0002,1,ea,,manual,SGP40 VOC sensor board
 LSN-A-0001,A,ECM-0003,1,ea,,manual,Qwiic SHIM on the controller's GPIO header
 LSN-A-0001,A,ECW-0001,2,ea,,manual,SHIM to BME280; BME280 to SGP40
+LSN-A-0001,A,ECM-0004,1,ea,,manual,Controller: Raspberry Pi Zero 2 W with header
+LSN-A-0001,A,ECP-0001,1,ea,,manual,Wall power supply (not inside the enclosure)
+LSN-A-0001,A,ECX-0001,1,ea,,manual,microSD card with the software image
