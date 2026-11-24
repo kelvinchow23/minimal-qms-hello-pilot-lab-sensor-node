@@ -80,5 +80,12 @@ Fresh Claude Code subagent session (Claude Opus 5.5), 2026-11-24. Input only.
   conversation (G0: what are we trying to do; G1: rough requirements in the user's words),
   then specific questions; make this a per-user preference so users who want to skip it can.
 
+## Agent recommendations (2026-11-24, at kc's request)
+The review doc is pre-filled with a recommendation for every decision and finding; a blank
+decision means kc takes the recommendation. Not decisions until kc reviews. Summary:
+accept REQs and risks; keep REQ-010; server is test equipment, not product; targets G1
+11-25, G2 11-27, G3 12-02, G4 12-03; accept G1-F1, F2, F3, F5, F6, F8, F9, F10, F11; no change
+for F4; reject F7; G1-F12 and Q14, Q15 moved to `docs/qms-findings.csv`.
+
 ## Open items
 - kc's decisions on the four items and twelve findings.
