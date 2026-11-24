@@ -33,6 +33,12 @@ Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not ap
   no overheating risk, but heat pooling near the sensors (RISK-001). kc approved ("Yes, add
   both"): 5 lid vents over the Pi bay (chimney with the low port openings), and TP-004 (72 h run)
   will log the Pi CPU temperature (vcgencmd measure_temp) with the readings.
+- **Then:** kc: "there needs more room between the qwiic sensors. i cant connect a cable between
+  the two now". Housing lengthened 75 -> 95 mm (still within REQ-007's 100 mm); BME280 moved to
+  x -20 and SGP40 to x +28 (about 23 mm between connectors, about 13 mm beside the BME280 for the
+  SHIM cable); vents spread. Found and fixed an agent error: the base Outline sketch had no
+  centring constraint (an earlier fix had rolled back unnoticed), so the first 95 mm edit grew
+  the box to one side. Now fully constrained and symmetric.
 - **Next:** software, test procedures TP-001..004, assembly instructions, inspection checks,
   then the G2 review (DR-003).
 - **Time:** agent about 2.5 h on design and part selection; human hands-on: not asked yet.
