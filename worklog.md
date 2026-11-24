@@ -46,6 +46,12 @@ Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not ap
   11 mm) in the base walls, 2 mm below the rim. Interference while closing = snap_bump_r -
   lip_clearance = 0.3 mm; needs a test print to tune. fusion-cad says printed parts fasten with
   screws into inserts; agent reads a snap detent as not fastening hardware. kc to confirm at G2.
+- **Then:** assembly reworked to fusion-cad hard rules (kc: no Move/Position; nothing
+  draggable): base grounded, every part on joints to real geometry, imported boards rigidly
+  grouped in their designs and in the assembly, timeline ordered insert-then-joint, sketches
+  hidden. Agent error found: base and lid edits since their v4 had gone into duplicate open
+  copies and never saved. Replayed onto fresh copies: Fusion now LSN-0002 v5, LSN-0003 v5,
+  LSN-A-0001 v18; all parts in place. Unexplained 0.2 mm3 base/Pi PCB overlap remains.
 - **Next:** software, test procedures TP-001..004, assembly instructions, inspection checks,
   then the G2 review (DR-003).
 - **Time:** agent about 2.5 h on design and part selection; human hands-on: not asked yet.
