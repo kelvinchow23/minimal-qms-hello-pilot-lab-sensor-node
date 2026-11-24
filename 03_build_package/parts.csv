@@ -1,2 +1,4 @@
 pn,rev,description,class,lifecycle,make,source,drawing,supplier,supplier_pn,link,unit_price,currency,price_date,notes
 LSN-A-0001,A,"Lab sensor node, assembled",A,draft,assemble,,,,,,,,,
+LSN-0002,A,"Housing base, 3D printed",A,draft,print,,,,,,,,,
+LSN-0003,A,"Housing lid, 3D printed",A,draft,print,,,,,,,,,
