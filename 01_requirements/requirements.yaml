@@ -6,8 +6,8 @@
 # design stage; DR-003 is the G2 design review (G1-F10).
 # Every requirement applies to each of the 2 units built in iteration 1 (G1-F11).
 - id: REQ-001
-  statement: "The unit measures air temperature, relative humidity, barometric pressure and ambient light level (lux)."
-  source: "internal (kc, 2026-11-23; light added by ECR #3, kc 2026-11-24)"
+  statement: "The unit measures air temperature, relative humidity, barometric pressure and a VOC (volatile organic compound) air quality index."
+  source: "internal (kc, 2026-11-23; ECR-001 added light, ECR-002 replaced it with VOC: kc, \"this is a more relevant sensor than the light\")"
   verification: test
   verified_by: TP-001
 - id: REQ-002
@@ -16,7 +16,7 @@
   verification: test
   verified_by: TP-001
 - id: REQ-003
-  statement: "Readings respond to real changes: cupping the sensor in a hand raises temperature by at least 1 °C within 60 s; breathing on it raises relative humidity by at least 5 %RH within 60 s; pressure is within ±5 hPa of a nearby public weather station, compared at the same altitude (station or sea-level pressure); covering the light sensor lowers the light reading by at least 50 % within 10 s."
+  statement: "Readings respond to real changes: cupping the sensor in a hand raises temperature by at least 1 °C within 60 s; breathing on it raises relative humidity by at least 5 %RH within 60 s; pressure is within ±5 hPa of a nearby public weather station, compared at the same altitude (station or sea-level pressure); after 1 h of running, an open isopropyl alcohol wipe held 10 cm from the VOC sensor raises the VOC index by at least 100 within 60 s (ECR-002)."
   source: "internal (kc, 2026-11-24: used \"for reference not absolute values\"; no calibration to lab equipment; \"i like the weather station\")"
   verification: test
   verified_by: TP-002
@@ -66,8 +66,8 @@
   verification: test
   verified_by: TP-004
 - id: REQ-013
-  statement: "The 2 units, side by side in the same room, agree within ±1 °C, ±5 %RH, ±2 hPa and ±20 % in light level."
-  source: "internal (kc, 2026-11-24; light added by ECR #3)"
+  statement: "The 2 units, side by side in the same room, agree within ±1 °C, ±5 %RH and ±2 hPa, and both units' VOC index rises in response to the same REQ-003 test. The VOC index is relative, so it has no agreement limit."
+  source: "internal (kc, 2026-11-24; ECR-002)"
   verification: test
   verified_by: TP-002
 - id: REQ-014
@@ -75,3 +75,8 @@
   source: "internal (G1-F1, accepted by kc 2026-11-24)"
   verification: inspection
   verified_by: IC-nnn (G2)
+- id: REQ-015
+  statement: "The README and the build package state that the unit is a monitoring device and not a certified safety or gas alarm."
+  source: "internal (ECR-002, agent-proposed; controls RISK-014)"
+  verification: review
+  verified_by: DR-003

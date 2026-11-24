@@ -11,4 +11,5 @@ RISK-009,Server is unreachable for a while,Readings from that period are lost,2,
 RISK-010,Unit cannot get network time,Timestamps are wrong and readings cannot be linked to other experiments,3,2,Unit syncs time from the network and flags readings taken before a sync,REQ-011 / TP-001,open
 RISK-011,Unit cannot join the lab Wi-Fi (enterprise login) or reach the server,No readings reach the server; REQ-004 fails at G3,4,3,Choose a controller that supports enterprise Wi-Fi login or Tailscale; confirm device onboarding with lab IT before G2,REQ-004 / DR-003,open
 RISK-012,Lab vapours or dust make the sensors drift over time,Readings slowly become wrong,2,2,Sensors open to air but away from fume sources; REQ-013 comparison repeated when units are moved,REQ-013 / TP-002,open
-RISK-013,Enclosure blocks or shades the light sensor,Light readings are low or do not respond,2,3,Opening or clear window over the light sensor (ECR #3),REQ-003 / TP-002,open
+RISK-013,Enclosure blocks airflow to the VOC sensor,VOC index responds slowly or not at all,2,3,Vents next to the VOC sensor (ECR-002; replaces the ECR-001 light-sensor risk),REQ-003 / TP-002,open
+RISK-014,Someone relies on the VOC reading as a safety alarm,Harmful exposure goes unnoticed,4,2,Unit is labelled as monitoring only and not a certified alarm (REQ-015),REQ-015 / DR-003,open
