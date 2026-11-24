@@ -41,6 +41,11 @@ Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not ap
   the box to one side. Now fully constrained and symmetric.
 - **Then:** kc: the cutout "can move all the way to the end ... can be minimized". Cable notch
   now flush against the -x end wall, 6 mm wide x 8 mm deep (cable clears the 4 mm lid lip).
+- **Then:** kc chose snap detents for the lid ("Snap detents") over screws: 4 half-round bumps
+  (r 0.5 mm, 10 mm long) on the lid lip's front and back faces click into 4 grooves (r 0.6 mm,
+  11 mm) in the base walls, 2 mm below the rim. Interference while closing = snap_bump_r -
+  lip_clearance = 0.3 mm; needs a test print to tune. fusion-cad says printed parts fasten with
+  screws into inserts; agent reads a snap detent as not fastening hardware. kc to confirm at G2.
 - **Next:** software, test procedures TP-001..004, assembly instructions, inspection checks,
   then the G2 review (DR-003).
 - **Time:** agent about 2.5 h on design and part selection; human hands-on: not asked yet.
