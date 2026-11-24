@@ -19,6 +19,14 @@ Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not ap
 - **Open:** SGP40 2.5 mm holes are tight for M2.5 screws; one BME280 boss unused; lid is
   friction fit (no screws); lid copies base parameters; fillets not done; STEP model library
   approach (kc's question) proposed but not started.
+- **Then:** kc uploaded a GrabCAD Pi Zero 2 W model; it replaces the drawing-based ECM-0004
+  (old file renamed SUPERSEDED, not deleted). It has no GPIO header, so a 2x20 header (black
+  plastic, gold pins) was added. It showed the agent had misread the Pi drawing: the SD slot is
+  at the mini-HDMI end (-x), so the base SD opening was moved back to the -x wall and centred on
+  the real slot; USB and SD heights now come from the model. ECM-0003 Qwiic SHIM modelled from
+  SparkFun's Eagle file, on GPIO pins 1-6. Colours: Pi green (GrabCAD), SparkFun boards red,
+  Adafruit SGP40 from its STEP. Interference check: no contact with the housing; the SHIM's
+  staggered holes grip the pins by design.
 - **Next:** software, test procedures TP-001..004, assembly instructions, inspection checks,
   then the G2 review (DR-003).
 - **Time:** agent about 2.5 h on design and part selection; human hands-on: not asked yet.
