@@ -19,8 +19,8 @@
   verification: test
   verified_by: TP-002
 - id: REQ-004
-  statement: "Another computer on the lab Wi-Fi network can retrieve every reading, each with its quantity, unit and timestamp. The method (e.g. MQTT, HTTP) is chosen in design."
-  source: "internal (kc, 2026-11-23 and 2026-11-24)"
+  statement: "The unit sends every reading over the lab Wi-Fi to a server (local or cloud, chosen in design), with its quantity, unit and timestamp. The history is kept on the server, not on the unit."
+  source: "internal (kc, 2026-11-24: \"logged to a server ... on the node itself is not a good idea\")"
   verification: test
   verified_by: TP-001
 - id: REQ-005
@@ -34,18 +34,18 @@
   verification: analysis
   verified_by: AN-001 (component ratings)
 - id: REQ-007
-  statement: "An enclosure holds all boards and cables so the unit can be picked up and moved as one piece, with the sensors open to room air."
-  source: "internal (kc, 2026-11-23)"
+  statement: "An enclosure holds all boards and cables so the unit can be picked up and moved as one piece, with the sensors open to room air. The assembled unit fits within 100 x 100 x 100 mm."
+  source: "internal (kc, 2026-11-23; size kc, 2026-11-24)"
   verification: inspection
   verified_by: inspection check (G2)
 - id: REQ-008
-  statement: "The electronics are off-the-shelf boards; there is no custom PCB."
-  source: "internal (kc, 2026-11-23)"
-  verification: review
-  verified_by: G2 design review
+  statement: "The unit is assembled from off-the-shelf boards with no custom PCB and no soldering."
+  source: "internal (kc, 2026-11-23; no soldering kc, 2026-11-24)"
+  verification: inspection
+  verified_by: inspection check (G2)
 - id: REQ-009
-  statement: "After power is applied, or restored after a cut, the unit resumes REQ-002 and REQ-004 within 2 min without anyone touching it."
-  source: "internal (agent-proposed; controls RISK-002, RISK-003)"
+  statement: "After power is applied, after a power cut, or after a Wi-Fi drop, the unit resumes REQ-002 and REQ-004 within 2 min without anyone touching it."
+  source: "internal (kc, 2026-11-24: useless \"if it frequently needed user assistance\"; first proposed by the agent)"
   verification: test
   verified_by: TP-003
 - id: REQ-010
@@ -53,3 +53,13 @@
   source: "internal (agent-proposed; AGENTS.md hard rule 7; controls RISK-006)"
   verification: review
   verified_by: G2 design review
+- id: REQ-011
+  statement: "Each reading's timestamp is within 1 s of network time."
+  source: "internal (kc, 2026-11-24)"
+  verification: test
+  verified_by: TP-001
+- id: REQ-012
+  statement: "The unit runs for 72 h continuously with no gap longer than 10 s in the readings received by the server and no one touching it. The goal beyond iteration 1 is indefinite unattended monitoring."
+  source: "internal (kc, 2026-11-24: \"aim for continuous indefinite monitoring\"; \"lets go 3 days\")"
+  verification: test
+  verified_by: TP-004

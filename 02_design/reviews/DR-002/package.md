@@ -15,9 +15,24 @@ decisions made in the doc are copied into `minutes.md`.
 ## Scope
 | Item | From | To |
 |---|---|---|
-| `01_requirements/requirements.yaml` | empty | REQ-001 to REQ-010 |
-| `01_requirements/risks.csv` | empty | RISK-001 to RISK-008 |
+| `01_requirements/requirements.yaml` | empty | REQ-001 to REQ-012 |
+| `01_requirements/risks.csv` | empty | RISK-001 to RISK-010 |
 | `00_planning/plan.yaml` scope | G0 | adds "Build and test 2 units in iteration 1" |
+
+## Redraft after open conversation (2026-11-24)
+After the first draft, kc asked for an open conversation (finding Q14). kc said: the unit
+"just sits there always collecting environmental data", should "aim for continuous
+indefinite monitoring", timestamps link it to other experiments, and it is useless "if it
+frequently needed user assistance", "if it was big", "if it was difficult to build". Then:
+LabSense dropped ("it is unrelated"); timestamps within 1 s; a 3-day continuous test; history
+"logged to a server ... on the node itself is not a good idea"; "no soldering"; size "10x10x10cm
+limit". Changes: REQ-004 (send to server), REQ-007 (size), REQ-008 (no soldering), REQ-009
+(now kc's, adds Wi-Fi drop), new REQ-011 (timestamp) and REQ-012 (72 h run); new RISK-009
+(server outage) and RISK-010 (no network time). The independent findings below were made on
+the first draft.
+
+Open for kc: is setting up the server in this project's scope? Move G3/G4 targets to
+2026-12-01/12-02 for the 3-day test?
 
 ## Change groups
 1. **Requirements from kc's answers** (REQ-001 to REQ-008): agent directed by human. Sources:

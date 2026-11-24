@@ -9,7 +9,11 @@ Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not ap
   `risks.csv` (RISK-001 to RISK-008, agent-proposed); plan.yaml scope adds 2 units. Independent
   review: G1-F1 to G1-F12. Review package DR-002 and commentable review doc
   (https://claude.ai/artifact/MpbBYcgDyLTVhmGL3apR5x).
-- **Next:** kc decides the four items and twelve findings in the doc; agent updates the records;
+- **Then:** kc asked for an open conversation at gate start (saved as a preference; finding
+  Q14), then a read-back of what is known. Requirements redrafted from that talk (see DR-002
+  package). kc: "please drop labsense, it is unrelated" (the earlier G0 note naming it is
+  superseded).
+- **Next:** kc decides six items and the twelve findings in the doc; agent updates the records;
   G1 approval question.
 - **Blocked / unsure:** nothing; waiting on kc's review.
 - **Time:** agent 0.5 h on requirements; human hands-on: not asked yet.
