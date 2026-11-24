@@ -1,7 +1,7 @@
 # Development plan (SOP-004 section 4). Change through a PR; old values stay in git history.
 # G0 scope as restated by kc on 2026-11-23 (earlier, more detailed drafts are in git history;
 # that detail is kept in worklog.md as input for G1). "open" marks what is not yet answered.
-product: null              # top assembly part number, allocated in the design stage
+product: LSN-A-0001        # top assembly, allocated 2026-11-24 in the design stage
 iteration: 1
 qms_rev: "f4d60f4"   # the minimalQMS revision this project runs under
 goal: >-

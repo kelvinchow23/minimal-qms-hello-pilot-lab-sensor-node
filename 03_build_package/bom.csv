@@ -1,1 +1,5 @@
 parent_pn,parent_rev,pn,qty,unit,refdes,source,notes
+LSN-A-0001,A,ECM-0001,1,ea,,manual,BME280 sensor board (temperature / humidity / pressure)
+LSN-A-0001,A,ECM-0002,1,ea,,manual,SGP40 VOC sensor board
+LSN-A-0001,A,ECM-0003,1,ea,,manual,Qwiic SHIM on the controller's GPIO header
+LSN-A-0001,A,ECW-0001,2,ea,,manual,SHIM to BME280; BME280 to SGP40
