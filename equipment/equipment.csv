@@ -1,1 +1,2 @@
 id,description,cal_required,cal_due,cal_ref,notes
+EQ-001,"Test receiver: NTP-synced computer on the lab network or Tailscale running 03_build_package/test_procedures/tools/receiver.py",no,,,Timestamps rely on NTP; check the computer reports time synced before each test

@@ -1,0 +1,14 @@
+[Unit]
+Description=LSN lab sensor node
+Wants=network-online.target
+After=network-online.target time-sync.target
+
+[Service]
+ExecStart=/opt/lsn-node/venv/bin/python /opt/lsn-node/lsn_node.py
+Restart=always
+RestartSec=5
+DynamicUser=yes
+SupplementaryGroups=i2c gpio
+
+[Install]
+WantedBy=multi-user.target
