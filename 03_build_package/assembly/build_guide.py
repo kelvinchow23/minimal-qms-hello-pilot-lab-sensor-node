@@ -76,6 +76,20 @@ def page():
     out.append("<div><b>Consumables</b><ul>" + "".join(f"<li>{html.escape(t)}</li>" for t in b["consumables"]) + "</ul></div>")
     out.append("<div><b>Safety</b><ul>" + "".join(f"<li>{html.escape(t)}</li>" for t in b["safety"]) + "</ul></div></div>")
     out.append(f"<p class='prep'>{html.escape(b['prep'])}</p>")
+    wires = data.get("wires")
+    if wires:
+        # Wires are built first, from their own BOM, then used as W parts in the steps.
+        out.append("<h2>W · Wires: build these first</h2>")
+        if wires.get("note"):
+            out.append(f"<p>{html.escape(wires['note'])}</p>")
+        if wires.get("bom"):
+            out.append("<table class='wbom'><tr><th>Item</th><th>Qty</th><th>What</th></tr>" + "".join(
+                f"<tr><td>{html.escape(i['item'])}</td><td>{html.escape(str(i['qty']))}</td><td>{html.escape(i['what'])}</td></tr>"
+                for i in wires["bom"]) + "</table>")
+        for w in wires.get("build", []):
+            out.append(f"<div class='har'><div>{badge(w['id'])}<span class='q'> ×{by_id[w['id']]['qty']}</span><div class='cap'>{html.escape(w['length'])}</div></div>"
+                       f"<div><b>{html.escape(w['what'])}</b><div class='ends'><div><b>End A:</b> {html.escape(w['end_a'])}</div><div><b>End B:</b> {html.escape(w['end_b'])}</div></div>"
+                       "<ol>" + "".join(f"<li>{html.escape(x)}</li>" for x in w["steps"]) + "</ol></div></div>")
     for s in data["steps"]:
         out.append(f"<section class='step'><div class='head'><div class='num'>{s['n']}</div><div class='title'>{html.escape(s['title'])}</div></div>")
         out.append("<div class='box'><div class='parts'>")
@@ -132,7 +146,7 @@ h1{font-size:32px;margin:0}.sub{color:#555;margin:4px 0 16px}h2{font-size:24px;m
 .fig{position:relative;border:1px solid #ddd;border-radius:8px;overflow:hidden}.fig img{display:block;width:100%}.ov{position:absolute;inset:0;width:100%;height:100%}
 .missing{padding:60px 16px;text-align:center;color:#888;background:#fafafa}
 .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:6px 20px;margin:8px 0;font-size:15px}
-.credits{font-size:12px;color:#555}.notes{margin:4px 0 0 18px;font-size:14px;color:#333}.checks{list-style:none;padding:0;font-size:15px;line-height:1.8}
+.har{border:2px solid #8c564b;border-radius:10px;padding:10px 14px;margin:10px 0;display:grid;grid-template-columns:110px 1fr;gap:12px}.har .ends{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;font-size:14px}.har ol{margin:4px 0 0 18px;font-size:14px}.wbom{border-collapse:collapse;font-size:14px}.wbom td,.wbom th{border:1px solid #ccc;padding:4px 8px}.credits{font-size:12px;color:#555}.notes{margin:4px 0 0 18px;font-size:14px;color:#333}.checks{list-style:none;padding:0;font-size:15px;line-height:1.8}
 @media print{main{max-width:none}}
 """
 

@@ -4,8 +4,8 @@
  "title": "Lab sensor node",
  "source": "Fusion: LSN-A-0001 v28",
  "classes": {
-  "P": [
-   "Printed parts",
+  "A": [
+   "Custom parts (printed, machined, PCB, sub-assemblies)",
    "#e07b00"
   ],
   "B": [
@@ -13,21 +13,17 @@
    "#1f77b4"
   ],
   "H": [
-   "Heat-set inserts",
+   "Hardware",
    "#8e44ad"
   ],
-  "F": [
-   "Screws",
-   "#2ca02c"
-  ],
   "W": [
-   "Cables",
+   "Wires",
    "#8c564b"
   ]
  },
  "labels": {
-  "P1": "Base",
-  "P2": "Lid",
+  "A1": "Base",
+  "A2": "Lid",
   "B1": "Raspberry Pi Zero 2 W",
   "B2": "microSD card, flashed",
   "B3": "Qwiic SHIM",
@@ -35,7 +31,7 @@
   "B5": "SGP40 board",
   "B6": "5 V wall supply",
   "H1": "M2 insert",
-  "F1": "M2×5 pan",
+  "H2": "M2×5 pan",
   "W1": "Qwiic cable 100 mm"
  },
  "before": {
@@ -61,7 +57,7 @@
    "tools": "Insert tool, M2 tip",
    "callouts": [
     {
-     "id": "P1",
+     "id": "A1",
      "qty": 1,
      "action": "Base",
      "pts": [
@@ -207,7 +203,7 @@
      ]
     },
     {
-     "id": "F1",
+     "id": "H2",
      "qty": 4,
      "action": "Snug, do not overtighten",
      "pts": [
@@ -275,7 +271,7 @@
      ]
     },
     {
-     "id": "F1",
+     "id": "H2",
      "qty": 4,
      "action": "2 per board, diagonal",
      "pts": [
@@ -353,7 +349,7 @@
    "tools": "",
    "callouts": [
     {
-     "id": "P2",
+     "id": "A2",
      "qty": 1,
      "action": "Press until all 4 snaps click",
      "pts": [
@@ -412,5 +408,9 @@
   "B2: \"MicroSD card 2GB focus-stacked\" by Afrank99, CC BY-SA 3.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:MicroSD_card_2GB_focus-stacked.jpg); resized. Placeholder: the build uses the card listed in bom.csv.",
   "B6: \"USB wall charger\" by Alcide55, CC BY-SA 3.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:USB_wall_charger.JPG); resized. Placeholder: the build uses the supply listed in bom.csv.",
   "W1: drawn placeholder. All other pictures are renders of the Fusion assembly."
- ]
+ ],
+ "wires": {
+  "note": "No wires to build for LSN-A-0001: W1 is bought ready-made (both ends fitted). Check both plugs are seated in their housings.",
+  "build": []
+ }
 }

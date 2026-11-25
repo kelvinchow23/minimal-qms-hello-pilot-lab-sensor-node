@@ -14,14 +14,14 @@ h1{font-size:32px;margin:0}.sub{color:#555;margin:4px 0 16px}h2{font-size:24px;m
 .fig{position:relative;border:1px solid #ddd;border-radius:8px;overflow:hidden}.fig img{display:block;width:100%}.ov{position:absolute;inset:0;width:100%;height:100%}
 .missing{padding:60px 16px;text-align:center;color:#888;background:#fafafa}
 .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:6px 20px;margin:8px 0;font-size:15px}
-.credits{font-size:12px;color:#555}.notes{margin:4px 0 0 18px;font-size:14px;color:#333}.checks{list-style:none;padding:0;font-size:15px;line-height:1.8}
+.har{border:2px solid #8c564b;border-radius:10px;padding:10px 14px;margin:10px 0;display:grid;grid-template-columns:110px 1fr;gap:12px}.har .ends{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;font-size:14px}.har ol{margin:4px 0 0 18px;font-size:14px}.wbom{border-collapse:collapse;font-size:14px}.wbom td,.wbom th{border:1px solid #ccc;padding:4px 8px}.credits{font-size:12px;color:#555}.notes{margin:4px 0 0 18px;font-size:14px;color:#333}.checks{list-style:none;padding:0;font-size:15px;line-height:1.8}
 @media print{main{max-width:none}}
 </style></head><body><main><h1>LSN-A-0001 Lab sensor node</h1>
 <p class='sub'>Rev A · from Fusion: LSN-A-0001 v28</p>
 <h2>Parts</h2>
-<h3>Printed parts</h3><div class='grid'>
-<div class='card'><img src="images/P1.png" alt=""><div><span class="bdg" style="background:#e07b00">P1</span><span class='cq'>×1</span></div><div class='cap'>Base</div><div class='pn'>LSN-0001</div></div>
-<div class='card'><img src="images/P2.png" alt=""><div><span class="bdg" style="background:#e07b00">P2</span><span class='cq'>×1</span></div><div class='cap'>Lid</div><div class='pn'>LSN-0002</div></div>
+<h3>Custom parts (printed, machined, PCB, sub-assemblies)</h3><div class='grid'>
+<div class='card'><img src="images/A1.png" alt=""><div><span class="bdg" style="background:#e07b00">A1</span><span class='cq'>×1</span></div><div class='cap'>Base</div><div class='pn'>LSN-0001</div></div>
+<div class='card'><img src="images/A2.png" alt=""><div><span class="bdg" style="background:#e07b00">A2</span><span class='cq'>×1</span></div><div class='cap'>Lid</div><div class='pn'>LSN-0002</div></div>
 </div>
 <h3>Bought parts</h3><div class='grid'>
 <div class='card'><img src="images/B1.png" alt=""><div><span class="bdg" style="background:#1f77b4">B1</span><span class='cq'>×1</span></div><div class='cap'>Raspberry Pi Zero 2 W</div><div class='pn'>ECM-0004</div></div>
@@ -31,13 +31,11 @@ h1{font-size:32px;margin:0}.sub{color:#555;margin:4px 0 16px}h2{font-size:24px;m
 <div class='card'><img src="images/B5.png" alt=""><div><span class="bdg" style="background:#1f77b4">B5</span><span class='cq'>×1</span></div><div class='cap'>SGP40 board</div><div class='pn'>ECM-0002</div></div>
 <div class='card'><img src="images/B6.png" alt=""><div><span class="bdg" style="background:#1f77b4">B6</span><span class='cq'>×1</span></div><div class='cap'>5 V wall supply</div><div class='pn'>ECP-0001</div></div>
 </div>
-<h3>Heat-set inserts</h3><div class='grid'>
+<h3>Hardware</h3><div class='grid'>
 <div class='card'><img src="images/H1.png" alt=""><div><span class="bdg" style="background:#8e44ad">H1</span><span class='cq'>×8</span></div><div class='cap'>M2 insert</div><div class='pn'>HWN-0006</div></div>
+<div class='card'><img src="images/H2.png" alt=""><div><span class="bdg" style="background:#8e44ad">H2</span><span class='cq'>×8</span></div><div class='cap'>M2×5 pan</div><div class='pn'>HWB-0036</div></div>
 </div>
-<h3>Screws</h3><div class='grid'>
-<div class='card'><img src="images/F1.png" alt=""><div><span class="bdg" style="background:#2ca02c">F1</span><span class='cq'>×8</span></div><div class='cap'>M2×5 pan</div><div class='pn'>HWB-0036</div></div>
-</div>
-<h3>Cables</h3><div class='grid'>
+<h3>Wires</h3><div class='grid'>
 <div class='card'><img src="images/W1.png" alt=""><div><span class="bdg" style="background:#8c564b">W1</span><span class='cq'>×2</span></div><div class='cap'>Qwiic cable 100 mm</div><div class='pn'>ECW-0001</div></div>
 </div>
 <h2>Before you start</h2><div class='before'>
@@ -45,9 +43,11 @@ h1{font-size:32px;margin:0}.sub{color:#555;margin:4px 0 16px}h2{font-size:24px;m
 <div><b>Consumables</b><ul><li>Serial number label</li></ul></div>
 <div><b>Safety</b><ul><li>The insert tool is hot: let the base cool before handling it.</li><li>Handle boards by their edges.</li></ul></div></div>
 <p class='prep'>Flash B2 before you start: software/lsn-node/README.md, steps 1 to 3. Hostname = the unit&#x27;s serial number. No Wi-Fi password or server address goes into any file in the repo (REQ-010).</p>
+<h2>W · Wires: build these first</h2>
+<p>No wires to build for LSN-A-0001: W1 is bought ready-made (both ends fitted). Check both plugs are seated in their housings.</p>
 <section class='step'><div class='head'><div class='num'>1</div><div class='title'>Inserts</div></div>
 <div class='box'><div class='parts'>
-<div class='pi'><img src="images/P1.png" alt=""><div><span class="bdg" style="background:#e07b00">P1</span><span class='q'> ×1</span></div></div>
+<div class='pi'><img src="images/A1.png" alt=""><div><span class="bdg" style="background:#e07b00">A1</span><span class='q'> ×1</span></div></div>
 <div class='pi'><img src="images/H1.png" alt=""><div><span class="bdg" style="background:#8e44ad">H1</span><span class='q'> ×8</span></div></div>
 </div>
 <div class='tools'>🔧 Insert tool, M2 tip</div>
@@ -56,7 +56,7 @@ h1{font-size:32px;margin:0}.sub{color:#555;margin:4px 0 16px}h2{font-size:24px;m
 <svg viewBox='0 0 1136 722' class='ov'>
 <circle cx='863.9' cy='333.4' r='7' fill='none' stroke='#e07b00' stroke-width='3'/>
 <line x1='863.9' y1='333.4' x2='714' y2='223' stroke='#e07b00' stroke-width='1.5'/>
-<rect x='696' y='210' width='36' height='26' rx='13' fill='#e07b00' stroke='white' stroke-width='2'/><text x='714' y='228' font-size='14' font-weight='800' fill='white' text-anchor='middle'>P1</text>
+<rect x='696' y='210' width='36' height='26' rx='13' fill='#e07b00' stroke='white' stroke-width='2'/><text x='714' y='228' font-size='14' font-weight='800' fill='white' text-anchor='middle'>A1</text>
 <circle cx='744.9' cy='204.5' r='7' fill='none' stroke='#8e44ad' stroke-width='3'/>
 <circle cx='598.4' cy='190.9' r='7' fill='none' stroke='#8e44ad' stroke-width='3'/>
 <circle cx='491.7' cy='353.3' r='7' fill='none' stroke='#8e44ad' stroke-width='3'/>
@@ -76,7 +76,7 @@ h1{font-size:32px;margin:0}.sub{color:#555;margin:4px 0 16px}h2{font-size:24px;m
 <rect x='558' y='575' width='36' height='26' rx='13' fill='#8e44ad' stroke='white' stroke-width='2'/><text x='576' y='593' font-size='14' font-weight='800' fill='white' text-anchor='middle'>H1</text>
 </svg>
 </div>
-<div class='legend'><div><span class="bdg" style="background:#e07b00">P1</span><span class='q'>1×</span> Base</div><div><span class="bdg" style="background:#8e44ad">H1</span><span class='q'>8×</span> Press flush; 4 Pi bay, 2 per sensor</div></div>
+<div class='legend'><div><span class="bdg" style="background:#e07b00">A1</span><span class='q'>1×</span> Base</div><div><span class="bdg" style="background:#8e44ad">H1</span><span class='q'>8×</span> Press flush; 4 Pi bay, 2 per sensor</div></div>
 <ul class='notes'><li>Only the bosses shown. The other 4 sensor bosses stay empty.</li></ul>
 </section>
 <section class='step'><div class='head'><div class='num'>2</div><div class='title'>Prepare the Pi</div></div>
@@ -105,7 +105,7 @@ h1{font-size:32px;margin:0}.sub{color:#555;margin:4px 0 16px}h2{font-size:24px;m
 <section class='step'><div class='head'><div class='num'>3</div><div class='title'>Mount the Pi</div></div>
 <div class='box'><div class='parts'>
 <div class='pi'><img src="images/B1.png" alt=""><div><span class="bdg" style="background:#1f77b4">B1</span><span class='q'> ×1</span></div></div>
-<div class='pi'><img src="images/F1.png" alt=""><div><span class="bdg" style="background:#2ca02c">F1</span><span class='q'> ×4</span></div></div>
+<div class='pi'><img src="images/H2.png" alt=""><div><span class="bdg" style="background:#8e44ad">H2</span><span class='q'> ×4</span></div></div>
 </div>
 <div class='tools'>🔧 PH0 screwdriver</div>
 </div>
@@ -114,24 +114,24 @@ h1{font-size:32px;margin:0}.sub{color:#555;margin:4px 0 16px}h2{font-size:24px;m
 <circle cx='638.7' cy='439.0' r='7' fill='none' stroke='#1f77b4' stroke-width='3'/>
 <line x1='638.7' y1='439.0' x2='489' y2='329' stroke='#1f77b4' stroke-width='1.5'/>
 <rect x='471' y='316' width='36' height='26' rx='13' fill='#1f77b4' stroke='white' stroke-width='2'/><text x='489' y='334' font-size='14' font-weight='800' fill='white' text-anchor='middle'>B1</text>
-<circle cx='420.4' cy='466.2' r='7' fill='none' stroke='#2ca02c' stroke-width='3'/>
-<circle cx='483.5' cy='589.3' r='7' fill='none' stroke='#2ca02c' stroke-width='3'/>
-<circle cx='738.9' cy='311.0' r='7' fill='none' stroke='#2ca02c' stroke-width='3'/>
-<circle cx='802.1' cy='434.1' r='7' fill='none' stroke='#2ca02c' stroke-width='3'/>
-<line x1='420.4' y1='466.2' x2='611' y2='680' stroke='#2ca02c' stroke-width='1.5'/>
-<line x1='483.5' y1='589.3' x2='611' y2='680' stroke='#2ca02c' stroke-width='1.5'/>
-<line x1='738.9' y1='311.0' x2='611' y2='680' stroke='#2ca02c' stroke-width='1.5'/>
-<line x1='802.1' y1='434.1' x2='611' y2='680' stroke='#2ca02c' stroke-width='1.5'/>
-<rect x='593' y='667' width='36' height='26' rx='13' fill='#2ca02c' stroke='white' stroke-width='2'/><text x='611' y='685' font-size='14' font-weight='800' fill='white' text-anchor='middle'>F1</text>
+<circle cx='420.4' cy='466.2' r='7' fill='none' stroke='#8e44ad' stroke-width='3'/>
+<circle cx='483.5' cy='589.3' r='7' fill='none' stroke='#8e44ad' stroke-width='3'/>
+<circle cx='738.9' cy='311.0' r='7' fill='none' stroke='#8e44ad' stroke-width='3'/>
+<circle cx='802.1' cy='434.1' r='7' fill='none' stroke='#8e44ad' stroke-width='3'/>
+<line x1='420.4' y1='466.2' x2='611' y2='680' stroke='#8e44ad' stroke-width='1.5'/>
+<line x1='483.5' y1='589.3' x2='611' y2='680' stroke='#8e44ad' stroke-width='1.5'/>
+<line x1='738.9' y1='311.0' x2='611' y2='680' stroke='#8e44ad' stroke-width='1.5'/>
+<line x1='802.1' y1='434.1' x2='611' y2='680' stroke='#8e44ad' stroke-width='1.5'/>
+<rect x='593' y='667' width='36' height='26' rx='13' fill='#8e44ad' stroke='white' stroke-width='2'/><text x='611' y='685' font-size='14' font-weight='800' fill='white' text-anchor='middle'>H2</text>
 </svg>
 </div>
-<div class='legend'><div><span class="bdg" style="background:#1f77b4">B1</span><span class='q'>1×</span> Ports to the front-wall openings</div><div><span class="bdg" style="background:#2ca02c">F1</span><span class='q'>4×</span> Snug, do not overtighten</div></div>
+<div class='legend'><div><span class="bdg" style="background:#1f77b4">B1</span><span class='q'>1×</span> Ports to the front-wall openings</div><div><span class="bdg" style="background:#8e44ad">H2</span><span class='q'>4×</span> Snug, do not overtighten</div></div>
 </section>
 <section class='step'><div class='head'><div class='num'>4</div><div class='title'>Mount the sensors</div></div>
 <div class='box'><div class='parts'>
 <div class='pi'><img src="images/B4.png" alt=""><div><span class="bdg" style="background:#1f77b4">B4</span><span class='q'> ×1</span></div></div>
 <div class='pi'><img src="images/B5.png" alt=""><div><span class="bdg" style="background:#1f77b4">B5</span><span class='q'> ×1</span></div></div>
-<div class='pi'><img src="images/F1.png" alt=""><div><span class="bdg" style="background:#2ca02c">F1</span><span class='q'> ×4</span></div></div>
+<div class='pi'><img src="images/H2.png" alt=""><div><span class="bdg" style="background:#8e44ad">H2</span><span class='q'> ×4</span></div></div>
 </div>
 <div class='tools'>🔧 PH0 screwdriver</div>
 </div>
@@ -143,18 +143,18 @@ h1{font-size:32px;margin:0}.sub{color:#555;margin:4px 0 16px}h2{font-size:24px;m
 <circle cx='671.6' cy='195.5' r='7' fill='none' stroke='#1f77b4' stroke-width='3'/>
 <line x1='671.6' y1='195.5' x2='822' y2='86' stroke='#1f77b4' stroke-width='1.5'/>
 <rect x='804' y='73' width='36' height='26' rx='13' fill='#1f77b4' stroke='white' stroke-width='2'/><text x='822' y='91' font-size='14' font-weight='800' fill='white' text-anchor='middle'>B5</text>
-<circle cx='491.7' cy='348.9' r='7' fill='none' stroke='#2ca02c' stroke-width='3'/>
-<circle cx='324.3' cy='294.6' r='7' fill='none' stroke='#2ca02c' stroke-width='3'/>
-<circle cx='598.4' cy='186.5' r='7' fill='none' stroke='#2ca02c' stroke-width='3'/>
-<circle cx='744.9' cy='200.1' r='7' fill='none' stroke='#2ca02c' stroke-width='3'/>
-<line x1='491.7' y1='348.9' x2='540' y2='30' stroke='#2ca02c' stroke-width='1.5'/>
-<line x1='324.3' y1='294.6' x2='540' y2='30' stroke='#2ca02c' stroke-width='1.5'/>
-<line x1='598.4' y1='186.5' x2='540' y2='30' stroke='#2ca02c' stroke-width='1.5'/>
-<line x1='744.9' y1='200.1' x2='540' y2='30' stroke='#2ca02c' stroke-width='1.5'/>
-<rect x='522' y='17' width='36' height='26' rx='13' fill='#2ca02c' stroke='white' stroke-width='2'/><text x='540' y='35' font-size='14' font-weight='800' fill='white' text-anchor='middle'>F1</text>
+<circle cx='491.7' cy='348.9' r='7' fill='none' stroke='#8e44ad' stroke-width='3'/>
+<circle cx='324.3' cy='294.6' r='7' fill='none' stroke='#8e44ad' stroke-width='3'/>
+<circle cx='598.4' cy='186.5' r='7' fill='none' stroke='#8e44ad' stroke-width='3'/>
+<circle cx='744.9' cy='200.1' r='7' fill='none' stroke='#8e44ad' stroke-width='3'/>
+<line x1='491.7' y1='348.9' x2='540' y2='30' stroke='#8e44ad' stroke-width='1.5'/>
+<line x1='324.3' y1='294.6' x2='540' y2='30' stroke='#8e44ad' stroke-width='1.5'/>
+<line x1='598.4' y1='186.5' x2='540' y2='30' stroke='#8e44ad' stroke-width='1.5'/>
+<line x1='744.9' y1='200.1' x2='540' y2='30' stroke='#8e44ad' stroke-width='1.5'/>
+<rect x='522' y='17' width='36' height='26' rx='13' fill='#8e44ad' stroke='white' stroke-width='2'/><text x='540' y='35' font-size='14' font-weight='800' fill='white' text-anchor='middle'>H2</text>
 </svg>
 </div>
-<div class='legend'><div><span class="bdg" style="background:#1f77b4">B4</span><span class='q'>1×</span> End-wall side</div><div><span class="bdg" style="background:#1f77b4">B5</span><span class='q'>1×</span> Other side</div><div><span class="bdg" style="background:#2ca02c">F1</span><span class='q'>4×</span> 2 per board, diagonal</div></div>
+<div class='legend'><div><span class="bdg" style="background:#1f77b4">B4</span><span class='q'>1×</span> End-wall side</div><div><span class="bdg" style="background:#1f77b4">B5</span><span class='q'>1×</span> Other side</div><div><span class="bdg" style="background:#8e44ad">H2</span><span class='q'>4×</span> 2 per board, diagonal</div></div>
 </section>
 <section class='step'><div class='head'><div class='num'>5</div><div class='title'>Cables</div></div>
 <div class='box'><div class='parts'>
@@ -179,17 +179,17 @@ h1{font-size:32px;margin:0}.sub{color:#555;margin:4px 0 16px}h2{font-size:24px;m
 </section>
 <section class='step'><div class='head'><div class='num'>6</div><div class='title'>Lid</div></div>
 <div class='box'><div class='parts'>
-<div class='pi'><img src="images/P2.png" alt=""><div><span class="bdg" style="background:#e07b00">P2</span><span class='q'> ×1</span></div></div>
+<div class='pi'><img src="images/A2.png" alt=""><div><span class="bdg" style="background:#e07b00">A2</span><span class='q'> ×1</span></div></div>
 </div>
 </div>
 <div class='fig'><img src='images/step6.png' alt='Step 6'>
 <svg viewBox='0 0 1648 914' class='ov'>
 <circle cx='778.0' cy='337.2' r='7' fill='none' stroke='#e07b00' stroke-width='3'/>
 <line x1='778.0' y1='337.2' x2='628' y2='227' stroke='#e07b00' stroke-width='1.5'/>
-<rect x='610' y='214' width='36' height='26' rx='13' fill='#e07b00' stroke='white' stroke-width='2'/><text x='628' y='232' font-size='14' font-weight='800' fill='white' text-anchor='middle'>P2</text>
+<rect x='610' y='214' width='36' height='26' rx='13' fill='#e07b00' stroke='white' stroke-width='2'/><text x='628' y='232' font-size='14' font-weight='800' fill='white' text-anchor='middle'>A2</text>
 </svg>
 </div>
-<div class='legend'><div><span class="bdg" style="background:#e07b00">P2</span><span class='q'>1×</span> Press until all 4 snaps click</div></div>
+<div class='legend'><div><span class="bdg" style="background:#e07b00">A2</span><span class='q'>1×</span> Press until all 4 snaps click</div></div>
 </section>
 <section class='step'><div class='head'><div class='num'>7</div><div class='title'>Label and power</div></div>
 <div class='box'><div class='parts'>
