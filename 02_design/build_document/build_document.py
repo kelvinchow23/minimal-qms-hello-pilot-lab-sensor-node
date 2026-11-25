@@ -103,12 +103,16 @@ def title_block(which=None):
 def source_rule(r):
     """Where a part may be bought, from its class (SOP-002): A from an approved supplier, B/C anywhere."""
     if r["category"].startswith("Custom"):
-        return "Made in house"
-    return "Approved supplier" if r.get("class") == "A" else "Any source (same spec)"
+        return "Custom"
+    if r.get("class") == "A":
+        return "Approved supplier, exact part"
+    if r.get("exact_part") == "yes":
+        return "Any supplier, exact part"
+    return "Any supplier, any matching part"
 
 
 def write_appendix_a():
-    cols = ["ref", "pn", "rev", "description", "category", "source", "qty", "unit", "manufacturer", "mpn", "supplier", "supplier_pn",
+    cols = ["ref", "pn", "rev", "description", "category", "purchasing", "qty", "unit", "manufacturer", "mpn", "supplier", "supplier_pn",
             "link", "unit_price", "pack_qty", "currency", "each_cad", "line_cad", "price_date", "notes"]
     with open(OUT / FILES["A01"], "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f, lineterminator="\n")
@@ -116,7 +120,7 @@ def write_appendix_a():
         for r in bom:
             p = price_cad(r)
             row = dict(r, each_cad="" if p is None else f"{p:.2f}", line_cad="" if p is None else f"{p * int(r['qty']):.2f}",
-                       source=source_rule(r))
+                       purchasing=source_rule(r))
             w.writerow([row.get(c, "") for c in cols])
 
 
