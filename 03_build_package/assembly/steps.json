@@ -407,5 +407,10 @@
   "Unit within 100 × 100 × 100 mm (REQ-007)",
   "No soldered joints added (REQ-008)",
   "Serial number label applied"
+ ],
+ "credits": [
+  "B2: \"MicroSD card 2GB focus-stacked\" by Afrank99, CC BY-SA 3.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:MicroSD_card_2GB_focus-stacked.jpg); resized. Placeholder: the build uses the card listed in bom.csv.",
+  "B6: \"USB wall charger\" by Alcide55, CC BY-SA 3.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:USB_wall_charger.JPG); resized. Placeholder: the build uses the supply listed in bom.csv.",
+  "W1: drawn placeholder. All other pictures are renders of the Fusion assembly."
  ]
 }

@@ -111,6 +111,8 @@ def page():
             out.append("<ul class='notes'>" + "".join(f"<li>{html.escape(n)}</li>" for n in s["notes"]) + "</ul>")
         out.append("</section>")
     out.append("<h2>Final checks</h2><ul class='checks'>" + "".join(f"<li>☐ {html.escape(c)}</li>" for c in data["final_checks"]) + "</ul>")
+    if data.get("credits"):
+        out.append("<h2>Picture credits</h2><ul class='credits'>" + "".join(f"<li>{html.escape(c)}</li>" for c in data["credits"]) + "</ul>")
     return "\n".join(out)
 
 
@@ -130,7 +132,7 @@ h1{font-size:32px;margin:0}.sub{color:#555;margin:4px 0 16px}h2{font-size:24px;m
 .fig{position:relative;border:1px solid #ddd;border-radius:8px;overflow:hidden}.fig img{display:block;width:100%}.ov{position:absolute;inset:0;width:100%;height:100%}
 .missing{padding:60px 16px;text-align:center;color:#888;background:#fafafa}
 .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:6px 20px;margin:8px 0;font-size:15px}
-.notes{margin:4px 0 0 18px;font-size:14px;color:#333}.checks{list-style:none;padding:0;font-size:15px;line-height:1.8}
+.credits{font-size:12px;color:#555}.notes{margin:4px 0 0 18px;font-size:14px;color:#333}.checks{list-style:none;padding:0;font-size:15px;line-height:1.8}
 @media print{main{max-width:none}}
 """
 
