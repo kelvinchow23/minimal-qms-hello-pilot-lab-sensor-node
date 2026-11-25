@@ -32,7 +32,8 @@
   verified_by: IC-nnn (G2)
 - id: REQ-006
   statement: "The unit works indoors at 15 to 35 °C and 20 to 80 %RH non-condensing, free-standing on a bench or shelf, without fixing."
-  source: "internal (kc, 2026-11-24)"
+  source: "internal: ranges proposed by the agent at G1 (humidity from finding G1-F5), accepted by kc at DR-002 by default; not from measured lab conditions"
+  note: "Source corrected 2026-11-25 at kc's request; it had read 'internal (kc, 2026-11-24)'. Statement unchanged."
   verification: analysis
   verified_by: AN-001 (component ratings)
 - id: REQ-007
