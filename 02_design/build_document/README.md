@@ -14,10 +14,10 @@ The controlled document is **LSN-A-0001 rev A**, flat in `03_build_package/`:
 |---|---|
 | Main document: assembly instruction | `LSN-A-0001_revA.pdf` |
 | A01 bill of materials, for ordering | `LSN-A-0001_revA_A01_bom.csv` |
-| A02 make files (STL for printing) | `LSN-A-0001_revA_A02_make-files.zip` |
-| A03 inspection and test procedures (what to check, TP-001..004 with briefs, AN-001) | `LSN-A-0001_revA_A03_inspection-test-procedures.pdf` |
-| A04 build traveller, one per unit (step, final and test sign-offs, comments, NC) | `LSN-A-0001_revA_A04_build-traveller.pdf` and `.csv` |
-| A05 incoming inspection record, one per delivery (batch of parts) | `LSN-A-0001_revA_A05_incoming-inspection-record.pdf` and `.csv` |
+| A02 make files (STL for printing) | `LSN-A-0001_revA_A02_make_files.zip` |
+| A03 inspection and test procedures (what to check, TP-001..004 with briefs, AN-001) | `LSN-A-0001_revA_A03_test.pdf` |
+| A04 build traveller, one per unit (step, final and test sign-offs, comments, NC) | `LSN-A-0001_revA_A04_traveller.pdf` and `.csv` |
+| A05 incoming inspection record, one per delivery (batch of parts) | `LSN-A-0001_revA_A05_incoming.pdf` and `.csv` |
 
 The CSV copies of A04 and A05 are the same forms for an agent or a spreadsheet to fill; a filled
 copy goes in `builds/B00n/` (B001 for the first build).

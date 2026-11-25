@@ -3,8 +3,8 @@
     python build_document.py            -> PDFs, CSV and zips in ../../03_build_package/ (flat)
     python build_document.py --no-pdf   -> HTML previews only (beside this file)
 
-Outputs: <PN>_rev<X>.pdf (assembly instruction), _A01_bom.csv, _A02_make-files.zip,
-_A03_inspection-test.pdf (inspection, in-process and final checks, test procedures, analysis),
+Outputs: <PN>_rev<X>.pdf (assembly instruction), _A01_bom.csv, _A02_make_files.zip,
+_A03_test.pdf (inspection, in-process and final checks, test procedures, analysis),
 _A04_traveller.pdf. Software is not part of the document (a draft in ../software/). Sources, all in 02_design/: steps.json, images/,
 bom.csv, inspection_checks.csv, make_files/ (CAD exports), ../test_procedures/,
 ../software/. Each step's quantities must add up to the BOM and every BOM line must be used.
@@ -70,9 +70,9 @@ def e(x):
 
 
 BASE = f"{data['assembly']}_rev{data['rev']}"
-FILES = {"A01": f"{BASE}_A01_bom.csv", "A02": f"{BASE}_A02_make-files.zip",
-         "A03": f"{BASE}_A03_inspection-test-procedures.pdf", "A04": f"{BASE}_A04_build-traveller.pdf",
-         "A05": f"{BASE}_A05_incoming-inspection-record.pdf"}
+FILES = {"A01": f"{BASE}_A01_bom.csv", "A02": f"{BASE}_A02_make_files.zip",
+         "A03": f"{BASE}_A03_test.pdf", "A04": f"{BASE}_A04_traveller.pdf",
+         "A05": f"{BASE}_A05_incoming.pdf"}
 NAMES = {"A01": "Bill of materials (for ordering)", "A02": "Make files (STL for printing)",
          "A03": "Inspection and test procedures", "A04": "Build traveller (one per unit)",
          "A05": "Incoming inspection record (one per delivery)"}
@@ -403,17 +403,17 @@ if __name__ == "__main__":
     except PermissionError:
         print(f"LOCKED (close it and run again): {FILES['A01']}")
     made.append(zip_dir(FILES["A02"], HERE / "make_files", data["document"]["make_readme"]))
-    made.append(write(f"{BASE}_A03_inspection-test-procedures.html", f"{BASE} A03", title_block("A03") + "\n".join(appendix_c()[1:])))
-    made.append(write(f"{BASE}_A04_build-traveller.html", f"{BASE} A04", title_block("A04") + "\n".join(appendix_d()[1:])))
-    write_record_csv(f"{BASE}_A04_build-traveller.csv",
+    made.append(write(f"{BASE}_A03_test.html", f"{BASE} A03", title_block("A03") + "\n".join(appendix_c()[1:])))
+    made.append(write(f"{BASE}_A04_traveller.html", f"{BASE} A04", title_block("A04") + "\n".join(appendix_d()[1:])))
+    write_record_csv(f"{BASE}_A04_traveller.csv",
                      ["serial_number", "build_number", "assembled_by", "date", "build_complete_signature"],
                      ["stage", "check_pass_if"], traveller_rows(), "A04")
-    made.append(f"{BASE}_A04_build-traveller.csv")
+    made.append(f"{BASE}_A04_traveller.csv")
     if "A05" in FILES:
-        made.append(write(f"{BASE}_A05_incoming-inspection-record.html", f"{BASE} A05", title_block("A05") + "\n".join(appendix_e()[1:]), landscape=True))
-        write_record_csv(f"{BASE}_A05_incoming-inspection-record.csv", ["received", "order_supplier", "inspected_by"],
+        made.append(write(f"{BASE}_A05_incoming.html", f"{BASE} A05", title_block("A05") + "\n".join(appendix_e()[1:]), landscape=True))
+        write_record_csv(f"{BASE}_A05_incoming.csv", ["received", "order_supplier", "inspected_by"],
                          ["part", "check_pass_if", "how_many", "qty_received"], incoming_record_rows(), "A05")
-        made.append(f"{BASE}_A05_incoming-inspection-record.csv")
+        made.append(f"{BASE}_A05_incoming.csv")
     else:
         for old in OUT.glob(f"{BASE}_A05_*"):
             try:

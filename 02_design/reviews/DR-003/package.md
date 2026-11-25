@@ -25,9 +25,9 @@ conversation (kc: research/hobby rigour, speedrun).
 |---|---|---|
 | Main document: assembly instruction | `LSN-A-0001_revA.pdf` | steps.json, Fusion renders |
 | A01 BOM for ordering | `LSN-A-0001_revA_A01_bom.csv` | read from Fusion LSN-A-0001 v29 (BOM check: quantities match) |
-| A02 make files | `LSN-A-0001_revA_A02_make-files.zip` | STLs from LSN-0001 Base v7, LSN-0002 Lid v6 |
-| A03 inspection and test procedures | `LSN-A-0001_revA_A03_inspection-test-procedures.pdf` | incoming, in-process and final checks; TP-001..004 with one-line briefs and in full; AN-001 |
-| A04 build traveller, one per unit | `LSN-A-0001_revA_A04_build-traveller.pdf` (+ `.csv` to fill) | step checks, final checks, tests; pass/fail, comments, NC |
+| A02 make files | `LSN-A-0001_revA_A02_make_files.zip` | STLs from LSN-0001 Base v7, LSN-0002 Lid v6 |
+| A03 inspection and test procedures | `LSN-A-0001_revA_A03_test.pdf` | incoming, in-process and final checks; TP-001..004 with one-line briefs and in full; AN-001 |
+| A04 build traveller, one per unit | `LSN-A-0001_revA_A04_traveller.pdf` (+ `.csv` to fill) | step checks, final checks, tests; pass/fail, comments, NC |
 | Suppliers | `purchasing/suppliers.csv` | Mouser, DigiKey, McMaster-Carr, PiShop approved; Amazon.ca conditional (SD card) |
 
 After approval the Fusion milestones go on exactly these versions; if a
