@@ -3,8 +3,8 @@
     python build_document.py            -> PDFs, CSV and zips in ../../03_build_package/ (flat)
     python build_document.py --no-pdf   -> HTML previews only (beside this file)
 
-Outputs: <PN>_rev<X>_assembly_instructions.pdf, _A01_bom.csv, _A02_make_files.zip,
-_A03_test.pdf (inspection, in-process and final checks, test procedures, analysis),
+Outputs: <PN>_assembly_instructions_rev_<X>.pdf, <PN>-A01_bom_rev_<X>.csv, -A02_make_files, -A03_test,
+-A04_traveller (inspection, in-process and final checks, test procedures, analysis),
 _A04_traveller.pdf. Software is not part of the document (a draft in ../software/). Sources, all in 02_design/: steps.json, images/,
 bom.csv, inspection_checks.csv, make_files/ (CAD exports), ../test_procedures/,
 ../software/. Each step's quantities must add up to the BOM and every BOM line must be used.
@@ -69,10 +69,18 @@ def e(x):
     return html.escape(str(x))
 
 
-BASE = f"{data['assembly']}_rev{data['rev']}"
-FILES = {"A01": f"{BASE}_A01_bom.csv", "A02": f"{BASE}_A02_make_files.zip",
-         "A03": f"{BASE}_A03_test.pdf", "A04": f"{BASE}_A04_traveller.pdf",
-         "A05": f"{BASE}_A05_incoming.pdf"}
+PN, REV = data["assembly"], data["rev"]
+BASE = PN  # kept for HTML preview names
+
+
+def fname(which, name, ext):
+    """<PN>[-Ann]_<name>_rev_<X>.<ext>, e.g. LSN-A-0001-A04_traveller_rev_A.pdf"""
+    return f"{PN}{'-' + which if which else ''}_{name}_rev_{REV}.{ext}"
+
+
+FILES = {"A01": fname("A01", "bom", "csv"), "A02": fname("A02", "make_files", "zip"),
+         "A03": fname("A03", "test", "pdf"), "A04": fname("A04", "traveller", "pdf"),
+         "A05": fname("A05", "incoming", "pdf")}
 NAMES = {"A01": "Bill of materials (for ordering)", "A02": "Make files (STL for printing)",
          "A03": "Inspection and test procedures", "A04": "Build traveller (one per unit)",
          "A05": "Incoming inspection record (one per delivery)"}
@@ -398,25 +406,25 @@ if __name__ == "__main__":
     OUT.mkdir(exist_ok=True)
     if not list(incoming_rows()):  # no critical parts: no incoming inspection record
         FILES.pop("A05"); NAMES.pop("A05")
-    made = [write(f"{BASE}_assembly_instructions.html", f"{data['assembly']} rev {data['rev']}", page())]
+    made = [write(fname(None, "assembly_instructions", "html"), f"{data['assembly']} rev {data['rev']}", page())]
     try:
         write_appendix_a(); made.append(FILES["A01"])
     except PermissionError:
         print(f"LOCKED (close it and run again): {FILES['A01']}")
     made.append(zip_dir(FILES["A02"], HERE / "make_files", data["document"]["make_readme"]))
-    made.append(write(f"{BASE}_A03_test.html", f"{BASE} A03", title_block("A03") + "\n".join(appendix_c()[1:])))
-    made.append(write(f"{BASE}_A04_traveller.html", f"{BASE} A04", title_block("A04") + "\n".join(appendix_d()[1:])))
-    write_record_csv(f"{BASE}_A04_traveller.csv",
+    made.append(write(fname("A03", "test", "html"), f"{BASE} A03", title_block("A03") + "\n".join(appendix_c()[1:])))
+    made.append(write(fname("A04", "traveller", "html"), f"{BASE} A04", title_block("A04") + "\n".join(appendix_d()[1:])))
+    write_record_csv(fname("A04", "traveller", "csv"),
                      ["serial_number", "build_number", "assembled_by", "date", "build_complete_signature"],
                      ["stage", "check_pass_if"], traveller_rows(), "A04")
-    made.append(f"{BASE}_A04_traveller.csv")
+    made.append(fname("A04", "traveller", "csv"))
     if "A05" in FILES:
-        made.append(write(f"{BASE}_A05_incoming.html", f"{BASE} A05", title_block("A05") + "\n".join(appendix_e()[1:]), landscape=True))
-        write_record_csv(f"{BASE}_A05_incoming.csv", ["received", "order_supplier", "inspected_by"],
+        made.append(write(fname("A05", "incoming", "html"), f"{BASE} A05", title_block("A05") + "\n".join(appendix_e()[1:]), landscape=True))
+        write_record_csv(fname("A05", "incoming", "csv"), ["received", "order_supplier", "inspected_by"],
                          ["part", "check_pass_if", "how_many", "qty_received"], incoming_record_rows(), "A05")
-        made.append(f"{BASE}_A05_incoming.csv")
+        made.append(fname("A05", "incoming", "csv"))
     else:
-        for old in OUT.glob(f"{BASE}_A05_*"):
+        for old in OUT.glob(f"{PN}-A05_*"):
             try:
                 old.unlink()
             except PermissionError:
