@@ -22,7 +22,7 @@ conversation (kc: research/hobby rigour, speedrun).
 
 ## Change groups
 1. **Parts and BOM:** Pi Zero 2 W, BME280, SGP40 (ECR-002), Qwiic SHIM and cables, PiShop
-   supply, SanDisk card, 12 M2 heat-set inserts; M2 x 6 nylon pan-head screws (HWB-0036).
+   supply, SanDisk card, 12 M2 heat-set inserts; M2 x 5 nylon pan-head screws (HWB-0036).
 2. **Housing:** 95 x 68 x 26 mm base and snap-fit lid; Pi and sensor bays split by a partition with
    a small cable notch at the end wall; vents over both bays; boards on bosses with M2 inserts;
    assembly fully held by joints.
@@ -47,7 +47,7 @@ conversation (kc: research/hobby rigour, speedrun).
   jitter. Suggest `interval_s = 5`.
 - **G2-F2** Screws not in the BOM.
 - **G2-F3** Screw length vs insert hole depth not checked. (Agent: holes are 5 mm deep,
-  `insert_depth`; M2 x 6 engages 4.4 mm.)
+  `insert_depth`; M2 x 5 engages 3.4 mm, the full 2.5 mm insert plus 0.9 mm below it.)
 - **G2-F4** BME280 holes unconfirmed. (Agent: from SparkFun's Eagle board file, H1/H2/H4.)
 - **G2-F5** A-004 (network onboarding) not closed. (Agent: kc confirmed on 2026-11-24: university
   Wi-Fi, then Tailscale to the server.)
