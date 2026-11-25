@@ -70,7 +70,7 @@ the BOM check pass. Findings:
 
 ## Open items
 - Screw: HWB-0036 (McMaster 92492A702, black nylon), added 2026-11-24.
-- Datasheet values marked "to confirm" in AN-001 and the radio IDs in the inspection checks.
+- Closed 2026-11-25: AN-001 ratings checked against the manufacturers' documents (Pi -20 to 70 °C; SGP40 -10 to 50 °C, compensation limit just exceeded at 35 °C/80 %RH, accepted; supply temperature not published, accepted). Radio IDs corrected to FCC 2ABCB-RPIZ2, IC 20953-RPIZ2.
 - Fusion (2026-11-25): LSN-0001 v6, LSN-0002 v6 and LSN-A-0001 v28 saved; tree grouped into
   Custom parts and OTS parts (Electronics, Fasteners, BOM only). Pi (ECM-0004) and screw
   (HWB-0036) Part Number properties still to be set by hand; the BOM check reads their PNs from

@@ -1,6 +1,6 @@
 pn,check_id,characteristic,method,criterion,sample,notes
 ECM-0004,1,Part and marking,Visual,Raspberry Pi Zero 2 W with pre-soldered 2x20 header (SC0721),all,
-ECM-0004,2,Radio certification,Visual,FCC ID 2ABCB-RPIZ2W and IC 20953-RPIZ2W marked on the board or its packaging,all,REQ-014 (IDs from memory: confirm on first unit)
+ECM-0004,2,Radio certification,Visual,FCC ID 2ABCB-RPIZ2 and IC 20953-RPIZ2 marked on the board or its packaging,all,"REQ-014; IDs from the FCC grant and ISED certificate (Raspberry Pi compliance documents, 2026-11-25)"
 ECM-0001,1,Part,Visual,SparkFun BME280 Qwiic (SEN-15440); no visible damage,all,
 ECM-0002,1,Part,Visual,Adafruit SGP40 (4829); sensor opening clear; no visible damage,all,
 ECM-0003,1,Part,Visual,SparkFun Qwiic SHIM (DEV-15794),all,
