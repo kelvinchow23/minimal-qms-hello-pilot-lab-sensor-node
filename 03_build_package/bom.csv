@@ -1,6 +1,6 @@
 parent_pn,parent_rev,pn,qty,unit,refdes,source,notes
-LSN-A-0001,A,LSN-0001,1,ea,A1,Fusion: LSN-A-0001 v28,Housing base (printed in PETG)
-LSN-A-0001,A,LSN-0002,1,ea,A2,Fusion: LSN-A-0001 v28,Housing lid (printed in PETG; snap fit)
+LSN-A-0001,A,LSN-0001,1,ea,A1,Fusion: LSN-A-0001 v28,"Housing base (PETG, any colour)"
+LSN-A-0001,A,LSN-0002,1,ea,A2,Fusion: LSN-A-0001 v28,"Housing lid (PETG, any colour; snap fit)"
 LSN-A-0001,A,ECM-0004,1,ea,B1,Fusion: LSN-A-0001 v28,Controller: Raspberry Pi Zero 2 W with header
 LSN-A-0001,A,ECX-0001,1,ea,B2,Fusion: LSN-A-0001 v28,microSD card with the software image (ghost design)
 LSN-A-0001,A,ECM-0003,1,ea,B3,Fusion: LSN-A-0001 v28,Qwiic SHIM on the controller's GPIO header

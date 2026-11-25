@@ -7,8 +7,9 @@ ECM-0003,1,Part,Visual,SparkFun Qwiic SHIM (DEV-15794),all,
 ECP-0001,1,Safety listing,Visual,UL or CSA listing mark on the supply; output 5.1 V 2.5 A micro-USB,all,REQ-005
 ECX-0001,1,Part,Visual,SanDisk Extreme 64 GB microSDXC (or an approved alternate),all,
 HWN-0006,1,Part,Visual,M2 brass heat-set inserts,first 5,
-LSN-0001,1,Overall size,Calipers,95.0 x 68.0 x 24.0 mm +/- 0.5 mm; printed in PETG,all,REQ-007; AN-001
+LSN-0001,1,Overall size,Calipers,95.0 x 68.0 x 24.0 mm +/- 0.5 mm; printed in PETG (any colour),all,REQ-007; AN-001
 LSN-0001,2,Insert holes,Visual,12 boss holes clean and open; no stringing in vents or openings,all,
 LSN-0002,1,Fit,Trial fit,Lid seats flat on its base and all 4 snaps click,all,
+LSN-0002,2,Material,Print job record,Printed in PETG (any colour),all,AN-001
 LSN-A-0001,1,Size,Calipers,Assembled unit within 100 x 100 x 100 mm,all,REQ-007
 LSN-A-0001,2,No soldering,Visual,No solder joints added during assembly,all,REQ-008

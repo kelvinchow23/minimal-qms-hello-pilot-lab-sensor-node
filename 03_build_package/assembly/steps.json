@@ -22,8 +22,8 @@
   ]
  },
  "labels": {
-  "A1": "Base",
-  "A2": "Lid",
+  "A1": "Base, PETG, any colour",
+  "A2": "Lid, PETG, any colour",
   "B1": "Raspberry Pi Zero 2 W",
   "B2": "microSD card, flashed",
   "B3": "Qwiic SHIM",
