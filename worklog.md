@@ -52,6 +52,14 @@ Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not ap
   hidden. Agent error found: base and lid edits since their v4 had gone into duplicate open
   copies and never saved. Replayed onto fresh copies: Fusion now LSN-0002 v5, LSN-0003 v5,
   LSN-A-0001 v18; all parts in place. Unexplained 0.2 mm3 base/Pi PCB overlap remains.
+- **Then:** G2 package drafted in one pass (kc: research/hobby rigour, speedrun): software
+  v0.1.0, TP-001..004, AN-001 (print in PETG), assembly instruction, inspection checks; screws
+  HWB-0036 (McMaster 92492A702, black nylon M2 x 6, kc's choice). DR-003 review doc pre-filled.
+- **Then:** kc renamed the Fusion parts to LSN-0001 Base and LSN-0002 Lid (separate number
+  sequences for parts and assemblies, finding Q20); repo records renamed to match (nothing was
+  released). Fusion rebuilt and confirmed saved: LSN-0001 v6 and LSN-0002 v6 (M2 inserts,
+  parameters trimmed to 15 and 8, fillets), assembly tree split into Custom parts and OTS parts.
+  Agent lesson: part copies opened through the assembly cannot be saved; open parts directly.
 - **Next:** software, test procedures TP-001..004, assembly instructions, inspection checks,
   then the G2 review (DR-003).
 - **Time:** agent about 2.5 h on design and part selection; human hands-on: not asked yet.

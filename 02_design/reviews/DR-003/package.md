@@ -15,7 +15,7 @@ conversation (kc: research/hobby rigour, speedrun).
 | Item | Rev | Source |
 |---|---|---|
 | LSN-A-0001 Lab sensor node | A | Fusion: Tech/General/minimal-qms/LSN- Lab Sensor Node/LSN-A-0001 |
-| LSN-0002 Base, LSN-0003 Lid | A | Fusion, same folder (PETG) |
+| LSN-0001 Base, LSN-0002 Lid | A | Fusion, same folder (PETG) |
 | OTS parts ECM-0001..0004, ECW-0001, ECP-0001, ECX-0001, HWN-0006 | - | minimal-qms-ots-library PR #10 |
 | Software lsn-node | v0.1.0 | `03_build_package/software/lsn-node/` |
 | TP-001..004, AN-001, assembly instruction, inspection checks | A | `03_build_package/` |
@@ -56,7 +56,7 @@ conversation (kc: research/hobby rigour, speedrun).
 ## Open items
 - Screw: HWB-0036 (McMaster 92492A702, black nylon), added 2026-11-24.
 - Datasheet values marked "to confirm" in AN-001 and the radio IDs in the inspection checks.
-- Fusion: confirm LSN-0002 v6 (M2 inserts, parameters trimmed) and LSN-0003 v6 saved; display
+- Fusion: confirm LSN-0001 v6 (M2 inserts, parameters trimmed) and LSN-0002 v6 saved; display
   names of OTS components; OTS/custom grouping.
 - After approval: release parts (lifecycle), Fusion milestones, STEP/STL exports (fusion-cad
   Releasing).
