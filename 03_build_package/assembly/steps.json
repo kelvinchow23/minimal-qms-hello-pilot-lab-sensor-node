@@ -446,10 +446,8 @@
   }
  ],
  "final_checks": [
-  "8 screws fitted and snug",
+  "8 screws fitted and snug (4 Pi, 2 per sensor board)",
   "Lid snapped on all four sides",
-  "Unit within 100 × 100 × 100 mm (REQ-007)",
-  "No soldered joints added (REQ-008)",
   "Serial number label applied"
  ],
  "credits": [

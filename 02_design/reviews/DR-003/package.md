@@ -38,7 +38,7 @@ conversation (kc: research/hobby rigour, speedrun).
 ## Gate checklist (SOP-004-A06, G2)
 | Question | Answer |
 |---|---|
-| Every requirement has a design output and a test or check? | Yes: REQ-001..004, 009, 011..013 by TP-001..004; REQ-005, 007, 008, 014 by inspection checks; REQ-006 by AN-001; REQ-010, 015 by this review (software README) |
+| Every requirement has a design output and a test or check? | Yes: REQ-001..004, 009, 011..013 by TP-001..004; REQ-005, 014 by inspection checks; REQ-007 by one caliper check on the first unit; REQ-006 by AN-001; REQ-008 (no soldering step in the instruction), REQ-010 and REQ-015 (software README) by this review |
 | Control for every risk in the design? | Yes: RISK-001 partition and Pi-bay vents; -003 overlay file system; -006 config on the unit; -010 time_synced flag; -011 onboarding confirmed by kc; -013 sensor-bay vents; -014 README statement |
 | Parts released, with a supplier, in stock, assemblable? | Mouser parts in stock; Pi, supply and card from kc's inventory; screws from McMaster (HWB-0036) |
 | New or unproven? | Software not yet run on hardware; snap fit needs a test print |
