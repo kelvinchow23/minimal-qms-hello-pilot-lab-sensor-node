@@ -70,21 +70,22 @@ def e(x):
 
 BASE = f"{data['assembly']}_rev{data['rev']}"
 FILES = {"A01": f"{BASE}_A01_bom.csv", "A02": f"{BASE}_A02_make-files.zip",
-         "A03": f"{BASE}_A03_inspection-test.pdf", "A04": f"{BASE}_A04_traveller.pdf"}
+         "A03": f"{BASE}_A03_inspection-test-procedures.pdf", "A04": f"{BASE}_A04_build-traveller.pdf",
+         "A05": f"{BASE}_A05_incoming-inspection-record.pdf"}
 NAMES = {"A01": "Bill of materials (for ordering)", "A02": "Make files (STL for printing)",
-         "A03": "Inspection and test", "A04": "Build traveller (one per unit)"}
+         "A03": "Inspection and test procedures", "A04": "Build traveller (one per unit)",
+         "A05": "Incoming inspection record (one per delivery)"}
 
 
 def title_block(which=None):
     d = data["document"]
-    doc = f"{data['assembly']} rev {data['rev']}" + (f", appendix {which}" if which else "")
-    title = f"{data['title']}: " + (NAMES[which].lower() if which else "assembly instruction")
-    rows = [("Document", doc), ("Title", title), ("Status", d["status"]), ("Approval", d["approval"]),
-            ("Design source", data["source"])]
+    head = f"{which} {NAMES[which]}" if which else f"{data['title']}: assembly instruction"
+    rows = [("Document", f"{data['assembly']} rev {data['rev']}" + (f", appendix {which}" if which else "")),
+            ("Status", d["status"]), ("Approval", d["approval"]), ("Design source", data["source_top"])]
     if not which:
-        rows.append(("Appendices", " · ".join(f"{k} {NAMES[k]}: {FILES[k]}" for k in FILES)))
-    return (f"<h1>{e(data['assembly'])} {e(data['title'])}" + (f" · {which}" if which else "") + "</h1><table class='tb'>"
-            + "".join(f"<tr><th>{e(k)}</th><td>{e(v)}</td></tr>" for k, v in rows) + "</table>")
+        rows.append(("Appendices", " · ".join(f"{k} {NAMES[k]}" for k in FILES)))
+    return (f"<h1>{e(head)}</h1><p class='sub'>{e(data['assembly'])} {e(data['title'])} · rev {e(data['rev'])}</p>"
+            "<table class='tb'>" + "".join(f"<tr><th>{e(k)}</th><td>{e(v)}</td></tr>" for k, v in rows) + "</table>")
 
 
 def write_appendix_a():
@@ -105,31 +106,53 @@ def price_cad(r):
     return float(r["unit_price"]) * RATES[r["currency"]]
 
 
-def appendix_c():
-    names = {r["pn"]: (r["ref"], data["labels"].get(r["ref"], r["description"])) for r in bom}
-    out = ["<section class='app'><h2>A03 · Inspection and test</h2>",
-           "<h3>1 Incoming inspection</h3><p>Check each part when it arrives, before it goes into a build. "
-           "Record the result on the build traveller (A04).</p>",
-           "<table class='insp'><tr><th>Part</th><th>Check</th><th>How</th><th>Pass if</th><th>How many</th></tr>"]
+def part_names():
+    return {r["pn"]: (r["ref"], data["labels"].get(r["ref"], r["description"])) for r in bom}
+
+
+def incoming_rows():
+    names = part_names()
     for r in csv.DictReader(open(HERE / "inspection_checks.csv", encoding="utf-8")):
         if r["pn"] == data["assembly"]:
             continue
         ref, name = names.get(r["pn"], ("", r["pn"]))
-        out.append(f"<tr><td>{badge(ref) if ref else ''} {e(name)}<div class='small'>{e(r['pn'])}</div></td><td>{e(r['characteristic'])}</td>"
-                   f"<td>{e(r['method'])}</td><td>{e(r['criterion'])}</td><td>{e(r['sample'])}</td></tr>")
-    out.append("</table><h3>2 In-process checks</h3><table class='insp'><tr><th>Step</th><th>Check before moving on</th></tr>")
-    for s in data["steps"]:
-        out.append(f"<tr><td>{s['n']} {e(s['title'])}</td><td>{e(s.get('check', ''))}</td></tr>")
-    out.append("</table><h3>3 Final checks and tests</h3><ul>"
-               + "".join(f"<li>{e(c)}</li>" for c in data["final_checks"]) + "</ul><table class='insp'><tr><th>Test</th><th>What it shows</th></tr>")
-    for tp in sorted((DESIGN / "test_procedures").glob("*.md")):
+        yield ref, name, r
+
+
+def tests():
+    out = []
+    for tp in sorted((DESIGN / "test_procedures").glob("TP-*.md")):
         meta = {}
         for line in tp.read_text(encoding="utf-8").split("---")[1].splitlines():
             if ":" in line:
                 k, v = line.split(":", 1)
                 meta[k.strip()] = v.strip()
-        out.append(f"<tr><td>{e(meta.get('id', tp.stem))}</td><td>{e(meta.get('title', ''))}</td></tr>")
-    out.append("</table><p>The full procedures and the analysis follow.</p>")
+        out.append((tp.stem, meta.get("title", ""), data["document"]["tp_briefs"].get(tp.stem, "")))
+    return out
+
+
+FAIL_NOTE = ("If anything does not pass: mark it F, write what you saw in Comments, stop work on that "
+             "unit or part, and tell the quality lead. They raise an NC (NC-nnn, SOP-008) and write its "
+             "number in the NC column.")
+
+
+def appendix_c():
+    out = ["<section class='app'>",
+           "<h3>1 Incoming inspection: what to check</h3><p>Check each part when it arrives, and record it on "
+           "the incoming inspection record (A05), one record per delivery.</p>",
+           "<table class='insp'><tr><th>Part</th><th>Check</th><th>How</th><th>Pass if</th><th>How many</th></tr>"]
+    for ref, name, r in incoming_rows():
+        out.append(f"<tr><td>{badge(ref) if ref else ''} {e(name)}<div class='small'>{e(r['pn'])}</div></td>"
+                   f"<td>{e(r['characteristic'])}</td><td>{e(r['method'])}</td><td>{e(r['criterion'])}</td>"
+                   f"<td>{e(r['sample'])}</td></tr>")
+    out.append("</table><h3>2 In-process checks</h3><table class='insp'><tr><th>Step</th><th>Check before moving on</th></tr>")
+    for s in data["steps"]:
+        out.append(f"<tr><td>{s['n']} {e(s['title'])}</td><td>{e(s.get('check', ''))}</td></tr>")
+    out.append("</table><h3>3 Final checks and tests</h3><ul>"
+               + "".join(f"<li>{e(c)}</li>" for c in data["final_checks"]) + "</ul>")
+    out.append("<table class='insp'><tr><th>Test</th><th>Title</th><th>In short</th></tr>"
+               + "".join(f"<tr><td>{e(i)}</td><td>{e(ti)}</td><td>{e(b)}</td></tr>" for i, ti, b in tests())
+               + "</table><p>The full procedures and the analysis follow.</p>")
     for tp in sorted((DESIGN / "test_procedures").glob("*.md")):
         body = tp.read_text(encoding="utf-8").split("---", 2)[2]
         out.append("<div class='tp'>" + markdown.markdown(body, extensions=["tables"]) + "</div>")
@@ -137,28 +160,65 @@ def appendix_c():
     return out
 
 
+BLANK = "<span class='blank'></span>"
+REC_COLS = ["P / F", "Initials", "Date", "Comments", "NC"]
+
+
+def record_table(head, rows):
+    cols = head + REC_COLS
+    cells = "<td>☐ P ☐ F</td><td></td><td></td><td class='cm'></td><td></td>"
+    return ("<table class='trav'><tr>" + "".join(f"<th>{e(c)}</th>" for c in cols) + "</tr>"
+            + "".join("<tr>" + "".join(f"<td>{e(x)}</td>" for x in r) + cells + "</tr>" for r in rows)
+            + "</table>")
+
+
+def traveller_rows():
+    rows = [("Step " + str(s["n"]), s.get("check", s["title"])) for s in data["steps"]]
+    rows += [("Final", c) for c in data["final_checks"]]
+    rows += [(i, f"{ti}. {b} Full procedure in A03.") for i, ti, b in tests()]
+    return rows
+
+
 def appendix_d():
-    line = "<span class='blank'></span>"
-    out = ["<section class='app'><h2>A04 · Build traveller (one per unit)</h2>",
-           "<p>Print one per unit. It goes with the unit through the build; a copy or photo is kept in <code>builds/B00n/</code>.</p>",
-           f"<table class='tb'><tr><th>Serial number</th><td>{data['assembly']}-YYMMDD + letter: {line}</td></tr>"
-           f"<tr><th>Build</th><td>B00n {line}</td></tr><tr><th>Assembled by</th><td>{line}</td></tr><tr><th>Date</th><td>{line}</td></tr></table>",
-           "<table class='trav'><tr><th>Stage</th><th>Item</th><th>Pass</th><th>Initials</th><th>Date</th></tr>"]
-    names = {r["pn"]: (r["ref"], data["labels"].get(r["ref"], r["description"])) for r in bom}
-    for r in csv.DictReader(open(HERE / "inspection_checks.csv", encoding="utf-8")):
-        if r["pn"] == data["assembly"] or r["sample"] not in ("all",):
-            continue
-        ref, name = names.get(r["pn"], ("", r["pn"]))
-        out.append(f"<tr><td>Incoming</td><td>{ref} {e(name)}: {e(r['characteristic'])}</td><td>☐</td><td></td><td></td></tr>")
-    for s in data["steps"]:
-        out.append(f"<tr><td>Step {s['n']}</td><td>{e(s.get('check', s['title']))}</td><td>☐</td><td></td><td></td></tr>")
-    for c in data["final_checks"]:
-        out.append(f"<tr><td>Final</td><td>{e(c)}</td><td>☐</td><td></td><td></td></tr>")
-    for tp in sorted((DESIGN / "test_procedures").glob("TP-*.md")):
-        out.append(f"<tr><td>Test</td><td>{e(tp.stem)} (results in test_results.csv)</td><td>☐</td><td></td><td></td></tr>")
-    out.append("</table><table class='tb'><tr><th>Build complete, all items pass</th><td>Signature " + line + " Date " + line + "</td></tr>"
-               "<tr><th>Released (SOP-007)</th><td>Recorded in release.yaml after the tests</td></tr></table></section>")
-    return out
+    return ["<section class='app'>",
+            "<p>One per unit. It goes with the unit through the build. The filled copy is kept in the build "
+            "record folder: <code>builds/B001/</code> for the first build, <code>B002</code> for the second, and so on.</p>",
+            f"<table class='tb'><tr><th>Serial number</th><td>{e(data['assembly'])}-{BLANK}</td></tr>"
+            f"<tr><th>Build number</th><td>B{BLANK} (B001 = first build)</td></tr>"
+            f"<tr><th>Assembled by</th><td>{BLANK}</td></tr><tr><th>Date</th><td>{BLANK}</td></tr></table>",
+            f"<p class='prep'>{e(FAIL_NOTE)}</p>",
+            record_table(["Stage", "Check: pass if"], traveller_rows()),
+            f"<table class='tb'><tr><th>Build complete, all pass</th><td>Signature {BLANK} Date {BLANK}</td></tr>"
+            "<tr><th>Released</th><td>Decided separately after the tests (SOP-007)</td></tr></table>",
+            "</section>"]
+
+
+def incoming_record_rows():
+    return [(f"{ref} {name} ({r['pn']})", f"{r['characteristic']}: {r['criterion']}", r["sample"], "")
+            for ref, name, r in incoming_rows()]
+
+
+def appendix_e():
+    return ["<section class='app'>",
+            "<p>One record per delivery: check every part in the box in one go. Strike out rows for parts that "
+            "are not in this delivery.</p>",
+            f"<table class='tb'><tr><th>Received</th><td>{BLANK}</td></tr><tr><th>Order / supplier</th><td>{BLANK}</td></tr>"
+            f"<tr><th>Inspected by</th><td>{BLANK}</td></tr></table>",
+            f"<p class='prep'>{e(FAIL_NOTE)}</p>",
+            record_table(["Part", "Check: pass if", "How many", "Qty received"], incoming_record_rows()),
+            "</section>"]
+
+
+def write_record_csv(name, top, head, rows):
+    """The same form as CSV, for an agent or a spreadsheet to fill; a filled copy goes in builds/B00n/."""
+    with open(OUT / name, "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f, lineterminator="\n")
+        for k in top:
+            w.writerow([k, ""])
+        w.writerow([])
+        w.writerow(head + ["pass_fail", "initials", "date", "comments", "nc"])
+        for r in rows:
+            w.writerow(list(r) + ["", "", "", "", ""])
 
 
 def page():
@@ -240,7 +300,7 @@ def page():
             out.append(f"<p class='chk'>☑ <b>Check:</b> {html.escape(s['check'])}</p>")
         out.append("</section>")
     out.append("<h2>Final checks</h2><ul class='checks'>" + "".join(f"<li>☐ {html.escape(c)}</li>" for c in data["final_checks"]) + "</ul>")
-    out.append("<p class='prep'>Record the serial number and sign off each unit on its build traveller (A04).</p>")
+    out.append("<p class='prep'>Record the serial number and sign off each unit on its build traveller (A04); incoming parts on the incoming inspection record (A05).</p>")
     if data.get("credits"):
         out.append("<h2>Picture credits</h2><ul class='credits'>" + "".join(f"<li>{html.escape(c)}</li>" for c in data["credits"]) + "</ul>")
     return "\n".join(out)
@@ -267,7 +327,7 @@ h1{font-size:32px;margin:0}.sub{color:#555;margin:4px 0 16px}h2{font-size:24px;m
 .tb{border-collapse:collapse;margin:8px 0 16px;font-size:14px}.tb th{text-align:left;background:#f2f2f2;padding:5px 10px;border:1px solid #ccc;white-space:nowrap}.tb td{padding:5px 10px;border:1px solid #ccc;min-width:260px}
 .app{page-break-before:always;margin-top:32px}.bom,.insp,.trav{border-collapse:collapse;width:100%;font-size:13px;margin:6px 0}.bom th,.bom td,.insp th,.insp td,.trav th,.trav td{border:1px solid #ccc;padding:4px 6px;text-align:left;vertical-align:top}
 .bom th,.insp th,.trav th{background:#f2f2f2}.n{text-align:right}.tot td{font-weight:700}.small{font-size:12px;color:#555}.chk{margin:6px 0;font-size:15px}
-.trav td:nth-child(3),.trav td:nth-child(4),.trav td:nth-child(5){width:70px}.blank{display:inline-block;min-width:180px;border-bottom:1px solid #333;height:1em}
+.trav td:nth-child(3),.trav td:nth-child(4),.trav td:nth-child(5){width:70px}.cm{min-width:140px}.blank{display:inline-block;min-width:180px;border-bottom:1px solid #333;height:1em}
 @media print{main{max-width:none}}
 """
 
@@ -276,10 +336,10 @@ if __name__ == "__main__":
     if problems:
         print("Steps do not match bom.csv:\n  " + "\n  ".join(problems))
         sys.exit(1)
-    def write(name, title, body):
+    def write(name, title, body, landscape=False):
         out = HERE / name
         out.write_text(f"<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>"
-                       f"<title>{title}</title><style>{CSS}</style></head><body><main>{body}</main></body></html>", encoding="utf-8")
+                       f"<title>{title}</title><style>{CSS}{'@page{size:landscape}' if landscape else ''}</style></head><body><main>{body}</main></body></html>", encoding="utf-8")
         edge = Path(r"C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe")
         pdf = OUT / out.with_suffix(".pdf").name
         if edge.exists() and "--no-pdf" not in sys.argv:
@@ -297,8 +357,18 @@ if __name__ == "__main__":
 
     OUT.mkdir(exist_ok=True)
     made = [write(f"{BASE}.html", f"{data['assembly']} rev {data['rev']}", page())]
-    write_appendix_a(); made.append(FILES["A01"])
+    try:
+        write_appendix_a(); made.append(FILES["A01"])
+    except PermissionError:
+        print(f"LOCKED (close it and run again): {FILES['A01']}")
     made.append(zip_dir(FILES["A02"], HERE / "make_files", data["document"]["make_readme"]))
-    made.append(write(f"{BASE}_A03_inspection-test.html", f"{BASE} A03", title_block("A03") + "\n".join(appendix_c()[1:])))
-    made.append(write(f"{BASE}_A04_traveller.html", f"{BASE} A04", title_block("A04") + "\n".join(appendix_d()[1:])))
+    made.append(write(f"{BASE}_A03_inspection-test-procedures.html", f"{BASE} A03", title_block("A03") + "\n".join(appendix_c()[1:])))
+    made.append(write(f"{BASE}_A04_build-traveller.html", f"{BASE} A04", title_block("A04") + "\n".join(appendix_d()[1:])))
+    made.append(write(f"{BASE}_A05_incoming-inspection-record.html", f"{BASE} A05", title_block("A05") + "\n".join(appendix_e()[1:]), landscape=True))
+    write_record_csv(f"{BASE}_A04_build-traveller.csv",
+                     ["serial_number", "build_number", "assembled_by", "date", "build_complete_signature"],
+                     ["stage", "check_pass_if"], traveller_rows())
+    write_record_csv(f"{BASE}_A05_incoming-inspection-record.csv", ["received", "order_supplier", "inspected_by"],
+                     ["part", "check_pass_if", "how_many", "qty_received"], incoming_record_rows())
+    made += [f"{BASE}_A04_build-traveller.csv", f"{BASE}_A05_incoming-inspection-record.csv"]
     print("wrote " + ", ".join(made))

@@ -18,7 +18,7 @@ conversation (kc: research/hobby rigour, speedrun).
 | LSN-0001 Base, LSN-0002 Lid | A | Fusion, same folder (PETG) |
 | OTS parts ECM-0001..0004, ECW-0001, ECP-0001, ECX-0001, HWN-0006 | - | minimal-qms-ots-library PR #10 |
 | Software lsn-node | v0.1.1 draft | Not frozen at G2 (kc, 2026-11-25: "i dont want software to be frozen here"). Working draft in `02_design/software/lsn-node/`; checked by TP-001..004 at G3 |
-| Document LSN-A-0001 rev A: assembly instruction with appendices A01 BOM (ordering info), A02 make files, A03 inspection and test (TP-001..004, AN-001), A04 build traveller | A | `03_build_package/` |
+| Document LSN-A-0001 rev A: assembly instruction with appendices A01 BOM (ordering info), A02 make files, A03 inspection and test procedures, A04 build traveller, A05 incoming inspection record | A | `03_build_package/` |
 
 ## Outputs to open before approving (all in `03_build_package/`, flat)
 | Output | File | From |
@@ -26,8 +26,9 @@ conversation (kc: research/hobby rigour, speedrun).
 | Main document: assembly instruction | `LSN-A-0001_revA.pdf` | steps.json, Fusion renders |
 | A01 BOM for ordering | `LSN-A-0001_revA_A01_bom.csv` | read from Fusion LSN-A-0001 v29 (BOM check: quantities match) |
 | A02 make files | `LSN-A-0001_revA_A02_make-files.zip` | STLs from LSN-0001 Base v7, LSN-0002 Lid v6 |
-| A03 inspection and test | `LSN-A-0001_revA_A03_inspection-test.pdf` | inspection, in-process and final checks, TP-001..004, AN-001 in full |
-| A04 build traveller | `LSN-A-0001_revA_A04_traveller.pdf` | |
+| A03 inspection and test procedures | `LSN-A-0001_revA_A03_inspection-test-procedures.pdf` | incoming, in-process and final checks; TP-001..004 with one-line briefs and in full; AN-001 |
+| A04 build traveller, one per unit | `LSN-A-0001_revA_A04_build-traveller.pdf` (+ `.csv` to fill) | step checks, final checks, tests; pass/fail, comments, NC |
+| A05 incoming inspection record, one per delivery | `LSN-A-0001_revA_A05_incoming-inspection-record.pdf` (+ `.csv` to fill) | all Class A parts of a delivery in one go |
 
 After approval the Fusion milestones go on exactly these versions; if a
 design has changed since, it is re-exported and brought back first.
