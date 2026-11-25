@@ -11,8 +11,11 @@ This product is developed under [minimalQMS](https://github.com/kelvinchow23/min
 revision `f4d60f4` (recorded in `00_planning/plan.yaml` and `.copier-answers.yml`).
 - The procedures (SOPs) are in the minimal-qms repo, `sops/`. Shared names, IDs and the
   layout of this repo are defined in its `docs/INTERFACES.md`.
-- Every form and template is copied into `forms/` here. Create records from those copies;
-  do not edit `forms/` (it is replaced by `copier update`).
+- Every form and template is copied into `qms/forms/` here. Create records from those copies;
+  do not edit `qms/forms/` (it is replaced by `copier update`). Findings about minimalQMS
+  itself go in `qms/qms-findings.csv`.
+- Folders such as `purchasing/`, `builds/`, `deviations/` and `nonconformance/` do not exist
+  until their first record: create them then, with the names in minimalQMS `docs/INTERFACES.md`.
 - Off-the-shelf parts, project codes and purchasing tools are in
   [minimal-qms-ots-library](https://github.com/kelvinchow23/minimal-qms-ots-library).
 
@@ -24,13 +27,13 @@ human for approval.
 
 1. **Know the current gate.** Read `00_planning/plan.yaml`: the first gate without an
    `actual` date is the current one. Work on that gate's stage only (rule 9).
-2. **Ask the gate's questions as the work makes them relevant** (`forms/SOP-004-A06-gate-checklists.md`),
+2. **Ask the gate's questions as the work makes them relevant** (`qms/forms/SOP-004-A06-gate-checklists.md`),
    in plain language, without naming the SOP. Record the answers in the stage's records.
 3. **Check in after each work session** in `worklog.md`: what changed and who changed it,
    what is next, what is blocked, and the session's time (see Time tracking).
-4. **At a gate,** prepare the review package (`forms/SOP-003-A01-review-package.md`), walk the
+4. **At a gate,** prepare the review package (`qms/forms/SOP-003-A01-review-package.md`), walk the
    human through it, and ask one yes-or-no question that names exactly what is approved.
-   Record the answer in the minutes (`forms/SOP-003-A02-review-minutes.md`) and the actual
+   Record the answer in the minutes (`qms/forms/SOP-003-A02-review-minutes.md`) and the actual
    date in `plan.yaml`.
 5. **At G0 approval,** register `LSN` in the OTS library's `projects.csv`
    (a PR in that repo).
@@ -42,7 +45,7 @@ human for approval.
    prepare a PR or record for approval, and record a human's approval by quoting their
    exact words with the evidence location. Never write an approval that a human didn't give.
 3. **Never backdate a record.** Use the real date. When capturing something after the
-   fact, say so and add a deviation (`forms/SOP-001-A03-deviation.md`).
+   fact, say so and add a deviation (`qms/forms/SOP-001-A03-deviation.md`).
 4. **Never bump a part or document revision without updating everything that cites it**
    (`parts.csv`, BOMs, trace records, document headers).
 5. **Every commit names what it changes:** `[PN] revX: summary (ECR #n)` for parts, or

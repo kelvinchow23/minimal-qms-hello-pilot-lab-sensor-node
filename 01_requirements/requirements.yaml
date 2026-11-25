@@ -1,5 +1,5 @@
 # Requirements (SOP-004 section 5). Written in the requirements stage, reviewed at G1.
-# See forms/SOP-004-A03-requirements.yaml for the format.
+# See qms/forms/SOP-004-A03-requirements.yaml for the format.
 # Drafted 2026-11-24 by design-agent from kc's answers (2026-11-23 G1 notes in worklog.md and
 # 2026-11-24 answers). "agent-proposed" in source = added by the agent; kc accepts or rejects at G1.
 # verified_by: TP-nnn test procedures, AN-nnn analyses and IC-nnn inspection checks are written in the
