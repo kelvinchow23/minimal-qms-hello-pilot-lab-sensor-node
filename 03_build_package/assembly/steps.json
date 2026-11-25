@@ -2,7 +2,7 @@
  "assembly": "LSN-A-0001",
  "rev": "A",
  "title": "Lab sensor node",
- "source": "Fusion: LSN-A-0001 v29 (renders from v28; Pi bay since moved 0.5 mm)",
+ "source": "Fusion: LSN-A-0001 v29, LSN-0001 Base v7, LSN-0002 Lid v6 (STLs exported from these; step renders from v28)",
  "classes": {
   "A": [
    "Custom parts (printed, machined, PCB, sub-assemblies)",
@@ -470,10 +470,9 @@
   "status": "Draft, for G2 approval (DR-003)",
   "approval": "Pending: recorded in 02_design/reviews/DR-003/minutes.md",
   "make_files": [
-   "LSN-0001_revA_base.step and .stl",
-   "LSN-0002_revA_lid.step and .stl",
-   "LSN-A-0001_revA_lab-sensor-node.step",
-   "LSN-A-0001_revA_make-files.zip (all of the above)"
+   "LSN-0001_revA_base.stl (Fusion LSN-0001 v7)",
+   "LSN-0002_revA_lid.stl (Fusion LSN-0002 v6)",
+   "in LSN-A-0001_revA_appB_make-files.zip with a README"
   ],
   "print_note": "PETG, any colour. 0.2 mm layers, 3 walls, 20 % infill; base open side up, lid outer face down; no supports needed."
  }

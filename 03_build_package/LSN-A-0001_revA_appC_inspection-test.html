@@ -1,0 +1,51 @@
+<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>LSN-A-0001_revA Appendix C</title><style>
+body{font-family:Helvetica,Arial,sans-serif;margin:0;color:#222;background:#fff}
+main{max-width:1000px;margin:0 auto;padding:24px 16px 48px}
+h1{font-size:32px;margin:0}.sub{color:#555;margin:4px 0 16px}h2{font-size:24px;margin:28px 0 8px}h3{font-size:16px;margin:12px 0 6px;color:#444}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.card{border:1px solid #ddd;border-radius:8px;padding:6px;text-align:center}.card img,.noimg{height:90px;max-width:100%;object-fit:contain;margin:0 auto}
+.noimg{background:#f2f2f2;border-radius:4px}.cq{font-weight:800;font-size:17px;margin-left:6px}.cap{font-size:13px;font-weight:700}.pn{font-size:11px;color:#777}
+.bdg{display:inline-block;min-width:26px;padding:2px 8px;border-radius:12px;color:#fff;font-weight:800;font-size:13px;text-align:center}
+.before{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}.before ul{margin:4px 0 0 18px}.prep{border-left:4px solid #1f77b4;padding:6px 10px;background:#f4f8fc}
+.step{page-break-before:always;margin-top:28px}.head{display:flex;align-items:baseline;gap:14px}.num{font-size:60px;font-weight:800;line-height:1}.title{font-size:24px;font-weight:700}
+.box{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0}.parts{border:2px solid #222;border-radius:8px;padding:8px 12px;display:flex;flex-wrap:wrap;gap:8px 16px}
+.pi{display:flex;flex-direction:column;align-items:center}.pi img,.pi .noimg{height:54px;width:auto;min-width:54px}.q{font-weight:800}
+.tools{border:2px dashed #888;border-radius:8px;padding:8px 12px;font-size:14px;align-self:flex-start}
+.fig{position:relative;border:1px solid #ddd;border-radius:8px;overflow:hidden}.fig img{display:block;width:100%}.ov{position:absolute;inset:0;width:100%;height:100%}
+.missing{padding:60px 16px;text-align:center;color:#888;background:#fafafa}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:6px 20px;margin:8px 0;font-size:15px}
+.har{border:2px solid #8c564b;border-radius:10px;padding:10px 14px;margin:10px 0;display:grid;grid-template-columns:110px 1fr;gap:12px}.har .ends{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;font-size:14px}.har ol{margin:4px 0 0 18px;font-size:14px}.wbom{border-collapse:collapse;font-size:14px}.wbom td,.wbom th{border:1px solid #ccc;padding:4px 8px}.credits{font-size:12px;color:#555}.notes{margin:4px 0 0 18px;font-size:14px;color:#333}.checks{list-style:none;padding:0;font-size:15px;line-height:1.8}
+.tb{border-collapse:collapse;margin:8px 0 16px;font-size:14px}.tb th{text-align:left;background:#f2f2f2;padding:5px 10px;border:1px solid #ccc;white-space:nowrap}.tb td{padding:5px 10px;border:1px solid #ccc;min-width:260px}
+.app{page-break-before:always;margin-top:32px}.bom,.insp,.trav{border-collapse:collapse;width:100%;font-size:13px;margin:6px 0}.bom th,.bom td,.insp th,.insp td,.trav th,.trav td{border:1px solid #ccc;padding:4px 6px;text-align:left;vertical-align:top}
+.bom th,.insp th,.trav th{background:#f2f2f2}.n{text-align:right}.tot td{font-weight:700}.small{font-size:12px;color:#555}.chk{margin:6px 0;font-size:15px}
+.trav td:nth-child(3),.trav td:nth-child(4),.trav td:nth-child(5){width:70px}.blank{display:inline-block;min-width:180px;border-bottom:1px solid #333;height:1em}
+@media print{main{max-width:none}}
+</style></head><body><main><h1>LSN-A-0001 Lab sensor node · Appendix C</h1><table class='tb'><tr><th>Document</th><td>LSN-A-0001 rev A, Appendix C</td></tr><tr><th>Title</th><td>Lab sensor node: inspection and test</td></tr><tr><th>Status</th><td>Draft, for G2 approval (DR-003)</td></tr><tr><th>Approval</th><td>Pending: recorded in 02_design/reviews/DR-003/minutes.md</td></tr><tr><th>Design source</th><td>Fusion: LSN-A-0001 v29, LSN-0001 Base v7, LSN-0002 Lid v6 (STLs exported from these; step renders from v28)</td></tr></table><h3>C1 Incoming inspection</h3><p>Check each part when it arrives, before it goes into a build. Record the result on the build traveller (Appendix D).</p>
+<table class='insp'><tr><th>Part</th><th>Check</th><th>How</th><th>Pass if</th><th>How many</th></tr>
+<tr><td><span class="bdg" style="background:#1f77b4">B1</span> Raspberry Pi Zero 2 W<div class='small'>ECM-0004</div></td><td>Part and marking</td><td>Visual</td><td>Raspberry Pi Zero 2 W with pre-soldered 2x20 header (SC0721)</td><td>all</td></tr>
+<tr><td><span class="bdg" style="background:#1f77b4">B1</span> Raspberry Pi Zero 2 W<div class='small'>ECM-0004</div></td><td>Radio certification</td><td>Visual</td><td>FCC ID 2ABCB-RPIZ2 and IC 20953-RPIZ2 marked on the board or its packaging</td><td>all</td></tr>
+<tr><td><span class="bdg" style="background:#1f77b4">B4</span> BME280 board<div class='small'>ECM-0001</div></td><td>Part</td><td>Visual</td><td>SparkFun BME280 Qwiic (SEN-15440); no visible damage</td><td>all</td></tr>
+<tr><td><span class="bdg" style="background:#1f77b4">B5</span> SGP40 board<div class='small'>ECM-0002</div></td><td>Part</td><td>Visual</td><td>Adafruit SGP40 (4829); sensor opening clear; no visible damage</td><td>all</td></tr>
+<tr><td><span class="bdg" style="background:#1f77b4">B3</span> Qwiic SHIM<div class='small'>ECM-0003</div></td><td>Part</td><td>Visual</td><td>SparkFun Qwiic SHIM (DEV-15794)</td><td>all</td></tr>
+<tr><td><span class="bdg" style="background:#1f77b4">B6</span> 5 V wall supply<div class='small'>ECP-0001</div></td><td>Safety listing</td><td>Visual</td><td>UL or CSA listing mark on the supply; output 5.1 V 2.5 A micro-USB</td><td>all</td></tr>
+<tr><td><span class="bdg" style="background:#1f77b4">B2</span> microSD card, flashed<div class='small'>ECX-0001</div></td><td>Part</td><td>Visual</td><td>SanDisk Extreme 64 GB microSDXC (or an approved alternate)</td><td>all</td></tr>
+<tr><td><span class="bdg" style="background:#8e44ad">H1</span> M2 insert<div class='small'>HWN-0006</div></td><td>Part</td><td>Visual</td><td>M2 brass heat-set inserts</td><td>first 5</td></tr>
+<tr><td><span class="bdg" style="background:#e07b00">A1</span> Base, PETG, any colour<div class='small'>LSN-0001</div></td><td>Overall size</td><td>Calipers</td><td>95.0 x 68.0 x 24.0 mm +/- 0.5 mm; printed in PETG (any colour)</td><td>all</td></tr>
+<tr><td><span class="bdg" style="background:#e07b00">A1</span> Base, PETG, any colour<div class='small'>LSN-0001</div></td><td>Insert holes</td><td>Visual</td><td>12 boss holes clean and open; no stringing in vents or openings</td><td>all</td></tr>
+<tr><td><span class="bdg" style="background:#e07b00">A2</span> Lid, PETG, any colour<div class='small'>LSN-0002</div></td><td>Fit</td><td>Trial fit</td><td>Lid seats flat on its base and all 4 snaps click</td><td>all</td></tr>
+<tr><td><span class="bdg" style="background:#e07b00">A2</span> Lid, PETG, any colour<div class='small'>LSN-0002</div></td><td>Material</td><td>Print job record</td><td>Printed in PETG (any colour)</td><td>all</td></tr>
+</table><h3>C2 In-process checks</h3><table class='insp'><tr><th>Step</th><th>Check before moving on</th></tr>
+<tr><td>1 Inserts</td><td>Every insert flush and square; none pushed through the floor</td></tr>
+<tr><td>2 Prepare the Pi</td><td>Card clicked in; B3 pin 1 over the Pi&#x27;s square pad</td></tr>
+<tr><td>3 Mount the Pi</td><td>Ports line up with the front-wall openings; screws snug</td></tr>
+<tr><td>4 Mount the sensors</td><td>Each board sits on its 2 inserts; screws snug</td></tr>
+<tr><td>5 Cables</td><td>Both cables latched at each end; the cable lies in the notch, below the rim</td></tr>
+<tr><td>6 Lid</td><td>All 4 snaps clicked; lid flat on the rim</td></tr>
+<tr><td>7 Label and power</td><td>Test receiver shows readings from this unit within 2 min</td></tr>
+</table><h3>C3 Final checks and tests</h3><ul><li>8 screws fitted and snug (4 Pi, 2 per sensor board)</li><li>Lid snapped on all four sides</li><li>Serial number label applied</li></ul><table class='insp'><tr><th>Test</th><th>What it shows</th></tr>
+<tr><td><a href='test_procedures/AN-001.md'>AN-001</a></td><td>Operating environment, from component ratings</td></tr>
+<tr><td><a href='test_procedures/TP-001.md'>TP-001</a></td><td>Readings, rate, reporting and timestamps</td></tr>
+<tr><td><a href='test_procedures/TP-002.md'>TP-002</a></td><td>Sensor response and unit agreement</td></tr>
+<tr><td><a href='test_procedures/TP-003.md'>TP-003</a></td><td>Unattended restart after power cuts and Wi-Fi drops</td></tr>
+<tr><td><a href='test_procedures/TP-004.md'>TP-004</a></td><td>72 h unattended run</td></tr>
+</table></section></main></body></html>

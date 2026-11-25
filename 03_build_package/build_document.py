@@ -12,6 +12,7 @@ import base64
 import csv
 import html
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -61,60 +62,41 @@ def e(x):
     return html.escape(str(x))
 
 
-def title_block():
+BASE = f"{data['assembly']}_rev{data['rev']}"
+FILES = {"A": f"{BASE}_appA_bom.csv", "B": f"mechanical/{BASE}_appB_make-files.zip",
+         "C": f"{BASE}_appC_inspection-test.pdf", "D": f"{BASE}_appD_traveller.pdf"}
+NAMES = {"A": "Bill of materials (for ordering)", "B": "Make files (STL for printing)",
+         "C": "Inspection and test", "D": "Build traveller (one per unit)"}
+
+
+def title_block(which=None):
     d = data["document"]
-    rows = [("Document", f"{data['assembly']} rev {data['rev']}"), ("Title", f"{data['title']}: assembly instruction"),
-            ("Status", d["status"]), ("Approval", d["approval"]), ("Design source", data["source"]),
-            ("Appendices", "A Bill of materials · B Make files · C Inspection and test · D Build traveller")]
-    return (f"<h1>{e(data['assembly'])} {e(data['title'])}</h1><table class='tb'>"
+    doc = f"{data['assembly']} rev {data['rev']}" + (f", Appendix {which}" if which else "")
+    title = f"{data['title']}: " + (NAMES[which].lower() if which else "assembly instruction")
+    rows = [("Document", doc), ("Title", title), ("Status", d["status"]), ("Approval", d["approval"]),
+            ("Design source", data["source"])]
+    if not which:
+        rows.append(("Appendices", " · ".join(f"{k} {NAMES[k]}: {FILES[k]}" for k in FILES)))
+    return (f"<h1>{e(data['assembly'])} {e(data['title'])}" + (f" · Appendix {which}" if which else "") + "</h1><table class='tb'>"
             + "".join(f"<tr><th>{e(k)}</th><td>{e(v)}</td></tr>" for k, v in rows) + "</table>")
+
+
+def write_appendix_a():
+    cols = ["ref", "pn", "rev", "description", "category", "qty", "unit", "manufacturer", "mpn", "supplier", "supplier_pn",
+            "link", "unit_price", "pack_qty", "currency", "each_cad", "line_cad", "price_date", "notes"]
+    with open(HERE / FILES["A"], "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f, lineterminator="\n")
+        w.writerow(cols)
+        for r in bom:
+            p = price_cad(r)
+            row = dict(r, each_cad="" if p is None else f"{p:.2f}", line_cad="" if p is None else f"{p * int(r['qty']):.2f}")
+            w.writerow([row.get(c, "") for c in cols])
 
 
 def price_cad(r):
     if not r.get("unit_price"):
         return None
     return float(r["unit_price"]) * RATES[r["currency"]]
-
-
-def appendix_a():
-    out = [f"<section class='app'><h2>Appendix A · Bill of materials, {e(data['assembly'])} rev {e(data['rev'])}</h2>",
-           "<p>Ref is the callout used in the assembly instruction. Prices in CAD, each, converted where the supplier quotes USD.</p>",
-           "<table class='bom'><tr><th>Ref</th><th>PN</th><th>Rev</th><th>Description</th><th>Category</th><th>Qty</th><th>Unit</th>"
-           "<th>Manufacturer · MPN</th><th>Supplier · SKU</th><th>Each (CAD)</th><th>Line (CAD)</th></tr>"]
-    total, missing = 0.0, []
-    for r in bom:
-        p = price_cad(r)
-        line = p * int(r["qty"]) if p is not None else None
-        if line is not None:
-            total += line
-        elif r["category"] == "OTS":
-            missing.append(r["ref"])
-        sup = f"<a href='{e(r['link'])}'>{e(r['supplier'])} · {e(r['supplier_pn'])}</a>" if r.get("link") else ""
-        if r.get("pack_qty") and r["pack_qty"] not in ("", "1"):
-            sup += f" (pack of {e(r['pack_qty'])})"
-        mfr = " · ".join(x for x in (r.get("manufacturer"), r.get("mpn")) if x)
-        out.append(f"<tr><td>{badge(r['ref'])}</td><td>{e(r['pn'])}</td><td>{e(r['rev'])}</td><td>{e(r['description'])}</td>"
-                   f"<td>{e(r['category'])}</td><td class='n'>{e(r['qty'])}</td><td>{e(r['unit'])}</td><td>{e(mfr)}</td><td>{sup}</td>"
-                   f"<td class='n'>{'' if p is None else f'{p:.2f}'}</td><td class='n'>{'' if line is None else f'{line:.2f}'}</td></tr>")
-    out.append(f"<tr class='tot'><td colspan='10'>Total, parts with a price</td><td class='n'>{total:.2f}</td></tr></table>")
-    if missing:
-        out.append(f"<p class='small'>No price yet: {', '.join(missing)} (from inventory or not quoted). "
-                   "Custom parts are printed in house.</p>")
-    out.append("</section>")
-    return out
-
-
-def appendix_b():
-    mech = HERE / "mechanical"
-    files = sorted(f.name for f in mech.iterdir() if f.is_file() and not f.name.startswith(".")) if mech.exists() else []
-    out = ["<section class='app'><h2>Appendix B · Make files</h2>"]
-    if files:
-        out.append("<ul>" + "".join(f"<li><a href='mechanical/{e(f)}'>{e(f)}</a></li>" for f in files) + "</ul>")
-    else:
-        out.append("<p>Exported from the approved CAD at release (after G2), into <code>mechanical/</code> and one zip:</p><ul>"
-                   + "".join(f"<li>{e(x)}</li>" for x in data["document"]["make_files"]) + "</ul>")
-    out.append(f"<p><b>Printing:</b> {e(data['document']['print_note'])}</p></section>")
-    return out
 
 
 def appendix_c():
@@ -170,7 +152,8 @@ def appendix_d():
 
 
 def page():
-    out = [title_block(), "<h2>Parts</h2>"]
+    out = [title_block(), f"<p class='prep'><b>Printing A1 and A2:</b> {e(data['document']['print_note'])} STL files are in Appendix B.</p>",
+           "<h2>Parts</h2>"]
     for letter, (name, _) in data["classes"].items():
         refs = [r for r in by_id if r[0] == letter]
         if not refs:
@@ -248,7 +231,6 @@ def page():
         out.append("</section>")
     out.append("<h2>Final checks</h2><ul class='checks'>" + "".join(f"<li>☐ {html.escape(c)}</li>" for c in data["final_checks"]) + "</ul>")
     out.append("<p class='prep'>Record the serial number and sign off each unit on its build traveller (Appendix D).</p>")
-    out += appendix_a() + appendix_b() + appendix_c() + appendix_d()
     if data.get("credits"):
         out.append("<h2>Picture credits</h2><ul class='credits'>" + "".join(f"<li>{html.escape(c)}</li>" for c in data["credits"]) + "</ul>")
     return "\n".join(out)
@@ -283,8 +265,20 @@ if __name__ == "__main__":
     if problems:
         print("Steps do not match bom.csv:\n  " + "\n  ".join(problems))
         sys.exit(1)
-    out = HERE / f"{data['assembly']}_rev{data['rev']}.html"
-    out.write_text(f"<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>"
-                   f"<title>{data['assembly']} rev {data['rev']}</title><style>{CSS}</style></head><body><main>{page()}</main></body></html>",
-                   encoding="utf-8")
-    print(f"wrote {out.name}: {len(data['steps'])} steps, Appendices A to D, every BOM line used once")
+    def write(name, title, body):
+        out = HERE / name
+        out.write_text(f"<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>"
+                       f"<title>{title}</title><style>{CSS}</style></head><body><main>{body}</main></body></html>", encoding="utf-8")
+        edge = Path(r"C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe")
+        if edge.exists() and "--no-pdf" not in sys.argv:
+            subprocess.run([str(edge), "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
+                            f"--print-to-pdf={out.with_suffix('.pdf')}", out.resolve().as_uri()], capture_output=True, timeout=120)
+        return out.with_suffix(".pdf").name
+    made = [write(f"{BASE}.html", f"{data['assembly']} rev {data['rev']}", page())]
+    write_appendix_a(); made.append(FILES["A"])
+    made.append(write(f"{BASE}_appC_inspection-test.html", f"{BASE} Appendix C",
+                      title_block("C") + "\n".join(appendix_c()[1:])))
+    made.append(write(f"{BASE}_appD_traveller.html", f"{BASE} Appendix D",
+                      title_block("D") + "\n".join(appendix_d()[1:])))
+    zipped = (HERE / FILES["B"]).exists()
+    print("wrote " + ", ".join(made) + ("; Appendix B zip present" if zipped else "; Appendix B zip MISSING"))

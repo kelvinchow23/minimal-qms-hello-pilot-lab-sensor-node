@@ -20,6 +20,19 @@ conversation (kc: research/hobby rigour, speedrun).
 | Software lsn-node | v0.1.0 | `03_build_package/software/lsn-node/` |
 | Document LSN-A-0001 rev A: assembly instruction with Appendix A BOM (ordering info), B make files, C inspection and test (TP-001..004, AN-001), D build traveller | A | `03_build_package/LSN-A-0001_revA.pdf` |
 
+## Outputs to open before approving (all in `03_build_package/`)
+| Output | File | From |
+|---|---|---|
+| Main document: assembly instruction | `LSN-A-0001_revA.pdf` | steps.json, Fusion renders |
+| Appendix A: BOM for ordering | `LSN-A-0001_revA_appA_bom.csv` | read from Fusion LSN-A-0001 v29 (BOM check: quantities match) |
+| Appendix B: make files | `mechanical/LSN-A-0001_revA_appB_make-files.zip` (also the two STLs beside it) | LSN-0001 Base v7, LSN-0002 Lid v6 |
+| Appendix C: inspection and test | `LSN-A-0001_revA_appC_inspection-test.pdf`, `test_procedures/` | |
+| Appendix D: build traveller | `LSN-A-0001_revA_appD_traveller.pdf` | |
+| Software | `software/lsn-node/` | v0.1.0 |
+
+No PCB, so no Gerbers. After approval the Fusion milestones go on exactly these versions; if a
+design has changed since, it is re-exported and brought back first.
+
 ## Change groups
 1. **Parts and BOM:** Pi Zero 2 W, BME280, SGP40 (ECR-002), Qwiic SHIM and cables, PiShop
    supply, SanDisk card, 8 M2 heat-set inserts (HWN-0006) and 8 M2 x 5 nylon pan-head screws
