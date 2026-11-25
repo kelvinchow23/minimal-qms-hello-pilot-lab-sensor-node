@@ -1,7 +1,7 @@
 {
  "assembly": "LSN-A-0001",
  "rev": "A",
- "title": "Lab sensor node",
+ "title": "Lab Sensor Node",
  "source": "Fusion: LSN-A-0001 v29, LSN-0001 Base v7, LSN-0002 Lid v6 (STLs exported from these; step renders from v28)",
  "classes": {
   "A": [
@@ -467,10 +467,10 @@
   "build": []
  },
  "document": {
-  "status": "Draft, for G2 approval (DR-003)",
-  "approval": "Pending: recorded in 02_design/reviews/DR-003/minutes.md",
+  "status": "Draft",
+  "approval": "Pending, DR-003",
   "print_note": "PETG, any colour, standard print profile.",
-  "make_readme": "LSN-A-0001 rev A, appendix A02: make files\n\nLSN-0001_revA_base.stl  from Fusion LSN-0001 Base v7\nLSN-0002_revA_lid.stl   from Fusion LSN-0002 Lid v6\n\nPETG, any colour, standard print profile.\n",
+  "make_readme": "Document no. LSN-A-0001-A02   Rev A\nMake files (STL for printing)\nAssembly: Lab Sensor Node, LSN-A-0001\n\nLSN-0001_revA_base.stl  from Fusion LSN-0001 Base v7\nLSN-0002_revA_lid.stl   from Fusion LSN-0002 Lid v6\n\nPETG, any colour, standard print profile.\n",
   "tp_briefs": {
    "TP-001": "Run 15 min, then run check_run.py: no missing fields, no gap over 10 s, at least 85 readings, clock within 1 s and synced.",
    "TP-002": "Within 60 s: hand warmth +1 °C, breath +5 %RH, isopropyl wipe VOC index +100; pressure within ±5 hPa of the weather station. Two units agree within ±1 °C, ±5 %RH, ±2 hPa.",
@@ -478,5 +478,6 @@
    "TP-004": "Run 72 h: no gap over 10 s. Record the highest CPU temperature."
   }
  },
- "source_top": "Fusion LSN-A-0001 (milestone \"LSN-A-0001 rev A\" at G2 approval; now v29)"
+ "source_top": "Fusion LSN-A-0001 v29",
+ "name": "Lab Sensor Node"
 }

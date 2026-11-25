@@ -6,7 +6,7 @@ time_estimate: 40 min    # per unit, hands-on, plus software install; correct af
 source: "Fusion: LSN-A-0001 v29"
 ---
 
-# Assembly instruction: LSN-A-0001 Lab sensor node
+# Assembly instruction: LSN-A-0001 Lab Sensor Node
 
 The controlled document is **LSN-A-0001 rev A**, flat in `03_build_package/`:
 

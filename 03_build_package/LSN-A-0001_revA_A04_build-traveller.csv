@@ -1,3 +1,12 @@
+Title,Build traveller (one per unit)
+Document no.,LSN-A-0001-A04
+Rev,A
+Assembly name,Lab Sensor Node
+Assembly no.,LSN-A-0001
+Status,Draft
+Approval,"Pending, DR-003"
+Design source,Fusion LSN-A-0001 v29
+
 serial_number,
 build_number,
 assembled_by,

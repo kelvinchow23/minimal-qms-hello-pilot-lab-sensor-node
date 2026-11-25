@@ -14,6 +14,7 @@ import csv
 import html
 import json
 import subprocess
+import time
 import zipfile
 
 import markdown
@@ -77,15 +78,26 @@ NAMES = {"A01": "Bill of materials (for ordering)", "A02": "Make files (STL for 
          "A05": "Incoming inspection record (one per delivery)"}
 
 
-def title_block(which=None):
+def tb_fields(which=None):
+    """The title block fields, the same on every document and form (also used for the CSV forms)."""
     d = data["document"]
-    head = f"{which} {NAMES[which]}" if which else f"{data['title']}: assembly instruction"
-    rows = [("Document", f"{data['assembly']} rev {data['rev']}" + (f", appendix {which}" if which else "")),
+    return [("Document no.", data["assembly"] + (f"-{which}" if which else "")), ("Rev", data["rev"]),
+            ("Assembly name", data["name"]), ("Assembly no.", data["assembly"]),
             ("Status", d["status"]), ("Approval", d["approval"]), ("Design source", data["source_top"])]
+
+
+def title_block(which=None):
+    title = NAMES[which] if which else "Assembly instruction"
+    f = dict(tb_fields(which))
+    cell = lambda k: f"<th>{e(k)}</th><td>{e(f[k])}</td>"
+    out = (f"<table class='tblock'><tr><td class='tt' colspan='4'>{e(title)}</td></tr>"
+           f"<tr>{cell('Document no.')}{cell('Rev')}</tr><tr>{cell('Assembly name')}{cell('Assembly no.')}</tr>"
+           f"<tr>{cell('Status')}{cell('Approval')}</tr>"
+           f"<tr><th>Design source</th><td colspan='3'>{e(f['Design source'])}</td></tr></table>")
     if not which:
-        rows.append(("Appendices", " · ".join(f"{k} {NAMES[k]}" for k in FILES)))
-    return (f"<h1>{e(head)}</h1><p class='sub'>{e(data['assembly'])} {e(data['title'])} · rev {e(data['rev'])}</p>"
-            "<table class='tb'>" + "".join(f"<tr><th>{e(k)}</th><td>{e(v)}</td></tr>" for k, v in rows) + "</table>")
+        out += ("<table class='tb'><tr><th>Appendices</th><td>"
+                + "<br>".join(f"{data['assembly']}-{k} {e(NAMES[k])}" for k in FILES) + "</td></tr></table>")
+    return out
 
 
 def write_appendix_a():
@@ -209,10 +221,14 @@ def appendix_e():
             "</section>"]
 
 
-def write_record_csv(name, top, head, rows):
+def write_record_csv(name, top, head, rows, which):
     """The same form as CSV, for an agent or a spreadsheet to fill; a filled copy goes in builds/B00n/."""
     with open(OUT / name, "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f, lineterminator="\n")
+        w.writerow(["Title", NAMES[which]])
+        for k, v in tb_fields(which):
+            w.writerow([k, v])
+        w.writerow([])
         for k in top:
             w.writerow([k, ""])
         w.writerow([])
@@ -324,6 +340,7 @@ h1{font-size:32px;margin:0}.sub{color:#555;margin:4px 0 16px}h2{font-size:24px;m
 .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:6px 20px;margin:8px 0;font-size:15px}
 .har{border:2px solid #8c564b;border-radius:10px;padding:10px 14px;margin:10px 0;display:grid;grid-template-columns:110px 1fr;gap:12px}.har .ends{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;font-size:14px}.har ol{margin:4px 0 0 18px;font-size:14px}.wbom{border-collapse:collapse;font-size:14px}.wbom td,.wbom th{border:1px solid #ccc;padding:4px 8px}.credits{font-size:12px;color:#555}.notes{margin:4px 0 0 18px;font-size:14px;color:#333}.checks{list-style:none;padding:0;font-size:15px;line-height:1.8}
 .tp{border-top:2px solid #ccc;margin-top:18px;font-size:14px}.tp table{border-collapse:collapse}.tp td,.tp th{border:1px solid #ccc;padding:3px 6px}
+.tblock{border-collapse:collapse;width:100%;margin:0 0 18px;font-size:14px;border:2px solid #222}.tblock th,.tblock td{border:1px solid #888;padding:5px 8px;text-align:left}.tblock th{background:#f2f2f2;white-space:nowrap;width:1%}.tblock .tt{font-size:24px;font-weight:800;padding:10px 8px}
 .tb{border-collapse:collapse;margin:8px 0 16px;font-size:14px}.tb th{text-align:left;background:#f2f2f2;padding:5px 10px;border:1px solid #ccc;white-space:nowrap}.tb td{padding:5px 10px;border:1px solid #ccc;min-width:260px}
 .app{page-break-before:always;margin-top:32px}.bom,.insp,.trav{border-collapse:collapse;width:100%;font-size:13px;margin:6px 0}.bom th,.bom td,.insp th,.insp td,.trav th,.trav td{border:1px solid #ccc;padding:4px 6px;text-align:left;vertical-align:top}
 .bom th,.insp th,.trav th{background:#f2f2f2}.n{text-align:right}.tot td{font-weight:700}.small{font-size:12px;color:#555}.chk{margin:6px 0;font-size:15px}
@@ -343,8 +360,11 @@ if __name__ == "__main__":
         edge = Path(r"C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe")
         pdf = OUT / out.with_suffix(".pdf").name
         if edge.exists() and "--no-pdf" not in sys.argv:
+            started = time.time()
             subprocess.run([str(edge), "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
                             f"--print-to-pdf={pdf}", out.resolve().as_uri()], capture_output=True, timeout=120)
+            if not pdf.exists() or pdf.stat().st_mtime < started - 1:
+                print(f"LOCKED (close it and run again): {pdf.name}")
         return pdf.name
 
     def zip_dir(name, folder, readme):
@@ -367,8 +387,8 @@ if __name__ == "__main__":
     made.append(write(f"{BASE}_A05_incoming-inspection-record.html", f"{BASE} A05", title_block("A05") + "\n".join(appendix_e()[1:]), landscape=True))
     write_record_csv(f"{BASE}_A04_build-traveller.csv",
                      ["serial_number", "build_number", "assembled_by", "date", "build_complete_signature"],
-                     ["stage", "check_pass_if"], traveller_rows())
+                     ["stage", "check_pass_if"], traveller_rows(), "A04")
     write_record_csv(f"{BASE}_A05_incoming-inspection-record.csv", ["received", "order_supplier", "inspected_by"],
-                     ["part", "check_pass_if", "how_many", "qty_received"], incoming_record_rows())
+                     ["part", "check_pass_if", "how_many", "qty_received"], incoming_record_rows(), "A05")
     made += [f"{BASE}_A04_build-traveller.csv", f"{BASE}_A05_incoming-inspection-record.csv"]
     print("wrote " + ", ".join(made))

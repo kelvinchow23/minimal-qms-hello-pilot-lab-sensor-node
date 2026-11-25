@@ -14,7 +14,7 @@ conversation (kc: research/hobby rigour, speedrun).
 ## Scope
 | Item | Rev | Source |
 |---|---|---|
-| LSN-A-0001 Lab sensor node | A | Fusion: Tech/General/minimal-qms/LSN- Lab Sensor Node/LSN-A-0001 |
+| LSN-A-0001 Lab Sensor Node | A | Fusion: Tech/General/minimal-qms/LSN- Lab Sensor Node/LSN-A-0001 |
 | LSN-0001 Base, LSN-0002 Lid | A | Fusion, same folder (PETG) |
 | OTS parts ECM-0001..0004, ECW-0001, ECP-0001, ECX-0001, HWN-0006 | - | minimal-qms-ots-library PR #10 |
 | Software lsn-node | v0.1.1 draft | Not frozen at G2 (kc, 2026-11-25: "i dont want software to be frozen here"). Working draft in `02_design/software/lsn-node/`; checked by TP-001..004 at G3 |

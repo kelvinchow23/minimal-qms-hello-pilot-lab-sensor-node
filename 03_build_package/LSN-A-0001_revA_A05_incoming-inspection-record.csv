@@ -1,3 +1,12 @@
+Title,Incoming inspection record (one per delivery)
+Document no.,LSN-A-0001-A05
+Rev,A
+Assembly name,Lab Sensor Node
+Assembly no.,LSN-A-0001
+Status,Draft
+Approval,"Pending, DR-003"
+Design source,Fusion LSN-A-0001 v29
+
 received,
 order_supplier,
 inspected_by,
