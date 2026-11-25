@@ -1,12 +1,12 @@
 parent_pn,parent_rev,pn,qty,unit,refdes,source,notes
-LSN-A-0001,A,ECM-0001,1,ea,,manual,BME280 sensor board (temperature / humidity / pressure)
-LSN-A-0001,A,ECM-0002,1,ea,,manual,SGP40 VOC sensor board
-LSN-A-0001,A,ECM-0003,1,ea,,manual,Qwiic SHIM on the controller's GPIO header
-LSN-A-0001,A,ECW-0001,2,ea,,manual,SHIM to BME280; BME280 to SGP40
-LSN-A-0001,A,ECM-0004,1,ea,,manual,Controller: Raspberry Pi Zero 2 W with header
-LSN-A-0001,A,ECP-0001,1,ea,,manual,Wall power supply (not inside the enclosure)
-LSN-A-0001,A,ECX-0001,1,ea,,manual,microSD card with the software image
-LSN-A-0001,A,LSN-0001,1,ea,,Fusion: Tech/General/minimal-qms/LSN- Lab Sensor Node/LSN-A-0001,Housing base (printed in PETG)
-LSN-A-0001,A,LSN-0002,1,ea,,Fusion: Tech/General/minimal-qms/LSN- Lab Sensor Node/LSN-A-0001,Housing lid (printed in PETG; snap fit)
-LSN-A-0001,A,HWN-0006,12,ea,,manual,M2 heat-set inserts: 4 Pi + 4 BME280 (one unused) + 4 SGP40
-LSN-A-0001,A,HWB-0036,11,ea,,manual,"M2 x 5 nylon pan-head screws, black: 4 Pi + 3 BME280 + 4 SGP40 (insulating)"
+LSN-A-0001,A,ECM-0001,1,ea,,Fusion: LSN-A-0001 v25,BME280 sensor board (temperature / humidity / pressure)
+LSN-A-0001,A,ECM-0002,1,ea,,Fusion: LSN-A-0001 v25,SGP40 VOC sensor board
+LSN-A-0001,A,ECM-0003,1,ea,,Fusion: LSN-A-0001 v25,Qwiic SHIM on the controller's GPIO header
+LSN-A-0001,A,ECW-0001,2,ea,,manual (not modelled),SHIM to BME280; BME280 to SGP40
+LSN-A-0001,A,ECM-0004,1,ea,,Fusion: LSN-A-0001 v25,Controller: Raspberry Pi Zero 2 W with header
+LSN-A-0001,A,ECP-0001,1,ea,,manual (not modelled),Wall power supply (not inside the enclosure)
+LSN-A-0001,A,ECX-0001,1,ea,,manual (not modelled),microSD card with the software image
+LSN-A-0001,A,LSN-0001,1,ea,,Fusion: LSN-A-0001 v25,Housing base (printed in PETG)
+LSN-A-0001,A,LSN-0002,1,ea,,Fusion: LSN-A-0001 v25,Housing lid (printed in PETG; snap fit)
+LSN-A-0001,A,HWN-0006,12,ea,,Fusion: LSN-A-0001 v25,M2 heat-set inserts: 4 Pi + 4 BME280 (one unused) + 4 SGP40
+LSN-A-0001,A,HWB-0036,11,ea,,Fusion: LSN-A-0001 v25,"M2 x 5 nylon pan-head screws, black: 4 Pi + 3 BME280 + 4 SGP40 (insulating)"
