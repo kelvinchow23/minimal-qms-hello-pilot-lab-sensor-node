@@ -134,6 +134,8 @@ def page():
             out.append("<ul class='notes'>" + "".join(f"<li>{html.escape(n)}</li>" for n in s["notes"]) + "</ul>")
         out.append("</section>")
     out.append("<h2>Final checks</h2><ul class='checks'>" + "".join(f"<li>☐ {html.escape(c)}</li>" for c in data["final_checks"]) + "</ul>")
+    if data.get("signoff"):
+        out.append(f"<p class='prep'><b>Sign-off.</b> {html.escape(data['signoff'])}</p>")
     if data.get("credits"):
         out.append("<h2>Picture credits</h2><ul class='credits'>" + "".join(f"<li>{html.escape(c)}</li>" for c in data["credits"]) + "</ul>")
     return "\n".join(out)

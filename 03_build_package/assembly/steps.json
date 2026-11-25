@@ -460,5 +460,6 @@
  "wires": {
   "note": "No wires to build for LSN-A-0001: W1 is bought ready-made (both ends fitted). Check both plugs are seated in their housings.",
   "build": []
- }
+ },
+ "signoff": "Sign-off per unit, in builds/B00n/: serial number LSN-A-0001-YYMMDD<letter> (allocated in build.yaml when the build is opened; label on the base), assembled by, date, final checks pass. The unit is released later in release.yaml, after its tests (SOP-007)."
 }
