@@ -22,7 +22,10 @@ conversation (kc: research/hobby rigour, speedrun).
 
 ## Change groups
 1. **Parts and BOM:** Pi Zero 2 W, BME280, SGP40 (ECR-002), Qwiic SHIM and cables, PiShop
-   supply, SanDisk card, 12 M2 heat-set inserts; M2 x 5 nylon pan-head screws (HWB-0036).
+   supply, SanDisk card, 8 M2 heat-set inserts (HWN-0006) and 8 M2 x 5 nylon pan-head screws
+   (HWB-0036): 4 for the Pi, and 2 per sensor board on diagonal holes (kc, 2026-11-25: "2 will
+   be good enough"). All 12 bosses stay in the print, so a sensor can take more screws later.
+   Every BOM line is read from the Fusion assembly; cables, SD card and supply are ghost designs.
 2. **Housing:** 95 x 68 x 26 mm base and snap-fit lid; Pi and sensor bays split by a partition with
    a small cable notch at the end wall; vents over both bays; boards on bosses with M2 inserts;
    assembly fully held by joints.
@@ -37,9 +40,9 @@ conversation (kc: research/hobby rigour, speedrun).
 |---|---|
 | Every requirement has a design output and a test or check? | Yes: REQ-001..004, 009, 011..013 by TP-001..004; REQ-005, 007, 008, 014 by inspection checks; REQ-006 by AN-001; REQ-010, 015 by this review (software README) |
 | Control for every risk in the design? | Yes: RISK-001 partition and Pi-bay vents; -003 overlay file system; -006 config on the unit; -010 time_synced flag; -011 onboarding confirmed by kc; -013 sensor-bay vents; -014 README statement |
-| Parts released, with a supplier, in stock, assemblable? | Mouser parts in stock; Pi, supply and card from kc's inventory; screws pending PN |
+| Parts released, with a supplier, in stock, assemblable? | Mouser parts in stock; Pi, supply and card from kc's inventory; screws from McMaster (HWB-0036) |
 | New or unproven? | Software not yet run on hardware; snap fit needs a test print |
-| Buildable from the package alone? | Yes once the screw PN is added |
+| Buildable from the package alone? | Yes |
 | Independent findings dispositioned? | See below |
 
 ## Independent findings (fresh Claude Code subagent, Claude Opus 5.5, 2026-11-24)
@@ -56,7 +59,9 @@ conversation (kc: research/hobby rigour, speedrun).
 ## Open items
 - Screw: HWB-0036 (McMaster 92492A702, black nylon), added 2026-11-24.
 - Datasheet values marked "to confirm" in AN-001 and the radio IDs in the inspection checks.
-- Fusion: confirm LSN-0001 v6 (M2 inserts, parameters trimmed) and LSN-0002 v6 saved; display
-  names of OTS components; OTS/custom grouping.
+- Fusion (2026-11-25): LSN-0001 v6, LSN-0002 v6 and LSN-A-0001 v28 saved; tree grouped into
+  Custom parts and OTS parts (Electronics, Fasteners, BOM only). Pi (ECM-0004) and screw
+  (HWB-0036) Part Number properties still to be set by hand; the BOM check reads their PNs from
+  the file names. An unexplained 0.2 mm³ base/Pi PCB overlap in the interference check.
 - After approval: release parts (lifecycle), Fusion milestones, STEP/STL exports (fusion-cad
   Releasing).
