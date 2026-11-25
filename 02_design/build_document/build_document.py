@@ -112,16 +112,18 @@ def source_rule(r):
 
 
 def write_appendix_a():
-    cols = ["ref", "pn", "rev", "description", "category", "purchasing", "qty", "unit", "manufacturer", "mpn", "supplier", "supplier_pn",
-            "link", "unit_price", "pack_qty", "currency", "each_cad", "line_cad", "price_date", "notes"]
+    cols = ["ref", "internal_pn", "rev", "description", "category", "purchasing", "qty", "unit", "manufacturer",
+            "manufacturer_pn", "supplier", "supplier_pn", "link", "unit_price", "pack_qty", "currency",
+            "unit_cost_cad", "line_cost_cad", "price_date", "notes"]
     with open(OUT / FILES["A01"], "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f, lineterminator="\n")
         w.writerow(cols)
         for r in bom:
             p = price_cad(r)
-            row = dict(r, each_cad="" if p is None else f"{p:.2f}", line_cad="" if p is None else f"{p * int(r['qty']):.2f}",
-                       purchasing=source_rule(r))
-            w.writerow([row.get(c, "") for c in cols])
+            row = dict(r, internal_pn=r["pn"], manufacturer_pn=r["mpn"], purchasing=source_rule(r),
+                       unit_cost_cad="" if p is None else f"{p:.2f}",
+                       line_cost_cad="" if p is None else f"{p * int(r['qty']):.2f}")
+            w.writerow([row.get(c) or "-" for c in cols])  # no blank cells: "-" means not applicable
 
 
 def price_cad(r):
