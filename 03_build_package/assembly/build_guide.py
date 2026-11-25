@@ -109,7 +109,16 @@ def page():
                     colour = data["classes"][c["id"][0]][1]
                     for (x, y) in c.get("pts", []):
                         out.append(f"<circle cx='{x}' cy='{y}' r='7' fill='none' stroke='{colour}' stroke-width='3'/>")
-                    if c.get("label_at"):
+                    if c.get("paths"):
+                        # A cable route: one line per cable, its callout at the middle of the run.
+                        for path in c["paths"]:
+                            pts = " ".join(f"{x},{y}" for x, y in path)
+                            out.append(f"<polyline points='{pts}' fill='none' stroke='white' stroke-width='9' stroke-linejoin='round' stroke-linecap='round'/>"
+                                       f"<polyline points='{pts}' fill='none' stroke='{colour}' stroke-width='5' stroke-linejoin='round' stroke-linecap='round'/>")
+                            mx, my = path[len(path) // 2]
+                            out.append(f"<rect x='{mx-18}' y='{my-13}' width='36' height='26' rx='13' fill='{colour}' stroke='white' stroke-width='2'/>"
+                                       f"<text x='{mx}' y='{my+5}' font-size='14' font-weight='800' fill='white' text-anchor='middle'>{c['id']}</text>")
+                    elif c.get("label_at"):
                         lx, ly = c["label_at"]
                         for (x, y) in c.get("pts", []):
                             out.append(f"<line x1='{x}' y1='{y}' x2='{lx}' y2='{ly}' stroke='{colour}' stroke-width='1.5'/>")
