@@ -18,7 +18,7 @@ conversation (kc: research/hobby rigour, speedrun).
 | LSN-0001 Base, LSN-0002 Lid | A | Fusion, same folder (PETG) |
 | OTS parts ECM-0001..0004, ECW-0001, ECP-0001, ECX-0001, HWN-0006 | - | minimal-qms-ots-library PR #10 |
 | Software lsn-node | v0.1.0 | `03_build_package/software/lsn-node/` |
-| TP-001..004, AN-001, assembly instruction (picture guide), inspection checks | A | `03_build_package/` |
+| Document LSN-A-0001 rev A: assembly instruction with Appendix A BOM (ordering info), B make files, C inspection and test (TP-001..004, AN-001), D build traveller | A | `03_build_package/LSN-A-0001_revA.pdf` |
 
 ## Change groups
 1. **Parts and BOM:** Pi Zero 2 W, BME280, SGP40 (ECR-002), Qwiic SHIM and cables, PiShop

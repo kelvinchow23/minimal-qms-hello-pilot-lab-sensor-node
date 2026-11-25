@@ -119,7 +119,8 @@
     "Only the bosses shown. The other 4 sensor bosses stay empty."
    ],
    "w": 1136,
-   "h": 722
+   "h": 722,
+   "check": "Every insert flush and square; none pushed through the floor"
   },
   {
    "n": 2,
@@ -178,7 +179,8 @@
     "B3 pin 1 over the Pi's square pad; connector toward the SD end."
    ],
    "w": 1648,
-   "h": 914
+   "h": 914,
+   "check": "Card clicked in; B3 pin 1 over the Pi's square pad"
   },
   {
    "n": 3,
@@ -232,7 +234,8 @@
    ],
    "notes": [],
    "w": 1136,
-   "h": 722
+   "h": 722,
+   "check": "Ports line up with the front-wall openings; screws snug"
   },
   {
    "n": 4,
@@ -300,7 +303,8 @@
    ],
    "notes": [],
    "w": 1136,
-   "h": 722
+   "h": 722,
+   "check": "Each board sits on its 2 inserts; screws snug"
   },
   {
    "n": 5,
@@ -398,7 +402,8 @@
     "Keep the spare cable below the rim and off the B5 sensor opening."
    ],
    "w": 1136,
-   "h": 722
+   "h": 722,
+   "check": "Both cables latched at each end; the cable lies in the notch, below the rim"
   },
   {
    "n": 6,
@@ -414,7 +419,8 @@
    ],
    "notes": [
     "Before and after: lower the lid straight down onto the rim."
-   ]
+   ],
+   "check": "All 4 snaps clicked; lid flat on the rim"
   },
   {
    "n": 7,
@@ -442,7 +448,8 @@
     "Serial number label on the base. Within 2 min the test receiver shows readings from this unit."
    ],
    "w": 1648,
-   "h": 914
+   "h": 914,
+   "check": "Test receiver shows readings from this unit within 2 min"
   }
  ],
  "final_checks": [
@@ -451,13 +458,23 @@
   "Serial number label applied"
  ],
  "credits": [
-  "B2: \"MicroSD card 2GB focus-stacked\" by Afrank99, CC BY-SA 3.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:MicroSD_card_2GB_focus-stacked.jpg); resized. Placeholder: the build uses the card listed in bom.csv.",
-  "B6: \"USB wall charger\" by Alcide55, CC BY-SA 3.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:USB_wall_charger.JPG); resized. Placeholder: the build uses the supply listed in bom.csv.",
+  "B2: \"MicroSD card 2GB focus-stacked\" by Afrank99, CC BY-SA 3.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:MicroSD_card_2GB_focus-stacked.jpg); resized. Placeholder: the build uses the card listed in Appendix A.",
+  "B6: \"USB wall charger\" by Alcide55, CC BY-SA 3.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:USB_wall_charger.JPG); resized. Placeholder: the build uses the supply listed in Appendix A.",
   "W1: drawn placeholder. All other pictures are renders of the Fusion assembly."
  ],
  "wires": {
   "note": "No wires to build for LSN-A-0001: W1 is bought ready-made (both ends fitted). Check both plugs are seated in their housings.",
   "build": []
  },
- "signoff": "Sign-off per unit, in builds/B00n/: serial number LSN-A-0001-YYMMDD<letter> (allocated in build.yaml when the build is opened; label on the base), assembled by, date, final checks pass. The unit is released later in release.yaml, after its tests (SOP-007)."
+ "document": {
+  "status": "Draft, for G2 approval (DR-003)",
+  "approval": "Pending: recorded in 02_design/reviews/DR-003/minutes.md",
+  "make_files": [
+   "LSN-0001_revA_base.step and .stl",
+   "LSN-0002_revA_lid.step and .stl",
+   "LSN-A-0001_revA_lab-sensor-node.step",
+   "LSN-A-0001_revA_make-files.zip (all of the above)"
+  ],
+  "print_note": "PETG, any colour. 0.2 mm layers, 3 walls, 20 % infill; base open side up, lid outer face down; no supports needed."
+ }
 }
