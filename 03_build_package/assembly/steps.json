@@ -2,7 +2,7 @@
  "assembly": "LSN-A-0001",
  "rev": "A",
  "title": "Lab sensor node",
- "source": "Fusion: LSN-A-0001 v28",
+ "source": "Fusion: LSN-A-0001 v29 (renders from v28; Pi bay since moved 0.5 mm)",
  "classes": {
   "A": [
    "Custom parts (printed, machined, PCB, sub-assemblies)",

@@ -63,8 +63,10 @@ the BOM check pass. Findings:
   goes in at step 2, before the Pi is mounted.)
 - **G2-F7** The Pi's ports clear the inside of the front wall by 0.4 mm; a slightly thick print
   may jam. Suggest moving the Pi 0.5 mm toward the partition (`pi_cy` -16 to -15.5 mm).
+  kc, 2026-11-25 in this session: "f7 yes move it". Applied: LSN-0001 v7, LSN-A-0001 v29; clearance now 0.9 mm.
 - **G2-F8** The 100 mm cable from the BME280 to the SGP40 spans about 26 mm, leaving about 70 mm
   loose in the sensor bay. Suggest a 50 mm Qwiic cable for that run (new OTS PN).
+  kc, 2026-11-25 in this session: "no lets use two 100mm i'd rather have shorter bom". Rejected: two 100 mm cables kept; the spare is coiled below the rim (step 5 note).
 
 ## Open items
 - Screw: HWB-0036 (McMaster 92492A702, black nylon), added 2026-11-24.
