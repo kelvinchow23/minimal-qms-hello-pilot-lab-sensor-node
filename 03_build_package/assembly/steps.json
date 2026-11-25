@@ -145,7 +145,7 @@
     {
      "id": "B2",
      "qty": 1,
-     "action": "Push into the slot until it clicks",
+     "action": "Push the microSD card into the Pi's slot until it clicks",
      "pts": [
       [
        402.4,
@@ -160,7 +160,7 @@
     {
      "id": "B3",
      "qty": 1,
-     "action": "Push onto GPIO pins 1 to 6",
+     "action": "Push the SHIM onto the Pi's GPIO pins 1 to 6",
      "pts": [
       [
        496.1,
