@@ -29,7 +29,7 @@ conversation (kc: research/hobby rigour, speedrun).
 | A03 inspection and test | `LSN-A-0001_revA_A03_inspection-test.pdf` | inspection, in-process and final checks, TP-001..004, AN-001 in full |
 | A04 build traveller | `LSN-A-0001_revA_A04_traveller.pdf` | |
 
-No PCB, so no Gerbers. After approval the Fusion milestones go on exactly these versions; if a
+After approval the Fusion milestones go on exactly these versions; if a
 design has changed since, it is re-exported and brought back first.
 
 ## Change groups

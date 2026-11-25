@@ -469,7 +469,7 @@
  "document": {
   "status": "Draft, for G2 approval (DR-003)",
   "approval": "Pending: recorded in 02_design/reviews/DR-003/minutes.md",
-  "print_note": "PETG, any colour. 0.2 mm layers, 3 walls, 20 % infill; base open side up, lid outer face down; no supports needed.",
-  "make_readme": "LSN-A-0001 rev A, appendix A02: make files\n\nLSN-0001_revA_base.stl  exported from Fusion LSN-0001 Base v7\nLSN-0002_revA_lid.stl   exported from Fusion LSN-0002 Lid v6\n\nPrint in PETG, any colour. Units: mm. PETG, any colour. 0.2 mm layers, 3 walls, 20 % infill; base open side up, lid outer face down; no supports needed.\nNo PCB in this assembly, so no Gerbers.\n"
+  "print_note": "PETG, any colour, standard print profile.",
+  "make_readme": "LSN-A-0001 rev A, appendix A02: make files\n\nLSN-0001_revA_base.stl  from Fusion LSN-0001 Base v7\nLSN-0002_revA_lid.stl   from Fusion LSN-0002 Lid v6\n\nPETG, any colour, standard print profile.\n"
  }
 }
