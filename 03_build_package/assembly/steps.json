@@ -409,22 +409,12 @@
     {
      "id": "A2",
      "qty": 1,
-     "action": "Press until all 4 snaps click",
-     "pts": [
-      [
-       778.0,
-       337.2
-      ]
-     ],
-     "label_at": [
-      628,
-      227
-     ]
+     "action": "Press until all 4 snaps click"
     }
    ],
-   "notes": [],
-   "w": 1648,
-   "h": 914
+   "notes": [
+    "Before and after: lower the lid straight down onto the rim."
+   ]
   },
   {
    "n": 7,
