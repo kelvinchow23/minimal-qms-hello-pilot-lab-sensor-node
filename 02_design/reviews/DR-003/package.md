@@ -23,7 +23,7 @@ conversation (kc: research/hobby rigour, speedrun).
 ## Outputs to open before approving (all in `03_build_package/`, flat)
 | Output | File | From |
 |---|---|---|
-| Main document: assembly instruction | `LSN-A-0001_revA.pdf` | steps.json, Fusion renders |
+| Main document: assembly instruction | `LSN-A-0001_revA_assembly_instructions.pdf` | steps.json, Fusion renders |
 | A01 BOM for ordering | `LSN-A-0001_revA_A01_bom.csv` | read from Fusion LSN-A-0001 v29 (BOM check: quantities match) |
 | A02 make files | `LSN-A-0001_revA_A02_make_files.zip` | STLs from LSN-0001 Base v7, LSN-0002 Lid v6 |
 | A03 inspection and test procedures | `LSN-A-0001_revA_A03_test.pdf` | incoming, in-process and final checks; TP-001..004 with one-line briefs and in full; AN-001 |

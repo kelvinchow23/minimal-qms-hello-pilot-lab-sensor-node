@@ -12,7 +12,7 @@ The controlled document is **LSN-A-0001 rev A**, flat in `03_build_package/`:
 
 | Part | File |
 |---|---|
-| Main document: assembly instruction | `LSN-A-0001_revA.pdf` |
+| Main document: assembly instruction | `LSN-A-0001_revA_assembly_instructions.pdf` |
 | A01 bill of materials, for ordering | `LSN-A-0001_revA_A01_bom.csv` |
 | A02 make files (STL for printing) | `LSN-A-0001_revA_A02_make_files.zip` |
 | A03 inspection and test procedures (what to check, TP-001..004 with briefs, AN-001) | `LSN-A-0001_revA_A03_test.pdf` |

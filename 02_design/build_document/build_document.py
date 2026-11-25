@@ -3,7 +3,7 @@
     python build_document.py            -> PDFs, CSV and zips in ../../03_build_package/ (flat)
     python build_document.py --no-pdf   -> HTML previews only (beside this file)
 
-Outputs: <PN>_rev<X>.pdf (assembly instruction), _A01_bom.csv, _A02_make_files.zip,
+Outputs: <PN>_rev<X>_assembly_instructions.pdf, _A01_bom.csv, _A02_make_files.zip,
 _A03_test.pdf (inspection, in-process and final checks, test procedures, analysis),
 _A04_traveller.pdf. Software is not part of the document (a draft in ../software/). Sources, all in 02_design/: steps.json, images/,
 bom.csv, inspection_checks.csv, make_files/ (CAD exports), ../test_procedures/,
@@ -83,17 +83,18 @@ def tb_fields(which=None):
     d = data["document"]
     return [("Document no.", data["assembly"] + (f"-{which}" if which else "")), ("Rev", data["rev"]),
             ("Assembly name", data["name"]), ("Assembly no.", data["assembly"]),
-            ("Status", d["status"]), ("Approval", d["approval"]), ("Design source", data["source_top"])]
+            ("Status", d["status"]), ("Date", d["date"]), ("Approval", d["approval"]),
+            ("Design source", data["source_top"])]
 
 
 def title_block(which=None):
-    title = NAMES[which] if which else "Assembly instruction"
+    title = NAMES[which] if which else "Assembly instructions"
     f = dict(tb_fields(which))
     cell = lambda k: f"<th>{e(k)}</th><td>{e(f[k])}</td>"
     out = (f"<table class='tblock'><tr><td class='tt' colspan='4'>{e(title)}</td></tr>"
            f"<tr>{cell('Document no.')}{cell('Rev')}</tr><tr>{cell('Assembly name')}{cell('Assembly no.')}</tr>"
-           f"<tr>{cell('Status')}{cell('Approval')}</tr>"
-           f"<tr><th>Design source</th><td colspan='3'>{e(f['Design source'])}</td></tr></table>")
+           f"<tr>{cell('Status')}{cell('Date')}</tr>"
+           f"<tr>{cell('Approval')}{cell('Design source')}</tr></table>")
     if not which:
         out += ("<table class='tb'><tr><th>Appendices</th><td>"
                 + "<br>".join(f"{data['assembly']}-{k} {e(NAMES[k])}" for k in FILES) + "</td></tr></table>")
@@ -397,7 +398,7 @@ if __name__ == "__main__":
     OUT.mkdir(exist_ok=True)
     if not list(incoming_rows()):  # no critical parts: no incoming inspection record
         FILES.pop("A05"); NAMES.pop("A05")
-    made = [write(f"{BASE}.html", f"{data['assembly']} rev {data['rev']}", page())]
+    made = [write(f"{BASE}_assembly_instructions.html", f"{data['assembly']} rev {data['rev']}", page())]
     try:
         write_appendix_a(); made.append(FILES["A01"])
     except PermissionError:
