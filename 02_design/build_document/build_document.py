@@ -5,7 +5,7 @@
 
 Outputs: <PN>_rev<X>.pdf (assembly instruction), _A01_bom.csv, _A02_make-files.zip,
 _A03_inspection-test.pdf (inspection, in-process and final checks, test procedures, analysis),
-_A04_traveller.pdf, _A05_software.zip. Sources, all in 02_design/: steps.json, images/,
+_A04_traveller.pdf. Software is not part of the document (a draft in ../software/). Sources, all in 02_design/: steps.json, images/,
 bom.csv, inspection_checks.csv, make_files/ (CAD exports), ../test_procedures/,
 ../software/. Each step's quantities must add up to the BOM and every BOM line must be used.
 """
@@ -70,10 +70,9 @@ def e(x):
 
 BASE = f"{data['assembly']}_rev{data['rev']}"
 FILES = {"A01": f"{BASE}_A01_bom.csv", "A02": f"{BASE}_A02_make-files.zip",
-         "A03": f"{BASE}_A03_inspection-test.pdf", "A04": f"{BASE}_A04_traveller.pdf",
-         "A05": f"{BASE}_A05_software.zip"}
+         "A03": f"{BASE}_A03_inspection-test.pdf", "A04": f"{BASE}_A04_traveller.pdf"}
 NAMES = {"A01": "Bill of materials (for ordering)", "A02": "Make files (STL for printing)",
-         "A03": "Inspection and test", "A04": "Build traveller (one per unit)", "A05": "Software"}
+         "A03": "Inspection and test", "A04": "Build traveller (one per unit)"}
 
 
 def title_block(which=None):
@@ -302,5 +301,4 @@ if __name__ == "__main__":
     made.append(zip_dir(FILES["A02"], HERE / "make_files", data["document"]["make_readme"]))
     made.append(write(f"{BASE}_A03_inspection-test.html", f"{BASE} A03", title_block("A03") + "\n".join(appendix_c()[1:])))
     made.append(write(f"{BASE}_A04_traveller.html", f"{BASE} A04", title_block("A04") + "\n".join(appendix_d()[1:])))
-    made.append(zip_dir(FILES["A05"], DESIGN / "software" / "lsn-node", data["document"]["software_readme"]))
     print("wrote " + ", ".join(made))

@@ -1,7 +1,7 @@
-# LSN node software v0.1.0
+# LSN node software v0.1.1 (draft, not frozen)
 
 Runs on the Raspberry Pi Zero 2 W (ECM-0004) of LSN-A-0001. Reads the BME280 and SGP40 and
-sends a JSON reading to a server every 10 s.
+sends a JSON reading to a server every 5 s.
 
 **Monitoring only. The lab sensor node is not a certified safety or gas alarm.** (REQ-015)
 
@@ -21,7 +21,7 @@ sends a JSON reading to a server every 10 s.
    ```
    [node]
    server_url = http://<server>:8080/reading
-   interval_s = 10
+   interval_s = 5
    ```
 6. `sudo cp lsn-node.service /etc/systemd/system/ && sudo systemctl enable --now lsn-node`
 7. Check: `journalctl -u lsn-node -f` shows no errors, and the server receives readings.

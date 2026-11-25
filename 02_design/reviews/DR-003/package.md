@@ -17,8 +17,8 @@ conversation (kc: research/hobby rigour, speedrun).
 | LSN-A-0001 Lab sensor node | A | Fusion: Tech/General/minimal-qms/LSN- Lab Sensor Node/LSN-A-0001 |
 | LSN-0001 Base, LSN-0002 Lid | A | Fusion, same folder (PETG) |
 | OTS parts ECM-0001..0004, ECW-0001, ECP-0001, ECX-0001, HWN-0006 | - | minimal-qms-ots-library PR #10 |
-| Software lsn-node | v0.1.0 | `03_build_package/LSN-A-0001_revA_A05_software.zip` (source `02_design/software/lsn-node/`) |
-| Document LSN-A-0001 rev A: assembly instruction with appendices A01 BOM (ordering info), A02 make files, A03 inspection and test (TP-001..004, AN-001), A04 build traveller, A05 software | A | `03_build_package/` |
+| Software lsn-node | v0.1.1 draft | Not frozen at G2 (kc, 2026-11-25: "i dont want software to be frozen here"). Working draft in `02_design/software/lsn-node/`; checked by TP-001..004 at G3 |
+| Document LSN-A-0001 rev A: assembly instruction with appendices A01 BOM (ordering info), A02 make files, A03 inspection and test (TP-001..004, AN-001), A04 build traveller | A | `03_build_package/` |
 
 ## Outputs to open before approving (all in `03_build_package/`, flat)
 | Output | File | From |
@@ -28,7 +28,6 @@ conversation (kc: research/hobby rigour, speedrun).
 | A02 make files | `LSN-A-0001_revA_A02_make-files.zip` | STLs from LSN-0001 Base v7, LSN-0002 Lid v6 |
 | A03 inspection and test | `LSN-A-0001_revA_A03_inspection-test.pdf` | inspection, in-process and final checks, TP-001..004, AN-001 in full |
 | A04 build traveller | `LSN-A-0001_revA_A04_traveller.pdf` | |
-| A05 software | `LSN-A-0001_revA_A05_software.zip` | lsn-node v0.1.0 |
 
 No PCB, so no Gerbers. After approval the Fusion milestones go on exactly these versions; if a
 design has changed since, it is re-exported and brought back first.
@@ -42,8 +41,8 @@ design has changed since, it is re-exported and brought back first.
 2. **Housing:** 95 x 68 x 26 mm base and snap-fit lid; Pi and sensor bays split by a partition with
    a small cable notch at the end wall; vents over both bays; boards on bosses with M2 inserts;
    assembly fully held by joints.
-3. **Software v0.1.0:** one Python script and a systemd service; sends JSON over HTTP every
-   `interval_s`.
+3. **Software (draft, not frozen at G2):** v0.1.1, one Python script and a systemd service; sends
+   JSON over HTTP every 5 s. Not part of this approval; checked by TP-001..004 at G3.
 4. **Verification:** TP-001 (readings, rate, reporting, timestamps), TP-002 (response and unit
    agreement), TP-003 (restart), TP-004 (72 h), AN-001 (operating environment), inspection
    checks for every Class A part.
@@ -68,6 +67,7 @@ design has changed since, it is re-exported and brought back first.
 - **G2-F5** A-004 (network onboarding) not closed. (Agent: kc confirmed on 2026-11-24: university
   Wi-Fi, then Tailscale to the server.)
 - Code: stale VOC value sent after an SGP40 read failure; set `voc = None` on failure.
+  G2-F1 and this fix applied 2026-11-25 in the software draft (v0.1.1): interval 5 s, `voc = None` on failure.
 
 ## Buildability check in CAD (agent, 2026-11-25, Fusion LSN-A-0001 v28)
 Full results in `02_design/build_document/README.md`. Order, tool access, closing and

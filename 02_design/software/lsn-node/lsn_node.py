@@ -20,7 +20,7 @@ import board
 import adafruit_sgp40
 from adafruit_bme280 import basic as adafruit_bme280
 
-VERSION = "0.1.0"
+VERSION = "0.1.1"
 CONF_PATH = "/etc/lsn-node.conf"  # the server URL lives on the unit, never in the repo (REQ-010)
 
 
@@ -28,7 +28,7 @@ def load_config():
     cp = configparser.ConfigParser()
     cp.read(CONF_PATH)
     node = cp["node"] if "node" in cp else {}
-    return node.get("server_url", ""), float(node.get("interval_s", "10"))
+    return node.get("server_url", ""), float(node.get("interval_s", "5"))
 
 
 def time_synced():
@@ -73,6 +73,7 @@ def main():
             voc = sgp.measure_index(temperature=bme.temperature, relative_humidity=bme.humidity)
         except Exception as e:
             logging.warning("SGP40 read failed: %s", e)
+            voc = None  # send no value rather than the last good one (G2 review)
         if t0 >= next_report:
             next_report += interval
             try:
