@@ -18,7 +18,7 @@ conversation (kc: research/hobby rigour, speedrun).
 | LSN-0001 Base, LSN-0002 Lid | A | Fusion, same folder (PETG) |
 | OTS parts ECM-0001..0004, ECW-0001, ECP-0001, ECX-0001, HWN-0006 | - | minimal-qms-ots-library PR #10 |
 | Software lsn-node | v0.1.0 | `03_build_package/software/lsn-node/` |
-| TP-001..004, AN-001, assembly instruction, inspection checks | A | `03_build_package/` |
+| TP-001..004, AN-001, assembly instruction (picture guide), inspection checks | A | `03_build_package/` |
 
 ## Change groups
 1. **Parts and BOM:** Pi Zero 2 W, BME280, SGP40 (ECR-002), Qwiic SHIM and cables, PiShop
@@ -55,6 +55,16 @@ conversation (kc: research/hobby rigour, speedrun).
 - **G2-F5** A-004 (network onboarding) not closed. (Agent: kc confirmed on 2026-11-24: university
   Wi-Fi, then Tailscale to the server.)
 - Code: stale VOC value sent after an SGP40 read failure; set `voc = None` on failure.
+
+## Buildability check in CAD (agent, 2026-11-25, Fusion LSN-A-0001 v28)
+Full results in `03_build_package/assembly/LSN-A-0001.md`. Order, tool access, closing and
+the BOM check pass. Findings:
+- **G2-F6** The SD slot is 14 mm inside the end wall. (Agent: fixed in the instruction; the card
+  goes in at step 2, before the Pi is mounted.)
+- **G2-F7** The Pi's ports clear the inside of the front wall by 0.4 mm; a slightly thick print
+  may jam. Suggest moving the Pi 0.5 mm toward the partition (`pi_cy` -16 to -15.5 mm).
+- **G2-F8** The 100 mm cable from the BME280 to the SGP40 spans about 26 mm, leaving about 70 mm
+  loose in the sensor bay. Suggest a 50 mm Qwiic cable for that run (new OTS PN).
 
 ## Open items
 - Screw: HWB-0036 (McMaster 92492A702, black nylon), added 2026-11-24.

@@ -1,12 +1,12 @@
 parent_pn,parent_rev,pn,qty,unit,refdes,source,notes
-LSN-A-0001,A,ECM-0001,1,ea,,Fusion: LSN-A-0001 v28,BME280 sensor board (temperature / humidity / pressure)
-LSN-A-0001,A,ECM-0002,1,ea,,Fusion: LSN-A-0001 v28,SGP40 VOC sensor board
-LSN-A-0001,A,ECM-0003,1,ea,,Fusion: LSN-A-0001 v28,Qwiic SHIM on the controller's GPIO header
-LSN-A-0001,A,ECW-0001,2,ea,,Fusion: LSN-A-0001 v28,SHIM to BME280; BME280 to SGP40 (ghost design)
-LSN-A-0001,A,ECM-0004,1,ea,,Fusion: LSN-A-0001 v28,Controller: Raspberry Pi Zero 2 W with header
-LSN-A-0001,A,ECP-0001,1,ea,,Fusion: LSN-A-0001 v28,Wall power supply (not inside the enclosure; ghost design)
-LSN-A-0001,A,ECX-0001,1,ea,,Fusion: LSN-A-0001 v28,microSD card with the software image (ghost design)
-LSN-A-0001,A,LSN-0001,1,ea,,Fusion: LSN-A-0001 v28,Housing base (printed in PETG)
-LSN-A-0001,A,LSN-0002,1,ea,,Fusion: LSN-A-0001 v28,Housing lid (printed in PETG; snap fit)
-LSN-A-0001,A,HWN-0006,8,ea,,Fusion: LSN-A-0001 v28,M2 heat-set inserts: 4 Pi + 2 BME280 + 2 SGP40 (4 sensor bosses stay empty)
-LSN-A-0001,A,HWB-0036,8,ea,,Fusion: LSN-A-0001 v28,"M2 x 5 nylon pan-head screws, black: 4 Pi + 2 BME280 + 2 SGP40, diagonal pairs (insulating)"
+LSN-A-0001,A,LSN-0001,1,ea,P1,Fusion: LSN-A-0001 v28,Housing base (printed in PETG)
+LSN-A-0001,A,LSN-0002,1,ea,P2,Fusion: LSN-A-0001 v28,Housing lid (printed in PETG; snap fit)
+LSN-A-0001,A,ECM-0004,1,ea,B1,Fusion: LSN-A-0001 v28,Controller: Raspberry Pi Zero 2 W with header
+LSN-A-0001,A,ECX-0001,1,ea,B2,Fusion: LSN-A-0001 v28,microSD card with the software image (ghost design)
+LSN-A-0001,A,ECM-0003,1,ea,B3,Fusion: LSN-A-0001 v28,Qwiic SHIM on the controller's GPIO header
+LSN-A-0001,A,ECM-0001,1,ea,B4,Fusion: LSN-A-0001 v28,BME280 sensor board (temperature / humidity / pressure)
+LSN-A-0001,A,ECM-0002,1,ea,B5,Fusion: LSN-A-0001 v28,SGP40 VOC sensor board
+LSN-A-0001,A,ECP-0001,1,ea,B6,Fusion: LSN-A-0001 v28,Wall power supply (not inside the enclosure; ghost design)
+LSN-A-0001,A,HWN-0006,8,ea,H1,Fusion: LSN-A-0001 v28,M2 heat-set inserts: 4 Pi + 2 BME280 + 2 SGP40 (4 sensor bosses stay empty)
+LSN-A-0001,A,HWB-0036,8,ea,F1,Fusion: LSN-A-0001 v28,"M2 x 5 nylon pan-head screws, black: 4 Pi + 2 BME280 + 2 SGP40, diagonal pairs (insulating)"
+LSN-A-0001,A,ECW-0001,2,ea,W1,Fusion: LSN-A-0001 v28,SHIM to BME280; BME280 to SGP40 (ghost design)

@@ -1,0 +1,411 @@
+{
+ "assembly": "LSN-A-0001",
+ "rev": "A",
+ "title": "Lab sensor node",
+ "source": "Fusion: LSN-A-0001 v28",
+ "classes": {
+  "P": [
+   "Printed parts",
+   "#e07b00"
+  ],
+  "B": [
+   "Bought parts",
+   "#1f77b4"
+  ],
+  "H": [
+   "Heat-set inserts",
+   "#8e44ad"
+  ],
+  "F": [
+   "Screws",
+   "#2ca02c"
+  ],
+  "W": [
+   "Cables",
+   "#8c564b"
+  ]
+ },
+ "labels": {
+  "P1": "Base",
+  "P2": "Lid",
+  "B1": "Raspberry Pi Zero 2 W",
+  "B2": "microSD card, flashed",
+  "B3": "Qwiic SHIM",
+  "B4": "BME280 board",
+  "B5": "SGP40 board",
+  "B6": "5 V wall supply",
+  "H1": "M2 insert",
+  "F1": "M2×5 pan",
+  "W1": "Qwiic cable 100 mm"
+ },
+ "before": {
+  "tools": [
+   "Heat-set insert tool with an M2 tip (about 230 °C for PETG)",
+   "Phillips #0 precision screwdriver",
+   "Computer with Raspberry Pi Imager and a microSD card reader"
+  ],
+  "consumables": [
+   "Serial number label"
+  ],
+  "safety": [
+   "The insert tool is hot: let the base cool before handling it.",
+   "Handle boards by their edges."
+  ],
+  "prep": "Flash B2 before you start: software/lsn-node/README.md, steps 1 to 3. Hostname = the unit's serial number. No Wi-Fi password or server address goes into any file in the repo (REQ-010)."
+ },
+ "steps": [
+  {
+   "n": 1,
+   "title": "Inserts",
+   "img": "images/step1.png",
+   "tools": "Insert tool, M2 tip",
+   "callouts": [
+    {
+     "id": "P1",
+     "qty": 1,
+     "action": "Base",
+     "pts": [
+      [
+       863.9,
+       333.4
+      ]
+     ],
+     "label_at": [
+      714,
+      223
+     ]
+    },
+    {
+     "id": "H1",
+     "qty": 8,
+     "action": "Press flush; 4 Pi bay, 2 per sensor",
+     "pts": [
+      [
+       744.9,
+       204.5
+      ],
+      [
+       598.4,
+       190.9
+      ],
+      [
+       491.7,
+       353.3
+      ],
+      [
+       324.3,
+       299.0
+      ],
+      [
+       420.4,
+       470.6
+      ],
+      [
+       483.5,
+       593.7
+      ],
+      [
+       738.9,
+       315.4
+      ],
+      [
+       802.1,
+       438.5
+      ]
+     ],
+     "label_at": [
+      576,
+      588
+     ]
+    }
+   ],
+   "notes": [
+    "Only the bosses shown. The other 4 sensor bosses stay empty."
+   ],
+   "w": 1136,
+   "h": 722
+  },
+  {
+   "n": 2,
+   "title": "Prepare the Pi",
+   "img": "images/step2.png",
+   "tools": "",
+   "callouts": [
+    {
+     "id": "B1",
+     "qty": 1,
+     "action": "Pi",
+     "pts": [
+      [
+       849.3,
+       500.9
+      ]
+     ],
+     "label_at": [
+      699,
+      391
+     ]
+    },
+    {
+     "id": "B2",
+     "qty": 1,
+     "action": "Push into the slot until it clicks",
+     "pts": [
+      [
+       402.4,
+       684.1
+      ]
+     ],
+     "label_at": [
+      552,
+      574
+     ]
+    },
+    {
+     "id": "B3",
+     "qty": 1,
+     "action": "Push onto GPIO pins 1 to 6",
+     "pts": [
+      [
+       496.1,
+       524.2
+      ]
+     ],
+     "label_at": [
+      346,
+      634
+     ]
+    }
+   ],
+   "notes": [
+    "Card in now: once the Pi is in the base, the slot is 14 mm inside the wall.",
+    "B3 pin 1 over the Pi's square pad; connector toward the SD end."
+   ],
+   "w": 1648,
+   "h": 914
+  },
+  {
+   "n": 3,
+   "title": "Mount the Pi",
+   "img": "images/step3.png",
+   "tools": "PH0 screwdriver",
+   "callouts": [
+    {
+     "id": "B1",
+     "qty": 1,
+     "again": true,
+     "action": "Ports to the front-wall openings",
+     "pts": [
+      [
+       638.7,
+       439.0
+      ]
+     ],
+     "label_at": [
+      489,
+      329
+     ]
+    },
+    {
+     "id": "F1",
+     "qty": 4,
+     "action": "Snug, do not overtighten",
+     "pts": [
+      [
+       420.4,
+       466.2
+      ],
+      [
+       483.5,
+       589.3
+      ],
+      [
+       738.9,
+       311.0
+      ],
+      [
+       802.1,
+       434.1
+      ]
+     ],
+     "label_at": [
+      611,
+      680
+     ]
+    }
+   ],
+   "notes": [],
+   "w": 1136,
+   "h": 722
+  },
+  {
+   "n": 4,
+   "title": "Mount the sensors",
+   "img": "images/step4.png",
+   "tools": "PH0 screwdriver",
+   "callouts": [
+    {
+     "id": "B4",
+     "qty": 1,
+     "action": "End-wall side",
+     "pts": [
+      [
+       408.0,
+       319.9
+      ]
+     ],
+     "label_at": [
+      258,
+      210
+     ]
+    },
+    {
+     "id": "B5",
+     "qty": 1,
+     "action": "Other side",
+     "pts": [
+      [
+       671.6,
+       195.5
+      ]
+     ],
+     "label_at": [
+      822,
+      86
+     ]
+    },
+    {
+     "id": "F1",
+     "qty": 4,
+     "action": "2 per board, diagonal",
+     "pts": [
+      [
+       491.7,
+       348.9
+      ],
+      [
+       324.3,
+       294.6
+      ],
+      [
+       598.4,
+       186.5
+      ],
+      [
+       744.9,
+       200.1
+      ]
+     ],
+     "label_at": [
+      540,
+      30
+     ]
+    }
+   ],
+   "notes": [],
+   "w": 1136,
+   "h": 722
+  },
+  {
+   "n": 5,
+   "title": "Cables",
+   "img": "images/step5.png",
+   "tools": "",
+   "callouts": [
+    {
+     "id": "W1",
+     "qty": 2,
+     "action": "B3 to B4 through the notch; B4 to B5",
+     "pts": [
+      [
+       484.4,
+       469.5
+      ],
+      [
+       325.7,
+       447.3
+      ],
+      [
+       471.2,
+       291.2
+      ],
+      [
+       616.2,
+       218.5
+      ]
+     ],
+     "label_at": [
+      474,
+      127
+     ]
+    }
+   ],
+   "notes": [
+    "Keep the spare cable below the rim and off the B5 sensor opening."
+   ],
+   "w": 1136,
+   "h": 722
+  },
+  {
+   "n": 6,
+   "title": "Lid",
+   "img": "images/step6.png",
+   "tools": "",
+   "callouts": [
+    {
+     "id": "P2",
+     "qty": 1,
+     "action": "Press until all 4 snaps click",
+     "pts": [
+      [
+       778.0,
+       337.2
+      ]
+     ],
+     "label_at": [
+      628,
+      227
+     ]
+    }
+   ],
+   "notes": [],
+   "w": 1648,
+   "h": 914
+  },
+  {
+   "n": 7,
+   "title": "Label and power",
+   "img": "images/step7.png",
+   "tools": "",
+   "callouts": [
+    {
+     "id": "B6",
+     "qty": 1,
+     "action": "Plug into PWR IN: the micro-USB nearest the corner",
+     "pts": [
+      [
+       952.9,
+       698.4
+      ]
+     ],
+     "label_at": [
+      803,
+      588
+     ]
+    }
+   ],
+   "notes": [
+    "Serial number label on the base. Within 2 min the test receiver shows readings from this unit."
+   ],
+   "w": 1648,
+   "h": 914
+  }
+ ],
+ "final_checks": [
+  "8 screws fitted and snug",
+  "Lid snapped on all four sides",
+  "Unit within 100 × 100 × 100 mm (REQ-007)",
+  "No soldered joints added (REQ-008)",
+  "Serial number label applied"
+ ]
+}
