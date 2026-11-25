@@ -47,7 +47,7 @@
    "The insert tool is hot: let the base cool before handling it.",
    "Handle boards by their edges."
   ],
-  "prep": "Flash B2 before you start: software/lsn-node/README.md, steps 1 to 3. Hostname = the unit's serial number. No Wi-Fi password or server address goes into any file in the repo (REQ-010)."
+  "prep": "Flash B2 before you start: the README in A05 (software zip), steps 1 to 3. Hostname = the unit's serial number. No Wi-Fi password or server address goes into any file in the repo (REQ-010)."
  },
  "steps": [
   {
@@ -458,8 +458,8 @@
   "Serial number label applied"
  ],
  "credits": [
-  "B2: \"MicroSD card 2GB focus-stacked\" by Afrank99, CC BY-SA 3.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:MicroSD_card_2GB_focus-stacked.jpg); resized. Placeholder: the build uses the card listed in Appendix A.",
-  "B6: \"USB wall charger\" by Alcide55, CC BY-SA 3.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:USB_wall_charger.JPG); resized. Placeholder: the build uses the supply listed in Appendix A.",
+  "B2: \"MicroSD card 2GB focus-stacked\" by Afrank99, CC BY-SA 3.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:MicroSD_card_2GB_focus-stacked.jpg); resized. Placeholder: the build uses the card listed in A01.",
+  "B6: \"USB wall charger\" by Alcide55, CC BY-SA 3.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:USB_wall_charger.JPG); resized. Placeholder: the build uses the supply listed in A01.",
   "W1: drawn placeholder. All other pictures are renders of the Fusion assembly."
  ],
  "wires": {
@@ -469,11 +469,8 @@
  "document": {
   "status": "Draft, for G2 approval (DR-003)",
   "approval": "Pending: recorded in 02_design/reviews/DR-003/minutes.md",
-  "make_files": [
-   "LSN-0001_revA_base.stl (Fusion LSN-0001 v7)",
-   "LSN-0002_revA_lid.stl (Fusion LSN-0002 v6)",
-   "in LSN-A-0001_revA_appB_make-files.zip with a README"
-  ],
-  "print_note": "PETG, any colour. 0.2 mm layers, 3 walls, 20 % infill; base open side up, lid outer face down; no supports needed."
+  "print_note": "PETG, any colour. 0.2 mm layers, 3 walls, 20 % infill; base open side up, lid outer face down; no supports needed.",
+  "make_readme": "LSN-A-0001 rev A, appendix A02: make files\n\nLSN-0001_revA_base.stl  exported from Fusion LSN-0001 Base v7\nLSN-0002_revA_lid.stl   exported from Fusion LSN-0002 Lid v6\n\nPrint in PETG, any colour. Units: mm. PETG, any colour. 0.2 mm layers, 3 walls, 20 % infill; base open side up, lid outer face down; no supports needed.\nNo PCB in this assembly, so no Gerbers.\n",
+  "software_readme": "LSN-A-0001 rev A, appendix A05: software lsn-node v0.1.0\n\nInstall on the unit's Raspberry Pi as described in README.md (inside this zip).\nMonitoring only: the lab sensor node is not a certified safety or gas alarm (REQ-015).\n"
  }
 }

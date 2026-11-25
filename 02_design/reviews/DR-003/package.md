@@ -17,18 +17,18 @@ conversation (kc: research/hobby rigour, speedrun).
 | LSN-A-0001 Lab sensor node | A | Fusion: Tech/General/minimal-qms/LSN- Lab Sensor Node/LSN-A-0001 |
 | LSN-0001 Base, LSN-0002 Lid | A | Fusion, same folder (PETG) |
 | OTS parts ECM-0001..0004, ECW-0001, ECP-0001, ECX-0001, HWN-0006 | - | minimal-qms-ots-library PR #10 |
-| Software lsn-node | v0.1.0 | `03_build_package/software/lsn-node/` |
-| Document LSN-A-0001 rev A: assembly instruction with Appendix A BOM (ordering info), B make files, C inspection and test (TP-001..004, AN-001), D build traveller | A | `03_build_package/LSN-A-0001_revA.pdf` |
+| Software lsn-node | v0.1.0 | `03_build_package/LSN-A-0001_revA_A05_software.zip` (source `02_design/software/lsn-node/`) |
+| Document LSN-A-0001 rev A: assembly instruction with appendices A01 BOM (ordering info), A02 make files, A03 inspection and test (TP-001..004, AN-001), A04 build traveller, A05 software | A | `03_build_package/` |
 
-## Outputs to open before approving (all in `03_build_package/`)
+## Outputs to open before approving (all in `03_build_package/`, flat)
 | Output | File | From |
 |---|---|---|
 | Main document: assembly instruction | `LSN-A-0001_revA.pdf` | steps.json, Fusion renders |
-| Appendix A: BOM for ordering | `LSN-A-0001_revA_appA_bom.csv` | read from Fusion LSN-A-0001 v29 (BOM check: quantities match) |
-| Appendix B: make files | `mechanical/LSN-A-0001_revA_appB_make-files.zip` (also the two STLs beside it) | LSN-0001 Base v7, LSN-0002 Lid v6 |
-| Appendix C: inspection and test | `LSN-A-0001_revA_appC_inspection-test.pdf`, `test_procedures/` | |
-| Appendix D: build traveller | `LSN-A-0001_revA_appD_traveller.pdf` | |
-| Software | `software/lsn-node/` | v0.1.0 |
+| A01 BOM for ordering | `LSN-A-0001_revA_A01_bom.csv` | read from Fusion LSN-A-0001 v29 (BOM check: quantities match) |
+| A02 make files | `LSN-A-0001_revA_A02_make-files.zip` | STLs from LSN-0001 Base v7, LSN-0002 Lid v6 |
+| A03 inspection and test | `LSN-A-0001_revA_A03_inspection-test.pdf` | inspection, in-process and final checks, TP-001..004, AN-001 in full |
+| A04 build traveller | `LSN-A-0001_revA_A04_traveller.pdf` | |
+| A05 software | `LSN-A-0001_revA_A05_software.zip` | lsn-node v0.1.0 |
 
 No PCB, so no Gerbers. After approval the Fusion milestones go on exactly these versions; if a
 design has changed since, it is re-exported and brought back first.
@@ -70,7 +70,7 @@ design has changed since, it is re-exported and brought back first.
 - Code: stale VOC value sent after an SGP40 read failure; set `voc = None` on failure.
 
 ## Buildability check in CAD (agent, 2026-11-25, Fusion LSN-A-0001 v28)
-Full results in `03_build_package/assembly/LSN-A-0001.md`. Order, tool access, closing and
+Full results in `02_design/build_document/README.md`. Order, tool access, closing and
 the BOM check pass. Findings:
 - **G2-F6** The SD slot is 14 mm inside the end wall. (Agent: fixed in the instruction; the card
   goes in at step 2, before the Pi is mounted.)

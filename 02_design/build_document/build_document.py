@@ -1,25 +1,31 @@
-"""Build the controlled document LSN-A-0001 (assembly instruction with Appendices A to D).
+"""Build the controlled document LSN-A-0001 rev <X> and its appendices into 03_build_package/.
 
-    python build_document.py          -> LSN-A-0001_rev<X>.html beside this file
-    python build_document.py --embed  -> the same, pictures inside the file (one file to share)
+    python build_document.py            -> PDFs, CSV and zips in ../../03_build_package/ (flat)
+    python build_document.py --no-pdf   -> HTML previews only (beside this file)
 
-Sources (people read the generated document, not these): assembly/steps.json (instruction,
-pictures, callouts), LSN-A-0001_bom.csv (Appendix A), inspection_checks.csv (Appendix C),
-test_procedures/ (Appendix C), mechanical/ (Appendix B). Each step's quantities must add up to
-the BOM and every BOM line must be used; the script stops if not. Print to PDF from a browser.
+Outputs: <PN>_rev<X>.pdf (assembly instruction), _A01_bom.csv, _A02_make-files.zip,
+_A03_inspection-test.pdf (inspection, in-process and final checks, test procedures, analysis),
+_A04_traveller.pdf, _A05_software.zip. Sources, all in 02_design/: steps.json, images/,
+bom.csv, inspection_checks.csv, make_files/ (CAD exports), ../test_procedures/,
+../software/. Each step's quantities must add up to the BOM and every BOM line must be used.
 """
 import base64
 import csv
 import html
 import json
 import subprocess
+import zipfile
+
+import markdown
 import sys
 from pathlib import Path
 
 HERE = Path(__file__).parent
-ASM = HERE / "assembly"
+ASM = HERE
+DESIGN = HERE.parent
+OUT = HERE.parent.parent / "03_build_package"
 data = json.loads((ASM / "steps.json").read_text(encoding="utf-8"))
-bom = list(csv.DictReader(open(HERE / f"{data['assembly']}_bom.csv", encoding="utf-8")))
+bom = list(csv.DictReader(open(HERE / "bom.csv", encoding="utf-8")))
 by_id = {r["ref"]: r for r in bom}
 RATES = {"CAD": 1.0, "USD": 1.4369}  # Bank of Canada, 2026-11-23 (OTS library rates.csv)
 EMBED = "--embed" in sys.argv
@@ -27,7 +33,7 @@ EMBED = "--embed" in sys.argv
 
 def src(rel):
     if not EMBED:
-        return "assembly/" + rel
+        return rel
     return "data:image/png;base64," + base64.b64encode((ASM / rel).read_bytes()).decode()
 
 
@@ -63,28 +69,29 @@ def e(x):
 
 
 BASE = f"{data['assembly']}_rev{data['rev']}"
-FILES = {"A": f"{BASE}_appA_bom.csv", "B": f"mechanical/{BASE}_appB_make-files.zip",
-         "C": f"{BASE}_appC_inspection-test.pdf", "D": f"{BASE}_appD_traveller.pdf"}
-NAMES = {"A": "Bill of materials (for ordering)", "B": "Make files (STL for printing)",
-         "C": "Inspection and test", "D": "Build traveller (one per unit)"}
+FILES = {"A01": f"{BASE}_A01_bom.csv", "A02": f"{BASE}_A02_make-files.zip",
+         "A03": f"{BASE}_A03_inspection-test.pdf", "A04": f"{BASE}_A04_traveller.pdf",
+         "A05": f"{BASE}_A05_software.zip"}
+NAMES = {"A01": "Bill of materials (for ordering)", "A02": "Make files (STL for printing)",
+         "A03": "Inspection and test", "A04": "Build traveller (one per unit)", "A05": "Software"}
 
 
 def title_block(which=None):
     d = data["document"]
-    doc = f"{data['assembly']} rev {data['rev']}" + (f", Appendix {which}" if which else "")
+    doc = f"{data['assembly']} rev {data['rev']}" + (f", appendix {which}" if which else "")
     title = f"{data['title']}: " + (NAMES[which].lower() if which else "assembly instruction")
     rows = [("Document", doc), ("Title", title), ("Status", d["status"]), ("Approval", d["approval"]),
             ("Design source", data["source"])]
     if not which:
         rows.append(("Appendices", " · ".join(f"{k} {NAMES[k]}: {FILES[k]}" for k in FILES)))
-    return (f"<h1>{e(data['assembly'])} {e(data['title'])}" + (f" · Appendix {which}" if which else "") + "</h1><table class='tb'>"
+    return (f"<h1>{e(data['assembly'])} {e(data['title'])}" + (f" · {which}" if which else "") + "</h1><table class='tb'>"
             + "".join(f"<tr><th>{e(k)}</th><td>{e(v)}</td></tr>" for k, v in rows) + "</table>")
 
 
 def write_appendix_a():
     cols = ["ref", "pn", "rev", "description", "category", "qty", "unit", "manufacturer", "mpn", "supplier", "supplier_pn",
             "link", "unit_price", "pack_qty", "currency", "each_cad", "line_cad", "price_date", "notes"]
-    with open(HERE / FILES["A"], "w", newline="", encoding="utf-8") as f:
+    with open(OUT / FILES["A01"], "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f, lineterminator="\n")
         w.writerow(cols)
         for r in bom:
@@ -101,9 +108,9 @@ def price_cad(r):
 
 def appendix_c():
     names = {r["pn"]: (r["ref"], data["labels"].get(r["ref"], r["description"])) for r in bom}
-    out = ["<section class='app'><h2>Appendix C · Inspection and test</h2>",
-           "<h3>C1 Incoming inspection</h3><p>Check each part when it arrives, before it goes into a build. "
-           "Record the result on the build traveller (Appendix D).</p>",
+    out = ["<section class='app'><h2>A03 · Inspection and test</h2>",
+           "<h3>1 Incoming inspection</h3><p>Check each part when it arrives, before it goes into a build. "
+           "Record the result on the build traveller (A04).</p>",
            "<table class='insp'><tr><th>Part</th><th>Check</th><th>How</th><th>Pass if</th><th>How many</th></tr>"]
     for r in csv.DictReader(open(HERE / "inspection_checks.csv", encoding="utf-8")):
         if r["pn"] == data["assembly"]:
@@ -111,25 +118,29 @@ def appendix_c():
         ref, name = names.get(r["pn"], ("", r["pn"]))
         out.append(f"<tr><td>{badge(ref) if ref else ''} {e(name)}<div class='small'>{e(r['pn'])}</div></td><td>{e(r['characteristic'])}</td>"
                    f"<td>{e(r['method'])}</td><td>{e(r['criterion'])}</td><td>{e(r['sample'])}</td></tr>")
-    out.append("</table><h3>C2 In-process checks</h3><table class='insp'><tr><th>Step</th><th>Check before moving on</th></tr>")
+    out.append("</table><h3>2 In-process checks</h3><table class='insp'><tr><th>Step</th><th>Check before moving on</th></tr>")
     for s in data["steps"]:
         out.append(f"<tr><td>{s['n']} {e(s['title'])}</td><td>{e(s.get('check', ''))}</td></tr>")
-    out.append("</table><h3>C3 Final checks and tests</h3><ul>"
+    out.append("</table><h3>3 Final checks and tests</h3><ul>"
                + "".join(f"<li>{e(c)}</li>" for c in data["final_checks"]) + "</ul><table class='insp'><tr><th>Test</th><th>What it shows</th></tr>")
-    for tp in sorted((HERE / "test_procedures").glob("*.md")):
+    for tp in sorted((DESIGN / "test_procedures").glob("*.md")):
         meta = {}
         for line in tp.read_text(encoding="utf-8").split("---")[1].splitlines():
             if ":" in line:
                 k, v = line.split(":", 1)
                 meta[k.strip()] = v.strip()
-        out.append(f"<tr><td><a href='test_procedures/{e(tp.name)}'>{e(meta.get('id', tp.stem))}</a></td><td>{e(meta.get('title', ''))}</td></tr>")
-    out.append("</table></section>")
+        out.append(f"<tr><td>{e(meta.get('id', tp.stem))}</td><td>{e(meta.get('title', ''))}</td></tr>")
+    out.append("</table><p>The full procedures and the analysis follow.</p>")
+    for tp in sorted((DESIGN / "test_procedures").glob("*.md")):
+        body = tp.read_text(encoding="utf-8").split("---", 2)[2]
+        out.append("<div class='tp'>" + markdown.markdown(body, extensions=["tables"]) + "</div>")
+    out.append("</section>")
     return out
 
 
 def appendix_d():
     line = "<span class='blank'></span>"
-    out = ["<section class='app'><h2>Appendix D · Build traveller (one per unit)</h2>",
+    out = ["<section class='app'><h2>A04 · Build traveller (one per unit)</h2>",
            "<p>Print one per unit. It goes with the unit through the build; a copy or photo is kept in <code>builds/B00n/</code>.</p>",
            f"<table class='tb'><tr><th>Serial number</th><td>{data['assembly']}-YYMMDD + letter: {line}</td></tr>"
            f"<tr><th>Build</th><td>B00n {line}</td></tr><tr><th>Assembled by</th><td>{line}</td></tr><tr><th>Date</th><td>{line}</td></tr></table>",
@@ -144,7 +155,7 @@ def appendix_d():
         out.append(f"<tr><td>Step {s['n']}</td><td>{e(s.get('check', s['title']))}</td><td>☐</td><td></td><td></td></tr>")
     for c in data["final_checks"]:
         out.append(f"<tr><td>Final</td><td>{e(c)}</td><td>☐</td><td></td><td></td></tr>")
-    for tp in sorted((HERE / "test_procedures").glob("TP-*.md")):
+    for tp in sorted((DESIGN / "test_procedures").glob("TP-*.md")):
         out.append(f"<tr><td>Test</td><td>{e(tp.stem)} (results in test_results.csv)</td><td>☐</td><td></td><td></td></tr>")
     out.append("</table><table class='tb'><tr><th>Build complete, all items pass</th><td>Signature " + line + " Date " + line + "</td></tr>"
                "<tr><th>Released (SOP-007)</th><td>Recorded in release.yaml after the tests</td></tr></table></section>")
@@ -152,7 +163,7 @@ def appendix_d():
 
 
 def page():
-    out = [title_block(), f"<p class='prep'><b>Printing A1 and A2:</b> {e(data['document']['print_note'])} STL files are in Appendix B.</p>",
+    out = [title_block(), f"<p class='prep'><b>Printing A1 and A2:</b> {e(data['document']['print_note'])} STL files are in A02.</p>",
            "<h2>Parts</h2>"]
     for letter, (name, _) in data["classes"].items():
         refs = [r for r in by_id if r[0] == letter]
@@ -230,7 +241,7 @@ def page():
             out.append(f"<p class='chk'>☑ <b>Check:</b> {html.escape(s['check'])}</p>")
         out.append("</section>")
     out.append("<h2>Final checks</h2><ul class='checks'>" + "".join(f"<li>☐ {html.escape(c)}</li>" for c in data["final_checks"]) + "</ul>")
-    out.append("<p class='prep'>Record the serial number and sign off each unit on its build traveller (Appendix D).</p>")
+    out.append("<p class='prep'>Record the serial number and sign off each unit on its build traveller (A04).</p>")
     if data.get("credits"):
         out.append("<h2>Picture credits</h2><ul class='credits'>" + "".join(f"<li>{html.escape(c)}</li>" for c in data["credits"]) + "</ul>")
     return "\n".join(out)
@@ -253,6 +264,7 @@ h1{font-size:32px;margin:0}.sub{color:#555;margin:4px 0 16px}h2{font-size:24px;m
 .missing{padding:60px 16px;text-align:center;color:#888;background:#fafafa}
 .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:6px 20px;margin:8px 0;font-size:15px}
 .har{border:2px solid #8c564b;border-radius:10px;padding:10px 14px;margin:10px 0;display:grid;grid-template-columns:110px 1fr;gap:12px}.har .ends{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;font-size:14px}.har ol{margin:4px 0 0 18px;font-size:14px}.wbom{border-collapse:collapse;font-size:14px}.wbom td,.wbom th{border:1px solid #ccc;padding:4px 8px}.credits{font-size:12px;color:#555}.notes{margin:4px 0 0 18px;font-size:14px;color:#333}.checks{list-style:none;padding:0;font-size:15px;line-height:1.8}
+.tp{border-top:2px solid #ccc;margin-top:18px;font-size:14px}.tp table{border-collapse:collapse}.tp td,.tp th{border:1px solid #ccc;padding:3px 6px}
 .tb{border-collapse:collapse;margin:8px 0 16px;font-size:14px}.tb th{text-align:left;background:#f2f2f2;padding:5px 10px;border:1px solid #ccc;white-space:nowrap}.tb td{padding:5px 10px;border:1px solid #ccc;min-width:260px}
 .app{page-break-before:always;margin-top:32px}.bom,.insp,.trav{border-collapse:collapse;width:100%;font-size:13px;margin:6px 0}.bom th,.bom td,.insp th,.insp td,.trav th,.trav td{border:1px solid #ccc;padding:4px 6px;text-align:left;vertical-align:top}
 .bom th,.insp th,.trav th{background:#f2f2f2}.n{text-align:right}.tot td{font-weight:700}.small{font-size:12px;color:#555}.chk{margin:6px 0;font-size:15px}
@@ -270,15 +282,25 @@ if __name__ == "__main__":
         out.write_text(f"<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>"
                        f"<title>{title}</title><style>{CSS}</style></head><body><main>{body}</main></body></html>", encoding="utf-8")
         edge = Path(r"C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe")
+        pdf = OUT / out.with_suffix(".pdf").name
         if edge.exists() and "--no-pdf" not in sys.argv:
             subprocess.run([str(edge), "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
-                            f"--print-to-pdf={out.with_suffix('.pdf')}", out.resolve().as_uri()], capture_output=True, timeout=120)
-        return out.with_suffix(".pdf").name
+                            f"--print-to-pdf={pdf}", out.resolve().as_uri()], capture_output=True, timeout=120)
+        return pdf.name
+
+    def zip_dir(name, folder, readme):
+        with zipfile.ZipFile(OUT / name, "w", zipfile.ZIP_DEFLATED) as z:
+            for f in sorted(folder.rglob("*")):
+                if f.is_file() and "__pycache__" not in f.parts:
+                    z.write(f, f.relative_to(folder))
+            z.writestr("README.txt", readme)
+        return name
+
+    OUT.mkdir(exist_ok=True)
     made = [write(f"{BASE}.html", f"{data['assembly']} rev {data['rev']}", page())]
-    write_appendix_a(); made.append(FILES["A"])
-    made.append(write(f"{BASE}_appC_inspection-test.html", f"{BASE} Appendix C",
-                      title_block("C") + "\n".join(appendix_c()[1:])))
-    made.append(write(f"{BASE}_appD_traveller.html", f"{BASE} Appendix D",
-                      title_block("D") + "\n".join(appendix_d()[1:])))
-    zipped = (HERE / FILES["B"]).exists()
-    print("wrote " + ", ".join(made) + ("; Appendix B zip present" if zipped else "; Appendix B zip MISSING"))
+    write_appendix_a(); made.append(FILES["A01"])
+    made.append(zip_dir(FILES["A02"], HERE / "make_files", data["document"]["make_readme"]))
+    made.append(write(f"{BASE}_A03_inspection-test.html", f"{BASE} A03", title_block("A03") + "\n".join(appendix_c()[1:])))
+    made.append(write(f"{BASE}_A04_traveller.html", f"{BASE} A04", title_block("A04") + "\n".join(appendix_d()[1:])))
+    made.append(zip_dir(FILES["A05"], DESIGN / "software" / "lsn-node", data["document"]["software_readme"]))
+    print("wrote " + ", ".join(made))
