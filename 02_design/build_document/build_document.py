@@ -149,15 +149,19 @@ FAIL_NOTE = ("If anything does not pass: mark it F, write what you saw in Commen
 
 
 def appendix_c():
-    out = ["<section class='app'>",
-           "<h3>1 Incoming inspection: what to check</h3><p>Check each part when it arrives, and record it on "
-           "the incoming inspection record (A05), one record per delivery.</p>",
-           "<table class='insp'><tr><th>Part</th><th>Check</th><th>How</th><th>Pass if</th><th>How many</th></tr>"]
-    for ref, name, r in incoming_rows():
-        out.append(f"<tr><td>{badge(ref) if ref else ''} {e(name)}<div class='small'>{e(r['pn'])}</div></td>"
-                   f"<td>{e(r['characteristic'])}</td><td>{e(r['method'])}</td><td>{e(r['criterion'])}</td>"
-                   f"<td>{e(r['sample'])}</td></tr>")
-    out.append("</table><h3>2 In-process checks</h3><table class='insp'><tr><th>Step</th><th>Check before moving on</th></tr>")
+    out = ["<section class='app'>", "<h3>1 Incoming inspection</h3>"]
+    if list(incoming_rows()):
+        out.append("<p>Only critical parts are inspected on arrival; record them on the incoming inspection "
+                   "record (A05), one record per delivery.</p>"
+                   "<table class='insp'><tr><th>Part</th><th>Check</th><th>How</th><th>Pass if</th><th>How many</th></tr>")
+        for ref, name, r in incoming_rows():
+            out.append(f"<tr><td>{badge(ref) if ref else ''} {e(name)}<div class='small'>{e(r['pn'])}</div></td>"
+                       f"<td>{e(r['characteristic'])}</td><td>{e(r['method'])}</td><td>{e(r['criterion'])}</td>"
+                       f"<td>{e(r['sample'])}</td></tr>")
+        out.append("</table>")
+    else:
+        out.append(f"<p>None. {e(data['document']['no_incoming'])}</p>")
+    out.append("<h3>2 In-process checks</h3><table class='insp'><tr><th>Step</th><th>Check before moving on</th></tr>")
     for s in data["steps"]:
         out.append(f"<tr><td>{s['n']} {e(s['title'])}</td><td>{e(s.get('check', ''))}</td></tr>")
     out.append("</table><h3>3 Final checks and tests</h3><ul>"
@@ -187,6 +191,7 @@ def record_table(head, rows):
 def traveller_rows():
     rows = [("Step " + str(s["n"]), s.get("check", s["title"])) for s in data["steps"]]
     rows += [("Final", c) for c in data["final_checks"]]
+    rows += [("First unit only", c) for c in data.get("first_unit_checks", [])]
     rows += [(i, f"{ti}. {b} Full procedure in A03.") for i, ti, b in tests()]
     return rows
 
@@ -316,7 +321,7 @@ def page():
             out.append(f"<p class='chk'>☑ <b>Check:</b> {html.escape(s['check'])}</p>")
         out.append("</section>")
     out.append("<h2>Final checks</h2><ul class='checks'>" + "".join(f"<li>☐ {html.escape(c)}</li>" for c in data["final_checks"]) + "</ul>")
-    out.append("<p class='prep'>Record the serial number and sign off each unit on its build traveller (A04); incoming parts on the incoming inspection record (A05).</p>")
+    out.append("<p class='prep'>Record the serial number and sign off each unit on its build traveller (A04).</p>")
     if data.get("credits"):
         out.append("<h2>Picture credits</h2><ul class='credits'>" + "".join(f"<li>{html.escape(c)}</li>" for c in data["credits"]) + "</ul>")
     return "\n".join(out)
@@ -376,6 +381,8 @@ if __name__ == "__main__":
         return name
 
     OUT.mkdir(exist_ok=True)
+    if not list(incoming_rows()):  # no critical parts: no incoming inspection record
+        FILES.pop("A05"); NAMES.pop("A05")
     made = [write(f"{BASE}.html", f"{data['assembly']} rev {data['rev']}", page())]
     try:
         write_appendix_a(); made.append(FILES["A01"])
@@ -384,11 +391,19 @@ if __name__ == "__main__":
     made.append(zip_dir(FILES["A02"], HERE / "make_files", data["document"]["make_readme"]))
     made.append(write(f"{BASE}_A03_inspection-test-procedures.html", f"{BASE} A03", title_block("A03") + "\n".join(appendix_c()[1:])))
     made.append(write(f"{BASE}_A04_build-traveller.html", f"{BASE} A04", title_block("A04") + "\n".join(appendix_d()[1:])))
-    made.append(write(f"{BASE}_A05_incoming-inspection-record.html", f"{BASE} A05", title_block("A05") + "\n".join(appendix_e()[1:]), landscape=True))
     write_record_csv(f"{BASE}_A04_build-traveller.csv",
                      ["serial_number", "build_number", "assembled_by", "date", "build_complete_signature"],
                      ["stage", "check_pass_if"], traveller_rows(), "A04")
-    write_record_csv(f"{BASE}_A05_incoming-inspection-record.csv", ["received", "order_supplier", "inspected_by"],
-                     ["part", "check_pass_if", "how_many", "qty_received"], incoming_record_rows(), "A05")
-    made += [f"{BASE}_A04_build-traveller.csv", f"{BASE}_A05_incoming-inspection-record.csv"]
+    made.append(f"{BASE}_A04_build-traveller.csv")
+    if "A05" in FILES:
+        made.append(write(f"{BASE}_A05_incoming-inspection-record.html", f"{BASE} A05", title_block("A05") + "\n".join(appendix_e()[1:]), landscape=True))
+        write_record_csv(f"{BASE}_A05_incoming-inspection-record.csv", ["received", "order_supplier", "inspected_by"],
+                         ["part", "check_pass_if", "how_many", "qty_received"], incoming_record_rows(), "A05")
+        made.append(f"{BASE}_A05_incoming-inspection-record.csv")
+    else:
+        for old in OUT.glob(f"{BASE}_A05_*"):
+            try:
+                old.unlink()
+            except PermissionError:
+                print(f"LOCKED, delete by hand: {old.name}")
     print("wrote " + ", ".join(made))

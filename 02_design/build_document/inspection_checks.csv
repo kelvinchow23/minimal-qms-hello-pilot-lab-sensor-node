@@ -1,15 +1,1 @@
 pn,check_id,characteristic,method,criterion,sample,notes
-ECM-0004,1,Part and marking,Visual,Raspberry Pi Zero 2 W with pre-soldered 2x20 header (SC0721),all,
-ECM-0004,2,Radio certification,Visual,FCC ID 2ABCB-RPIZ2 and IC 20953-RPIZ2 marked on the board or its packaging,all,"REQ-014; IDs from the FCC grant and ISED certificate (Raspberry Pi compliance documents, 2026-11-25)"
-ECM-0001,1,Part,Visual,SparkFun BME280 Qwiic (SEN-15440); no visible damage,all,
-ECM-0002,1,Part,Visual,Adafruit SGP40 (4829); sensor opening clear; no visible damage,all,
-ECM-0003,1,Part,Visual,SparkFun Qwiic SHIM (DEV-15794),all,
-ECP-0001,1,Safety listing,Visual,UL or CSA listing mark on the supply; output 5.1 V 2.5 A micro-USB,all,REQ-005
-ECX-0001,1,Part,Visual,SanDisk Extreme 64 GB microSDXC (or an approved alternate),all,
-HWN-0006,1,Part,Visual,M2 brass heat-set inserts,first 5,
-LSN-0001,1,Overall size,Calipers,95.0 x 68.0 x 24.0 mm +/- 0.5 mm; printed in PETG (any colour),all,REQ-007; AN-001
-LSN-0001,2,Insert holes,Visual,12 boss holes clean and open; no stringing in vents or openings,all,
-LSN-0002,1,Fit,Trial fit,Lid seats flat on its base and all 4 snaps click,all,
-LSN-0002,2,Material,Print job record,Printed in PETG (any colour),all,AN-001
-LSN-A-0001,1,Size,Calipers,Assembled unit within 100 x 100 x 100 mm,first unit,"REQ-007; set by the CAD, so measured once"
-LSN-A-0001,2,No soldering,Review,Assembly instruction has no soldering step,"once, at DR-003",REQ-008

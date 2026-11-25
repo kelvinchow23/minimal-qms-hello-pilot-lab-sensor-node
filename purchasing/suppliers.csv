@@ -1,0 +1,6 @@
+supplier,status,since,basis,notes
+Mouser,approved,2026-11-25,authorized-distributor,"BME280, SGP40, SHIM, Qwiic cables"
+DigiKey,approved,2026-11-25,authorized-distributor,M2 heat-set inserts
+McMaster-Carr,approved,2026-11-25,established-supplier,M2 x 5 nylon screws
+PiShop,approved,2026-11-25,authorized-distributor,"Raspberry Pi Approved Reseller (Canada): Pi Zero 2 W, wall supply"
+Amazon.ca,conditional,2026-11-25,trial,"microSD card only. Marketplace sellers are not authorized distributors and SD cards are often counterfeit: prefer the same card from DigiKey or Mouser"

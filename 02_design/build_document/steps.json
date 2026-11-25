@@ -476,8 +476,13 @@
    "TP-002": "Within 60 s: hand warmth +1 °C, breath +5 %RH, isopropyl wipe VOC index +100; pressure within ±5 hPa of the weather station. Two units agree within ±1 °C, ±5 %RH, ±2 hPa.",
    "TP-003": "Cut power 3 times and Wi-Fi 3 times: readings come back within 2 min each time.",
    "TP-004": "Run 72 h: no gap over 10 s. Record the highest CPU temperature."
-  }
+  },
+  "no_incoming": "Every part is off the shelf from an approved supplier (A01) or printed in house; problems show up in the build and tests. Printed parts are checked at steps 1 and 6."
  },
  "source_top": "Fusion LSN-A-0001 v29",
- "name": "Lab Sensor Node"
+ "name": "Lab Sensor Node",
+ "first_unit_checks": [
+  "Assembled unit within 100 × 100 × 100 mm (REQ-007)",
+  "UL or CSA mark on the wall supply (REQ-005)"
+ ]
 }

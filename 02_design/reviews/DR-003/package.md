@@ -28,10 +28,18 @@ conversation (kc: research/hobby rigour, speedrun).
 | A02 make files | `LSN-A-0001_revA_A02_make-files.zip` | STLs from LSN-0001 Base v7, LSN-0002 Lid v6 |
 | A03 inspection and test procedures | `LSN-A-0001_revA_A03_inspection-test-procedures.pdf` | incoming, in-process and final checks; TP-001..004 with one-line briefs and in full; AN-001 |
 | A04 build traveller, one per unit | `LSN-A-0001_revA_A04_build-traveller.pdf` (+ `.csv` to fill) | step checks, final checks, tests; pass/fail, comments, NC |
-| A05 incoming inspection record, one per delivery | `LSN-A-0001_revA_A05_incoming-inspection-record.pdf` (+ `.csv` to fill) | all Class A parts of a delivery in one go |
+| Suppliers | `purchasing/suppliers.csv` | Mouser, DigiKey, McMaster-Carr, PiShop approved; Amazon.ca conditional (SD card) |
 
 After approval the Fusion milestones go on exactly these versions; if a
 design has changed since, it is re-exported and brought back first.
+
+## Incoming inspection and traceability (2026-11-25)
+kc, in this session: "incoming inspection should only done for critical components ... all this
+is just nonsense for this build as long as we have parts purhcased from approved suppliers", and
+on per-unit purchase tracing: "yes optional". So LSN has no incoming inspection (all parts are
+off the shelf from approved suppliers or printed in house), no A05 record, and no per-unit trace
+to purchase lines; parts with the same PN are pooled. REQ-005 is now checked on the first unit
+(UL/CSA mark, A04) and REQ-014 by document review (FCC grant, ISED certificate).
 
 ## Change groups
 1. **Parts and BOM:** Pi Zero 2 W, BME280, SGP40 (ECR-002), Qwiic SHIM and cables, PiShop
