@@ -2,7 +2,7 @@
  "assembly": "LSN-A-0001",
  "rev": "A",
  "title": "Lab Sensor Node",
- "source": "Fusion: LSN-A-0001 v29, LSN-0001 Base v7, LSN-0002 Lid v6 (STLs exported from these; step renders from v28)",
+ "source": "Fusion: LSN-A-0001 v30 (v29 + Part Number properties), LSN-0001 Base v7, LSN-0002 Lid v6 (STLs exported from these; step renders from v28)",
  "classes": {
   "A": [
    "Custom parts (printed, machined, PCB, sub-assemblies)",
@@ -470,7 +470,7 @@
   "status": "Draft",
   "approval": "Pending, DR-003",
   "print_note": "PETG, any colour, standard print profile.",
-  "make_readme": "Document no. LSN-A-0001-A02   Rev A   Date 2026-11-25\nMake files\nAssembly: Lab Sensor Node, LSN-A-0001\n\nTo print:\n  LSN-0001_base_rev_A.stl         from Fusion LSN-0001 Base v7\n  LSN-0002_lid_rev_A.stl          from Fusion LSN-0002 Lid v6\n  PETG, any colour, standard print profile.\n\nTo edit or reuse the design:\n  LSN-0001_base_rev_A.f3d         Fusion design with full history (v7)\n  LSN-0002_lid_rev_A.f3d          Fusion design with full history (v6)\n  LSN-A-0001_assembly_rev_A.step  whole assembly, every part in place, any CAD tool (Fusion LSN-A-0001 v29)\n  Bought parts: supplier models, see the BOM (A01).\n",
+  "make_readme": "Document no. LSN-A-0001-A02   Rev A   Date 2026-11-26\nMake files\nAssembly: Lab Sensor Node, LSN-A-0001\n\nTo print:\n  LSN-0001_base_rev_A.stl         from Fusion LSN-0001 Base v7\n  LSN-0002_lid_rev_A.stl          from Fusion LSN-0002 Lid v6\n  PETG, any colour, standard print profile.\n\nTo edit or reuse the design:\n  LSN-0001_base_rev_A.f3d         Fusion design with full history (v7)\n  LSN-0002_lid_rev_A.f3d          Fusion design with full history (v6)\n  LSN-A-0001_assembly_rev_A.step  whole assembly, every part in place, any CAD tool (Fusion LSN-A-0001 v30)\n  Bought parts: supplier models, see the BOM (A01).\n",
   "tp_briefs": {
    "TP-001": "Run 15 min, then run check_run.py; No missing fields; No gap over 10 s; At least 85 readings; Clock within 1 s and synced",
    "TP-002": "Within 60 s: hand warmth +1 °C, breath +5 %RH, isopropyl wipe VOC index +100; Pressure within ±5 hPa of the weather station; Two units agree within ±1 °C, ±5 %RH, ±2 hPa",
@@ -478,9 +478,9 @@
    "TP-004": "Run 72 h; No gap over 10 s; Record the highest CPU temperature"
   },
   "no_incoming": "Every part is off the shelf from an approved supplier (A01) or printed in house; problems show up in the build and tests. Printed parts are checked at steps 1 and 6.",
-  "date": "2026-11-25"
+  "date": "2026-11-26"
  },
- "source_top": "Fusion LSN-A-0001 v29",
+ "source_top": "Fusion LSN-A-0001 v30",
  "name": "Lab Sensor Node",
  "first_unit_checks": [
   "Assembled unit within 100 × 100 × 100 mm (REQ-007)",

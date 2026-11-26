@@ -24,7 +24,7 @@ conversation (kc: research/hobby rigour, speedrun).
 | Output | File | From |
 |---|---|---|
 | Main document: assembly instruction | `LSN-A-0001_assembly_instructions_rev_A.pdf` | steps.json, Fusion renders |
-| A01 BOM for ordering | `LSN-A-0001-A01_bom_rev_A.csv` | read from Fusion LSN-A-0001 v29 (BOM check: quantities match) |
+| A01 BOM for ordering | `LSN-A-0001-A01_bom_rev_A.csv` | read from Fusion LSN-A-0001 v30 (BOM check: quantities match) |
 | A02 make files | `LSN-A-0001-A02_make_files_rev_A.zip` | STLs from LSN-0001 Base v7, LSN-0002 Lid v6 |
 | A03 inspection and test procedures | `LSN-A-0001-A03_test_rev_A.pdf` | incoming, in-process and final checks; TP-001..004 with one-line briefs and in full; AN-001 |
 | A04 build traveller, one per unit | `LSN-A-0001-A04_traveller_rev_A.pdf` (+ `.csv` to fill) | step checks, final checks, tests; pass/fail, comments, NC |

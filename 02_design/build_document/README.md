@@ -3,7 +3,7 @@ assembly: LSN-A-0001
 rev: A
 status: draft
 time_estimate: 40 min    # per unit, hands-on, plus software install; correct after the first build
-source: "Fusion: LSN-A-0001 v29"
+source: "Fusion: LSN-A-0001 v30"
 ---
 
 # Assembly instruction: LSN-A-0001 Lab Sensor Node
