@@ -166,16 +166,13 @@ def tests():
     return out
 
 
-FAIL_NOTE = ("If anything does not pass: mark it F, write what you saw in Comments, stop work on that "
-             "unit or part, and tell the quality lead. They raise an NC (NC-nnn, SOP-008) and write its "
-             "number in the NC column.")
+FAIL_NOTE = "Fail: mark F, describe it in Comments, stop, tell the quality lead (they raise an NC)."
 
 
 def appendix_c():
     out = ["<section class='app'>", "<h3>1 Incoming inspection</h3>"]
     if list(incoming_rows()):
-        out.append("<p>Only critical parts are inspected on arrival; record them on the incoming inspection "
-                   "record (A05), one record per delivery.</p>"
+        out.append("<p>Critical parts only. Record on A05, one per delivery.</p>"
                    "<table class='insp'><tr><th>Part</th><th>Check</th><th>How</th><th>Pass if</th><th>How many</th></tr>")
         for ref, name, r in incoming_rows():
             out.append(f"<tr><td>{badge(ref) if ref else ''} {e(name)}<div class='small'>{e(r['pn'])}</div></td>"
@@ -191,7 +188,7 @@ def appendix_c():
                + "".join(f"<li>{e(c)}</li>" for c in data["final_checks"]) + "</ul>")
     out.append("<table class='insp'><tr><th>Test</th><th>Title</th><th>In short</th></tr>"
                + "".join(f"<tr><td>{e(i)}</td><td>{e(ti)}</td><td>{e(b)}</td></tr>" for i, ti, b in tests())
-               + "</table><p>The full procedures and the analysis follow.</p>")
+               + "</table>")
     for tp in sorted((DESIGN / "test_procedures").glob("*.md")):
         body = tp.read_text(encoding="utf-8").split("---", 2)[2]
         out.append("<div class='tp'>" + markdown.markdown(body, extensions=["tables"]) + "</div>")
@@ -221,8 +218,7 @@ def traveller_rows():
 
 def appendix_d():
     return ["<section class='app'>",
-            "<p>One per unit. It goes with the unit through the build. The filled copy is kept in the build "
-            "record folder: <code>builds/B001/</code> for the first build, <code>B002</code> for the second, and so on.</p>",
+            "<p>One per unit. Keep the filled copy in <code>builds/B001/</code> (first build).</p>",
             f"<table class='tb'><tr><th>Serial number</th><td>{e(data['assembly'])}-{BLANK}</td></tr>"
             f"<tr><th>Build number</th><td>B{BLANK} (B001 = first build)</td></tr>"
             f"<tr><th>Assembled by</th><td>{BLANK}</td></tr><tr><th>Date</th><td>{BLANK}</td></tr></table>",
@@ -266,7 +262,9 @@ def write_record_csv(name, top, head, rows, which):
 
 
 def page():
-    out = [title_block(), f"<p class='prep'><b>Printing A1 and A2:</b> {e(data['document']['print_note'])} STL files are in A02.</p>",
+    out = [title_block(), f"<div class='cover'><img src='{src('images/finished.png')}' alt='Finished unit'></div>",
+           "<div class='pb'></div>",
+           f"<p class='prep'>Print A1, A2: {e(data['document']['print_note'])} STL files in A02.</p>",
            "<h2>Parts</h2>"]
     for letter, (name, _) in data["classes"].items():
         refs = [r for r in by_id if r[0] == letter]
@@ -344,7 +342,7 @@ def page():
             out.append(f"<p class='chk'>☑ <b>Check:</b> {html.escape(s['check'])}</p>")
         out.append("</section>")
     out.append("<h2>Final checks</h2><ul class='checks'>" + "".join(f"<li>☐ {html.escape(c)}</li>" for c in data["final_checks"]) + "</ul>")
-    out.append("<p class='prep'>Record the serial number and sign off each unit on its build traveller (A04).</p>")
+    out.append("<p class='prep'>Sign off each unit on its traveller (A04).</p>")
     if data.get("credits"):
         out.append("<h2>Picture credits</h2><ul class='credits'>" + "".join(f"<li>{html.escape(c)}</li>" for c in data["credits"]) + "</ul>")
     return "\n".join(out)
@@ -373,6 +371,11 @@ h1{font-size:32px;margin:0}.sub{color:#555;margin:4px 0 16px}h2{font-size:24px;m
 .app{page-break-before:always;margin-top:32px}.bom,.insp,.trav{border-collapse:collapse;width:100%;font-size:13px;margin:6px 0}.bom th,.bom td,.insp th,.insp td,.trav th,.trav td{border:1px solid #ccc;padding:4px 6px;text-align:left;vertical-align:top}
 .bom th,.insp th,.trav th{background:#f2f2f2}.n{text-align:right}.tot td{font-weight:700}.small{font-size:12px;color:#555}.chk{margin:6px 0;font-size:15px}
 .trav td:nth-child(3),.trav td:nth-child(4),.trav td:nth-child(5){width:70px}.cm{min-width:140px}.blank{display:inline-block;min-width:180px;border-bottom:1px solid #333;height:1em}
+*{font-family:Helvetica,Arial,sans-serif !important}
+body,p,li,td,th,.legend,.notes,.chk,.prep,.tools,.cap,.small,.pn,.tp,.tp td,.tp th{font-size:13px !important}
+h1,.tblock .tt{font-size:22px !important}h2,.title{font-size:18px !important}h3{font-size:14px !important}
+.num{font-size:40px !important}.q,.cq{font-size:13px !important}.bdg{font-size:12px !important}
+.cover{text-align:center;margin:24px 0}.cover img{max-width:80%;max-height:520px}.pb{page-break-after:always}
 @media print{main{max-width:none}}
 """
 

@@ -44,10 +44,10 @@
    "Serial number label"
   ],
   "safety": [
-   "The insert tool is hot: let the base cool before handling it.",
-   "Handle boards by their edges."
+   "Insert tool is hot: let the base cool.",
+   "Hold boards by the edges."
   ],
-  "prep": "Flash B2 before you start, using the current software draft (repo 02_design/software/lsn-node/README.md, steps 1 to 3). Hostname = the unit's serial number. No Wi-Fi password or server address goes into any file in the repo (REQ-010)."
+  "prep": "Flash B2 first (02_design/software/lsn-node/README.md, steps 1 to 3). Hostname = serial number. No Wi-Fi passwords or server addresses in the repo (REQ-010)."
  },
  "steps": [
   {
