@@ -8,7 +8,7 @@ Instructions for any AI agent (Claude Code, Codex, Cowork, …) working in this 
 **Lab sensor node** (project code `LSN`): Pilot lab sensor node, used to run minimalQMS end to end before QMS-rev A.
 
 This product is developed under [minimalQMS](https://github.com/kelvinchow23/minimal-qms),
-revision `f0ba1f4` (recorded in `00_planning/plan.yaml` and `.copier-answers.yml`).
+revision `3c041ac` (recorded in `00_planning/plan.yaml` and `.copier-answers.yml`).
 - The procedures (SOPs) are in the minimal-qms repo, `sops/`. Shared names, IDs and the
   layout of this repo are defined in its `docs/INTERFACES.md`.
 - Every form and template is copied into `qms/forms/` here. Create records from those copies;
@@ -63,8 +63,8 @@ human for approval.
    reject it. Don't resolve findings yourself.
 9. **Work on the current gate only.** Exploring and discussing later work is fine; acting on
    it is not. Do not register the project before G0, choose parts or allocate part numbers
-   before the design stage (after G1), release parts before G2, or order anything before
-   parts are released. Record ideas for later gates in `worklog.md`. Gates may be passed
+   before the design stage (after G1), order anything before the G2 approval, or release
+   (tag) a design before it passes G3. Record ideas for later gates in `worklog.md`. Gates may be passed
    quickly, even several in one session, but always in order, each with its record and
    approval.
 

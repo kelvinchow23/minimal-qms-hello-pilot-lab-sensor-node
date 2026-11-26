@@ -42,8 +42,8 @@ exported before the review. Software that only runs on the finished unit is not 
 - [ ] Does every requirement have a design output that meets it, and a test or check that
       will show it?
 - [ ] Is the control for every risk in the design?
-- [ ] Are all parts released, with a supplier, in stock, and assemblable by the chosen
-      assembler?
+- [ ] Does every part have a supplier, is it in stock, and can the chosen assembler build
+      with it?
 - [ ] Is anything new or unproven, and has it been prototyped or analyzed?
 - [ ] Could the product be bought, built and tested from the build package alone?
 - [ ] Has every independent review finding been accepted, or rejected with a reason?
@@ -52,7 +52,8 @@ exported before the review. Software that only runs on the finished unit is not 
 
 ## G3 Verified
 
-**Records:** `build.yaml`, `inspection.csv`, `trace.csv` and `test_results.csv` for each build.
+**Records:** `build.yaml`, the travellers and `test_results.csv` for each build (`trace.csv`
+and `inspection.csv` only where kept, SOP-006); the released build document and its tag.
 
 **Questions**
 - [ ] Has every requirement verified by test been tested on every unit, or on the agreed
@@ -60,8 +61,11 @@ exported before the review. Software that only runs on the finished unit is not 
 - [ ] Was every failure traced to the design or to the unit, and resolved (SOP-004
       section 6, SOP-008)?
 - [ ] Was the test equipment fit for use, with calibration in date?
-- [ ] Does the trace record of each unit resolve to inspected parts?
+- [ ] Where a unit is traced, does its trace record resolve to inspected parts?
 - [ ] Did anything pass but behave unexpectedly, and is it recorded?
+- [ ] Is every fix found while building in the build document, re-exported, and do the units
+      to be released match it (or are the differences recorded)?
+- [ ] Release: is the build document set to Released, and tagged `<PN>-rev<X>`?
 
 ## G4 Released
 

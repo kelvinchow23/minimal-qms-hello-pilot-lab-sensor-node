@@ -6,7 +6,7 @@ gates:
   G0: {passed_by: approval, requires: [00_planning/plan.yaml, roles.yaml]}
   G1: {passed_by: formal_review, requires: [01_requirements/requirements.yaml, 01_requirements/risks.csv]}
   G2: {passed_by: formal_review, requires: [design review record, "03_build_package/<PN>_assembly_instructions_rev_<X>.pdf and its appendices"]}
-  G3: {passed_by: formal_review, requires: ["builds/B00n/build.yaml and travellers", "builds/B00n/test_results.csv covering every requirement verified by test"]}
+  G3: {passed_by: formal_review, requires: ["builds/B00n/build.yaml and travellers", "builds/B00n/test_results.csv covering every requirement verified by test", "build document released: tag <PN>-rev<X> (SOP-002 section 5)"]}
   G4: {passed_by: formal_review, requires: ["builds/B00n/release.yaml for every unit", "NC records closed or dispositioned", lessons learned in worklog.md, 00_planning/scorecard.csv]}
 levels:
   agent-driven:

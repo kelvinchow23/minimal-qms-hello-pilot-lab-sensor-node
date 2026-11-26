@@ -11,9 +11,9 @@ updated_on: 2026-11-26
 
 Review copy (commentable): see the link in `minutes.md`. Drafted in one pass from the design
 conversation (kc: research/hobby rigour, speedrun). Involvement level: balanced (G2 on its own;
-G3 and G4 together after the first build). minimalQMS revision f0ba1f4, with the
+G3 and G4 together after the first build). minimalQMS revision 3c041ac, which includes the
 approved-for-build lifecycle of minimal-qms PR #44 (kc, 2026-11-26: "i like this please update
-the repos accordingly"; PR not yet merged).
+the repos accordingly"; merged 2026-11-26 on kc's instruction).
 
 ## What G2 approves
 LSN-A-0001 rev A **approved for build**, not released: parts may be ordered and the first units
@@ -112,8 +112,8 @@ the BOM check pass. Findings:
   change; HWB-0036 v3, ECM-0002 v3, ECM-0004 v4). Fusion refuses exactly `ECM-0004` on the
   uploaded Pi model, so its property reads `ECM-0004 Raspberry Pi Zero 2 W`. Assembly STEP
   re-exported from v31, every part named by PN; the v29 STEP had left out the hidden lid, so v31 is saved with the lid shown (fusion-cad rev D: nothing hidden when saved).
-- Open: an unexplained 0.2 mm³ base/Pi PCB overlap in the interference check (recommendation: accept
-  as a STEP-model artefact, recheck on the test print; kc to decide).
+- Closed 2026-11-26: the unexplained 0.2 mm³ base/Pi PCB overlap in the interference check is
+  accepted (kc, in this session: "overlap is fine"); recheck on the test print.
 - After approval: status "Approved for build", Fusion milestones on the versions above, merge
   to `main` (no tag); order, print, build B001.
 - At G3 + G4: fixes from the builds in, re-exported; status Released with the date (file names

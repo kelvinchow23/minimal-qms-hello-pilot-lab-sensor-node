@@ -2,7 +2,8 @@
 build: B002
 started: YYYY-MM-DD
 builder: ae                    # id from roles.yaml
-assembly: {pn: PRX-A-0001, rev: B}
+assembly: {pn: PRX-A-0001, rev: B, state: approved-for-build}   # or released (SOP-002 section 5)
+built_from: {commit: 3f9c2e1, cad: "Fusion PRX-A-0001 v40"}   # git commit and CAD version
 qms_rev: QMS-rev-A
 config:                        # revision of every made part and firmware used
   PRX-A-0003: A

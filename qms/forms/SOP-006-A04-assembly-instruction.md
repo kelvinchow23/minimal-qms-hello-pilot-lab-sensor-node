@@ -2,7 +2,7 @@
 # SOP-006-A04 Assembly instruction (appendix to SOP-006; revised with it)
 assembly: PPP-A-NNNN      # the assembly this instruction builds
 rev: A                    # same revision as the assembly
-status: draft             # approved at G2 (design freeze) with the BOM
+status: draft             # approved for build at G2, released at G3 (SOP-002 section 5)
 time_estimate: 30 min     # per unit, hands-on
 ---
 
