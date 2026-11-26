@@ -2,6 +2,37 @@
 
 Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not approvals.
 
+## 2026-11-26: design-agent (agent, Claude Code / Claude Opus 5.5), with kc
+Written 2026-11-26 after the fact, from git history and the session, covering the work of
+2026-11-24 evening to 2026-11-26 since the last entry. No deviation: kc treats minimalQMS as
+pre-rev A for this pilot.
+- **Changed (design):** M2 x 5 nylon screws (HWB-0036) into M2 inserts; 2 screws per sensor,
+  4 for the Pi (kc: "yea lets do two per sensor. pi can stay 4"); ghost designs for cables,
+  SD card and supply, so the whole BOM is read from Fusion. CAD buildability check (order,
+  insertion path, tool access, cables, lid, BOM): G2-F6 SD card in at step 2 (applied),
+  G2-F7 Pi bay 0.5 mm toward the partition (kc: "f7 yes move it"; base v7, assembly v29),
+  G2-F8 rejected (kc: "no lets use two 100mm i'd rather have shorter bom"). Part Number
+  properties set (assembly v30, no geometry change); assembly STEP re-exported.
+- **Changed (verification):** AN-001 ratings checked against manufacturer documents; radio IDs
+  corrected; REQ-006 source corrected (ranges were agent proposals); REQ-005 and REQ-007
+  first-unit checks, REQ-014 document review. No incoming inspection (kc: critical parts
+  only); purchase trace optional; software v0.1.1 stays a draft, not frozen at G2 (kc).
+- **Changed (build package):** one controlled document, LSN-A-0001 rev A: assembly
+  instructions (cover, 7 picture steps with callouts A/B/H/W) and appendices A01 BOM, A02 make
+  files (STL, `.f3d`, STEP), A03 test, A04 traveller (serial, build number, P/F, comments, NC,
+  notes and photos). Flat `03_build_package/`; sources in `02_design/build_document/`;
+  `parts.csv` dropped (state from git). Draft dated 2026-11-26.
+- **Changed (process):** involvement level balanced (kc). minimalQMS PRs #42 and #43 and
+  playbook PRs #3, #4, #5 (+ private #5) merged on kc's instruction ("merge all rules and run
+  copier"); LSN updated to minimalQMS f0ba1f4 by copier. QMS findings Q20, Q22-Q30 proposed.
+- **Next:** kc answers the G2 question (DR-003); then release, milestones, order, print, build.
+- **Blocked / unsure:** kc's question on revisions during the first builds (does rev A wait
+  until a unit works?) changes what G2 releases; answer before the G2 question.
+- **For the next review:** 0.2 mm³ base/Pi PCB overlap; snap fit and Pi-port clearance on
+  the test print.
+- **Time:** agent about 8.5 h estimated from session activity (design 1.5, documentation 4.5,
+  review 1.5, planning 1); human hands-on: not yet given.
+
 ## 2026-11-24 (design): design-agent (agent, Claude Code / Claude Opus 5.5), with kc
 - **Changed:** ECR-001 (light) and ECR-002 (VOC, replaces light) raised, approved by kc and
   merged. Parts chosen on Mouser and from kc's inventory; ECM-0001..0004, ECW-0001, ECP-0001,
