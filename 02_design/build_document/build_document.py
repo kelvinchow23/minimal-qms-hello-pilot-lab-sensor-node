@@ -78,9 +78,18 @@ PN, REV = data["assembly"], data["rev"]
 BASE = PN  # kept for HTML preview names
 
 
+def release_tag():
+    """'_YYMMDD' (the release date) once the document is released; nothing while it is a draft."""
+    d = data["document"]
+    if d.get("status", "").lower() != "released":
+        return ""
+    y, m, day = d["date"].split("-")
+    return f"_{y[2:]}{m}{day}"
+
+
 def fname(which, name, ext):
-    """<PN>[-Ann]_<name>_rev_<X>.<ext>, e.g. LSN-A-0001-A04_traveller_rev_A.pdf"""
-    return f"{PN}{'-' + which if which else ''}_{name}_rev_{REV}.{ext}"
+    """<PN>[-Ann]_<name>_rev_<X>[_YYMMDD].<ext>, e.g. LSN-A-0001-A04_traveller_rev_A_261126.pdf"""
+    return f"{PN}{'-' + which if which else ''}_{name}_rev_{REV}{release_tag()}.{ext}"
 
 
 FILES = {"A01": fname("A01", "bom", "csv"), "A02": fname("A02", "make_files", "zip"),
@@ -404,11 +413,13 @@ if __name__ == "__main__":
         return pdf.name
 
     def zip_dir(name, folder, readme):
+        # once released, files named ..._rev_<X>.<ext> inside get the release date too
+        dated = lambda s: s.replace(f"_rev_{REV}.", f"_rev_{REV}{release_tag()}.")
         with zipfile.ZipFile(OUT / name, "w", zipfile.ZIP_DEFLATED) as z:
             for f in sorted(folder.rglob("*")):
                 if f.is_file() and "__pycache__" not in f.parts:
-                    z.write(f, f.relative_to(folder))
-            z.writestr("README.txt", readme)
+                    z.write(f, dated(str(f.relative_to(folder))))
+            z.writestr("README.txt", dated(readme))
         return name
 
     OUT.mkdir(exist_ok=True)
