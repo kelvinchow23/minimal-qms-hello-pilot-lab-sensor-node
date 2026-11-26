@@ -477,7 +477,7 @@
    "TP-003": "Cut power 3 times and Wi-Fi 3 times; Readings back within 2 min each time",
    "TP-004": "Run 72 h; No gap over 10 s; Record the highest CPU temperature"
   },
-  "no_incoming": "Every part is off the shelf from an approved supplier (A01) or printed in house; problems show up in the build and tests. Printed parts are checked at steps 1 and 6.",
+  "no_incoming": "Every part is off the shelf, bought as the A01 Purchasing column says, or printed in house; problems show up in the build and tests. Printed parts are checked at steps 1 and 6.",
   "date": "2026-11-26"
  },
  "source_top": "Fusion LSN-A-0001 v31",

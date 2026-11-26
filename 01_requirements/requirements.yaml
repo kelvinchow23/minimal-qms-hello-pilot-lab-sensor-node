@@ -28,8 +28,8 @@
 - id: REQ-005
   statement: "The unit runs from wall (mains) power through a plug-in supply that is CSA or UL listed, and has no battery. The type of supply, connector, voltage and maximum current are chosen in design."
   source: "internal (kc, 2026-11-23; \"USB\" removed 2026-11-24: kc, \"it should just specify wall power\")"
-  verification: inspection (first unit)
-  verified_by: "supplier listing: PiShop SKU 1260 "UL listed"; UL or CSA mark checked on the first unit (A04)"
+  verification: inspection
+  verified_by: 'A04 first-unit check: UL or CSA mark on the wall supply (supplier listing: PiShop SKU 1260 "UL listed")'
   note: "Verification changed 2026-11-25 at DR-003 (kc: incoming inspection only for critical parts)."
 - id: REQ-006
   statement: "The unit works indoors at 15 to 35 °C and 20 to 80 %RH non-condensing, free-standing on a bench or shelf, without fixing."
@@ -41,12 +41,14 @@
   statement: "An enclosure holds all boards and cables so the unit can be picked up and moved as one piece, with the sensors open to room air. The assembled unit fits within 100 x 100 x 100 mm."
   source: "internal (kc, 2026-11-23; size kc, 2026-11-24)"
   verification: inspection
-  verified_by: IC-nnn (G2)
+  verified_by: "A04 first-unit check: assembled unit within 100 x 100 x 100 mm (calipers)"
+  note: "Verification changed 2026-11-25 at DR-003 from an inspection check (IC-nnn) to a first-unit check."
 - id: REQ-008
   statement: "The unit is assembled from off-the-shelf boards with no custom PCB and no soldering."
   source: "internal (kc, 2026-11-23; no soldering kc, 2026-11-24)"
-  verification: inspection
-  verified_by: IC-nnn (G2)
+  verification: review
+  verified_by: "DR-003: BOM all off-the-shelf boards; no soldering step in the assembly instructions"
+  note: "Verification changed 2026-11-25 at DR-003 from an inspection check (IC-nnn) to design review."
 - id: REQ-009
   statement: "After power is applied, after a power cut, or after a Wi-Fi drop, the unit resumes REQ-002 and REQ-004 within 2 min without anyone touching it, each time over 3 power cuts and 3 Wi-Fi drops."
   source: "internal (kc, 2026-11-24: useless \"if it frequently needed user assistance\"; first proposed by the agent)"
@@ -75,7 +77,7 @@
 - id: REQ-014
   statement: "The Wi-Fi radio is on a board that carries ISED (Canada) and FCC certification."
   source: "internal (G1-F1, accepted by kc 2026-11-24)"
-  verification: document review
+  verification: review
   verified_by: "documents: FCC grant 2ABCB-RPIZ2 and ISED certificate 20953-RPIZ2 (AN-001 sources, DR-003)"
   note: "Verification changed 2026-11-25 at DR-003 (kc: incoming inspection only for critical parts)."
 - id: REQ-015

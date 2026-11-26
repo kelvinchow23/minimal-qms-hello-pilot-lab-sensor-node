@@ -76,7 +76,7 @@ to purchase lines; parts with the same PN are pooled. REQ-005 is now checked on 
 |---|---|
 | Every requirement has a design output and a test or check? | Yes: REQ-001..004, 009, 011..013 by TP-001..004; REQ-005 (UL/CSA mark) and REQ-007 (caliper) by first-unit checks on the traveller; REQ-014 by document review (FCC 2ABCB-RPIZ2, IC 20953-RPIZ2); REQ-006 by AN-001; REQ-008 (no soldering step in the instruction), REQ-010 and REQ-015 (software README) by this review |
 | Control for every risk in the design? | Yes: RISK-001 partition and Pi-bay vents; -003 overlay file system; -006 config on the unit; -010 time_synced flag; -011 onboarding confirmed by kc; -013 sensor-bay vents; -014 README statement |
-| Parts released, with a supplier, in stock, assemblable? | Mouser parts in stock; Pi, supply and card from kc's inventory; screws from McMaster (HWB-0036) |
+| Every part has a supplier, is in stock, and can be assembled? | Mouser parts in stock; Pi, supply and card from kc's inventory; screws from McMaster (HWB-0036) |
 | New or unproven? | Software not yet run on hardware; snap fit needs a test print |
 | Buildable from the package alone? | Yes |
 | Independent findings dispositioned? | See below |
@@ -92,12 +92,15 @@ to purchase lines; parts with the same PN are pooled. REQ-005 is now checked on 
   Wi-Fi, then Tailscale to the server.)
 - Code: stale VOC value sent after an SGP40 read failure; set `voc = None` on failure.
   G2-F1 and this fix applied 2026-11-25 in the software draft (v0.1.1): interval 5 s, `voc = None` on failure.
+- **Decisions (2026-11-26):** G2-F2 to G2-F5 and the code finding accepted as answered above
+  (kc, in this session: "yea accept all they seemed fine i just didnt approve"). G2-F1 was
+  applied in the software draft; kc's decision on it is not yet recorded.
 
 ## Buildability check in CAD (agent, 2026-11-25, Fusion LSN-A-0001 v28)
 Full results in `02_design/build_document/README.md`. Order, tool access, closing and
 the BOM check pass. Findings:
 - **G2-F6** The SD slot is 14 mm inside the end wall. (Agent: fixed in the instruction; the card
-  goes in at step 2, before the Pi is mounted.)
+  goes in at step 2, before the Pi is mounted.) Accepted 2026-11-26 (kc: "yea accept all").
 - **G2-F7** The Pi's ports clear the inside of the front wall by 0.4 mm; a slightly thick print
   may jam. Suggest moving the Pi 0.5 mm toward the partition (`pi_cy` -16 to -15.5 mm).
   kc, 2026-11-25 in this session: "f7 yes move it". Applied: LSN-0001 v7, LSN-A-0001 v29; clearance now 0.9 mm.

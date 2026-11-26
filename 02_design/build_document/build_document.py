@@ -26,7 +26,8 @@ ASM = HERE
 DESIGN = HERE.parent
 OUT = HERE.parent.parent / "03_build_package"
 data = json.loads((ASM / "steps.json").read_text(encoding="utf-8"))
-bom = list(csv.DictReader(open(HERE / "bom.csv", encoding="utf-8")))
+bom = [dict(r, pn=r["internal_pn"], mpn=r["manufacturer_pn"])   # short names used below
+       for r in csv.DictReader(open(HERE / "bom.csv", encoding="utf-8"))]
 by_id = {r["ref"]: r for r in bom}
 RATES = {"CAD": 1.0, "USD": 1.4369}  # Bank of Canada, 2026-11-23 (OTS library rates.csv)
 EMBED = "--embed" in sys.argv
@@ -143,7 +144,7 @@ def write_appendix_a():
         w.writerow(cols)
         for r in bom:
             p = price_cad(r)
-            row = dict(r, internal_pn=r["pn"], manufacturer_pn=r["mpn"], purchasing=source_rule(r),
+            row = dict(r, purchasing=source_rule(r),
                        unit_cost_cad="" if p is None else f"{p:.2f}",
                        line_cost_cad="" if p is None else f"{p * int(r['qty']):.2f}")
             w.writerow([row.get(c) or "-" for c in cols])  # no blank cells: "-" means not applicable

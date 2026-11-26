@@ -2,6 +2,22 @@
 
 Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not approvals.
 
+## 2026-11-26 (later): design-agent (agent, Claude Code / Claude Opus 5.5), with kc
+- **Changed:** minimal-qms PRs #44 (approved for build at G2, released at G3) and playbook #6
+  (nothing hidden when saved) merged on kc's instruction ("merge and run copier"); LSN updated
+  to minimalQMS 3c041ac. Assembly saved as v31 with the lid shown; STEP re-exported. DR-003: G2
+  approves rev A for build; overlap accepted (kc: "overlap is fine"); G2-F2 to F6 and the code
+  finding accepted (kc: "yea accept all"). An independent compliance review of LSN against
+  minimalQMS and the playbook found requirements.yaml broken (REQ-005 quotes) and REQ-007/008
+  and RISK-005/008 still pointing at IC-nnn: fixed. Also fixed: BOM source column names
+  (internal_pn, manufacturer_pn), A03 incoming wording, DR-003 checklist, build-document README,
+  calipers and weather-station reference in equipment.csv.
+- **Next:** a fresh independent review of the current package before the G2 question (kc: "its
+  always good to do an independent review before a gate to catch the small mixups").
+- **Blocked / unsure:** kc to decide on OTS lifecycle states (library PR #17 open), deviations
+  before QMS-rev A, and archived review transcripts.
+- **Time:** agent about 1.5 h (documentation 0.5, review 0.5, design 0.5); human: not yet given.
+
 ## 2026-11-26: design-agent (agent, Claude Code / Claude Opus 5.5), with kc
 Written 2026-11-26 after the fact, from git history and the session, covering the work of
 2026-11-24 evening to 2026-11-26 since the last entry. No deviation: kc treats minimalQMS as

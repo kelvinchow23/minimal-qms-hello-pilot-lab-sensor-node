@@ -1,4 +1,4 @@
-ref,pn,rev,description,category,class,exact_part,qty,unit,manufacturer,mpn,supplier,supplier_pn,link,unit_price,pack_qty,currency,price_date,cad_source,notes
+ref,internal_pn,rev,description,category,class,exact_part,qty,unit,manufacturer,manufacturer_pn,supplier,supplier_pn,link,unit_price,pack_qty,currency,price_date,cad_source,notes
 A1,LSN-0001,A,"Housing base, 3D printed",Custom (part),A,yes,1,EA,,,,,,,,,,Fusion: LSN-A-0001 v31,"PETG, any colour (AN-001: PLA softens near the Pi-bay temperature)"
 A2,LSN-0002,A,"Housing lid, 3D printed",Custom (part),A,yes,1,EA,,,,,,,,,,Fusion: LSN-A-0001 v31,"PETG, any colour (AN-001: PLA softens near the Pi-bay temperature)"
 B1,ECM-0004,,Raspberry Pi Zero 2 W with header (pre-soldered GPIO),OTS,A,yes,1,EA,Raspberry Pi,SC0721,PiShop,112-1,https://www.pishop.ca/product/raspberry-pi-zero-2-w-with-header/,,1,,,Fusion: LSN-A-0001 v31,Controller: Raspberry Pi Zero 2 W with header

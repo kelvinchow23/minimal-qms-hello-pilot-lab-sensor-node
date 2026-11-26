@@ -1,2 +1,4 @@
 id,description,cal_required,cal_due,cal_ref,notes
 EQ-001,"Test receiver: NTP-synced computer on the lab network or Tailscale running 02_design/test_procedures/tools/receiver.py",no,,,Timestamps rely on NTP; check the computer reports time synced before each test
+EQ-002,"Calipers, any, 150 mm range (first-unit size check, REQ-007)",no,,,"Pass/fail against 100 mm with a large margin (unit about 95 x 68 x 26 mm), so calibration does not decide the result"
+EQ-003,"Public weather station near the lab (e.g. nearest Environment Canada station), reference for TP-002",no,,,"An outside reference for agreement within wide limits, not a calibrated instrument (TP-002)"
