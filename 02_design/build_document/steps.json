@@ -472,10 +472,10 @@
   "print_note": "PETG, any colour, standard print profile.",
   "make_readme": "Document no. LSN-A-0001-A02   Rev A   Date 2026-11-25\nMake files (STL for printing)\nAssembly: Lab Sensor Node, LSN-A-0001\n\nLSN-0001_base_rev_A.stl  from Fusion LSN-0001 Base v7\nLSN-0002_lid_rev_A.stl   from Fusion LSN-0002 Lid v6\n\nPETG, any colour, standard print profile.\n",
   "tp_briefs": {
-   "TP-001": "Run 15 min, then run check_run.py: no missing fields, no gap over 10 s, at least 85 readings, clock within 1 s and synced.",
-   "TP-002": "Within 60 s: hand warmth +1 °C, breath +5 %RH, isopropyl wipe VOC index +100; pressure within ±5 hPa of the weather station. Two units agree within ±1 °C, ±5 %RH, ±2 hPa.",
-   "TP-003": "Cut power 3 times and Wi-Fi 3 times: readings come back within 2 min each time.",
-   "TP-004": "Run 72 h: no gap over 10 s. Record the highest CPU temperature."
+   "TP-001": "Run 15 min, then run check_run.py; No missing fields; No gap over 10 s; At least 85 readings; Clock within 1 s and synced",
+   "TP-002": "Within 60 s: hand warmth +1 °C, breath +5 %RH, isopropyl wipe VOC index +100; Pressure within ±5 hPa of the weather station; Two units agree within ±1 °C, ±5 %RH, ±2 hPa",
+   "TP-003": "Cut power 3 times and Wi-Fi 3 times; Readings back within 2 min each time",
+   "TP-004": "Run 72 h; No gap over 10 s; Record the highest CPU temperature"
   },
   "no_incoming": "Every part is off the shelf from an approved supplier (A01) or printed in house; problems show up in the build and tests. Printed parts are checked at steps 1 and 6.",
   "date": "2026-11-25"

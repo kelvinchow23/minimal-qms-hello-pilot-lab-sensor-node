@@ -69,6 +69,11 @@ def e(x):
     return html.escape(str(x))
 
 
+def lines(x):
+    """Escape, and put each "; "-separated item on its own line."""
+    return "<br>".join(html.escape(p) for p in str(x).split("; "))
+
+
 PN, REV = data["assembly"], data["rev"]
 BASE = PN  # kept for HTML preview names
 
@@ -176,18 +181,18 @@ def appendix_c():
                    "<table class='insp'><tr><th>Part</th><th>Check</th><th>How</th><th>Pass if</th><th>How many</th></tr>")
         for ref, name, r in incoming_rows():
             out.append(f"<tr><td>{badge(ref) if ref else ''} {e(name)}<div class='small'>{e(r['pn'])}</div></td>"
-                       f"<td>{e(r['characteristic'])}</td><td>{e(r['method'])}</td><td>{e(r['criterion'])}</td>"
+                       f"<td>{e(r['characteristic'])}</td><td>{e(r['method'])}</td><td>{lines(r['criterion'])}</td>"
                        f"<td>{e(r['sample'])}</td></tr>")
         out.append("</table>")
     else:
         out.append(f"<p>None. {e(data['document']['no_incoming'])}</p>")
     out.append("<h3>2 In-process checks</h3><table class='insp'><tr><th>Step</th><th>Check before moving on</th></tr>")
     for s in data["steps"]:
-        out.append(f"<tr><td>{s['n']} {e(s['title'])}</td><td>{e(s.get('check', ''))}</td></tr>")
+        out.append(f"<tr><td>{s['n']} {e(s['title'])}</td><td>{lines(s.get('check', ''))}</td></tr>")
     out.append("</table><h3>3 Final checks and tests</h3><ul>"
                + "".join(f"<li>{e(c)}</li>" for c in data["final_checks"]) + "</ul>")
     out.append("<table class='insp'><tr><th>Test</th><th>Title</th><th>In short</th></tr>"
-               + "".join(f"<tr><td>{e(i)}</td><td>{e(ti)}</td><td>{e(b)}</td></tr>" for i, ti, b in tests())
+               + "".join(f"<tr><td>{e(i)}</td><td>{e(ti)}</td><td>{lines(b)}</td></tr>" for i, ti, b in tests())
                + "</table>")
     for tp in sorted((DESIGN / "test_procedures").glob("*.md")):
         body = tp.read_text(encoding="utf-8").split("---", 2)[2]
@@ -204,7 +209,7 @@ def record_table(head, rows):
     cols = head + REC_COLS
     cells = "<td>☐ P ☐ F</td><td></td><td></td><td class='cm'></td><td></td>"
     return ("<table class='trav'><tr>" + "".join(f"<th>{e(c)}</th>" for c in cols) + "</tr>"
-            + "".join("<tr>" + "".join(f"<td>{e(x)}</td>" for x in r) + cells + "</tr>" for r in rows)
+            + "".join("<tr>" + "".join(f"<td>{lines(x)}</td>" for x in r) + cells + "</tr>" for r in rows)
             + "</table>")
 
 
@@ -212,7 +217,7 @@ def traveller_rows():
     rows = [("Step " + str(s["n"]), s.get("check", s["title"])) for s in data["steps"]]
     rows += [("Final", c) for c in data["final_checks"]]
     rows += [("First unit only", c) for c in data.get("first_unit_checks", [])]
-    rows += [(i, f"{ti}. {b} Full procedure in A03.") for i, ti, b in tests()]
+    rows += [(i, f"{ti}; {b}; Full procedure in A03") for i, ti, b in tests()]
     return rows
 
 
@@ -339,7 +344,7 @@ def page():
         if s.get("notes"):
             out.append("<ul class='notes'>" + "".join(f"<li>{html.escape(n)}</li>" for n in s["notes"]) + "</ul>")
         if s.get("check"):
-            out.append(f"<p class='chk'>☑ <b>Check:</b> {html.escape(s['check'])}</p>")
+            out.append(f"<p class='chk'>☑ <b>Check:</b><br>{lines(s['check'])}</p>")
         out.append("</section>")
     out.append("<h2>Final checks</h2><ul class='checks'>" + "".join(f"<li>☐ {html.escape(c)}</li>" for c in data["final_checks"]) + "</ul>")
     out.append("<p class='prep'>Sign off each unit on its traveller (A04).</p>")
