@@ -47,7 +47,7 @@
    "Insert tool is hot: let the base cool.",
    "Hold boards by the edges."
   ],
-  "prep": "Flash B2 first (02_design/software/lsn-node/README.md, steps 1 to 3). Hostname = serial number. No Wi-Fi passwords or server addresses in the repo (REQ-010)."
+  "prep": "Prepare B2 (SD card) with Raspberry Pi OS, I2C enabled (not part of this document). Hostname = serial number. No Wi-Fi passwords or server addresses in the repo (REQ-010)."
  },
  "steps": [
   {
@@ -445,11 +445,11 @@
     }
    ],
    "notes": [
-    "Serial number label on the base. Within 2 min the test receiver shows readings from this unit."
+    "Serial number label on the base. Then run TP-002 (hardware bring-up)."
    ],
    "w": 1648,
    "h": 914,
-   "check": "Test receiver shows readings from this unit within 2 min"
+   "check": "Green LED on the Pi lights; TP-002 step 1 finds both sensors"
   }
  ],
  "final_checks": [
@@ -472,10 +472,7 @@
   "print_note": "PETG, any colour, standard print profile.",
   "make_readme": "Document no. LSN-A-0001-A02   Rev A   Date 2026-11-26\nMake files\nAssembly: Lab Sensor Node, LSN-A-0001\n\nTo print:\n  LSN-0001_base_rev_A.stl         from Fusion LSN-0001 Base v7\n  LSN-0002_lid_rev_A.stl          from Fusion LSN-0002 Lid v6\n  PETG, any colour, standard print profile.\n\nTo edit or reuse the design:\n  LSN-0001_base_rev_A.f3d         Fusion design with full history (v7)\n  LSN-0002_lid_rev_A.f3d          Fusion design with full history (v6)\n  LSN-A-0001_assembly_rev_A.step  whole assembly, every part in place, any CAD tool (Fusion LSN-A-0001 v31)\n  Bought parts: supplier models, see the BOM (A01).\n",
   "tp_briefs": {
-   "TP-001": "Run 15 min, then run check_run.py; No missing fields; No gap over 10 s; At least 85 readings; Clock within 1 s and synced",
-   "TP-002": "Within 60 s: hand warmth +1 °C, breath +5 %RH, isopropyl wipe VOC index +100; Pressure within ±5 hPa of the weather station; Two units agree within ±1 °C, ±5 %RH, ±2 hPa",
-   "TP-003": "Cut power 3 times and Wi-Fi 3 times; Readings back within 2 min each time",
-   "TP-004": "Run 72 h; No gap over 10 s; Record the highest CPU temperature"
+   "TP-002": "i2cdetect: 0x59 and 0x77; First readings 10-40 °C, 10-90 %RH, 900-1100 hPa, VOC index; Warm-up: rise at most 2 °C after 1 h; Within 60 s: hand +1 °C, breath +5 %RH, isopropyl wipe VOC +100; Pressure within ±5 hPa of the weather station; Two units agree within ±1 °C, ±5 %RH, ±2 hPa"
   },
   "no_incoming": "Every part is off the shelf, bought as the A01 Purchasing column says, or printed in house; problems show up in the build and tests. Printed parts are checked at steps 1 and 6.",
   "date": "2026-11-26"

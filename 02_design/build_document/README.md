@@ -2,7 +2,7 @@
 assembly: LSN-A-0001
 rev: A
 status: draft
-time_estimate: 40 min    # per unit, hands-on, plus software install; correct after the first build
+time_estimate: 40 min    # per unit, hands-on, plus SD card preparation; correct after the first build
 source: "Fusion: LSN-A-0001 v31"
 ---
 
@@ -15,9 +15,9 @@ The controlled document is **LSN-A-0001 rev A**, flat in `03_build_package/`:
 | Main document: assembly instruction | `LSN-A-0001_assembly_instructions_rev_A.pdf` |
 | A01 bill of materials, for ordering | `LSN-A-0001-A01_bom_rev_A.csv` |
 | A02 make files (STL to print, `.f3d` and STEP backups) | `LSN-A-0001-A02_make_files_rev_A.zip` |
-| A03 test (in-process and final checks, TP-001..004 with briefs, AN-001) | `LSN-A-0001-A03_test_rev_A.pdf` |
+| A03 test (in-process and final checks, TP-002 hardware bring-up, AN-001, AN-002) | `LSN-A-0001-A03_test_rev_A.pdf` |
 | A04 build traveller, one per unit (step, final and test sign-offs, comments, NC, notes and photos) | `LSN-A-0001-A04_traveller_rev_A.pdf` and `.csv` |
-| Software | not part of the document: a working draft in `02_design/software/lsn-node/`, checked by TP-001..004 at G3 |
+| Software | not part of the document: a working draft in `02_design/software/lsn-node/`, a separate item since ECR-003, verified by TP-001, TP-003, TP-004 |
 
 The CSV copy of A04 is the same form for an agent or a spreadsheet to fill; a filled copy goes
 in `builds/B00n/` (B001 for the first build). There is no A05: no part needs incoming

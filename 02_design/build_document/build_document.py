@@ -169,9 +169,15 @@ def incoming_rows():
         yield ref, name, r
 
 
+def hardware_docs(pattern):
+    """Test procedures and analyses of the hardware; the software item's (item: software) are left out (ECR-003)."""
+    return [p for p in sorted((DESIGN / "test_procedures").glob(pattern))
+            if "item: software" not in p.read_text(encoding="utf-8").split("---")[1]]
+
+
 def tests():
     out = []
-    for tp in sorted((DESIGN / "test_procedures").glob("TP-*.md")):
+    for tp in hardware_docs("TP-*.md"):
         meta = {}
         for line in tp.read_text(encoding="utf-8").split("---")[1].splitlines():
             if ":" in line:
@@ -204,7 +210,7 @@ def appendix_c():
     out.append("<table class='insp'><tr><th>Test</th><th>Title</th><th>In short</th></tr>"
                + "".join(f"<tr><td>{e(i)}</td><td>{e(ti)}</td><td>{lines(b)}</td></tr>" for i, ti, b in tests())
                + "</table>")
-    for tp in sorted((DESIGN / "test_procedures").glob("*.md")):
+    for tp in hardware_docs("*.md"):
         body = tp.read_text(encoding="utf-8").split("---", 2)[2]
         out.append("<div class='tp'>" + markdown.markdown(body, extensions=["tables"]) + "</div>")
     out.append("</section>")

@@ -2,6 +2,21 @@
 
 Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not approvals.
 
+## 2026-11-26 (evening): design-agent (agent, Claude Code / Claude Opus 5.5), with kc
+- **Changed:** fresh independent review of the package (G2R-1 to G2R-9) recorded in DR-003 with
+  kc's decisions. ECR-003 (issue #9; kc: "i would do a hardware bring up test as whats needed to
+  check hardware. software should be its own thing"): TP-002 is now the hardware bring-up
+  (sensors found, readings, warm-up rise at most 2 °C, response, unit agreement) with
+  `tools/bringup.py`; AN-002 shows hardware capability from datasheets (BME280 rev 1.24, SGP40
+  v1.2, Pi Zero 2 W brief); REQ-002, 004, 009, 011, 012 and TP-001, 003, 004 move to the
+  software item; build package preparation and step 7 no longer need the software. QMS finding
+  Q31 (software as its own item).
+- **Next:** kc decides G2R-5 (monitoring-only statement) and G2-F1 (5 s interval); then the G2
+  question.
+- **Blocked / unsure:** OTS lifecycle states (library PR #17), transcripts, deviations before
+  QMS-rev A: waiting on kc.
+- **Time:** agent about 1 h (review 0.5, documentation 0.5); human: not yet given.
+
 ## 2026-11-26 (later): design-agent (agent, Claude Code / Claude Opus 5.5), with kc
 - **Changed:** minimal-qms PRs #44 (approved for build at G2, released at G3) and playbook #6
   (nothing hidden when saved) merged on kc's instruction ("merge and run copier"); LSN updated

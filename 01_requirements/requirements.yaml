@@ -9,12 +9,13 @@
   statement: "The unit measures air temperature, relative humidity, barometric pressure and a VOC (volatile organic compound) air quality index."
   source: "internal (kc, 2026-11-23; ECR-001 added light, ECR-002 replaced it with VOC: kc, \"this is a more relevant sensor than the light\")"
   verification: test
-  verified_by: TP-001
+  verified_by: "TP-002 (hardware bring-up: sensors found, readings)"
 - id: REQ-002
   statement: "The unit takes a reading of each quantity in REQ-001 at least every 10 s, with no gap longer than 10 s over a 1 h continuous run."
   source: "internal (kc, 2026-11-24)"
   verification: test
-  verified_by: TP-001
+  verified_by: "Software item lsn-node: TP-001 and TP-004; hardware capability AN-002"
+  item: software   # verified with the software item, not the hardware release (ECR-003)
 - id: REQ-003
   statement: "Readings respond to real changes: cupping the sensor in a hand raises temperature by at least 1 °C within 60 s; breathing on it raises relative humidity by at least 5 %RH within 60 s; pressure is within ±5 hPa of a nearby public weather station, compared at the same altitude (station or sea-level pressure); after 1 h of running, an open isopropyl alcohol wipe held 10 cm from the VOC sensor raises the VOC index by at least 100 within 60 s (ECR-002)."
   source: "internal (kc, 2026-11-24: used \"for reference not absolute values\"; no calibration to lab equipment; \"i like the weather station\")"
@@ -24,7 +25,8 @@
   statement: "The unit sends every reading over the lab Wi-Fi (which uses an enterprise login; Tailscale is available) to a server (local or cloud, chosen in design), with its quantity, unit and timestamp. The history is kept on the server, not on the unit."
   source: "internal (kc, 2026-11-24: \"logged to a server ... on the node itself is not a good idea\")"
   verification: test
-  verified_by: TP-001
+  verified_by: "Software item lsn-node: TP-001; hardware capability AN-002 (certified Wi-Fi radio)"
+  item: software   # verified with the software item, not the hardware release (ECR-003)
 - id: REQ-005
   statement: "The unit runs from wall (mains) power through a plug-in supply that is CSA or UL listed, and has no battery. The type of supply, connector, voltage and maximum current are chosen in design."
   source: "internal (kc, 2026-11-23; \"USB\" removed 2026-11-24: kc, \"it should just specify wall power\")"
@@ -53,7 +55,8 @@
   statement: "After power is applied, after a power cut, or after a Wi-Fi drop, the unit resumes REQ-002 and REQ-004 within 2 min without anyone touching it, each time over 3 power cuts and 3 Wi-Fi drops."
   source: "internal (kc, 2026-11-24: useless \"if it frequently needed user assistance\"; first proposed by the agent)"
   verification: test
-  verified_by: TP-003
+  verified_by: "Software item lsn-node: TP-003"
+  item: software   # verified with the software item, not the hardware release (ECR-003)
 - id: REQ-010
   statement: "No Wi-Fi password or other credential is stored in the product repo or the build package; it is entered on each unit."
   source: "internal (agent-proposed; AGENTS.md hard rule 7; controls RISK-006)"
@@ -63,12 +66,14 @@
   statement: "Each reading's timestamp is within 1 s of network time."
   source: "internal (kc, 2026-11-24)"
   verification: test
-  verified_by: TP-001
+  verified_by: "Software item lsn-node: TP-001"
+  item: software   # verified with the software item, not the hardware release (ECR-003)
 - id: REQ-012
   statement: "The unit runs for 72 h continuously with no gap longer than 10 s in the readings received by the server and no one touching it. The goal beyond iteration 1 is indefinite unattended monitoring."
   source: "internal (kc, 2026-11-24: \"aim for continuous indefinite monitoring\"; \"lets go 3 days\")"
   verification: test
-  verified_by: TP-004
+  verified_by: "Software item lsn-node: TP-004"
+  item: software   # verified with the software item, not the hardware release (ECR-003)
 - id: REQ-013
   statement: "The 2 units, side by side in the same room, agree within ±1 °C, ±5 %RH and ±2 hPa, and both units' VOC index rises in response to the same REQ-003 test. The VOC index is relative, so it has no agreement limit."
   source: "internal (kc, 2026-11-24; ECR-002)"

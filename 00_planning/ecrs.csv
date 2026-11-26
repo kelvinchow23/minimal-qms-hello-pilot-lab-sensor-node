@@ -1,3 +1,4 @@
 id,title,raised,github_issue,eco_pr,status,approval
 ECR-001,Add ambient light sensing,2026-11-24,3,4,superseded by ECR-002,"kc, 2026-11-24 10:31 EST, quoted on PR #4"
 ECR-002,Replace light sensing with VOC air quality (SGP40),2026-11-24,6,7,approved,"kc, 2026-11-24 10:45 EST, quoted on PR #7"
+ECR-003,Verify hardware on its own; software (lsn-node) as its own item,2026-11-26,9,8,approved,"kc, 2026-11-26, in the DR-003 session: 'i would do a hardware bring up test as whats needed to check hardware. software should be its own thing.'"

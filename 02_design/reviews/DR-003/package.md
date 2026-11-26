@@ -19,7 +19,8 @@ the repos accordingly"; merged 2026-11-26 on kc's instruction).
 LSN-A-0001 rev A **approved for build**, not released: parts may be ordered and the first units
 printed, built and tested. Fixes found while building go in by PR and keep rev A; each
 traveller records the git commit and CAD version it was built from. Rev A is released (tagged
-`LSN-A-0001-revA`) at G3 + G4, once a unit built from it passes TP-001..004.
+`LSN-A-0001-revA`) at G3 + G4, once units built from it pass the hardware bring-up TP-002 and
+the first-unit checks. The software (lsn-node) is its own item, verified separately (ECR-003).
 
 Approval question: *Approve DR-003, G2 design freeze: LSN-A-0001 rev A approved for build (not
 released), as in the build package on `design/parts-bom` (CAD LSN-A-0001 v31), with the
@@ -66,16 +67,18 @@ to purchase lines; parts with the same PN are pooled. REQ-005 is now checked on 
    a small cable notch at the end wall; vents over both bays; boards on bosses with M2 inserts;
    assembly fully held by joints.
 3. **Software (draft, not frozen at G2):** v0.1.1, one Python script and a systemd service; sends
-   JSON over HTTP every 5 s. Not part of this approval; checked by TP-001..004 at G3.
-4. **Verification:** TP-001 (readings, rate, reporting, timestamps), TP-002 (response and unit
-   agreement), TP-003 (restart), TP-004 (72 h), AN-001 (operating environment), first-unit
-   checks (REQ-005 UL/CSA mark, REQ-007 size). No incoming inspection (above).
+   JSON over HTTP every 5 s. Not part of this approval: since ECR-003 a separate item, verified
+   by TP-001, TP-003 and TP-004 when it is done.
+4. **Verification of the hardware (ECR-003):** TP-002 hardware bring-up (sensors found, readings,
+   warm-up, response, unit agreement), AN-001 (operating environment), AN-002 (capability for
+   REQ-002 and REQ-004, from datasheets), first-unit checks (REQ-005 UL/CSA mark, REQ-007 size).
+   No incoming inspection (above).
 
 ## Gate checklist (SOP-004-A06, G2)
 | Question | Answer |
 |---|---|
-| Every requirement has a design output and a test or check? | Yes: REQ-001..004, 009, 011..013 by TP-001..004; REQ-005 (UL/CSA mark) and REQ-007 (caliper) by first-unit checks on the traveller; REQ-014 by document review (FCC 2ABCB-RPIZ2, IC 20953-RPIZ2); REQ-006 by AN-001; REQ-008 (no soldering step in the instruction), REQ-010 and REQ-015 (software README) by this review |
-| Control for every risk in the design? | Yes: RISK-001 partition and Pi-bay vents; -003 overlay file system; -006 config on the unit; -010 time_synced flag; -011 onboarding confirmed by kc; -013 sensor-bay vents; -014 README statement |
+| Every requirement has a design output and a test or check? | Yes: REQ-001, 003, 013 by TP-002; REQ-002, 004 hardware capability by AN-002 (the requirements themselves, and REQ-009, 011, 012, with the software item, ECR-003); REQ-005 (UL/CSA mark) and REQ-007 (caliper) by first-unit checks on the traveller; REQ-014 by document review (FCC 2ABCB-RPIZ2, IC 20953-RPIZ2); REQ-006 by AN-001; REQ-008 (no soldering step in the instruction), REQ-010 and REQ-015 (software README) by this review |
+| Control for every risk in the design? | Yes: RISK-001 partition and Pi-bay vents, checked by TP-002 step 3; -003 overlay file system; -006 config on the unit; -010 time_synced flag; -011 onboarding confirmed by kc; -013 sensor-bay vents; -014 README statement |
 | Every part has a supplier, is in stock, and can be assembled? | Mouser parts in stock; Pi, supply and card from kc's inventory; screws from McMaster (HWB-0036) |
 | New or unproven? | Software not yet run on hardware; snap fit needs a test print |
 | Buildable from the package alone? | Yes |
@@ -147,8 +150,13 @@ A01 quantities against the STEP, STL sizes, export versions, boss and insert cou
   - G2R-8: "sure". Accepted.
   - G2R-9: "yes". 2 units; Pi, supply and card for both from kc's inventory; order the rest for 2.
   - Raised by kc: "i really dont want this to be about the firmware ... by knowledge, i know it
-    will be capable based on the hardware and specs". Open: keep software out of the hardware
-    verification (proposal to kc).
+    will be capable based on the hardware and specs". Decided (kc): "i would do a hardware bring
+    up test as whats needed to check hardware. software should be its own thing." Done as ECR-003
+    (issue #9): TP-002 is the hardware bring-up, with the G2R-4 warm-up check as step 3; AN-002
+    covers capability; TP-001, TP-003, TP-004 move to the software item, and G2R-8 is applied
+    there (TP-001 at least 170 readings). G2R-1, G2R-2 and G2R-3 close with it: software setup,
+    network onboarding and the logging tests leave the build package; the preparation says only
+    "Raspberry Pi OS, I2C enabled (not part of this document)", as kc wanted. G2R-5 stays open.
 
 ## Open items
 - Screw: HWB-0036 (McMaster 92492A702, black nylon), added 2026-11-24.
