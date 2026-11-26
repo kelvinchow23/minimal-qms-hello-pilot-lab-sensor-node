@@ -133,6 +133,22 @@ A01 quantities against the STEP, STL sizes, export versions, boss and insert cou
   expected at 5 s). Rec: REQ-002 also verified by TP-004; TP-001 count at least 170.
 - **G2R-9** (minor) A01 is per unit; the package does not say how many units to order for, and the
   Pi, supply and card come from inventory. Rec: confirm inventory for 2 units; order the rest for 2.
+- **Decisions (kc, 2026-11-26, in this session):**
+  - G2R-1: "i would just leave steps vague to prepare the software". G2R-2: "it will just be my
+    laptop. i need assistance from our system admin to get it on our tailscale network i would
+    rather also leave vague here". Both pending the hardware/software split question below.
+  - G2R-3: "whats the point o this test? ... will need follow up here". Open.
+  - G2R-4: "sure add this". Accepted.
+  - G2R-5: "i dont know what this means". Open (explained to kc).
+  - G2R-6: "yea change specs to what is needed". The PiShop page (SKU 1260, read 2026-11-26)
+    states 5.1 V 2.5 A, Micro-B, 100-240 VAC, UL listed: the A01 description already matches what
+    the Pi Zero 2 W needs; only the URL slug is out of date. No change.
+  - G2R-7: "we'll just check test print". Accepted as recommended.
+  - G2R-8: "sure". Accepted.
+  - G2R-9: "yes". 2 units; Pi, supply and card for both from kc's inventory; order the rest for 2.
+  - Raised by kc: "i really dont want this to be about the firmware ... by knowledge, i know it
+    will be capable based on the hardware and specs". Open: keep software out of the hardware
+    verification (proposal to kc).
 
 ## Open items
 - Screw: HWB-0036 (McMaster 92492A702, black nylon), added 2026-11-24.
