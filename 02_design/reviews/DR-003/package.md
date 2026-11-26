@@ -4,34 +4,36 @@ gate: G2
 ecrs: [ECR-001, ECR-002]
 prepared_by: design-agent
 prepared_on: 2026-11-24
+updated_on: 2026-11-26
 ---
 
 # DR-003 review package: G2 design freeze
 
 Review copy (commentable): see the link in `minutes.md`. Drafted in one pass from the design
-conversation (kc: research/hobby rigour, speedrun).
+conversation (kc: research/hobby rigour, speedrun). Involvement level: balanced (G2 on its own;
+G3 and G4 together after the first build). minimalQMS revision f0ba1f4.
 
 ## Scope
 | Item | Rev | Source |
 |---|---|---|
 | LSN-A-0001 Lab Sensor Node | A | Fusion: Tech/General/minimal-qms/LSN- Lab Sensor Node/LSN-A-0001 |
 | LSN-0001 Base, LSN-0002 Lid | A | Fusion, same folder (PETG) |
-| OTS parts ECM-0001..0004, ECW-0001, ECP-0001, ECX-0001, HWN-0006 | - | minimal-qms-ots-library PR #10 |
+| OTS parts ECM-0001..0004, ECW-0001, ECP-0001, ECX-0001, HWN-0006 | - | minimal-qms-ots-library (PR #10 merged; PR #17 open: SD card and SHIM to class B, BOM tools) |
 | Software lsn-node | v0.1.1 draft | Not frozen at G2 (kc, 2026-11-25: "i dont want software to be frozen here"). Working draft in `02_design/software/lsn-node/`; checked by TP-001..004 at G3 |
-| Document LSN-A-0001 rev A: assembly instruction with appendices A01 BOM (ordering info), A02 make files, A03 inspection and test procedures, A04 build traveller, A05 incoming inspection record | A | `03_build_package/` |
+| Document LSN-A-0001 rev A: assembly instructions with appendices A01 BOM (ordering info), A02 make files, A03 test, A04 build traveller | A | `03_build_package/` (draft dated 2026-11-26; released names add `_YYMMDD`) |
 
 ## Outputs to open before approving (all in `03_build_package/`, flat)
 | Output | File | From |
 |---|---|---|
 | Main document: assembly instruction | `LSN-A-0001_assembly_instructions_rev_A.pdf` | steps.json, Fusion renders |
 | A01 BOM for ordering | `LSN-A-0001-A01_bom_rev_A.csv` | read from Fusion LSN-A-0001 v30 (BOM check: quantities match) |
-| A02 make files | `LSN-A-0001-A02_make_files_rev_A.zip` | STLs from LSN-0001 Base v7, LSN-0002 Lid v6 |
-| A03 inspection and test procedures | `LSN-A-0001-A03_test_rev_A.pdf` | incoming, in-process and final checks; TP-001..004 with one-line briefs and in full; AN-001 |
-| A04 build traveller, one per unit | `LSN-A-0001-A04_traveller_rev_A.pdf` (+ `.csv` to fill) | step checks, final checks, tests; pass/fail, comments, NC |
-| Suppliers | `purchasing/suppliers.csv` | Mouser, DigiKey, McMaster-Carr, PiShop approved; Amazon.ca conditional (SD card) |
+| A02 make files | `LSN-A-0001-A02_make_files_rev_A.zip` | STLs and `.f3d` backups from LSN-0001 Base v7, LSN-0002 Lid v6; assembly STEP from LSN-A-0001 v30 |
+| A03 test | `LSN-A-0001-A03_test_rev_A.pdf` | no incoming inspection (reason stated); in-process and final checks; TP-001..004 with briefs and in full; AN-001 |
+| A04 build traveller, one per unit | `LSN-A-0001-A04_traveller_rev_A.pdf` (+ `.csv` to fill) | step checks, final checks, first-unit checks, tests; pass/fail, comments, NC; notes and photos |
+| Suppliers | `purchasing/suppliers.csv` | Mouser, DigiKey, McMaster-Carr, PiShop approved; class B parts from any supplier: SHIM and inserts exact part; SD card, screws and cables any matching part (A01 Purchasing column) |
 
-After approval the Fusion milestones go on exactly these versions; if a
-design has changed since, it is re-exported and brought back first.
+After approval the Fusion milestones go on exactly these versions (LSN-A-0001 v30, LSN-0001 v7,
+LSN-0002 v6); if a design has changed since, it is re-exported and brought back first.
 
 ## Incoming inspection and traceability (2026-11-25)
 kc, in this session: "incoming inspection should only done for critical components ... all this
@@ -53,13 +55,13 @@ to purchase lines; parts with the same PN are pooled. REQ-005 is now checked on 
 3. **Software (draft, not frozen at G2):** v0.1.1, one Python script and a systemd service; sends
    JSON over HTTP every 5 s. Not part of this approval; checked by TP-001..004 at G3.
 4. **Verification:** TP-001 (readings, rate, reporting, timestamps), TP-002 (response and unit
-   agreement), TP-003 (restart), TP-004 (72 h), AN-001 (operating environment), inspection
-   checks for every Class A part.
+   agreement), TP-003 (restart), TP-004 (72 h), AN-001 (operating environment), first-unit
+   checks (REQ-005 UL/CSA mark, REQ-007 size). No incoming inspection (above).
 
 ## Gate checklist (SOP-004-A06, G2)
 | Question | Answer |
 |---|---|
-| Every requirement has a design output and a test or check? | Yes: REQ-001..004, 009, 011..013 by TP-001..004; REQ-005, 014 by inspection checks; REQ-007 by one caliper check on the first unit; REQ-006 by AN-001; REQ-008 (no soldering step in the instruction), REQ-010 and REQ-015 (software README) by this review |
+| Every requirement has a design output and a test or check? | Yes: REQ-001..004, 009, 011..013 by TP-001..004; REQ-005 (UL/CSA mark) and REQ-007 (caliper) by first-unit checks on the traveller; REQ-014 by document review (FCC 2ABCB-RPIZ2, IC 20953-RPIZ2); REQ-006 by AN-001; REQ-008 (no soldering step in the instruction), REQ-010 and REQ-015 (software README) by this review |
 | Control for every risk in the design? | Yes: RISK-001 partition and Pi-bay vents; -003 overlay file system; -006 config on the unit; -010 time_synced flag; -011 onboarding confirmed by kc; -013 sensor-bay vents; -014 README statement |
 | Parts released, with a supplier, in stock, assemblable? | Mouser parts in stock; Pi, supply and card from kc's inventory; screws from McMaster (HWB-0036) |
 | New or unproven? | Software not yet run on hardware; snap fit needs a test print |
@@ -93,9 +95,12 @@ the BOM check pass. Findings:
 ## Open items
 - Screw: HWB-0036 (McMaster 92492A702, black nylon), added 2026-11-24.
 - Closed 2026-11-25: AN-001 ratings checked against the manufacturers' documents (Pi -20 to 70 °C; SGP40 -10 to 50 °C, compensation limit just exceeded at 35 °C/80 %RH, accepted; supply temperature not published, accepted). Radio IDs corrected to FCC 2ABCB-RPIZ2, IC 20953-RPIZ2.
-- Fusion (2026-11-25): LSN-0001 v6, LSN-0002 v6 and LSN-A-0001 v28 saved; tree grouped into
-  Custom parts and OTS parts (Electronics, Fasteners, BOM only). Pi (ECM-0004) and screw
-  (HWB-0036) Part Number properties still to be set by hand; the BOM check reads their PNs from
-  the file names. An unexplained 0.2 mm³ base/Pi PCB overlap in the interference check.
-- After approval: release parts (lifecycle), Fusion milestones, STEP/STL exports (fusion-cad
-  Releasing).
+- Closed 2026-11-26: Part Number properties set (LSN-A-0001 v30, Part Numbers only, no geometry
+  change; HWB-0036 v3, ECM-0002 v3, ECM-0004 v4). Fusion refuses exactly `ECM-0004` on the
+  uploaded Pi model, so its property reads `ECM-0004 Raspberry Pi Zero 2 W`. Assembly STEP
+  re-exported from v30, every part named by PN; the v29 STEP had left out the hidden lid.
+- Open: an unexplained 0.2 mm³ base/Pi PCB overlap in the interference check (recommendation: accept
+  as a STEP-model artefact, recheck on the test print; kc to decide).
+- After approval: status Released with the date (file names gain `_YYMMDD`), Fusion milestones
+  `<PN> rev A` on the versions above, merge, tag `LSN-A-0001-revA` with a GitHub Release (fusion-cad
+  Releasing; SOP-002 section 5).
