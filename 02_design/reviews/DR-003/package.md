@@ -108,6 +108,32 @@ the BOM check pass. Findings:
   loose in the sensor bay. Suggest a 50 mm Qwiic cable for that run (new OTS PN).
   kc, 2026-11-25 in this session: "no lets use two 100mm i'd rather have shorter bom". Rejected: two 100 mm cables kept; the spare is coiled below the rim (step 5 note).
 
+## Independent review of the current package (fresh Claude Code subagent, Claude Opus 5.5, 2026-11-26)
+Read-only review of the build package at commit d4a84c2 (CAD LSN-A-0001 v31). Checked and consistent:
+A01 quantities against the STEP, STL sizes, export versions, boss and insert counts. Decisions pending
+(kc); recommendation first.
+- **G2R-1** (fix before build) Preparation says software README steps 1 to 3; steps 4 to 7 (install,
+  config, service) are never called for, so the step 7 check cannot pass. Rec: preparation calls for
+  README steps 1 to 7, overlay (step 8) last before TP-001.
+- **G2R-2** (fix before build) Network onboarding (enterprise Wi-Fi, Tailscale) is "following lab IT's
+  instructions", not in the package, and the tools list has no way to set it up headless. Rec: write
+  down the method and its tools; needs kc's input.
+- **G2R-3** (fix before build) `receiver.py` appends to one file and `check_run.py` has no time
+  window, so readings from first boot (before time sync) and the TP-003 outages fail TP-001 and
+  TP-004. Rec: a fresh receiver file per test, started after the unit is time-synced.
+- **G2R-4** (fix before build) No test shows the BME280 is not heated by the Pi (RISK-001). Rec: add to
+  TP-002 a warm-up check, first minute after power-up vs after 1 h, limit 2 °C.
+- **G2R-5** (fix before build) REQ-015 / RISK-014 ("monitoring only, not a safety alarm") has no output
+  in the build package. Rec: a line on the instruction cover and on the step 7 label.
+- **G2R-6** (minor) B6 supply described as 5.1 V 2.5 A; the PiShop link reads 5.25 V 2.4 A. Rec: correct
+  from the product page.
+- **G2R-7** (minor, unsure) BME280 board holes may be about 3.3 mm, against an M2 pan head of about 4 mm.
+  Rec: check the board file; accept and recheck on the test print.
+- **G2R-8** (minor) REQ-002 says a 1 h run; TP-001 runs 15 min with at least 85 readings (about 180
+  expected at 5 s). Rec: REQ-002 also verified by TP-004; TP-001 count at least 170.
+- **G2R-9** (minor) A01 is per unit; the package does not say how many units to order for, and the
+  Pi, supply and card come from inventory. Rec: confirm inventory for 2 units; order the rest for 2.
+
 ## Open items
 - Screw: HWB-0036 (McMaster 92492A702, black nylon), added 2026-11-24.
 - Closed 2026-11-25: AN-001 ratings checked against the manufacturers' documents (Pi -20 to 70 °C; SGP40 -10 to 50 °C, compensation limit just exceeded at 35 °C/80 %RH, accepted; supply temperature not published, accepted). Radio IDs corrected to FCC 2ABCB-RPIZ2, IC 20953-RPIZ2.
