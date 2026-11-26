@@ -238,6 +238,9 @@ def appendix_d():
             f"<tr><th>Assembled by</th><td>{BLANK}</td></tr><tr><th>Date</th><td>{BLANK}</td></tr></table>",
             f"<p class='prep'>{e(FAIL_NOTE)}</p>",
             record_table(["Stage", "Check: pass if"], traveller_rows()),
+            "<h3>Notes and photos</h3><p class='small'>Anything off, odd or worth knowing, in any length. "
+            "List photo file names here; keep the photos with this traveller in the build record.</p>"
+            "<div class='notesbox'></div>",
             f"<table class='tb'><tr><th>Build complete, all pass</th><td>Signature {BLANK} Date {BLANK}</td></tr>"
             "<tr><th>Released</th><td>Decided separately after the tests (SOP-007)</td></tr></table>",
             "</section>"]
@@ -273,6 +276,10 @@ def write_record_csv(name, top, head, rows, which):
         w.writerow(head + ["pass_fail", "initials", "date", "comments", "nc"])
         for r in rows:
             w.writerow(list(r) + ["", "", "", "", ""])
+        if which == "A04":
+            w.writerow([])
+            w.writerow(["notes", ""])   # free text, any length
+            w.writerow(["photos", ""])  # file names of photos kept with this traveller
 
 
 def page():
@@ -389,6 +396,7 @@ h1{font-size:32px;margin:0}.sub{color:#555;margin:4px 0 16px}h2{font-size:24px;m
 body,p,li,td,th,.legend,.notes,.chk,.prep,.tools,.cap,.small,.pn,.tp,.tp td,.tp th{font-size:13px !important}
 h1,.tblock .tt{font-size:22px !important}h2,.title{font-size:18px !important}h3{font-size:14px !important}
 .num{font-size:40px !important}.q,.cq{font-size:13px !important}.bdg{font-size:12px !important}
+.notesbox{border:1px solid #888;border-radius:4px;height:260px;margin:4px 0 14px;page-break-inside:avoid}
 .cover{text-align:center;margin:24px 0}.cover img{max-width:80%;max-height:520px}.pb{page-break-after:always}
 @media print{main{max-width:none}}
 """
