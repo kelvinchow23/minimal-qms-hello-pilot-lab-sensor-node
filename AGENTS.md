@@ -47,7 +47,7 @@ human for approval.
 3. **Never backdate a record.** Use the real date. When capturing something after the
    fact, say so and add a deviation (`qms/forms/SOP-001-A03-deviation.md`).
 4. **Never bump a part or document revision without updating everything that cites it**
-   (`parts.csv`, BOMs, trace records, document headers).
+   (the BOM, the build document and its appendices, document headers).
 5. **Every commit names what it changes:** `[PN] revX: summary (ECR #n)` for parts, or
    `[DOC] summary` for plans, requirements and reviews.
 6. **Run the checks before finishing,** and report failures honestly.

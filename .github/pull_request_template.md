@@ -16,7 +16,7 @@
 
 **Cited documents updated**
 - [ ] Revisions bumped on every changed part or document
-- [ ] Everything that cites them updated (parts.csv, BOMs, trace records, headers)
+- [ ] Everything that cites them updated (BOM, build document and appendices, headers)
 
 **Review**
 - [ ] PR review (small change)
