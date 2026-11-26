@@ -8,14 +8,15 @@ Instructions for any AI agent (Claude Code, Codex, Cowork, …) working in this 
 **Lab sensor node** (project code `LSN`): Pilot lab sensor node, used to run minimalQMS end to end before QMS-rev A.
 
 This product is developed under [minimalQMS](https://github.com/kelvinchow23/minimal-qms),
-revision `f4d60f4` (recorded in `00_planning/plan.yaml` and `.copier-answers.yml`).
+revision `f0ba1f4` (recorded in `00_planning/plan.yaml` and `.copier-answers.yml`).
 - The procedures (SOPs) are in the minimal-qms repo, `sops/`. Shared names, IDs and the
   layout of this repo are defined in its `docs/INTERFACES.md`.
 - Every form and template is copied into `qms/forms/` here. Create records from those copies;
   do not edit `qms/forms/` (it is replaced by `copier update`). Findings about minimalQMS
   itself go in `qms/qms-findings.csv`.
-- Folders such as `purchasing/`, `builds/`, `deviations/` and `nonconformance/` do not exist
-  until their first record: create them then, with the names in minimalQMS `docs/INTERFACES.md`.
+- Folders such as `purchasing/`, `builds/`, `equipment/`, `deviations/` and `nonconformance/`
+  do not exist until their first record: create them then, with the names in minimalQMS
+  `docs/INTERFACES.md`, from the form in `qms/forms/`.
 - Off-the-shelf parts, project codes and purchasing tools are in
   [minimal-qms-ots-library](https://github.com/kelvinchow23/minimal-qms-ots-library).
 
@@ -25,8 +26,14 @@ human for approval.
 
 ## How to work with the human
 
-1. **Know the current gate.** Read `00_planning/plan.yaml`: the first gate without an
-   `actual` date is the current one. Work on that gate's stage only (rule 9).
+1. **Know the involvement level and the current gate.** Read `00_planning/plan.yaml`:
+   the first gate without an `actual` date is the current one, and `involvement` sets which
+   gates are passed together in one approval and how light their records are (SOP-004
+   section 3a, `gates.yaml`). Work on the current gate group only (rule 9). At
+   **agent-driven**, G0 to G2 are one approval: talk design with the human, keep the worklog
+   and the documents up to date as you go, and bring the build package for that one approval
+   before anything is ordered; G3 and G4 close with one line once the first unit works.
+   Write only what was discussed or is in the sources; mark anything undecided "not decided".
 2. **Ask the gate's questions as the work makes them relevant** (`qms/forms/SOP-004-A06-gate-checklists.md`),
    in plain language, without naming the SOP. Record the answers in the stage's records.
 3. **Check in after each work session** in `worklog.md`: what changed and who changed it,
@@ -72,7 +79,11 @@ theirs in one short question; do not estimate it for them. Activities: `planning
 ## Conventions
 
 - Tools: MCAD is Fusion, ECAD is KiCad. Design sources live in `02_design/`;
-  released exports go in `03_build_package/` with the CAD version they came from.
+  `03_build_package/` holds only the build documents, flat: `<PN>_assembly_instructions_rev_<X>.pdf` and its
+  appendices `-A01_bom`, `-A02_make_files`, `-A03_test`,
+  `-A04_traveller`, `_A05_incoming.pdf`, `_A06_software.zip`
+  (SOP-004 section 9). A04 and A05 also come as CSV for an agent to fill, each recording the CAD version
+  it came from. Export the make files before the G2 review.
 - Lists that grow are CSV or YAML, not Markdown tables.
 - Records are plain text a person could read in 20 years.
 - Canadian English spelling.

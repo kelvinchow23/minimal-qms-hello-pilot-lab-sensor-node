@@ -1,7 +1,26 @@
 # SOP-004-A02 Gate requirements (appendix to SOP-004; revised with it)
-# Records each gate needs (SOP-004 section 3). CI blocks a gate whose records are missing.
-G0: {passed_by: approval, requires: [00_planning/plan.yaml, roles.yaml]}
-G1: {passed_by: formal_review, requires: [01_requirements/requirements.yaml, 01_requirements/risks.csv]}
-G2: {passed_by: formal_review, requires: [design review minutes, 03_build_package/parts.csv, 03_build_package/bom.csv, 03_build_package/test_procedures/, 03_build_package/assembly/, 03_build_package/inspection_checks.csv]}
-G3: {passed_by: formal_review, requires: ["builds/B00n/build.yaml, inspection.csv, trace.csv", "builds/B00n/test_results.csv covering every requirement verified by test"]}
-G4: {passed_by: formal_review, requires: ["builds/B00n/release.yaml for every unit", "NC records closed or dispositioned", lessons learned in worklog.md or a close-out note, 00_planning/scorecard.csv]}
+# The gates are the same at every involvement level (SOP-004 section 3). The level
+# (`involvement` in plan.yaml) sets which gates are passed together in one approval and
+# lightens their records (section 3a).
+gates:
+  G0: {passed_by: approval, requires: [00_planning/plan.yaml, roles.yaml]}
+  G1: {passed_by: formal_review, requires: [01_requirements/requirements.yaml, 01_requirements/risks.csv]}
+  G2: {passed_by: formal_review, requires: [design review record, "03_build_package/<PN>_assembly_instructions_rev_<X>.pdf and its appendices"]}
+  G3: {passed_by: formal_review, requires: ["builds/B00n/build.yaml and travellers", "builds/B00n/test_results.csv covering every requirement verified by test"]}
+  G4: {passed_by: formal_review, requires: ["builds/B00n/release.yaml for every unit", "NC records closed or dispositioned", lessons learned in worklog.md, 00_planning/scorecard.csv]}
+levels:
+  agent-driven:
+    together: [[G0, G1, G2], [G3, G4]]
+    records: >-
+      G0-G2: plan.yaml goal and scope lines; requirements.yaml with 3 to 6 essential functions
+      (risks.csv optional); worklog.md design history; the build document and its appendices;
+      purchasing/suppliers.csv; the human's approval. G3-G4: one line in worklog.md that the
+      first unit works in its intended use, with the essential checks passed.
+  balanced:
+    together: [[G0, G1], [G2], [G3, G4]]
+    records: >-
+      As listed under gates, with one review record (package and minutes in one file) per
+      approval; scorecard optional.
+  human-driven:
+    together: [[G0], [G1], [G2], [G3], [G4]]
+    records: As listed under gates, with the review package and minutes of SOP-003.

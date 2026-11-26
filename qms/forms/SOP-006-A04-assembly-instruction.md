@@ -22,7 +22,7 @@ time_estimate: 30 min     # per unit, hands-on
 <!-- One action per step. Each step names its parts and has a check where a mistake is likely. -->
 
 ### 1. <Action>
-- **Parts:** PPP-0004 (1), HWS-0001 (4)
+- **Parts:** PPP-0004 (1), HWB-0001 (4)
 - **Do:** <what to do, in the imperative>
 - **Setting:** <!-- torque, temperature, orientation; delete if none -->
 - **Check:** <!-- what must be true before moving on; delete if none -->
