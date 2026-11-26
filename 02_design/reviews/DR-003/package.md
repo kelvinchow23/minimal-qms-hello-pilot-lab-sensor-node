@@ -26,13 +26,13 @@ G3 and G4 together after the first build). minimalQMS revision f0ba1f4.
 | Output | File | From |
 |---|---|---|
 | Main document: assembly instruction | `LSN-A-0001_assembly_instructions_rev_A.pdf` | steps.json, Fusion renders |
-| A01 BOM for ordering | `LSN-A-0001-A01_bom_rev_A.csv` | read from Fusion LSN-A-0001 v30 (BOM check: quantities match) |
-| A02 make files | `LSN-A-0001-A02_make_files_rev_A.zip` | STLs and `.f3d` backups from LSN-0001 Base v7, LSN-0002 Lid v6; assembly STEP from LSN-A-0001 v30 |
+| A01 BOM for ordering | `LSN-A-0001-A01_bom_rev_A.csv` | read from Fusion LSN-A-0001 v31 (BOM check: quantities match) |
+| A02 make files | `LSN-A-0001-A02_make_files_rev_A.zip` | STLs and `.f3d` backups from LSN-0001 Base v7, LSN-0002 Lid v6; assembly STEP from LSN-A-0001 v31 |
 | A03 test | `LSN-A-0001-A03_test_rev_A.pdf` | no incoming inspection (reason stated); in-process and final checks; TP-001..004 with briefs and in full; AN-001 |
 | A04 build traveller, one per unit | `LSN-A-0001-A04_traveller_rev_A.pdf` (+ `.csv` to fill) | step checks, final checks, first-unit checks, tests; pass/fail, comments, NC; notes and photos |
 | Suppliers | `purchasing/suppliers.csv` | Mouser, DigiKey, McMaster-Carr, PiShop approved; class B parts from any supplier: SHIM and inserts exact part; SD card, screws and cables any matching part (A01 Purchasing column) |
 
-After approval the Fusion milestones go on exactly these versions (LSN-A-0001 v30, LSN-0001 v7,
+After approval the Fusion milestones go on exactly these versions (LSN-A-0001 v31, LSN-0001 v7,
 LSN-0002 v6); if a design has changed since, it is re-exported and brought back first.
 
 ## Incoming inspection and traceability (2026-11-25)
@@ -98,7 +98,7 @@ the BOM check pass. Findings:
 - Closed 2026-11-26: Part Number properties set (LSN-A-0001 v30, Part Numbers only, no geometry
   change; HWB-0036 v3, ECM-0002 v3, ECM-0004 v4). Fusion refuses exactly `ECM-0004` on the
   uploaded Pi model, so its property reads `ECM-0004 Raspberry Pi Zero 2 W`. Assembly STEP
-  re-exported from v30, every part named by PN; the v29 STEP had left out the hidden lid.
+  re-exported from v31, every part named by PN; the v29 STEP had left out the hidden lid, so v31 is saved with the lid shown (fusion-cad rev D: nothing hidden when saved).
 - Open: an unexplained 0.2 mm³ base/Pi PCB overlap in the interference check (recommendation: accept
   as a STEP-model artefact, recheck on the test print; kc to decide).
 - After approval: status Released with the date (file names gain `_YYMMDD`), Fusion milestones

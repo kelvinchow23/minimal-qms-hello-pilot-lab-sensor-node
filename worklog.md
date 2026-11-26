@@ -12,7 +12,9 @@ pre-rev A for this pilot.
   insertion path, tool access, cables, lid, BOM): G2-F6 SD card in at step 2 (applied),
   G2-F7 Pi bay 0.5 mm toward the partition (kc: "f7 yes move it"; base v7, assembly v29),
   G2-F8 rejected (kc: "no lets use two 100mm i'd rather have shorter bom"). Part Number
-  properties set (assembly v30, no geometry change); assembly STEP re-exported.
+  properties set (assembly v30, no geometry change); v31 saved with the lid shown, because
+  the hidden lid had been left out of the v29 STEP (new fusion-cad rule: nothing hidden when
+  saved); assembly STEP re-exported from v31.
 - **Changed (verification):** AN-001 ratings checked against manufacturer documents; radio IDs
   corrected; REQ-006 source corrected (ranges were agent proposals); REQ-005 and REQ-007
   first-unit checks, REQ-014 document review. No incoming inspection (kc: critical parts
@@ -31,7 +33,9 @@ pre-rev A for this pilot.
 - **For the next review:** 0.2 mm³ base/Pi PCB overlap; snap fit and Pi-port clearance on
   the test print.
 - **Time:** agent about 8.5 h estimated from session activity (design 1.5, documentation 4.5,
-  review 1.5, planning 1); human hands-on: not yet given.
+  review 1.5, planning 1); human hands-on about 2 h (kc: "like 2 hours hands on but i swear
+  most of that time was cleaning up minimalqms"), not split by activity; the share spent on
+  the LSN design itself is unknown.
 
 ## 2026-11-24 (design): design-agent (agent, Claude Code / Claude Opus 5.5), with kc
 - **Changed:** ECR-001 (light) and ECR-002 (VOC, replaces light) raised, approved by kc and
