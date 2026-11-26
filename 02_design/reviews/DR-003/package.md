@@ -142,7 +142,9 @@ A01 quantities against the STEP, STL sizes, export versions, boss and insert cou
     rather also leave vague here". Both pending the hardware/software split question below.
   - G2R-3: "whats the point o this test? ... will need follow up here". Open.
   - G2R-4: "sure add this". Accepted.
-  - G2R-5: "i dont know what this means". Open (explained to kc).
+  - G2R-5: "i dont know what this means"; after the explanation, "Yes, add it". Accepted: the
+    statement is on the instruction cover, the step 7 label (consumables, final check) and the
+    software README.
   - G2R-6: "yea change specs to what is needed". The PiShop page (SKU 1260, read 2026-11-26)
     states 5.1 V 2.5 A, Micro-B, 100-240 VAC, UL listed: the A01 description already matches what
     the Pi Zero 2 W needs; only the URL slug is out of date. No change.
@@ -156,7 +158,7 @@ A01 quantities against the STEP, STL sizes, export versions, boss and insert cou
     covers capability; TP-001, TP-003, TP-004 move to the software item, and G2R-8 is applied
     there (TP-001 at least 170 readings). G2R-1, G2R-2 and G2R-3 close with it: software setup,
     network onboarding and the logging tests leave the build package; the preparation says only
-    "Raspberry Pi OS, I2C enabled (not part of this document)", as kc wanted. G2R-5 stays open.
+    "Raspberry Pi OS, I2C enabled (not part of this document)", as kc wanted.
 
 ## Open items
 - Screw: HWB-0036 (McMaster 92492A702, black nylon), added 2026-11-24.

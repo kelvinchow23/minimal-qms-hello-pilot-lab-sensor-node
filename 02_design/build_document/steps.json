@@ -41,7 +41,7 @@
    "Computer with Raspberry Pi Imager and a microSD card reader"
   ],
   "consumables": [
-   "Serial number label"
+   "Label with the serial number and \"Monitoring only, not a safety or gas alarm\" (printed or hand-written)"
   ],
   "safety": [
    "Insert tool is hot: let the base cool.",
@@ -445,7 +445,7 @@
     }
    ],
    "notes": [
-    "Serial number label on the base. Then run TP-002 (hardware bring-up)."
+    "Label on the base: the serial number and \"Monitoring only, not a safety or gas alarm\". Then run TP-002 (hardware bring-up)."
    ],
    "w": 1648,
    "h": 914,
@@ -455,7 +455,7 @@
  "final_checks": [
   "8 screws fitted and snug (4 Pi, 2 per sensor board)",
   "Lid snapped on all four sides",
-  "Serial number label applied"
+  "Label applied: serial number and \"Monitoring only, not a safety or gas alarm\""
  ],
  "credits": [
   "B2: \"MicroSD card 2GB focus-stacked\" by Afrank99, CC BY-SA 3.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:MicroSD_card_2GB_focus-stacked.jpg); resized. Placeholder: the build uses the card listed in A01.",
@@ -475,7 +475,8 @@
    "TP-002": "i2cdetect: 0x59 and 0x77; First readings 10-40 °C, 10-90 %RH, 900-1100 hPa, VOC index; Warm-up: rise at most 2 °C after 1 h; Within 60 s: hand +1 °C, breath +5 %RH, isopropyl wipe VOC +100; Pressure within ±5 hPa of the weather station; Two units agree within ±1 °C, ±5 %RH, ±2 hPa"
   },
   "no_incoming": "Every part is off the shelf, bought as the A01 Purchasing column says, or printed in house; problems show up in the build and tests. Printed parts are checked at steps 1 and 6.",
-  "date": "2026-11-26"
+  "date": "2026-11-26",
+  "cover_note": "Monitoring only. Not a certified safety or gas alarm (REQ-015)."
  },
  "source_top": "Fusion LSN-A-0001 v31",
  "name": "Lab Sensor Node",

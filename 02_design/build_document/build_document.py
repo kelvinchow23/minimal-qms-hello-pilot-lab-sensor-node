@@ -292,6 +292,7 @@ def write_record_csv(name, top, head, rows, which):
 
 def page():
     out = [title_block(), f"<div class='cover'><img src='{src('images/finished.png')}' alt='Finished unit'></div>",
+           f"<p class='covernote'>{e(data['document']['cover_note'])}</p>",
            "<div class='pb'></div>",
            f"<p class='prep'>Print A1, A2: {e(data['document']['print_note'])} STL files in A02.</p>",
            "<h2>Parts</h2>"]
@@ -405,7 +406,7 @@ body,p,li,td,th,.legend,.notes,.chk,.prep,.tools,.cap,.small,.pn,.tp,.tp td,.tp 
 h1,.tblock .tt{font-size:22px !important}h2,.title{font-size:18px !important}h3{font-size:14px !important}
 .num{font-size:40px !important}.q,.cq{font-size:13px !important}.bdg{font-size:12px !important}
 .notesbox{border:1px solid #888;border-radius:4px;height:260px;margin:4px 0 14px;page-break-inside:avoid}
-.cover{text-align:center;margin:24px 0}.cover img{max-width:80%;max-height:520px}.pb{page-break-after:always}
+.cover{text-align:center;margin:24px 0}.covernote{text-align:center;font-weight:600}.cover img{max-width:80%;max-height:520px}.pb{page-break-after:always}
 @media print{main{max-width:none}}
 """
 
