@@ -11,7 +11,19 @@ updated_on: 2026-11-26
 
 Review copy (commentable): see the link in `minutes.md`. Drafted in one pass from the design
 conversation (kc: research/hobby rigour, speedrun). Involvement level: balanced (G2 on its own;
-G3 and G4 together after the first build). minimalQMS revision f0ba1f4.
+G3 and G4 together after the first build). minimalQMS revision f0ba1f4, with the
+approved-for-build lifecycle of minimal-qms PR #44 (kc, 2026-11-26: "i like this please update
+the repos accordingly"; PR not yet merged).
+
+## What G2 approves
+LSN-A-0001 rev A **approved for build**, not released: parts may be ordered and the first units
+printed, built and tested. Fixes found while building go in by PR and keep rev A; each
+traveller records the git commit and CAD version it was built from. Rev A is released (tagged
+`LSN-A-0001-revA`) at G3 + G4, once a unit built from it passes TP-001..004.
+
+Approval question: *Approve DR-003, G2 design freeze: LSN-A-0001 rev A approved for build (not
+released), as in the build package on `design/parts-bom` (CAD LSN-A-0001 v31), with the
+decisions and findings in this review?*
 
 ## Scope
 | Item | Rev | Source |
@@ -32,8 +44,9 @@ G3 and G4 together after the first build). minimalQMS revision f0ba1f4.
 | A04 build traveller, one per unit | `LSN-A-0001-A04_traveller_rev_A.pdf` (+ `.csv` to fill) | step checks, final checks, first-unit checks, tests; pass/fail, comments, NC; notes and photos |
 | Suppliers | `purchasing/suppliers.csv` | Mouser, DigiKey, McMaster-Carr, PiShop approved; class B parts from any supplier: SHIM and inserts exact part; SD card, screws and cables any matching part (A01 Purchasing column) |
 
-After approval the Fusion milestones go on exactly these versions (LSN-A-0001 v31, LSN-0001 v7,
-LSN-0002 v6); if a design has changed since, it is re-exported and brought back first.
+After approval the Fusion milestones (`<PN> rev A`, "G2 approved for build") go on exactly these
+versions (LSN-A-0001 v31, LSN-0001 v7, LSN-0002 v6); if a design has changed since, it is
+re-exported and brought back first.
 
 ## Incoming inspection and traceability (2026-11-25)
 kc, in this session: "incoming inspection should only done for critical components ... all this
@@ -101,6 +114,8 @@ the BOM check pass. Findings:
   re-exported from v31, every part named by PN; the v29 STEP had left out the hidden lid, so v31 is saved with the lid shown (fusion-cad rev D: nothing hidden when saved).
 - Open: an unexplained 0.2 mm³ base/Pi PCB overlap in the interference check (recommendation: accept
   as a STEP-model artefact, recheck on the test print; kc to decide).
-- After approval: status Released with the date (file names gain `_YYMMDD`), Fusion milestones
-  `<PN> rev A` on the versions above, merge, tag `LSN-A-0001-revA` with a GitHub Release (fusion-cad
-  Releasing; SOP-002 section 5).
+- After approval: status "Approved for build", Fusion milestones on the versions above, merge
+  to `main` (no tag); order, print, build B001.
+- At G3 + G4: fixes from the builds in, re-exported; status Released with the date (file names
+  gain `_YYMMDD`); milestones "G3 released"; tag `LSN-A-0001-revA` with a GitHub Release
+  (fusion-cad Releasing; SOP-002 section 5).

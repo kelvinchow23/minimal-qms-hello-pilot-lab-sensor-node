@@ -235,6 +235,7 @@ def appendix_d():
             "<p>One per unit. Keep the filled copy in <code>builds/B001/</code> (first build).</p>",
             f"<table class='tb'><tr><th>Serial number</th><td>{e(data['assembly'])}-{BLANK}</td></tr>"
             f"<tr><th>Build number</th><td>B{BLANK} (B001 = first build)</td></tr>"
+            f"<tr><th>Built from</th><td>git commit {BLANK} &nbsp; CAD {e(data['source_top'])}</td></tr>"
             f"<tr><th>Assembled by</th><td>{BLANK}</td></tr><tr><th>Date</th><td>{BLANK}</td></tr></table>",
             f"<p class='prep'>{e(FAIL_NOTE)}</p>",
             record_table(["Stage", "Check: pass if"], traveller_rows()),
@@ -442,7 +443,7 @@ if __name__ == "__main__":
     made.append(write(fname("A03", "test", "html"), f"{BASE} A03", title_block("A03") + "\n".join(appendix_c()[1:])))
     made.append(write(fname("A04", "traveller", "html"), f"{BASE} A04", title_block("A04") + "\n".join(appendix_d()[1:])))
     write_record_csv(fname("A04", "traveller", "csv"),
-                     ["serial_number", "build_number", "assembled_by", "date", "build_complete_signature"],
+                     ["serial_number", "build_number", "built_from_git_commit", "built_from_cad", "assembled_by", "date", "build_complete_signature"],
                      ["stage", "check_pass_if"], traveller_rows(), "A04")
     made.append(fname("A04", "traveller", "csv"))
     if "A05" in FILES:

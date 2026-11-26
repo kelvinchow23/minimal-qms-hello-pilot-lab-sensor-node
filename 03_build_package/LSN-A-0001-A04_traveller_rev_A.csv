@@ -10,6 +10,8 @@ Design source,Fusion LSN-A-0001 v31
 
 serial_number,
 build_number,
+built_from_git_commit,
+built_from_cad,
 assembled_by,
 date,
 build_complete_signature,
