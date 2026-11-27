@@ -5,24 +5,27 @@ Date 2026-11-27. From the BOM `bom.csv` of LSN-A-0001. Prices before tax; CAD to
 ## Summary
 
 - **Purchase reqs to send: 1** (one per supplier)
-- **To order:** CA$102.98 before tax
-- **From stock:** 5 parts; **made in house:** 2 parts
+- **To order:** CA$120.12 before tax
+- **From stock:** 5 parts; **made in house:** 2 parts; **extras on these reqs (not for LSN-A-0001):** 1 line
 
 | Req | Supplier | Lines | Total | Total CAD |
 |---|---|---|---|---|
-| 1 | Mouser | 4 | CAD 102.98 | 102.98 |
+| 1 | Mouser | 5 | CAD 120.12 | 120.12 |
 
 ## Req 1: Mouser
 
 Upload file for the purchase req: `mouser-2026-11-27.csv`
 
-| PN | Item | Supplier part | Qty to order | Price each | Line total | Link |
-|---|---|---|---|---|---|---|
-| ECM-0001 | BME280 temperature, humidity and pressure sensor board, Qwiic | 474-SEN-15440 | 2 | CAD 24.41 | CAD 48.82 | https://www.mouser.ca/ProductDetail/474-SEN-15440 |
-| ECM-0002 | SGP40 VOC air quality sensor board, STEMMA QT / Qwiic | 485-4829 | 2 | CAD 21.53 | CAD 43.06 | https://www.mouser.ca/ProductDetail/485-4829 |
-| ECM-0003 | Qwiic SHIM for Raspberry Pi, push-fit on GPIO header, no soldering | 474-DEV-15794 | 2 | CAD 2.81 | CAD 5.62 | https://www.mouser.ca/ProductDetail/474-DEV-15794 |
-| ECW-0001 | Qwiic / STEMMA QT cable, JST SH 4-pin, 100 mm | 485-4210 | 4 | CAD 1.37 | CAD 5.48 | https://www.mouser.ca/ProductDetail/485-4210 |
-| | **Total** | | | | **CAD 102.98** | |
+| PN | Item | Supplier part | Qty to order | For | Price each | Line total | Link |
+|---|---|---|---|---|---|---|---|
+| ECM-0001 | BME280 temperature, humidity and pressure sensor board, Qwiic | 474-SEN-15440 | 2 | LSN-A-0001 B001 2 | CAD 24.41 | CAD 48.82 | https://www.mouser.ca/ProductDetail/474-SEN-15440 |
+| ECM-0002 | SGP40 VOC air quality sensor board, STEMMA QT / Qwiic | 485-4829 | 2 | LSN-A-0001 B001 2 | CAD 21.53 | CAD 43.06 | https://www.mouser.ca/ProductDetail/485-4829 |
+| ECM-0003 | Qwiic SHIM for Raspberry Pi, push-fit on GPIO header, no soldering | 474-DEV-15794 | 2 | LSN-A-0001 B001 2 | CAD 2.81 | CAD 5.62 | https://www.mouser.ca/ProductDetail/474-DEV-15794 |
+| ECW-0001 | Qwiic / STEMMA QT cable, JST SH 4-pin, 100 mm | 485-4210 | 4 | LSN-A-0001 B001 4 | CAD 1.37 | CAD 5.48 | https://www.mouser.ca/ProductDetail/485-4210 |
+| ECM-0005 | AS5600 magnetic angle sensor board, STEMMA QT / Qwiic | 485-6357 | 2 | inventory 2 | CAD 8.57 | CAD 17.14 | https://www.mouser.ca/ProductDetail/485-6357 |
+| | **Total** | | | | | **CAD 120.12** | |
+
+Split by purpose: LSN-A-0001 B001 CAD 102.98; inventory CAD 17.14
 
 ## From stock (count before the build)
 
