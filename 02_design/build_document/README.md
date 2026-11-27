@@ -1,7 +1,7 @@
 ---
 assembly: LSN-A-0001
 rev: A
-status: draft
+status: approved for build   # G2, DR-003, kc 2026-11-27; released at G3 + G4
 time_estimate: 40 min    # per unit, hands-on, plus SD card preparation; correct after the first build
 source: "Fusion: LSN-A-0001 v31"
 ---

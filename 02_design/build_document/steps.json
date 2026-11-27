@@ -467,8 +467,8 @@
   "build": []
  },
  "document": {
-  "status": "Draft",
-  "approval": "Pending, DR-003",
+  "status": "Approved for build",
+  "approval": "DR-003, kc 2026-11-27",
   "print_note": "PETG, any colour, standard print profile.",
   "make_readme": "Document no. LSN-A-0001-A02   Rev A   Date 2026-11-26\nMake files\nAssembly: Lab Sensor Node, LSN-A-0001\n\nTo print:\n  LSN-0001_base_rev_A.stl         from Fusion LSN-0001 Base v7\n  LSN-0002_lid_rev_A.stl          from Fusion LSN-0002 Lid v6\n  PETG, any colour, standard print profile.\n\nTo edit or reuse the design:\n  LSN-0001_base_rev_A.f3d         Fusion design with full history (v7)\n  LSN-0002_lid_rev_A.f3d          Fusion design with full history (v6)\n  LSN-A-0001_assembly_rev_A.step  whole assembly, every part in place, any CAD tool (Fusion LSN-A-0001 v31)\n  Bought parts: supplier models, see the BOM (A01).\n",
   "tp_briefs": {

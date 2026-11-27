@@ -2,6 +2,22 @@
 
 Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not approvals.
 
+## 2026-11-27: design-agent (agent, Claude Code / Claude Opus 5.5), with kc
+- **Changed:** G2-F1 accepted (kc: "yes accpet it"); G2R-5 monitoring-only statement on the
+  cover and label. One findings register, `02_design/reviews/findings.csv` (kc: "where do i
+  find this?"); QMS finding statuses updated; Q32. **G2 approved** (kc, 2026-11-27 16:27 EST:
+  "i have made my comments and approve."), recorded in DR-003 minutes and plan.yaml; build
+  document status "Approved for build". Order files for 2 units drafted with the OTS library's
+  requisition.py (PR #17 code): Mouser 4 lines, DigiKey 1, McMaster-Carr 1; Pi, supply and SD
+  card from kc's inventory.
+- **Next:** kc marks the Fusion milestones (LSN-A-0001 v31, LSN-0001 v7, LSN-0002 v6, each
+  `<PN> rev A`, "G2 approved for build"); kc merges PR #8 and OTS library PR #17; the purchase
+  reqs (Mouser, DigiKey, McMaster) through the organization's process; print; build B001.
+- **Blocked / unsure:** the Fusion MCP returned no script output this session, so the agent
+  could not check for a milestone API. The OTS parts are still `draft` in the library; the
+  purchasing skill asks for `released` (kc's active/obsolete question is open).
+- **Time:** agent about 0.75 h (review 0.25, documentation 0.25, purchasing 0.25); human: not yet given.
+
 ## 2026-11-26 (evening): design-agent (agent, Claude Code / Claude Opus 5.5), with kc
 - **Changed:** fresh independent review of the package (G2R-1 to G2R-9) recorded in DR-003 with
   kc's decisions. ECR-003 (issue #9; kc: "i would do a hardware bring up test as whats needed to

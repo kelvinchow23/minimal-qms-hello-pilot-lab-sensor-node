@@ -3,9 +3,9 @@ Document no.,LSN-A-0001-A04
 Rev,A
 Assembly name,Lab Sensor Node
 Assembly no.,LSN-A-0001
-Status,Draft
+Status,Approved for build
 Date,2026-11-26
-Approval,"Pending, DR-003"
+Approval,"DR-003, kc 2026-11-27"
 Design source,Fusion LSN-A-0001 v31
 
 serial_number,
