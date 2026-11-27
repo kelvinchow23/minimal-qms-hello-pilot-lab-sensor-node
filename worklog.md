@@ -2,6 +2,19 @@
 
 Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not approvals.
 
+## 2026-11-27 (later): design-agent (agent, Claude Code / Claude Opus 5.5), with kc
+- **Changed:** purchasing reworked around one order sheet per build (kc: "it should be a document
+  easy to review and check"): `builds/B001/order_sheet.md`, stock count, extras. ECM-0005 AS5600
+  added to the OTS library (Mouser 485-6357, CA$8.57, read on mouser.ca); 2 ordered for kc's
+  inventory as an extra. Purchase req previewed in live Airtable, then submitted on kc's word
+  ("Yes, submit it"): order #4243, Mouser, 5 lines, CA$120.12 before tax (LSN B001 102.98,
+  inventory 17.14).
+- **Next:** kc opens order #4243, clicks Generate Req, signs and posts it; then the order is
+  recorded in `purchasing/` (LSN lines only) with the req number as order_ref.
+- **Blocked / unsure:** `record_order.py` records every line of an upload file; the inventory line
+  must be left out of LSN's purchases.csv by hand until the tool knows about extras.
+- **Time:** agent about 0.75 h (purchasing); human: not yet given.
+
 ## 2026-11-27: design-agent (agent, Claude Code / Claude Opus 5.5), with kc
 - **Changed:** G2-F1 accepted (kc: "yes accpet it"); G2R-5 monitoring-only statement on the
   cover and label. One findings register, `02_design/reviews/findings.csv` (kc: "where do i
