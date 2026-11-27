@@ -2,6 +2,16 @@
 
 Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not approvals.
 
+## 2026-11-27 (evening): design-agent (agent, Claude Code / Claude Opus 5.5), with kc
+- **Changed:** Fusion milestones made through the API on kc's word ("mark all 3"):
+  `LSN-A-0001 rev A - G2 approved for build` (v31), `LSN-0001 rev A - …` (v7), `LSN-0002 rev A -
+  …` (v6). Heat-set inserts in kc's stock confirmed as the exact part (kc: "inserts are already
+  confirmed"). Airtable lines of order #4243 carry kc's notes ("minimalQMS: LSN-A-0001 build
+  B001; ECM-0001" etc.). Req PDF for #4243 generated through Documint by the tool and downloaded
+  (`Req 4243 Mouser.pdf`). record_order.py now records only LSN's share of a req (`--plan`).
+- **Next:** kc signs and posts req #4243; then the order is recorded (`record_order.py --plan`).
+- **Time:** agent about 1 h (purchasing 0.75, design 0.25); human: not yet given.
+
 ## 2026-11-27 (later): design-agent (agent, Claude Code / Claude Opus 5.5), with kc
 - **Changed:** purchasing reworked around one order sheet per build (kc: "it should be a document
   easy to review and check"): `builds/B001/order_sheet.md`, stock count, extras. ECM-0005 AS5600

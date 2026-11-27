@@ -8,5 +8,6 @@ ECW-0001,"Qwiic / STEMMA QT cable, JST SH 4-pin, 100 mm",4,0,4,4,Mouser,order
 ECX-0001,"microSD card, SanDisk Extreme 64 GB microSDXC A2",2,2,0,0,Amazon.ca,stock
 HWB-0036,"Screw, M2 x 5 mm, pan head Phillips, nylon, black",16,16,0,0,McMaster-Carr,stock
 HWN-0006,"Heat-set insert, M2, brass",16,16,0,0,DigiKey,stock
+ECM-0005,"AS5600 magnetic angle sensor board, STEMMA QT / Qwiic",2,,2,2,Mouser,extra: inventory
 LSN-0001,"Housing base, 3D printed",2,,0,0,,made in house
 LSN-0002,"Housing lid, 3D printed",2,,0,0,,made in house
