@@ -1,0 +1,35 @@
+Title,Build traveller (one per unit)
+Document no.,LSN-A-0001-A04
+Rev,A
+Assembly name,Lab Sensor Node
+Assembly no.,LSN-A-0001
+Status,Approved for build
+Date,2026-11-26
+Approval,"DR-003, kc 2026-11-27"
+Design source,Fusion LSN-A-0001 v31
+
+serial_number,
+build_number,
+built_from_git_commit,
+built_from_cad,
+assembled_by,
+date,
+build_complete_signature,
+
+stage,check_pass_if,pass_fail,initials,date,comments,nc
+Step 1,Every insert flush and square; none pushed through the floor,,,,,
+Step 2,Card clicked in; B3 pin 1 over the Pi's square pad,,,,,
+Step 3,Ports line up with the front-wall openings; screws snug,,,,,
+Step 4,Each board sits on its 2 inserts; screws snug,,,,,
+Step 5,"Both cables latched at each end; the cable lies in the notch, below the rim",,,,,
+Step 6,All 4 snaps clicked; lid flat on the rim,,,,,
+Step 7,Green LED on the Pi lights; TP-002 step 1 finds both sensors,,,,,
+Final,"8 screws fitted and snug (4 Pi, 2 per sensor board)",,,,,
+Final,Lid snapped on all four sides,,,,,
+Final,"Label applied: serial number and ""Monitoring only, not a safety or gas alarm""",,,,,
+First unit only,Assembled unit within 100 × 100 × 100 mm (REQ-007),,,,,
+First unit only,UL or CSA mark on the wall supply (REQ-005),,,,,
+TP-002,"Hardware bring-up, sensor response and unit agreement; i2cdetect: 0x59 and 0x77; First readings 10-40 °C, 10-90 %RH, 900-1100 hPa, VOC index; Warm-up: rise at most 2 °C after 1 h; Within 60 s: hand +1 °C, breath +5 %RH, isopropyl wipe VOC +100; Pressure within ±5 hPa of the weather station; Two units agree within ±1 °C, ±5 %RH, ±2 hPa; Full procedure in A03",,,,,
+
+notes,
+photos,

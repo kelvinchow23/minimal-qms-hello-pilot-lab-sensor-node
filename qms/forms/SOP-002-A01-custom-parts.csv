@@ -1,0 +1,4 @@
+pn,rev,description,class,lifecycle,make,source,drawing,supplier,supplier_pn,link,unit_price,currency,price_date,notes
+PRX-A-0001,A,Example complete product,A,draft,assemble,Fusion: Photoreactor top v40,,,,,,,,example row - delete
+PRX-0002,A,Example bare PCB,A,draft,fab,KiCad: hardware/pcb/driver.kicad_pro (tag PRX-0002-revA),,JLCPCB,,https://jlcpcb.com,2.10,USD,2026-11-18,example row - delete
+PRX-0004,A,Example printed bracket,A,draft,print,Fusion: Bracket v7,,,,,,,,example row - delete

@@ -1,11 +1,12 @@
 # Changes here will be overwritten by Copier
-_commit: f4d60f4
+_commit: 3c041ac
 _src_path: gh:kelvinchow23/minimal-qms
 approver_id: kc
 approver_name: Kelvin Chow
 description: Pilot lab sensor node, used to run minimalQMS end to end before QMS-rev
     A.
 ecad_tool: KiCad
+involvement: balanced
 mcad_tool: Fusion
 project_code: LSN
 project_name: Lab sensor node

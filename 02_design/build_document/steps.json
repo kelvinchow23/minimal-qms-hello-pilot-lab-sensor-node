@@ -1,0 +1,487 @@
+{
+ "assembly": "LSN-A-0001",
+ "rev": "A",
+ "title": "Lab Sensor Node",
+ "source": "Fusion: LSN-A-0001 v31 (v29 + Part Number properties, lid shown), LSN-0001 Base v7, LSN-0002 Lid v6 (STLs exported from these; step renders from v28)",
+ "classes": {
+  "A": [
+   "Custom parts (printed, machined, PCB, sub-assemblies)",
+   "#e07b00"
+  ],
+  "B": [
+   "Bought parts",
+   "#1f77b4"
+  ],
+  "H": [
+   "Hardware",
+   "#8e44ad"
+  ],
+  "W": [
+   "Wires",
+   "#8c564b"
+  ]
+ },
+ "labels": {
+  "A1": "Base, PETG, any colour",
+  "A2": "Lid, PETG, any colour",
+  "B1": "Raspberry Pi Zero 2 W",
+  "B2": "microSD card, flashed",
+  "B3": "Qwiic SHIM",
+  "B4": "BME280 board",
+  "B5": "SGP40 board",
+  "B6": "5 V wall supply",
+  "H1": "M2 insert",
+  "H2": "M2×5 pan",
+  "W1": "Qwiic cable 100 mm"
+ },
+ "before": {
+  "tools": [
+   "Heat-set insert tool with an M2 tip (about 230 °C for PETG)",
+   "Phillips #0 precision screwdriver",
+   "Computer with Raspberry Pi Imager and a microSD card reader"
+  ],
+  "consumables": [
+   "Label with the serial number and \"Monitoring only, not a safety or gas alarm\" (printed or hand-written)"
+  ],
+  "safety": [
+   "Insert tool is hot: let the base cool.",
+   "Hold boards by the edges."
+  ],
+  "prep": "Prepare B2 (SD card) with Raspberry Pi OS, I2C enabled (not part of this document). Hostname = serial number. No Wi-Fi passwords or server addresses in the repo (REQ-010)."
+ },
+ "steps": [
+  {
+   "n": 1,
+   "title": "Inserts",
+   "img": "images/step1.png",
+   "tools": "Insert tool, M2 tip",
+   "callouts": [
+    {
+     "id": "A1",
+     "qty": 1,
+     "action": "Base",
+     "pts": [
+      [
+       863.9,
+       333.4
+      ]
+     ],
+     "label_at": [
+      714,
+      223
+     ]
+    },
+    {
+     "id": "H1",
+     "qty": 8,
+     "action": "Press flush; 4 Pi bay, 2 per sensor",
+     "pts": [
+      [
+       744.9,
+       204.5
+      ],
+      [
+       598.4,
+       190.9
+      ],
+      [
+       491.7,
+       353.3
+      ],
+      [
+       324.3,
+       299.0
+      ],
+      [
+       420.4,
+       470.6
+      ],
+      [
+       483.5,
+       593.7
+      ],
+      [
+       738.9,
+       315.4
+      ],
+      [
+       802.1,
+       438.5
+      ]
+     ],
+     "label_at": [
+      576,
+      588
+     ]
+    }
+   ],
+   "notes": [
+    "Only the bosses shown. The other 4 sensor bosses stay empty."
+   ],
+   "w": 1136,
+   "h": 722,
+   "check": "Every insert flush and square; none pushed through the floor"
+  },
+  {
+   "n": 2,
+   "title": "Prepare the Pi",
+   "img": "images/step2.png",
+   "tools": "",
+   "callouts": [
+    {
+     "id": "B1",
+     "qty": 1,
+     "action": "Pi",
+     "pts": [
+      [
+       849.3,
+       500.9
+      ]
+     ],
+     "label_at": [
+      699,
+      391
+     ]
+    },
+    {
+     "id": "B2",
+     "qty": 1,
+     "action": "Push the microSD card into the Pi's slot until it clicks",
+     "pts": [
+      [
+       402.4,
+       684.1
+      ]
+     ],
+     "label_at": [
+      552,
+      574
+     ]
+    },
+    {
+     "id": "B3",
+     "qty": 1,
+     "action": "Push the SHIM onto the Pi's GPIO pins 1 to 6",
+     "pts": [
+      [
+       496.1,
+       524.2
+      ]
+     ],
+     "label_at": [
+      346,
+      634
+     ]
+    }
+   ],
+   "notes": [
+    "Card in now: once the Pi is in the base, the slot is 14 mm inside the wall.",
+    "B3 pin 1 over the Pi's square pad; connector toward the SD end."
+   ],
+   "w": 1648,
+   "h": 914,
+   "check": "Card clicked in; B3 pin 1 over the Pi's square pad"
+  },
+  {
+   "n": 3,
+   "title": "Mount the Pi",
+   "img": "images/step3.png",
+   "tools": "PH0 screwdriver",
+   "callouts": [
+    {
+     "id": "B1",
+     "qty": 1,
+     "again": true,
+     "action": "Ports to the front-wall openings",
+     "pts": [
+      [
+       638.7,
+       439.0
+      ]
+     ],
+     "label_at": [
+      489,
+      329
+     ]
+    },
+    {
+     "id": "H2",
+     "qty": 4,
+     "action": "Snug, do not overtighten",
+     "pts": [
+      [
+       420.4,
+       466.2
+      ],
+      [
+       483.5,
+       589.3
+      ],
+      [
+       738.9,
+       311.0
+      ],
+      [
+       802.1,
+       434.1
+      ]
+     ],
+     "label_at": [
+      611,
+      680
+     ]
+    }
+   ],
+   "notes": [],
+   "w": 1136,
+   "h": 722,
+   "check": "Ports line up with the front-wall openings; screws snug"
+  },
+  {
+   "n": 4,
+   "title": "Mount the sensors",
+   "img": "images/step4.png",
+   "tools": "PH0 screwdriver",
+   "callouts": [
+    {
+     "id": "B4",
+     "qty": 1,
+     "action": "End-wall side",
+     "pts": [
+      [
+       408.0,
+       319.9
+      ]
+     ],
+     "label_at": [
+      258,
+      210
+     ]
+    },
+    {
+     "id": "B5",
+     "qty": 1,
+     "action": "Other side",
+     "pts": [
+      [
+       671.6,
+       195.5
+      ]
+     ],
+     "label_at": [
+      822,
+      86
+     ]
+    },
+    {
+     "id": "H2",
+     "qty": 4,
+     "action": "2 per board, diagonal",
+     "pts": [
+      [
+       491.7,
+       348.9
+      ],
+      [
+       324.3,
+       294.6
+      ],
+      [
+       598.4,
+       186.5
+      ],
+      [
+       744.9,
+       200.1
+      ]
+     ],
+     "label_at": [
+      540,
+      30
+     ]
+    }
+   ],
+   "notes": [],
+   "w": 1136,
+   "h": 722,
+   "check": "Each board sits on its 2 inserts; screws snug"
+  },
+  {
+   "n": 5,
+   "title": "Cables",
+   "img": "images/step5.png",
+   "tools": "",
+   "callouts": [
+    {
+     "id": "W1",
+     "qty": 2,
+     "action": "B3 to B4 through the partition notch; B4 to B5",
+     "pts": [
+      [
+       484.4,
+       469.9
+      ],
+      [
+       342.1,
+       352.7
+      ],
+      [
+       471.2,
+       289.9
+      ],
+      [
+       605.7,
+       224.3
+      ]
+     ],
+     "label_at": [
+      277,
+      473
+     ],
+     "paths": [
+      [
+       [
+        484.4,
+        469.9
+       ],
+       [
+        432.8,
+        468.9
+       ],
+       [
+        372.3,
+        483.6
+       ],
+       [
+        336.6,
+        472.9
+       ],
+       [
+        325.7,
+        451.5
+       ],
+       [
+        311.9,
+        422.1
+       ],
+       [
+        322.9,
+        380.8
+       ],
+       [
+        342.1,
+        352.7
+       ]
+      ],
+      [
+       [
+        471.2,
+        289.9
+       ],
+       [
+        495.9,
+        248.3
+       ],
+       [
+        539.8,
+        226.9
+       ],
+       [
+        586.5,
+        226.3
+       ],
+       [
+        605.7,
+        224.3
+       ]
+      ]
+     ]
+    }
+   ],
+   "notes": [
+    "Keep the spare cable below the rim and off the B5 sensor opening."
+   ],
+   "w": 1136,
+   "h": 722,
+   "check": "Both cables latched at each end; the cable lies in the notch, below the rim"
+  },
+  {
+   "n": 6,
+   "title": "Lid",
+   "img": "images/step6.png",
+   "tools": "",
+   "callouts": [
+    {
+     "id": "A2",
+     "qty": 1,
+     "action": "Press until all 4 snaps click"
+    }
+   ],
+   "notes": [
+    "Before and after: lower the lid straight down onto the rim."
+   ],
+   "check": "All 4 snaps clicked; lid flat on the rim"
+  },
+  {
+   "n": 7,
+   "title": "Label and power",
+   "img": "images/step7.png",
+   "tools": "",
+   "callouts": [
+    {
+     "id": "B6",
+     "qty": 1,
+     "action": "Plug into PWR IN: the micro-USB nearest the corner",
+     "pts": [
+      [
+       952.9,
+       698.4
+      ]
+     ],
+     "label_at": [
+      803,
+      588
+     ]
+    }
+   ],
+   "notes": [
+    "Label on the base: the serial number and \"Monitoring only, not a safety or gas alarm\". Then run TP-002 (hardware bring-up)."
+   ],
+   "w": 1648,
+   "h": 914,
+   "check": "Green LED on the Pi lights; TP-002 step 1 finds both sensors"
+  }
+ ],
+ "final_checks": [
+  "8 screws fitted and snug (4 Pi, 2 per sensor board)",
+  "Lid snapped on all four sides",
+  "Label applied: serial number and \"Monitoring only, not a safety or gas alarm\""
+ ],
+ "credits": [
+  "B2: \"MicroSD card 2GB focus-stacked\" by Afrank99, CC BY-SA 3.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:MicroSD_card_2GB_focus-stacked.jpg); resized. Placeholder: the build uses the card listed in A01.",
+  "B6: \"USB wall charger\" by Alcide55, CC BY-SA 3.0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:USB_wall_charger.JPG); resized. Placeholder: the build uses the supply listed in A01.",
+  "W1: drawn placeholder. All other pictures are renders of the Fusion assembly."
+ ],
+ "wires": {
+  "note": "No wires to build for LSN-A-0001: W1 is bought ready-made (both ends fitted). Check both plugs are seated in their housings.",
+  "build": []
+ },
+ "document": {
+  "status": "Approved for build",
+  "approval": "DR-003, kc 2026-11-27",
+  "print_note": "PETG, any colour, standard print profile.",
+  "make_readme": "Document no. LSN-A-0001-A02   Rev A   Date 2026-11-26\nMake files\nAssembly: Lab Sensor Node, LSN-A-0001\n\nTo print:\n  LSN-0001_base_rev_A.stl         from Fusion LSN-0001 Base v7\n  LSN-0002_lid_rev_A.stl          from Fusion LSN-0002 Lid v6\n  PETG, any colour, standard print profile.\n\nTo edit or reuse the design:\n  LSN-0001_base_rev_A.f3d         Fusion design with full history (v7)\n  LSN-0002_lid_rev_A.f3d          Fusion design with full history (v6)\n  LSN-A-0001_assembly_rev_A.step  whole assembly, every part in place, any CAD tool (Fusion LSN-A-0001 v31)\n  Bought parts: supplier models, see the BOM (A01).\n",
+  "tp_briefs": {
+   "TP-002": "i2cdetect: 0x59 and 0x77; First readings 10-40 °C, 10-90 %RH, 900-1100 hPa, VOC index; Warm-up: rise at most 2 °C after 1 h; Within 60 s: hand +1 °C, breath +5 %RH, isopropyl wipe VOC +100; Pressure within ±5 hPa of the weather station; Two units agree within ±1 °C, ±5 %RH, ±2 hPa"
+  },
+  "no_incoming": "Every part is off the shelf, bought as the A01 Purchasing column says, or printed in house; problems show up in the build and tests. Printed parts are checked at steps 1 and 6.",
+  "date": "2026-11-26",
+  "cover_note": "Monitoring only. Not a certified safety or gas alarm (REQ-015)."
+ },
+ "source_top": "Fusion LSN-A-0001 v31",
+ "name": "Lab Sensor Node",
+ "first_unit_checks": [
+  "Assembled unit within 100 × 100 × 100 mm (REQ-007)",
+  "UL or CSA mark on the wall supply (REQ-005)"
+ ]
+}

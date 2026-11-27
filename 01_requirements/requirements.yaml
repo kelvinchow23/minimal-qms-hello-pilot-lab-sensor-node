@@ -1,5 +1,5 @@
 # Requirements (SOP-004 section 5). Written in the requirements stage, reviewed at G1.
-# See forms/SOP-004-A03-requirements.yaml for the format.
+# See qms/forms/SOP-004-A03-requirements.yaml for the format.
 # Drafted 2026-11-24 by design-agent from kc's answers (2026-11-23 G1 notes in worklog.md and
 # 2026-11-24 answers). "agent-proposed" in source = added by the agent; kc accepts or rejects at G1.
 # verified_by: TP-nnn test procedures, AN-nnn analyses and IC-nnn inspection checks are written in the
@@ -9,12 +9,13 @@
   statement: "The unit measures air temperature, relative humidity, barometric pressure and a VOC (volatile organic compound) air quality index."
   source: "internal (kc, 2026-11-23; ECR-001 added light, ECR-002 replaced it with VOC: kc, \"this is a more relevant sensor than the light\")"
   verification: test
-  verified_by: TP-001
+  verified_by: "TP-002 (hardware bring-up: sensors found, readings)"
 - id: REQ-002
   statement: "The unit takes a reading of each quantity in REQ-001 at least every 10 s, with no gap longer than 10 s over a 1 h continuous run."
   source: "internal (kc, 2026-11-24)"
   verification: test
-  verified_by: TP-001
+  verified_by: "Software item lsn-node: TP-001 and TP-004; hardware capability AN-002"
+  item: software   # verified with the software item, not the hardware release (ECR-003)
 - id: REQ-003
   statement: "Readings respond to real changes: cupping the sensor in a hand raises temperature by at least 1 °C within 60 s; breathing on it raises relative humidity by at least 5 %RH within 60 s; pressure is within ±5 hPa of a nearby public weather station, compared at the same altitude (station or sea-level pressure); after 1 h of running, an open isopropyl alcohol wipe held 10 cm from the VOC sensor raises the VOC index by at least 100 within 60 s (ECR-002)."
   source: "internal (kc, 2026-11-24: used \"for reference not absolute values\"; no calibration to lab equipment; \"i like the weather station\")"
@@ -24,32 +25,38 @@
   statement: "The unit sends every reading over the lab Wi-Fi (which uses an enterprise login; Tailscale is available) to a server (local or cloud, chosen in design), with its quantity, unit and timestamp. The history is kept on the server, not on the unit."
   source: "internal (kc, 2026-11-24: \"logged to a server ... on the node itself is not a good idea\")"
   verification: test
-  verified_by: TP-001
+  verified_by: "Software item lsn-node: TP-001; hardware capability AN-002 (certified Wi-Fi radio)"
+  item: software   # verified with the software item, not the hardware release (ECR-003)
 - id: REQ-005
   statement: "The unit runs from wall (mains) power through a plug-in supply that is CSA or UL listed, and has no battery. The type of supply, connector, voltage and maximum current are chosen in design."
   source: "internal (kc, 2026-11-23; \"USB\" removed 2026-11-24: kc, \"it should just specify wall power\")"
   verification: inspection
-  verified_by: IC-nnn (G2)
+  verified_by: 'A04 first-unit check: UL or CSA mark on the wall supply (supplier listing: PiShop SKU 1260 "UL listed")'
+  note: "Verification changed 2026-11-25 at DR-003 (kc: incoming inspection only for critical parts)."
 - id: REQ-006
   statement: "The unit works indoors at 15 to 35 °C and 20 to 80 %RH non-condensing, free-standing on a bench or shelf, without fixing."
-  source: "internal (kc, 2026-11-24)"
+  source: "internal: ranges proposed by the agent at G1 (humidity from finding G1-F5), accepted by kc at DR-002 by default; not from measured lab conditions"
+  note: "Source corrected 2026-11-25 at kc's request; it had read 'internal (kc, 2026-11-24)'. Statement unchanged."
   verification: analysis
   verified_by: AN-001 (component ratings)
 - id: REQ-007
   statement: "An enclosure holds all boards and cables so the unit can be picked up and moved as one piece, with the sensors open to room air. The assembled unit fits within 100 x 100 x 100 mm."
   source: "internal (kc, 2026-11-23; size kc, 2026-11-24)"
   verification: inspection
-  verified_by: IC-nnn (G2)
+  verified_by: "A04 first-unit check: assembled unit within 100 x 100 x 100 mm (calipers)"
+  note: "Verification changed 2026-11-25 at DR-003 from an inspection check (IC-nnn) to a first-unit check."
 - id: REQ-008
   statement: "The unit is assembled from off-the-shelf boards with no custom PCB and no soldering."
   source: "internal (kc, 2026-11-23; no soldering kc, 2026-11-24)"
-  verification: inspection
-  verified_by: IC-nnn (G2)
+  verification: review
+  verified_by: "DR-003: BOM all off-the-shelf boards; no soldering step in the assembly instructions"
+  note: "Verification changed 2026-11-25 at DR-003 from an inspection check (IC-nnn) to design review."
 - id: REQ-009
   statement: "After power is applied, after a power cut, or after a Wi-Fi drop, the unit resumes REQ-002 and REQ-004 within 2 min without anyone touching it, each time over 3 power cuts and 3 Wi-Fi drops."
   source: "internal (kc, 2026-11-24: useless \"if it frequently needed user assistance\"; first proposed by the agent)"
   verification: test
-  verified_by: TP-003
+  verified_by: "Software item lsn-node: TP-003"
+  item: software   # verified with the software item, not the hardware release (ECR-003)
 - id: REQ-010
   statement: "No Wi-Fi password or other credential is stored in the product repo or the build package; it is entered on each unit."
   source: "internal (agent-proposed; AGENTS.md hard rule 7; controls RISK-006)"
@@ -59,12 +66,14 @@
   statement: "Each reading's timestamp is within 1 s of network time."
   source: "internal (kc, 2026-11-24)"
   verification: test
-  verified_by: TP-001
+  verified_by: "Software item lsn-node: TP-001"
+  item: software   # verified with the software item, not the hardware release (ECR-003)
 - id: REQ-012
   statement: "The unit runs for 72 h continuously with no gap longer than 10 s in the readings received by the server and no one touching it. The goal beyond iteration 1 is indefinite unattended monitoring."
   source: "internal (kc, 2026-11-24: \"aim for continuous indefinite monitoring\"; \"lets go 3 days\")"
   verification: test
-  verified_by: TP-004
+  verified_by: "Software item lsn-node: TP-004"
+  item: software   # verified with the software item, not the hardware release (ECR-003)
 - id: REQ-013
   statement: "The 2 units, side by side in the same room, agree within ±1 °C, ±5 %RH and ±2 hPa, and both units' VOC index rises in response to the same REQ-003 test. The VOC index is relative, so it has no agreement limit."
   source: "internal (kc, 2026-11-24; ECR-002)"
@@ -73,8 +82,9 @@
 - id: REQ-014
   statement: "The Wi-Fi radio is on a board that carries ISED (Canada) and FCC certification."
   source: "internal (G1-F1, accepted by kc 2026-11-24)"
-  verification: inspection
-  verified_by: IC-nnn (G2)
+  verification: review
+  verified_by: "documents: FCC grant 2ABCB-RPIZ2 and ISED certificate 20953-RPIZ2 (AN-001 sources, DR-003)"
+  note: "Verification changed 2026-11-25 at DR-003 (kc: incoming inspection only for critical parts)."
 - id: REQ-015
   statement: "The README and the build package state that the unit is a monitoring device and not a certified safety or gas alarm."
   source: "internal (ECR-002, agent-proposed; controls RISK-014)"

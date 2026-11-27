@@ -2,6 +2,174 @@
 
 Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not approvals.
 
+## 2026-11-27 (evening): design-agent (agent, Claude Code / Claude Opus 5.5), with kc
+- **Changed:** Fusion milestones made through the API on kc's word ("mark all 3"):
+  `LSN-A-0001 rev A - G2 approved for build` (v31), `LSN-0001 rev A - …` (v7), `LSN-0002 rev A -
+  …` (v6). Heat-set inserts in kc's stock confirmed as the exact part (kc: "inserts are already
+  confirmed"). Airtable lines of order #4243 carry kc's notes ("minimalQMS: LSN-A-0001 build
+  B001; ECM-0001" etc.). Req PDF for #4243 generated through Documint by the tool and downloaded
+  (`Req 4243 Mouser.pdf`). record_order.py now records only LSN's share of a req (`--plan`).
+- **Next:** kc signs and posts req #4243; then the order is recorded (`record_order.py --plan`).
+- **Time:** agent about 1 h (purchasing 0.75, design 0.25); human: not yet given.
+
+## 2026-11-27 (later): design-agent (agent, Claude Code / Claude Opus 5.5), with kc
+- **Changed:** purchasing reworked around one order sheet per build (kc: "it should be a document
+  easy to review and check"): `builds/B001/order_sheet.md`, stock count, extras. ECM-0005 AS5600
+  added to the OTS library (Mouser 485-6357, CA$8.57, read on mouser.ca); 2 ordered for kc's
+  inventory as an extra. Purchase req previewed in live Airtable, then submitted on kc's word
+  ("Yes, submit it"): order #4243, Mouser, 5 lines, CA$120.12 before tax (LSN B001 102.98,
+  inventory 17.14).
+- **Next:** kc opens order #4243, clicks Generate Req, signs and posts it; then the order is
+  recorded in `purchasing/` (LSN lines only) with the req number as order_ref.
+- **Blocked / unsure:** `record_order.py` records every line of an upload file; the inventory line
+  must be left out of LSN's purchases.csv by hand until the tool knows about extras.
+- **Time:** agent about 0.75 h (purchasing); human: not yet given.
+
+## 2026-11-27: design-agent (agent, Claude Code / Claude Opus 5.5), with kc
+- **Changed:** G2-F1 accepted (kc: "yes accpet it"); G2R-5 monitoring-only statement on the
+  cover and label. One findings register, `02_design/reviews/findings.csv` (kc: "where do i
+  find this?"); QMS finding statuses updated; Q32. **G2 approved** (kc, 2026-11-27 16:27 EST:
+  "i have made my comments and approve."), recorded in DR-003 minutes and plan.yaml; build
+  document status "Approved for build". Order files for 2 units drafted with the OTS library's
+  requisition.py (PR #17 code): Mouser only, 4 lines. From kc's inventory: Pi, supply, SD card,
+  M2 heat-set inserts and M2 x 5 nylon screws (kc: "i also have in inventory the heat sets and
+  the nylon screws"); the inserts are an exact part (Tri-Star M20X100C), to be confirmed.
+- **Next:** kc marks the Fusion milestones (LSN-A-0001 v31, LSN-0001 v7, LSN-0002 v6, each
+  `<PN> rev A`, "G2 approved for build"); kc merges PR #8 and OTS library PR #17; the Mouser
+  purchase req through the organization's process; print; build B001.
+- **Blocked / unsure:** the Fusion MCP returned no script output this session, so the agent
+  could not check for a milestone API. The OTS parts are still `draft` in the library; the
+  purchasing skill asks for `released` (kc's active/obsolete question is open).
+- **Time:** agent about 0.75 h (review 0.25, documentation 0.25, purchasing 0.25); human: not yet given.
+
+## 2026-11-26 (evening): design-agent (agent, Claude Code / Claude Opus 5.5), with kc
+- **Changed:** fresh independent review of the package (G2R-1 to G2R-9) recorded in DR-003 with
+  kc's decisions. ECR-003 (issue #9; kc: "i would do a hardware bring up test as whats needed to
+  check hardware. software should be its own thing"): TP-002 is now the hardware bring-up
+  (sensors found, readings, warm-up rise at most 2 °C, response, unit agreement) with
+  `tools/bringup.py`; AN-002 shows hardware capability from datasheets (BME280 rev 1.24, SGP40
+  v1.2, Pi Zero 2 W brief); REQ-002, 004, 009, 011, 012 and TP-001, 003, 004 move to the
+  software item; build package preparation and step 7 no longer need the software. QMS finding
+  Q31 (software as its own item).
+- **Next:** kc decides G2R-5 (monitoring-only statement) and G2-F1 (5 s interval); then the G2
+  question.
+- **Blocked / unsure:** OTS lifecycle states (library PR #17), transcripts, deviations before
+  QMS-rev A: waiting on kc.
+- **Time:** agent about 1 h (review 0.5, documentation 0.5); human: not yet given.
+
+## 2026-11-26 (later): design-agent (agent, Claude Code / Claude Opus 5.5), with kc
+- **Changed:** minimal-qms PRs #44 (approved for build at G2, released at G3) and playbook #6
+  (nothing hidden when saved) merged on kc's instruction ("merge and run copier"); LSN updated
+  to minimalQMS 3c041ac. Assembly saved as v31 with the lid shown; STEP re-exported. DR-003: G2
+  approves rev A for build; overlap accepted (kc: "overlap is fine"); G2-F2 to F6 and the code
+  finding accepted (kc: "yea accept all"). An independent compliance review of LSN against
+  minimalQMS and the playbook found requirements.yaml broken (REQ-005 quotes) and REQ-007/008
+  and RISK-005/008 still pointing at IC-nnn: fixed. Also fixed: BOM source column names
+  (internal_pn, manufacturer_pn), A03 incoming wording, DR-003 checklist, build-document README,
+  calipers and weather-station reference in equipment.csv.
+- **Next:** a fresh independent review of the current package before the G2 question (kc: "its
+  always good to do an independent review before a gate to catch the small mixups").
+- **Blocked / unsure:** kc to decide on OTS lifecycle states (library PR #17 open), deviations
+  before QMS-rev A, and archived review transcripts.
+- **Time:** agent about 1.5 h (documentation 0.5, review 0.5, design 0.5); human: not yet given.
+
+## 2026-11-26: design-agent (agent, Claude Code / Claude Opus 5.5), with kc
+Written 2026-11-26 after the fact, from git history and the session, covering the work of
+2026-11-24 evening to 2026-11-26 since the last entry. No deviation: kc treats minimalQMS as
+pre-rev A for this pilot.
+- **Changed (design):** M2 x 5 nylon screws (HWB-0036) into M2 inserts; 2 screws per sensor,
+  4 for the Pi (kc: "yea lets do two per sensor. pi can stay 4"); ghost designs for cables,
+  SD card and supply, so the whole BOM is read from Fusion. CAD buildability check (order,
+  insertion path, tool access, cables, lid, BOM): G2-F6 SD card in at step 2 (applied),
+  G2-F7 Pi bay 0.5 mm toward the partition (kc: "f7 yes move it"; base v7, assembly v29),
+  G2-F8 rejected (kc: "no lets use two 100mm i'd rather have shorter bom"). Part Number
+  properties set (assembly v30, no geometry change); v31 saved with the lid shown, because
+  the hidden lid had been left out of the v29 STEP (new fusion-cad rule: nothing hidden when
+  saved); assembly STEP re-exported from v31.
+- **Changed (verification):** AN-001 ratings checked against manufacturer documents; radio IDs
+  corrected; REQ-006 source corrected (ranges were agent proposals); REQ-005 and REQ-007
+  first-unit checks, REQ-014 document review. No incoming inspection (kc: critical parts
+  only); purchase trace optional; software v0.1.1 stays a draft, not frozen at G2 (kc).
+- **Changed (build package):** one controlled document, LSN-A-0001 rev A: assembly
+  instructions (cover, 7 picture steps with callouts A/B/H/W) and appendices A01 BOM, A02 make
+  files (STL, `.f3d`, STEP), A03 test, A04 traveller (serial, build number, P/F, comments, NC,
+  notes and photos). Flat `03_build_package/`; sources in `02_design/build_document/`;
+  `parts.csv` dropped (state from git). Draft dated 2026-11-26.
+- **Changed (process):** involvement level balanced (kc). minimalQMS PRs #42 and #43 and
+  playbook PRs #3, #4, #5 (+ private #5) merged on kc's instruction ("merge all rules and run
+  copier"); LSN updated to minimalQMS f0ba1f4 by copier. QMS findings Q20, Q22-Q30 proposed.
+- **Next:** kc answers the G2 question (DR-003); then release, milestones, order, print, build.
+- **Blocked / unsure:** kc's question on revisions during the first builds (does rev A wait
+  until a unit works?) changes what G2 releases; answer before the G2 question.
+- **For the next review:** 0.2 mm³ base/Pi PCB overlap; snap fit and Pi-port clearance on
+  the test print.
+- **Time:** agent about 8.5 h estimated from session activity (design 1.5, documentation 4.5,
+  review 1.5, planning 1); human hands-on about 2 h (kc: "like 2 hours hands on but i swear
+  most of that time was cleaning up minimalqms"), not split by activity; the share spent on
+  the LSN design itself is unknown.
+
+## 2026-11-24 (design): design-agent (agent, Claude Code / Claude Opus 5.5), with kc
+- **Changed:** ECR-001 (light) and ECR-002 (VOC, replaces light) raised, approved by kc and
+  merged. Parts chosen on Mouser and from kc's inventory; ECM-0001..0004, ECW-0001, ECP-0001,
+  ECX-0001 allocated (ots-library PR #10); LSN-A-0001, LSN-0002 Base, LSN-0003 Lid allocated.
+  Housing first built with direct modelling (no history), then rebuilt to the playbook
+  fusion-cad rev B after kc asked whether the agent followed kc's Fusion practices. Fusion:
+  Tech/General/minimal-qms/LSN- Lab Sensor Node (assembly + parts), OTS parts subfolder holds
+  ECM-0002 (Adafruit STEP, MIT), ECM-0004 (modelled from the Raspberry Pi mechanical drawing),
+  ECM-0001 (outline and 3 holes from SparkFun Eagle file). SD opening moved to the +x wall to
+  match the Pi drawing. Interference check: none.
+- **Confirmed from supplier data:** SGP40 holes 2.5 mm at 20.32 x 12.7 mm; BME280 holes 3.302 mm,
+  only 3 (H1, H2, H4) at 20.32 mm; Pi holes 58 x 23 mm, power port 54 mm from the left edge.
+- **Unconfirmed:** Pi connector heights and sizes; SD slot y; BME280 connector sizes; SHIM not
+  modelled (no mounting; sits on the header).
+- **Open:** SGP40 2.5 mm holes are tight for M2.5 screws; one BME280 boss unused; lid is
+  friction fit (no screws); lid copies base parameters; fillets not done; STEP model library
+  approach (kc's question) proposed but not started.
+- **Then:** kc uploaded a GrabCAD Pi Zero 2 W model; it replaces the drawing-based ECM-0004
+  (old file renamed SUPERSEDED, not deleted). It has no GPIO header, so a 2x20 header (black
+  plastic, gold pins) was added. It showed the agent had misread the Pi drawing: the SD slot is
+  at the mini-HDMI end (-x), so the base SD opening was moved back to the -x wall and centred on
+  the real slot; USB and SD heights now come from the model. ECM-0003 Qwiic SHIM modelled from
+  SparkFun's Eagle file, on GPIO pins 1-6. Colours: Pi green (GrabCAD), SparkFun boards red,
+  Adafruit SGP40 from its STEP. Interference check: no contact with the housing; the SHIM's
+  staggered holes grip the pins by design.
+- **Then:** at kc's request the front wall now exposes the mini-HDMI and both micro-USB ports
+  (one shared opening for the two USB ports; separate ones would leave a 0.4 mm web). kc asked
+  about Pi ventilation: agent estimated about 1 W and a 10-20 C internal rise (not measured), so
+  no overheating risk, but heat pooling near the sensors (RISK-001). kc approved ("Yes, add
+  both"): 5 lid vents over the Pi bay (chimney with the low port openings), and TP-004 (72 h run)
+  will log the Pi CPU temperature (vcgencmd measure_temp) with the readings.
+- **Then:** kc: "there needs more room between the qwiic sensors. i cant connect a cable between
+  the two now". Housing lengthened 75 -> 95 mm (still within REQ-007's 100 mm); BME280 moved to
+  x -20 and SGP40 to x +28 (about 23 mm between connectors, about 13 mm beside the BME280 for the
+  SHIM cable); vents spread. Found and fixed an agent error: the base Outline sketch had no
+  centring constraint (an earlier fix had rolled back unnoticed), so the first 95 mm edit grew
+  the box to one side. Now fully constrained and symmetric.
+- **Then:** kc: the cutout "can move all the way to the end ... can be minimized". Cable notch
+  now flush against the -x end wall, 6 mm wide x 8 mm deep (cable clears the 4 mm lid lip).
+- **Then:** kc chose snap detents for the lid ("Snap detents") over screws: 4 half-round bumps
+  (r 0.5 mm, 10 mm long) on the lid lip's front and back faces click into 4 grooves (r 0.6 mm,
+  11 mm) in the base walls, 2 mm below the rim. Interference while closing = snap_bump_r -
+  lip_clearance = 0.3 mm; needs a test print to tune. fusion-cad says printed parts fasten with
+  screws into inserts; agent reads a snap detent as not fastening hardware. kc to confirm at G2.
+- **Then:** assembly reworked to fusion-cad hard rules (kc: no Move/Position; nothing
+  draggable): base grounded, every part on joints to real geometry, imported boards rigidly
+  grouped in their designs and in the assembly, timeline ordered insert-then-joint, sketches
+  hidden. Agent error found: base and lid edits since their v4 had gone into duplicate open
+  copies and never saved. Replayed onto fresh copies: Fusion now LSN-0002 v5, LSN-0003 v5,
+  LSN-A-0001 v18; all parts in place. Unexplained 0.2 mm3 base/Pi PCB overlap remains.
+- **Then:** G2 package drafted in one pass (kc: research/hobby rigour, speedrun): software
+  v0.1.0, TP-001..004, AN-001 (print in PETG), assembly instruction, inspection checks; screws
+  HWB-0036 (McMaster 92492A702, black nylon M2 x 6, kc's choice). DR-003 review doc pre-filled.
+- **Then:** kc renamed the Fusion parts to LSN-0001 Base and LSN-0002 Lid (separate number
+  sequences for parts and assemblies, finding Q20); repo records renamed to match (nothing was
+  released). Fusion rebuilt and confirmed saved: LSN-0001 v6 and LSN-0002 v6 (M2 inserts,
+  parameters trimmed to 15 and 8, fillets), assembly tree split into Custom parts and OTS parts.
+  Agent lesson: part copies opened through the assembly cannot be saved; open parts directly.
+- **Next:** software, test procedures TP-001..004, assembly instructions, inspection checks,
+  then the G2 review (DR-003).
+- **Time:** agent about 2.5 h on design and part selection; human hands-on: not asked yet.
+
 ## 2026-11-24: design-agent (agent, Claude Code / Claude Opus 5.5), with kc
 - **Changed:** G1 started on branch `docs/g1-requirements`. kc answered: "Every 10 s,
   2 units", "Any, design decides" (reporting), "Typical breakout" accuracy, "Sits on a bench".
