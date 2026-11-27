@@ -1,0 +1,44 @@
+id,raised,review,finding,recommendation,decision,decided_by,status,record
+F1,2026-11-23,DR-001 (G0),Parts named before G1,-,accept (*kc*),State needs; preference to worklog,closed,02_design/reviews/DR-001/minutes.md
+F2,2026-11-23,DR-001 (G0),Reporting destination open,-,accept (*kc*),Superseded: now a G1 note,closed,02_design/reviews/DR-001/minutes.md
+F3,2026-11-23,DR-001 (G0),Ranged values,-,accept (*kc*),Superseded: now G1 notes,closed,02_design/reviews/DR-001/minutes.md
+F4,2026-11-23,DR-001 (G0),"""Not selected"" wording",-,accept (*kc*),"Superseded: out list empty, kc to decide",closed,02_design/reviews/DR-001/minutes.md
+F5,2026-11-23,DR-001 (G0),Goals mixed,-,accept (*kc*),Product goal first,closed,02_design/reviews/DR-001/minutes.md
+F6,2026-11-23,DR-001 (G0),"Power supply, cabling open",-,accept (*kc*),"Superseded: ""buy"" kept as a G1 note",closed,02_design/reviews/DR-001/minutes.md
+F7,2026-11-23,DR-001 (G0),Agent-written README phrase,-,"accept (*proposed*, confirmed by kc)",Removed,closed,02_design/reviews/DR-001/minutes.md
+F8,2026-11-23,DR-001 (G0),"Broken reference, blank worklog",-,"accept (*proposed*, confirmed by kc)",Fixed,closed,02_design/reviews/DR-001/minutes.md
+F9,2026-11-23,DR-001 (G0),No auditor; same model,-,accept (*kc*),Same model OK for pilot; auditor before QMS-rev A,closed,02_design/reviews/DR-001/minutes.md
+F10,2026-11-23,DR-001 (G0),ECR question unanswered,-,"accept (*proposed*, confirmed by kc)","N/A, iteration 1",closed,02_design/reviews/DR-001/minutes.md
+F11,2026-11-23,DR-001 (G0),No GitHub username,-,accept (*kc*),Value `kelvinchow23` *proposed*,closed,02_design/reviews/DR-001/minutes.md
+"F12–F16, Q1–Q9",2026-11-23,DR-001 (G0),minimalQMS template and SOP issues,-,"accept (*proposed*, confirmed by kc)",Raise in minimal-qms after G0,closed,02_design/reviews/DR-001/minutes.md
+G1-F1,2026-11-24,DR-002 (G1),Safety and standards,-,accept,"""sure i like this"": REQ-005 CSA/UL supply, new REQ-014 ISED/FCC radio",closed,02_design/reviews/DR-002/minutes.md
+G1-F2,2026-11-24,DR-002 (G1),Power numbers,-,accept (default),Voltage and current stated in design,closed,02_design/reviews/DR-002/minutes.md
+G1-F3,2026-11-24,DR-002 (G1),REQ-003 test conditions,-,superseded,REQ-003 no longer uses a reference instrument,closed,02_design/reviews/DR-002/minutes.md
+G1-F4,2026-11-24,DR-002 (G1),Timestamp accuracy,-,no change (default),"Covered by REQ-011, RISK-010",closed,02_design/reviews/DR-002/minutes.md
+G1-F5,2026-11-24,DR-002 (G1),Humidity and lab air,-,accept (default),REQ-006 20 to 80 %RH; RISK-012,closed,02_design/reviews/DR-002/minutes.md
+G1-F6,2026-11-24,DR-002 (G1),Lab network rules,-,accept,"""we have tailscale and an enterprise login"": REQ-004 notes it; RISK-011 (agent's reading of kc's answer)",closed,02_design/reviews/DR-002/minutes.md
+G1-F7,2026-11-24,DR-002 (G1),"REQ-008, REQ-010 as constraints",-,reject (default),Kept as requirements; no soldering is kc's,closed,02_design/reviews/DR-002/minutes.md
+G1-F8,2026-11-24,DR-002 (G1),Power-cut count,-,accept with change,"""why 10 thats a high number why not just like 2 or3"": REQ-009 uses 3 power cuts and 3 Wi-Fi drops",closed,02_design/reviews/DR-002/minutes.md
+G1-F9,2026-11-24,DR-002 (G1),RISK-008 severity,-,accept (default),Severity 4,closed,02_design/reviews/DR-002/minutes.md
+G1-F10,2026-11-24,DR-002 (G1),Traceable IDs,-,accept (default),"IC-nnn, DR-003",closed,02_design/reviews/DR-002/minutes.md
+G1-F11,2026-11-24,DR-002 (G1),Each unit,-,accept,"""sure"": stated in requirements.yaml header",closed,02_design/reviews/DR-002/minutes.md
+G1-F12,2026-11-24,DR-002 (G1),minimalQMS templates,-,moved,`docs/qms-findings.csv`,closed,02_design/reviews/DR-002/minutes.md
+G2-F1,2026-11-24,DR-003 (G2),interval_s = 10 against a 10 s gap limit fails on network jitter,interval 5 s,accept,"kc 2026-11-27: ""yes accpet it""",closed,02_design/reviews/DR-003/package.md
+G2-F2,2026-11-24,DR-003 (G2),Screws not in the BOM,add HWB-0036,accept,"kc 2026-11-26: ""yea accept all they seemed fine i just didnt approve""",closed,02_design/reviews/DR-003/package.md
+G2-F3,2026-11-24,DR-003 (G2),Screw length vs insert hole depth not checked,accept: M2 x 5 engages 3.4 mm; check on first build,accept,"kc 2026-11-26: ""yea accept all they seemed fine i just didnt approve""",closed,02_design/reviews/DR-003/package.md
+G2-F4,2026-11-24,DR-003 (G2),BME280 hole positions unconfirmed,accept: from SparkFun board file; confirm on first build,accept,"kc 2026-11-26: ""yea accept all they seemed fine i just didnt approve""",closed,02_design/reviews/DR-003/package.md
+G2-F5,2026-11-24,DR-003 (G2),Network onboarding not decided,accept: university Wi-Fi then Tailscale (kc 2026-11-24),accept,"kc 2026-11-26: ""yea accept all they seemed fine i just didnt approve""",closed,02_design/reviews/DR-003/package.md
+G2-C1,2026-11-24,DR-003 (G2),Stale VOC value sent after an SGP40 read failure,voc = None on failure (v0.1.1),accept,"kc 2026-11-26: ""yea accept all they seemed fine i just didnt approve""",closed,02_design/reviews/DR-003/package.md
+G2-F6,2026-11-25,DR-003 (G2),SD slot 14 mm inside the end wall,"card in at step 2, before the Pi",accept,"kc 2026-11-26: ""yea accept all they seemed fine i just didnt approve""",closed,02_design/reviews/DR-003/package.md
+G2-F7,2026-11-25,DR-003 (G2),Pi ports clear the front wall by 0.4 mm,move the Pi bay 0.5 mm,accept,"kc 2026-11-25: ""f7 yes move it""",closed,02_design/reviews/DR-003/package.md
+G2-F8,2026-11-25,DR-003 (G2),Spare 70 mm of cable in the sensor bay,50 mm cable for that run,reject,"kc 2026-11-25: ""no lets use two 100mm i'd rather have shorter bom""",closed,02_design/reviews/DR-003/package.md
+G2-O1,2026-11-25,DR-003 (G2),0.2 mm3 base/Pi PCB overlap in the interference check,accept as a STEP-model artefact; recheck on test print,accept,"kc 2026-11-26: ""overlap is fine""",closed,02_design/reviews/DR-003/package.md
+G2R-1,2026-11-26,DR-003 (G2),Software install steps never called for in the build package,call for README steps 1-7,closed by ECR-003,"kc 2026-11-26: ""i would just leave steps vague""; ECR-003",closed,02_design/reviews/DR-003/package.md
+G2R-2,2026-11-26,DR-003 (G2),Network onboarding not in the package,write down the method,closed by ECR-003,"kc 2026-11-26: ""it will just be my laptop ... leave vague here""; ECR-003",closed,02_design/reviews/DR-003/package.md
+G2R-3,2026-11-26,DR-003 (G2),"Receiver and check_run.py fail good units (one file, no time window)",fresh file per test after time sync,moved to the software item (ECR-003),"kc 2026-11-26: ""software should be its own thing""",open (software item),02_design/reviews/DR-003/package.md
+G2R-4,2026-11-26,DR-003 (G2),No test shows the BME280 is not heated by the Pi (RISK-001),"warm-up check, rise at most 2 C after 1 h",accept; done in TP-002 step 3,"kc 2026-11-26: ""sure add this""",closed,02_design/reviews/DR-003/package.md
+G2R-5,2026-11-26,DR-003 (G2),Monitoring-only statement (REQ-015) not in the build package,cover and label,accept; done,"kc 2026-11-26: ""Yes, add it""",closed,02_design/reviews/DR-003/package.md
+G2R-6,2026-11-26,DR-003 (G2),"Supply described 5.1 V 2.5 A, link reads 5.25 V 2.4 A",correct from the page,"no change: page says 5.1 V 2.5 A, UL","kc 2026-11-26: ""yea change specs to what is needed""",closed,02_design/reviews/DR-003/package.md
+G2R-7,2026-11-26,DR-003 (G2),BME280 holes may be 3.3 mm under an M2 head,check on the test print,accept,"kc 2026-11-26: ""we'll just check test print""",open (test print),02_design/reviews/DR-003/package.md
+G2R-8,2026-11-26,DR-003 (G2),TP-001 count and duration do not match REQ-002,REQ-002 also by TP-004; at least 170 readings,accept; done in the software TP-001,"kc 2026-11-26: ""sure""",closed,02_design/reviews/DR-003/package.md
+G2R-9,2026-11-26,DR-003 (G2),Order quantity for how many units,"2 units; Pi, supply, card from inventory",accept,"kc 2026-11-26: ""yes""",open (at ordering),02_design/reviews/DR-003/package.md

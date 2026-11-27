@@ -26,6 +26,8 @@ Approval question: *Approve DR-003, G2 design freeze: LSN-A-0001 rev A approved 
 released), as in the build package on `design/parts-bom` (CAD LSN-A-0001 v31), with the
 decisions and findings in this review?*
 
+All findings of this and earlier reviews, with decisions and what is still open: `02_design/reviews/findings.csv`.
+
 ## Scope
 | Item | Rev | Source |
 |---|---|---|
@@ -96,8 +98,8 @@ to purchase lines; parts with the same PN are pooled. REQ-005 is now checked on 
 - Code: stale VOC value sent after an SGP40 read failure; set `voc = None` on failure.
   G2-F1 and this fix applied 2026-11-25 in the software draft (v0.1.1): interval 5 s, `voc = None` on failure.
 - **Decisions (2026-11-26):** G2-F2 to G2-F5 and the code finding accepted as answered above
-  (kc, in this session: "yea accept all they seemed fine i just didnt approve"). G2-F1 was
-  applied in the software draft; kc's decision on it is not yet recorded.
+  (kc, in this session: "yea accept all they seemed fine i just didnt approve"). G2-F1 accepted
+  2026-11-27 (kc: "yes accpet it").
 
 ## Buildability check in CAD (agent, 2026-11-25, Fusion LSN-A-0001 v28)
 Full results in `02_design/build_document/README.md`. Order, tool access, closing and
