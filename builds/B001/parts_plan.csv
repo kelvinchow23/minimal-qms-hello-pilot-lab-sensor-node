@@ -1,0 +1,12 @@
+pn,description,needed,on_hand,to_order,packs,supplier,source
+ECM-0001,"BME280 temperature, humidity and pressure sensor board, Qwiic",2,0,2,2,Mouser,order
+ECM-0002,"SGP40 VOC air quality sensor board, STEMMA QT / Qwiic",2,0,2,2,Mouser,order
+ECM-0003,"Qwiic SHIM for Raspberry Pi, push-fit on GPIO header, no soldering",2,0,2,2,Mouser,order
+ECM-0004,Raspberry Pi Zero 2 W with header (pre-soldered GPIO),2,2,0,0,PiShop,stock
+ECP-0001,"Wall power supply, 5.1 V 2.5 A, USB Micro-B, UL listed, 100-240 VAC",2,2,0,0,PiShop,stock
+ECW-0001,"Qwiic / STEMMA QT cable, JST SH 4-pin, 100 mm",4,0,4,4,Mouser,order
+ECX-0001,"microSD card, SanDisk Extreme 64 GB microSDXC A2",2,2,0,0,Amazon.ca,stock
+HWB-0036,"Screw, M2 x 5 mm, pan head Phillips, nylon, black",16,16,0,0,McMaster-Carr,stock
+HWN-0006,"Heat-set insert, M2, brass",16,16,0,0,DigiKey,stock
+LSN-0001,"Housing base, 3D printed",2,,0,0,,made in house
+LSN-0002,"Housing lid, 3D printed",2,,0,0,,made in house
