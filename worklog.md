@@ -2,6 +2,14 @@
 
 Check-ins and notable working decisions (SOP-003 §7). Newest at the top. Not approvals.
 
+## 2026-11-27 (late): design-agent (agent, Claude Code / Claude Opus 5.5), with kc
+- **Changed:** kc signed req 4243 and posted it to the purchasing channel (kc: "ive signed and
+  uploaded to slack"). Recorded in `purchasing/purchases.csv` (P-0001 to P-0004, LSN lines only;
+  the AS5600 inventory line skipped) and `purchasing/requisitions/4243.csv`. Req PDFs are now
+  named `YYYYMMDD_<Vendor>_<initials>_PurchReq.pdf` (private add-on).
+- **Next:** read the purchaser's PO number, order date and receipt from Airtable when they are
+  there (kc: "we can pull that info in from airtable later"); print the base and lid; build B001.
+
 ## 2026-11-27 (evening): design-agent (agent, Claude Code / Claude Opus 5.5), with kc
 - **Changed:** Fusion milestones made through the API on kc's word ("mark all 3"):
   `LSN-A-0001 rev A - G2 approved for build` (v31), `LSN-0001 rev A - …` (v7), `LSN-0002 rev A -
