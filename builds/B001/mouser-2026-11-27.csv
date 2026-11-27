@@ -1,6 +1,6 @@
 Item Name,Prod No,# of Items,Price (Before Tax - Original Currency),Item Link,Notes
-"BME280 temperature, humidity and pressure sensor board, Qwiic",474-SEN-15440,2,24.41,https://www.mouser.ca/ProductDetail/474-SEN-15440,minimalQMS: LSN-A-0001 build B001; ECM-0001
-"SGP40 VOC air quality sensor board, STEMMA QT / Qwiic",485-4829,2,21.53,https://www.mouser.ca/ProductDetail/485-4829,minimalQMS: LSN-A-0001 build B001; ECM-0002
-"Qwiic SHIM for Raspberry Pi, push-fit on GPIO header, no soldering",474-DEV-15794,2,2.81,https://www.mouser.ca/ProductDetail/474-DEV-15794,minimalQMS: LSN-A-0001 build B001; ECM-0003
-"Qwiic / STEMMA QT cable, JST SH 4-pin, 100 mm",485-4210,4,1.37,https://www.mouser.ca/ProductDetail/485-4210,minimalQMS: LSN-A-0001 build B001; ECW-0001
-"AS5600 magnetic angle sensor board, STEMMA QT / Qwiic",485-6357,2,8.57,https://www.mouser.ca/ProductDetail/485-6357,minimalQMS: inventory; ECM-0005
+"BME280 temperature, humidity and pressure sensor board, Qwiic",474-SEN-15440,2,24.41,https://www.mouser.ca/ProductDetail/474-SEN-15440,LSN-A-0001 build B001 | ECM-0001
+"SGP40 VOC air quality sensor board, STEMMA QT / Qwiic",485-4829,2,21.53,https://www.mouser.ca/ProductDetail/485-4829,LSN-A-0001 build B001 | ECM-0002
+"Qwiic SHIM for Raspberry Pi, push-fit on GPIO header, no soldering",474-DEV-15794,2,2.81,https://www.mouser.ca/ProductDetail/474-DEV-15794,LSN-A-0001 build B001 | ECM-0003
+"Qwiic / STEMMA QT cable, JST SH 4-pin, 100 mm",485-4210,4,1.37,https://www.mouser.ca/ProductDetail/485-4210,LSN-A-0001 build B001 | ECW-0001
+"AS5600 magnetic angle sensor board, STEMMA QT / Qwiic",485-6357,2,8.57,https://www.mouser.ca/ProductDetail/485-6357,inventory | ECM-0005
