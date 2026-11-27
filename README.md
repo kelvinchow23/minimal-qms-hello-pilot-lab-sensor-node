@@ -37,7 +37,7 @@ Full list: `01_requirements/requirements.yaml`.
 | Test procedures, analyses, test tools | `02_design/test_procedures/` |
 | Software (its own item) | `02_design/software/lsn-node/` |
 | **The build document to build from** (instructions, A01 BOM, A02 make files, A03 tests, A04 traveller) | `03_build_package/` |
-| **What a build needs, has and orders** | `builds/B00n/parts_plan.csv` |
+| **What to order for a build** (reqs per supplier, totals, stock, checklist) | `builds/B00n/order_sheet.md` (upload file per supplier beside it) |
 | Filled travellers and test results | `builds/B00n/` |
 | Suppliers; orders as placed | `purchasing/suppliers.csv`; `purchasing/purchases.csv`, `purchasing/requisitions/` |
 | Test equipment | `equipment/equipment.csv` |
